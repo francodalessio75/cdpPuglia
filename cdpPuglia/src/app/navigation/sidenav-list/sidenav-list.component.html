@@ -1,0 +1,34 @@
+<mat-nav-list>
+  <mat-list>
+    <mat-list-item>
+      <mat-icon>dashboard_customize</mat-icon>
+      <div mat-line>Configure Dashboard</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item routerLink="/threats" (click)="onClose()">
+      <mat-icon>flash_on</mat-icon>
+      <div mat-line>Threats</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <div mat-subheader>Administration</div>
+    <mat-list-item (click)="onClose()">
+      <mat-icon>people_outline</mat-icon>
+      <div mat-line>Network Group and Assets</div>
+    </mat-list-item>
+    <mat-list-item (click)="onClose()">
+      <mat-icon>dns</mat-icon>
+      <div mat-line>Network Addresses</div>
+    </mat-list-item>
+    <mat-list-item (click)="onClose()">
+      <mat-icon>compass_calibration</mat-icon>
+      <div mat-line>Network Services</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <div mat-subheader>External Servicies</div>
+    <div mat-subheader>Technical Configuration</div>
+    <div mat-subheader>IDS/IPS</div>
+    <div mat-subheader>User Administration</div>
+    <div mat-subheader>System C&C</div>
+    <div mat-subheader>Activity Tracking</div>
+  </mat-list>
+</mat-nav-list>
