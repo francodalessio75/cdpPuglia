@@ -13,6 +13,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { FooterComponent } from './navigation/footer/footer.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     ThreatsComponent,
     WelcomeComponent,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    FooterComponent
 
   ],
   imports: [
