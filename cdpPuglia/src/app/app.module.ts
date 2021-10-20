@@ -14,6 +14,10 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { FooterComponent } from './navigation/footer/footer.component';
+import { ThreatsFiltersComponent } from './threats/threats-filters/threats-filters.component';
+import { ThreatsDiagramsComponent } from './threats/threats-diagrams/threats-diagrams.component';
+// For MDB Angular Free
+import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 @NgModule({
@@ -24,7 +28,9 @@ import { FooterComponent } from './navigation/footer/footer.component';
     WelcomeComponent,
     HeaderComponent,
     SidenavListComponent,
-    FooterComponent
+    FooterComponent,
+    ThreatsFiltersComponent,
+    ThreatsDiagramsComponent
 
   ],
   imports: [
@@ -33,7 +39,10 @@ import { FooterComponent } from './navigation/footer/footer.component';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    ChartsModule,
+    WavesModule,
+    MDBBootstrapModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
