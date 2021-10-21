@@ -17,7 +17,10 @@ import { FooterComponent } from './navigation/footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { ThreatsFiltersComponent } from './threats/threats-filters/threats-filters.component';
+import { ThreatsDiagramsComponent } from './threats/threats-diagrams/threats-diagrams.component';
+// For MDB Angular Free
+import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -27,8 +30,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     WelcomeComponent,
     HeaderComponent,
     SidenavListComponent,
-    FooterComponent
-
+    FooterComponent,
+    ThreatsFiltersComponent,
+    ThreatsDiagramsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     ToastrModule.forRoot({ positionClass:'toast-bottom-right' }),
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ChartsModule,
+    WavesModule,
+    MDBBootstrapModule
   ],
   providers: [],
   bootstrap: [AppComponent]
