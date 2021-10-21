@@ -1,0 +1,51 @@
+<section class="login-form">
+    <form
+      fxLayout="column"
+      #changeProfileForm="ngForm"
+      fxLayoutAlign="center center"
+      (ngSubmit)="changeProfile()"
+      fxLayoutGap="10px">
+      <mat-form-field>
+        <input
+          name="oldPassword"
+          [(ngModel)]="model.oldPassword"
+          type="password"
+          matInput
+          placeholder="Inserisci Vecchia Password"
+          required>
+          <mat-error>Campo obbligatorio</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          name="newPassword"
+          type="password"
+          [(ngModel)]="model.newPassword"
+          matInput
+          placeholder="Inserisci Nuova Password"
+          required 
+          minlength="8"
+          maxlength="32"
+          >
+        <mat-error>Campo obbligatorio</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          name="repeatPassword"
+          [(ngModel)]="model.repeatPassword"
+          type="password"
+          matInput
+          placeholder="Ripeti Nuova Password"
+          required
+          minlength="8"
+          maxlength="32"
+          >
+          <mat-error>Campo obbligatorio</mat-error>
+      </mat-form-field>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="changeProfileForm.invalid">Accedi</button>
+    </form>
+  </section>
+  <!-- pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*])" -->
