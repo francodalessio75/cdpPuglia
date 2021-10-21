@@ -27,7 +27,6 @@ export class AccountService {
           this.user.username = model.username;
           this.user.password = model.password;
           this.user.token = token;
-
           this.currentUserSource.next(this.user);
         }
       })
