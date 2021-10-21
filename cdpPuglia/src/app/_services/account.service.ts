@@ -21,17 +21,23 @@ export class AccountService {
   constructor( private http:HttpClient) { }
 
   login( model:any){
-    return this.http.post(this.baseUrl + 'login', model).pipe(
-      map((token:any) => {
-        if(token){
-          this.user.username = model.username;
-          this.user.password = model.password;
-          this.user.token = token;
+    // return this.http.post(this.baseUrl + 'login', model).pipe(
+    //   map((token:any) => {
+    //     if(token){
+    //       this.user.username = model.username;
+    //       this.user.password = model.password;
+    //       this.user.token = token;
+    //       this.user.token = "t0ken";
 
-          this.currentUserSource.next(this.user);
-        }
-      })
-    );
+    //       this.currentUserSource.next(this.user);
+    //     }
+    //   })
+    // );
+    this.user.username = model.username;
+    this.user.password = model.password;
+    this.user.token = "t0ken";
+    this.setCurrentUser(this.user);
+    this.currentUserSource.next(this.user);
   }
 
   setCurrentUser( user:User ){
