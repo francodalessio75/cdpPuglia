@@ -1,28 +1,26 @@
 <section class="login-form">
     <form
+      [formGroup]='loginForm'
       fxLayout="column"
-      #loginForm="ngForm"
       fxLayoutAlign="center center"
       (ngSubmit)="login()"
       fxLayoutGap="10px">
       <mat-form-field>
         <input
-          name="username"
-          [(ngModel)]="model.username"
+          formControlName='username'
           type="text"
           matInput
           placeholder="Username"
-          required>
+          >
           <mat-error>Campo obbligatorio</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input
-          name="password"
+        formControlName='password'
           type="password"
-          [(ngModel)]="model.password"
           matInput
           placeholder="Password"
-          required>
+          >
         <mat-error>Campo obbligatorio</mat-error>
       </mat-form-field>
       <button

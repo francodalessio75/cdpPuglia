@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/_services/account.service';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 export class LoginComponent implements OnInit {
   model:any = {};
   loggedIn : boolean = false;
-  faCoffee = faCoffee;
+  loginForm! : FormGroup;
 
   constructor(
     private accountService : AccountService,
@@ -21,9 +21,28 @@ export class LoginComponent implements OnInit {
     private toastr:ToastrService) { }
 
   ngOnInit(): void {
+    this.intializeForm();
+  }
+
+  intializeForm(){
+    this.loginForm = new FormGroup({
+      username: new FormControl('',Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(4)] )
+    });
+  }
+
+  matchValues(matchTo:string) : ValidatorFn {
+    return (control: AbstractControl | any ) => {
+      return control?.value === control?.parent?.controls[matchTo].value
+      ? null
+      : {isMatching:true}
+    }
   }
 
   login(){
+    this.model.username = this.loginForm.value.username;
+    this.model.password = this.loginForm.value.password;
+    console.log(this.model);
     this.accountService.login(this.model).subscribe(response => {
       console.log(response);
       this.router.navigateByUrl('/threats')
