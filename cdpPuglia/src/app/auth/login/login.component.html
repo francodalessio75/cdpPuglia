@@ -1,29 +1,28 @@
-<h1>Prova commit</h1>
 <section class="login-form">
     <form
       fxLayout="column"
-      fxLayoutAlign="center center"
       #loginForm="ngForm"
-      (ngSubmit)="onSubmit(loginForm)"
+      fxLayoutAlign="center center"
+      (ngSubmit)="login()"
       fxLayoutGap="10px">
       <mat-form-field>
         <input
+          name="username"
+          [(ngModel)]="model.username"
           type="text"
           matInput
           placeholder="Username"
-          ngModel
-          name="username"
           required>
           <mat-error>Campo obbligatorio</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input
-        type="password"
-        matInput
-        placeholder="Password"
-        ngModel
-        name="password"
-        required>
+          name="password"
+          type="password"
+          [(ngModel)]="model.password"
+          matInput
+          placeholder="Password"
+          required>
         <mat-error>Campo obbligatorio</mat-error>
       </mat-form-field>
       <button
