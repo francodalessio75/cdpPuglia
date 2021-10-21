@@ -14,16 +14,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { FooterComponent } from './navigation/footer/footer.component';
-<<<<<<< HEAD
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-=======
-import { ThreatsFiltersComponent } from './threats/threats-filters/threats-filters.component';
-import { ThreatsDiagramsComponent } from './threats/threats-diagrams/threats-diagrams.component';
-// For MDB Angular Free
-import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
->>>>>>> f447425d88e2d9f80d9bdd3a2f7a9cce981af82b
 
 
 @NgModule({
@@ -34,9 +27,7 @@ import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap
     WelcomeComponent,
     HeaderComponent,
     SidenavListComponent,
-    FooterComponent,
-    ThreatsFiltersComponent,
-    ThreatsDiagramsComponent
+    FooterComponent
 
   ],
   imports: [
@@ -46,16 +37,10 @@ import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-<<<<<<< HEAD
     ReactiveFormsModule,
     ToastrModule.forRoot({ positionClass:'toast-bottom-right' }),
     HttpClientModule,
     FontAwesomeModule
-=======
-    ChartsModule,
-    WavesModule,
-    MDBBootstrapModule 
->>>>>>> f447425d88e2d9f80d9bdd3a2f7a9cce981af82b
   ],
   providers: [],
   bootstrap: [AppComponent]
