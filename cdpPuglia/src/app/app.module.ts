@@ -14,7 +14,7 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ThreatsFiltersComponent } from './threats/threats-filters/threats-filters.component';
 import { ThreatsDiagramsComponent } from './threats/threats-diagrams/threats-diagrams.component';
@@ -22,6 +22,7 @@ import { ThreatsDiagramsComponent } from './threats/threats-diagrams/threats-dia
 import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
 
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,9 @@ import { ChangeProfileComponent } from './auth/change-profile/change-profile.com
     WavesModule,
     MDBBootstrapModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
