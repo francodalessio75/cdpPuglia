@@ -1,45 +1,43 @@
 <section class="login-form">
     <form
+      [formGroup]="changeProfileForm"
       fxLayout="column"
-      #changeProfileForm="ngForm"
       fxLayoutAlign="center center"
       (ngSubmit)="changeProfile()"
       fxLayoutGap="10px">
       <mat-form-field>
         <input
-          name="oldPassword"
-          [(ngModel)]="model.oldPassword"
+          formControlName="oldPassword"
           type="password"
           matInput
           placeholder="Inserisci Vecchia Password"
-          required>
+          [class.is-invalid]='changeProfileForm.get("oldPassword")?.errors && changeProfileForm.get("oldPassword")?.touched'
+          >
           <mat-error>Campo obbligatorio</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input
-          name="newPassword"
+          formControlName="newPassword"
           type="password"
-          [(ngModel)]="model.newPassword"
           matInput
           placeholder="Inserisci Nuova Password"
-          required 
-          minlength="8"
-          maxlength="32"
+          [class.is-invalid]='changeProfileForm.get("newPassword")?.errors && changeProfileForm.get("newPassword")?.touched'
           >
-        <mat-error>Campo obbligatorio</mat-error>
+        <mat-error *ngIf="changeProfileForm.get('newPassword')?.hasError('required')">Campo obbligatorio</mat-error>
+        <mat-error *ngIf="changeProfileForm.get('newPassword')?.hasError('minlength')">Lunghezza minima 8 caratteri</mat-error>
+        <mat-error *ngIf="changeProfileForm.get('newPassword')?.hasError('maxlength')">Lunghezza massima 32 caratteri</mat-error>
+        <mat-error *ngIf="changeProfileForm.get('newPassword')?.hasError('newPasswordStrength')">Richesti almeno una lettera minuscola, una maiuscola, un numero ed un carattere speciale !@#$%^&*)</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input
-          name="repeatPassword"
-          [(ngModel)]="model.repeatPassword"
+          formControlName="repeatPassword"
           type="password"
           matInput
           placeholder="Ripeti Nuova Password"
-          required
-          minlength="8"
-          maxlength="32"
+          [class.is-invalid]='changeProfileForm.get("repeatPassword")?.errors && changeProfileForm.get("repeatPassword")?.touched'
           >
-          <mat-error>Campo obbligatorio</mat-error>
+          <mat-error *ngIf="changeProfileForm.get('repeatPassword')?.hasError('required')">Campo obbligatorio</mat-error>
+          <mat-error *ngIf="changeProfileForm.get('repeatPassword')?.hasError">Le due password devono essere uguali</mat-error>
       </mat-form-field>
       <button
         type="submit"

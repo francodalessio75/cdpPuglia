@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 
 import { ThreatsComponent } from './threats/threats.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -29,13 +28,14 @@ import { ChangeProfileComponent } from './auth/change-profile/change-profile.com
     AppComponent,
     LoginComponent,
     ThreatsComponent,
-    WelcomeComponent,
     HeaderComponent,
     SidenavListComponent,
     FooterComponent,
     ThreatsFiltersComponent,
     ThreatsDiagramsComponent,
-    ChangeProfileComponent],
+    ChangeProfileComponent,
+    ThreatsDiagramsComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,7 +49,7 @@ import { ChangeProfileComponent } from './auth/change-profile/change-profile.com
     FontAwesomeModule,
     ChartsModule,
     WavesModule,
-    MDBBootstrapModule 
+    MDBBootstrapModule
   ],
   providers: [],
   bootstrap: [AppComponent]

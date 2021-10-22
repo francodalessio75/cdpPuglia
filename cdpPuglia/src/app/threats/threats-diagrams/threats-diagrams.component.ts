@@ -8,7 +8,7 @@ import { Component} from '@angular/core';
 export class ThreatsDiagramsComponent{
   public chartType: string = 'line';
   public chartType1: string = 'bar';
-
+  
   public chartDatasets: Array<any> = [
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset' },
     { data: [28, 48, 40, 19, 86, 27, 90], label: 'My Second dataset' }
@@ -66,4 +66,5 @@ export class ThreatsDiagramsComponent{
   public chartOptions1: any = {
     responsive: true
   };
+  
 }
