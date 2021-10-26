@@ -61,84 +61,8 @@ export class AccountService {
       return this.getRole$();
     }
 
-  // login( model:any){
-  //   return this.http.post<{token:string}>(this.baseUrl + 'login', model)
-  //     .pipe(
-  //       map( token  => {
-  //         if(token){
-  //           this.user.username = model.username;
-  //           this.user.password = model.password;
-  //           this.user.token = token.token;
-  //           this.setCurrentUser(this.user);
-  //           this.currentUserSource.next(this.user);
-  //           this.http.get<{role:string, user:string}>(this.baseUrl + 'user').subscribe(
-  //             userData => {
-
-  //             }
-  //           )
-  //         }
-  //       }
-  //     )
-  //   )
-  // }
-
-  // login( model:any){
-  //   return this.http.post<{token:string}>(this.baseUrl + 'login', model)
-  //     .pipe(
-  //         this.user.token = token.token;
-  //         this.http.get<{user:string,role:string}>(this.baseUrl + 'user').pipe(
-  //           map( userData =>{
-  //             this.user.role = userData.role 
-  //             this.setCurrentUser(this.user);
-  //             this.currentUserSource.next(this.user);
-  //           })
-  //         )
-  //       })
-  //     )
-  // }
-
-  // login( model:any){
-  //   return this.http.post(this.baseUrl + 'login', model)
-  //     .pipe(
-  //       concatMap( token => this.http.get( this.baseUrl + 'user').pipe(
-  //         map(userData => {
-  //           if(token){
-  //             this.user.username = model.username;
-  //             this.user.password = model.password;
-  //             this.user.token = token.toString();
-  //             if(userData){
-  //               this.user.role = userData.toString()
-  //             }
-  //           }
-  //           this.setCurrentUser(this.user);
-  //           this.currentUserSource.next(this.user);
-  //         })
-  //       )
-  //     )
-  //   )
-  // }
-      //   if(token){
-      //     this.user.username = model.username;
-      //     this.user.password = model.password;
-      //     this.user.token = token;
-      //     this.setCurrentUser(this.user);
-      //     this.currentUserSource.next(this.user);
-      //   }
-      // })
-      // map((token:any) => {
-      //   if(token){
-      //     this.user.username = model.username;
-      //     this.user.password = model.password;
-      //     this.user.token = token;
-      //     this.setCurrentUser(this.user);
-      //     this.currentUserSource.next(this.user);
-      //   }
-      // })
-    //);
- // }
-
   setCurrentUser( user:User ){
-    ;localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }
 

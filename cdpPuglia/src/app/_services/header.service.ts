@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +8,14 @@ import { Observable } from 'rxjs';
 export class HeaderService {
   title ='';
   description = '';
-  titleDescription$ =new Observable<{title:string, description:string}>();
   constructor() { }
+  
+  private currentTitleDescription = new ReplaySubject<{title:string, description:string}>(1);
+  titleDescription$ = this.currentTitleDescription.asObservable();
 
-  setTitleAndDescription(title:string, description:string){
-    this.title=title;
-    this.description=description;
-    this.titleDescription$.emit()
+  setCurrentTitleDescription( title:string, description:string ){
+    this.currentTitleDescription.next({title,description});
   }
+
 
 }
