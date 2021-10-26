@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HeaderService } from '../_services/header.service';
 
 @Component({
@@ -6,16 +6,16 @@ import { HeaderService } from '../_services/header.service';
   templateUrl: './threats.component.html',
   styleUrls: ['./threats.component.css']
 })
-export class ThreatsComponent implements OnInit {
-  title='Threats: ';
-  description='Sezione di consultazione dei grafici e dei reports delle minacce';
-  
-  constructor(private headerService: HeaderService) { }
+export class ThreatsComponent implements OnInit, OnDestroy {
+  title = 'Pagina consultazione minacce:';
+  description = 'Sezione per consultare grafici ed applicare filtri di ricerca ai reports';
+
+  constructor(private headerService:HeaderService) { }
 
   ngOnInit(): void {
     this.headerService.setCurrentTitleDescription(this.title, this.description);
   }
-  
+
   ngOnDestroy(){
     this.headerService.setCurrentTitleDescription('','');
   }

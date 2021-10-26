@@ -9,6 +9,7 @@ import { AccountService } from './_services/account.service';
 })
 export class AppComponent implements OnInit {
   title = 'Threats Report';
+  
 
   constructor( private accountService:AccountService){}
 
