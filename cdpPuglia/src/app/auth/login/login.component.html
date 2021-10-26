@@ -24,8 +24,6 @@
           placeholder="Password"
           >
         <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Campo obbligatorio</mat-error>
-        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Lunghezza minima 4 caratteri</mat-error>
-        <mat-error *ngIf="loginForm.get('password')?.hasError('passwordStrength')">Richesti almeno una lettera minuscola, una maiuscola, un numero ed un carattere speciale !@#$%^&*)</mat-error>
       </mat-form-field>
       <button
         type="submit"
@@ -34,4 +32,4 @@
         [disabled]="loginForm.invalid">Accedi</button>
     </form>
   </section>
-  <app-change-password></app-change-password>
+  <!-- <app-change-password></app-change-password> -->

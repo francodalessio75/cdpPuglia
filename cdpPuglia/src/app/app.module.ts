@@ -18,6 +18,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ThreatsFiltersComponent } from './threats/threats-filters/threats-filters.component';
 import { ThreatsDiagramsComponent } from './threats/threats-diagrams/threats-diagrams.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 // For MDB Angular Free
 import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 
@@ -25,6 +26,7 @@ import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
+import { TitleDescriptionComponent } from './navigation/title-description/title-description.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { ChangeProfileComponent } from './auth/change-profile/change-profile.com
     ThreatsDiagramsComponent,
     ThreatsDiagramsComponent,
     ChangePasswordComponent,
-    ChangeProfileComponent
+    ChangeProfileComponent,
+    TitleDescriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { ChangeProfileComponent } from './auth/change-profile/change-profile.com
     MDBBootstrapModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

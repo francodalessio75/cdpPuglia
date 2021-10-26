@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,15 +11,17 @@ import { AccountService } from '../_services/account.service';
 export class AuthGuard implements CanActivate {
   constructor(
     private accountService:AccountService,
-    private toastr:ToastrService){}
+    private toastr:ToastrService,
+    private router:Router){}
 
-  canActivate(): Observable<boolean> {
+  canActivate(): Observable<boolean>{
     return this.accountService.currentUser$.pipe(
       map( user => {
         if(user) {
           return true
         }else{
-          this.toastr.error('Accesso non autorizzato. Necessaria Autenticazione.');
+          //this.toastr.error('Accesso non autorizzato. Necessaria Autenticazione.');
+          this.router.navigateByUrl('/login');
           return false;
         }
       })
