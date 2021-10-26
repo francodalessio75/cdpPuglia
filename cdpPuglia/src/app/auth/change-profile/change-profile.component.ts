@@ -1,91 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { AccountService } from 'src/app/_services/account.service';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
   selector: 'app-change-profile',
   templateUrl: './change-profile.component.html',
-  styleUrls: ['./change-profile.component.css'],
+  styleUrls: ['./change-profile.component.css']
 })
 export class ChangeProfileComponent implements OnInit {
 
-  model: any = {};
-  loggedIn: boolean = false;
-
+  constructor(
+    private fb: FormBuilder
+  ) { }
   changeProfileForm = this.fb.group({
-    oldPassword: ['', Validators.required],
-    newPassword: [
+    email: [
       '',
       [
         Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(32),
-        this.newPasswordStrengthValidator()
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
       ],
     ],
-    repeatPassword: [
-      '',[
-        Validators.required, this.matchValues('newPassword')]]
   });
+  
 
   ngOnInit(){
-    this.changeProfileForm.controls.password.valueChanges.subscribe(() => {
-      this.changeProfileForm.controls.newPassword.updateValueAndValidity();
-    });
     
-    
-  
-  }
-  constructor(
-    private accountService: AccountService,
-    private toastr: ToastrService,
-    private fb: FormBuilder
-  ) {}
-
-  newPasswordStrengthValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const value = control.value;
-     
-
-      if (!value) return null;
-
-      const hasUpperCase = /[A-Z]+/.test(value);
-
-      const hasLowerCase = /[a-z]+/.test(value);
-
-      const hasNumeric = /[0-9]+/.test(value);
-
-      const hasSpecialChar = /[!@#$%^&*]+/.test(value);
-
-      const newPasswordValid =
-        hasUpperCase && hasLowerCase && hasNumeric && hasSpecialChar;
-
-      return !newPasswordValid ? { newPasswordStrength: true } : null;
-    };
   }
 
-  matchValues(matchTo:string) : ValidatorFn {
-    return (control: AbstractControl | any) => {
-      return control?.value === control?.parent?.controls[matchTo].value
-      ? null 
-      : {isMatching:true}
-    }
-  }
-
-  changeProfile() {
-    // this.accountService.login(this.model).subscribe(response => {
-    //   console.log(response);
-    //   this.router.navigateByUrl('/threats')
-    //   this.loggedIn = true;
-    // },
-    //  error => {
-    //    console.log(error);
-    //    this.toastr.error("Autenticazione Fallita");
-    //  });
-    console.log(this.model);
-  }
 }

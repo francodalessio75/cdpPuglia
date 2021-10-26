@@ -20,9 +20,11 @@ import { ThreatsFiltersComponent } from './threats/threats-filters/threats-filte
 import { ThreatsDiagramsComponent } from './threats/threats-diagrams/threats-diagrams.component';
 // For MDB Angular Free
 import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
-import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
+
 
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { ChangePasswordComponent } from './auth/change-password/change-password.component';
+import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +36,9 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
     FooterComponent,
     ThreatsFiltersComponent,
     ThreatsDiagramsComponent,
-    ChangeProfileComponent,
-    ThreatsDiagramsComponent
+    ThreatsDiagramsComponent,
+    ChangePasswordComponent,
+    ChangeProfileComponent
   ],
   imports: [
     BrowserModule,
