@@ -18,6 +18,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ThreatsFiltersComponent } from './threats/threats-filters/threats-filters.component';
 import { ThreatsDiagramsComponent } from './threats/threats-diagrams/threats-diagrams.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 // For MDB Angular Free
 import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
@@ -53,7 +54,8 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
     MDBBootstrapModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

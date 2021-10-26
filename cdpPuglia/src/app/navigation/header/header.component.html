@@ -1,12 +1,12 @@
 <mat-toolbar color="primary">
   <!--fxHide.gt-xs-->
-  <div>
+  <div *ngIf="(accountService.currentUser$  | async ) !== null ">
     <button
       (click)="onToggleSideNav()"
       mat-icon-button>
-        <mat-icon>menu</mat-icon>
-      </button>
-    </div>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
   <div>LOGO</div>
   <!--fxHide.xs-->
   <div
@@ -17,16 +17,30 @@
       fxLayout
       class="navigation-items"
       fxLayoutGap="10px">
-      <li>
+      <li *ngIf="(accountService.currentUser$  | async ) === null ">
         <a routerLink="/login">
-          <mat-icon>input</mat-icon>
+          <mat-icon>login</mat-icon>
           Login
         </a>
       </li>
-      <li>
-        <a routerLink="/threats">
-          <mat-icon>flash_on</mat-icon>
-          Threats</a>
+      <li *ngIf="(accountService.currentUser$  | async ) !== null ">
+        <button mat-button (click)="logout()" style="font-size: 1.1rem;">
+          <mat-icon>logout</mat-icon>
+          Logout
+        </button>
+      </li>
+      <li *ngIf="(accountService.currentUser$  | async ) !== null ">
+        <button mat-button [matMenuTriggerFor]="belowMenu" style="font-size: 1.1rem;">
+          <mat-icon>account_box</mat-icon>
+          Gestisci Profilo
+        </button>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+          <div>
+            <p style="text-align: center;font-size: larger;">{{user.username}}({{user.role}})</p>
+          </div>
+          <button mat-menu-item><mat-icon>account_box</mat-icon>Modifica Profilo</button>
+          <button mat-menu-item><mat-icon>manage_accounts</mat-icon>Modifica Password</button>
+        </mat-menu>
       </li>
     </ul>
   </div>

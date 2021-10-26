@@ -1,0 +1,30 @@
+@baseURL = http://127.0.0.1:5000
+
+@identityAuthority = http://127.0.0.1:5000/login
+
+@credential = {"username":"viewer","password":"viewerviewer"}
+
+get {{baseURL}}
+
+###
+
+# @name login
+post {{baseURL}}/login
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"adminadmin"
+}
+
+
+###
+
+GET {{baseURL}}/user HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+###
+
+PUT {{baseURL}}/user?email="f.dalessio@bvtech.it" HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
