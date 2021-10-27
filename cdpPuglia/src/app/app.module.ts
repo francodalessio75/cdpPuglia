@@ -27,6 +27,7 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
 import { TitleDescriptionComponent } from './navigation/title-description/title-description.component';
+import { MatDialog, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -56,11 +57,13 @@ import { TitleDescriptionComponent } from './navigation/title-description/title-
     FontAwesomeModule,
     ChartsModule,
     WavesModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    MatDialogModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]
 })

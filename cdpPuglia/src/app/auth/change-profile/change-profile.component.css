@@ -5,3 +5,8 @@ mat-form-field {
 .noinput{
 cursor: default;
 }
+.mat-dialog-content{
+  height: 330px;
+          width: auto;
+  overflow-y: hidden !important;
+}

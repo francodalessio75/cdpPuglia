@@ -1,4 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog , MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
+import { ChangeProfileComponent } from 'src/app/auth/change-profile/change-profile.component';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { HeaderService } from 'src/app/_services/header.service';
@@ -16,7 +19,7 @@ export class HeaderComponent implements OnInit {
   title='';
   description='';
 
-  constructor(public accountService:AccountService, public headerService:HeaderService) { }
+  constructor(public accountService:AccountService, public headerService:HeaderService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.accountService.currentUser$.subscribe(
@@ -36,5 +39,39 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     this.accountService.logout();
+  }
+  openChangePassword(): void {
+    const dialogRef = this.dialog.open(ChangePasswordComponent, {
+      // width: '250px',
+      panelClass: 'trend-dialog',
+      height: '65%',
+            width: '40%',
+      disableClose: true,
+      hasBackdrop: true
+       
+    
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    
+    });
+  }
+  openChangeProfile(): void {
+    const dialogRef = this.dialog.open(ChangeProfileComponent, {
+      // width: '250px',
+      panelClass: 'trend-dialog',
+      height: '60%',
+      width: '40%',
+      disableClose: true,
+      hasBackdrop: true
+    
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
+    
+    });
   }
 }

@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/_services/account.service';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { HeaderComponent } from 'src/app/navigation/header/header.component';
+import { User } from 'src/app/_models/user';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -23,6 +26,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class ChangePasswordComponent implements OnInit {
 
   model: any = {};
+  currentUser: User ={};
   loggedIn: boolean = false;
   checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
     let pass = group.get('newPassword')!.value;
@@ -37,8 +41,7 @@ export class ChangePasswordComponent implements OnInit {
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(32),
-        this.newPasswordStrengthValidator(),
-        this.matchValues('repeatPassword')
+        this.newPasswordStrengthValidator()
       ],
     ],
     repeatPassword: [
@@ -52,17 +55,21 @@ export class ChangePasswordComponent implements OnInit {
     this.changePasswordForm.controls.newPassword.valueChanges.subscribe(() => {
       this.changePasswordForm.controls.repeatPassword.updateValueAndValidity();
     });
-    this.changePasswordForm.controls.repeatPassword.valueChanges.subscribe(() => {
-      this.changePasswordForm.controls.newPassword.updateValueAndValidity();
-    });
+    
+    this.dialogRef.beforeClosed().subscribe(() => this.dialogRef.close());
+    this.accountService.currentUser$.subscribe(user => {this.currentUser=user});
     
 
   }
   constructor(
     private accountService: AccountService,
     private toastr: ToastrService,
-    private fb: FormBuilder
-  ) {}
+    private fb: FormBuilder,
+    public dialogRef: MatDialogRef<HeaderComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    dialogRef.disableClose = true;
+  }
 
   newPasswordStrengthValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -85,7 +92,9 @@ export class ChangePasswordComponent implements OnInit {
       return !newPasswordValid ? { newPasswordStrength: true } : null;
     };
   }
-
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   matchValues(matchTo:string) : ValidatorFn {
     return (control: AbstractControl | any) => {
@@ -96,15 +105,16 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   changePassword() {
-    // this.accountService.login(this.model).subscribe(response => {
-    //   console.log(response);
-    //   this.router.navigateByUrl('/threats')
-    //   this.loggedIn = true;
-    // },
-    //  error => {
-    //    console.log(error);
-    //    this.toastr.error("Autenticazione Fallita");
-    //  });
+    this.accountService.changePassword$(
+      this.changePasswordForm.controls.oldPassword.value,
+      this.changePasswordForm.controls.newPassword.value, 
+      this.changePasswordForm.controls.repeatPassword.value)
+      .subscribe(response => {
+      console.log(response);
+    },
+     error => {
+       console.log(error);
+     });
     console.log(this.model);
   }
   matcher = new MyErrorStateMatcher();

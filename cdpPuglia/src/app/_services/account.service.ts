@@ -51,6 +51,35 @@ export class AccountService {
         )
     }
 
+    changePassword$(currentPassword: string, newPassword: string, repeatPassword: string){ 
+      return this.http.put<{message:string,messageId:string}>(this.baseUrl + 'user/update-password', 
+      {
+        currentPassword: currentPassword,
+        newPassword: newPassword,
+        repeatPassword: repeatPassword
+      })
+        .pipe(
+          map( responseMessage => {
+            if(responseMessage){
+              console.log(responseMessage)
+            }
+          })
+        )
+    }
+    changeProfile$(email: string){ 
+      return this.http.put<{message:string,messageId:string}>(this.baseUrl + 'user', 
+      {
+        email: email
+      })
+        .pipe(
+          map( responseMessage => {
+            if(responseMessage){
+              console.log(responseMessage)
+            }
+          })
+        )
+    }
+
     login(model:{username:string, password:string}){
       this.user.username = model.username; 
       this.user.password = model.password; 

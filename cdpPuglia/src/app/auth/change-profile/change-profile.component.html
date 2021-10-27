@@ -1,10 +1,11 @@
-<h1>
+<mat-dialog-content class="mat-typography" #closeAddExpenseModal><h1>
 
 </h1>
 <section class="login-form">
     <form 
     [formGroup]="changeProfileForm"
       fxLayout="column"
+      (ngSubmit)="changeProfile()"
       fxLayoutAlign="center center"
       fxLayoutGap="10px">
       <mat-form-field>
@@ -13,7 +14,7 @@
           formControlName="username"
           type="text"
           matInput
-          placeholder="Username"
+          value={{currentUser.username}}
           [disabled]=true
           readonly
           >
@@ -24,7 +25,7 @@
           formControlName="role"
           type="text"
           matInput
-          placeholder="Ruolo"
+          value={{currentUser.role}}
           [disabled]=true
           readonly
           >
@@ -35,7 +36,7 @@
           formControlName="email"
           type="email"
           matInput
-          placeholder=" "
+          placeholder="prova@example.com"
           [class.is-invalid]='changeProfileForm.get("email")?.errors && changeProfileForm.get("email")?.touched'
           >
           <mat-error *ngIf="changeProfileForm.get('email')?.hasError('required')"><strong>Campo obbligatorio</strong></mat-error>
@@ -46,13 +47,16 @@
         type="salva"
         mat-raised-button
         color="primary"
-        [disabled]="true">Salva</button>
+        [disabled]="changeProfileForm.invalid">Salva</button>
+        <mat-dialog-actions>
         <button
-        type="chiudi"
+        mat-button mat-dialog-close
         mat-raised-button
         color="primary"
-        [disabled]="true">Chiudi</button>
+        >Annulla</button>
+      </mat-dialog-actions>
     </form>
   </section>
   <!-- pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*])" -->
   <!-- [class.is-invalid]='changePasswordForm.get("repeatPassword")?.errors && changePasswordForm.get("repeatPassword")?.touched' -->
+</mat-dialog-content>

@@ -39,14 +39,11 @@
           <div>
             <p style="text-align: center;font-size: larger;">{{user.username}}({{user.role}})</p>
           </div>
-          <button mat-menu-item><mat-icon>account_box</mat-icon>Modifica Profilo</button>
-          <button mat-menu-item><mat-icon>manage_accounts</mat-icon>Modifica Password</button>
+          <button mat-button (click)="openChangeProfile()" ><mat-icon>account_box</mat-icon>Modifica Profilo</button>
+          <button mat-button (click)="openChangePassword()" ><mat-icon>manage_accounts</mat-icon>Modifica Password</button>
         </mat-menu>
       </li>
-      <li>
-        <a routerLink="/changeprofile">
-          Modifica profilo</a>
-      </li>
+      
     </ul>
   </div>
 </mat-toolbar-row>
