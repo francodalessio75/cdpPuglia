@@ -28,3 +28,8 @@ Authorization: Bearer {{login.response.body.token}}
 PUT {{baseURL}}/user?email="f.dalessio@bvtech.it" HTTP/1.1
 Authorization: Bearer {{login.response.body.token}}
 
+###
+
+PUT {{baseURL}}/user/update-password?currentPassword="adminadmin"&newPassword="adminadmin_1"&confirmPassword="adminadmin_1" HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+

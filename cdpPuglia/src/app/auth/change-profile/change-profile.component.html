@@ -1,49 +1,62 @@
+<mat-dialog-content class="mat-typography" #closeAddExpenseModal><h1>
+
+</h1>
 <section class="login-form">
-    <form
-      [formGroup]="changeProfileForm"
+    <form 
+    [formGroup]="changeProfileForm"
       fxLayout="column"
-      fxLayoutAlign="center center"
       (ngSubmit)="changeProfile()"
+      fxLayoutAlign="center center"
       fxLayoutGap="10px">
       <mat-form-field>
         <input
-          formControlName="oldPassword"
-          type="password"
+        class="noinput form-control"
+          formControlName="username"
+          type="text"
           matInput
-          placeholder="Inserisci Vecchia Password"
-          [class.is-invalid]='changeProfileForm.get("oldPassword")?.errors && changeProfileForm.get("oldPassword")?.touched'
+          value={{currentUser.username}}
+          [disabled]=true
+          readonly
           >
-          <mat-error>Campo obbligatorio</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input
-          formControlName="newPassword"
-          type="password"
+          class="noinput form-control"
+          formControlName="role"
+          type="text"
           matInput
-          placeholder="Inserisci Nuova Password"
-          [class.is-invalid]='changeProfileForm.get("newPassword")?.errors && changeProfileForm.get("newPassword")?.touched'
+          value={{currentUser.role}}
+          [disabled]=true
+          readonly
           >
-        <mat-error *ngIf="changeProfileForm.get('newPassword')?.hasError('required')">Campo obbligatorio</mat-error>
-        <mat-error *ngIf="changeProfileForm.get('newPassword')?.hasError('minlength')">Lunghezza minima 8 caratteri</mat-error>
-        <mat-error *ngIf="changeProfileForm.get('newPassword')?.hasError('maxlength')">Lunghezza massima 32 caratteri</mat-error>
-        <mat-error *ngIf="changeProfileForm.get('newPassword')?.hasError('newPasswordStrength')">Richesti almeno una lettera minuscola, una maiuscola, un numero ed un carattere speciale !@#$%^&*)</mat-error>
-      </mat-form-field>
+        </mat-form-field>
       <mat-form-field>
+        <mat-label>Email</mat-label>
         <input
-          formControlName="repeatPassword"
-          type="password"
+          formControlName="email"
+          type="email"
           matInput
-          placeholder="Ripeti Nuova Password"
-          [class.is-invalid]='changeProfileForm.get("repeatPassword")?.errors && changeProfileForm.get("repeatPassword")?.touched'
+          placeholder="prova@example.com"
+          [class.is-invalid]='changeProfileForm.get("email")?.errors && changeProfileForm.get("email")?.touched'
           >
-          <mat-error *ngIf="changeProfileForm.get('repeatPassword')?.hasError('required')">Campo obbligatorio</mat-error>
-          <mat-error *ngIf="changeProfileForm.get('repeatPassword')?.hasError">Le due password devono essere uguali</mat-error>
+          <mat-error *ngIf="changeProfileForm.get('email')?.hasError('required')"><strong>Campo obbligatorio</strong></mat-error>
+          <mat-error *ngIf="changeProfileForm.get('email')?.hasError('pattern')">Formato email non valido</mat-error>
+
       </mat-form-field>
       <button
-        type="submit"
+        type="salva"
         mat-raised-button
         color="primary"
-        [disabled]="changeProfileForm.invalid">Accedi</button>
+        [disabled]="changeProfileForm.invalid">Salva</button>
+        <mat-dialog-actions>
+        <button
+        mat-button mat-dialog-close
+        mat-raised-button
+        color="primary"
+        >Annulla</button>
+      </mat-dialog-actions>
     </form>
   </section>
   <!-- pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*])" -->
+  <!-- [class.is-invalid]='changePasswordForm.get("repeatPassword")?.errors && changePasswordForm.get("repeatPassword")?.touched' -->
+</mat-dialog-content>
