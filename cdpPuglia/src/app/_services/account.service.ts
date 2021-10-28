@@ -44,7 +44,7 @@ export class AccountService {
           map( userData => {
             if(userData){
               this.user.role = userData.role;
-              this.setCurrentUser(this.user);
+              //this.setCurrentUser(this.user);
               this.currentUserSource.next(this.user);
             }
           })
@@ -62,8 +62,9 @@ export class AccountService {
     }
 
   setCurrentUser( user:User ){
+    this.user = user;
     localStorage.setItem('user', JSON.stringify(user));
-    this.currentUserSource.next(user);
+    this.currentUserSource.next(this.user);
   }
 
   logout(){

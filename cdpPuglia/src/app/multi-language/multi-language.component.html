@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+       
+        
+        <div
+          fxFlex
+          fxLayout
+          fxLayoutAlign="flex-end">
+          <ul
+            fxLayout
+            class="navigation-items"
+            fxLayoutGap="10px">
+            <li>
+              <button mat-button [matMenuTriggerFor]="belowMenu" style="font-size: 1.1rem;">
+                <mat-icon>account_box</mat-icon>
+                Cambia Lingua
+              </button>
+              <mat-menu #belowMenu="matMenu" yPosition="below">
+                <button (click)="changeLanguage('en')" mat-menu-item><mat-icon>account_box</mat-icon>{{submitButtonLabel}}</button>
+                <button (click)="changeLanguage('it')" mat-menu-item><mat-icon>manage_accounts</mat-icon>Italiano</button>
+              </mat-menu>
+            </li>
+          </ul>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    

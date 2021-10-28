@@ -24,6 +24,7 @@ import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
 
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { MultiLanguageComponent } from './multi-language/multi-language.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
     ThreatsFiltersComponent,
     ThreatsDiagramsComponent,
     ChangeProfileComponent,
-    ThreatsDiagramsComponent
+    ThreatsDiagramsComponent,
+    MultiLanguageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+{
+    "en":{
+        "submitButton":"submit",
+        "discardButton":"abort"
+    },
+    "it":{
+        "submitButton":"salva",
+        "discardButton":"annulla"
+    }
+}
