@@ -21,10 +21,17 @@ import { ThreatsDiagramsComponent } from './threats/threats-diagrams/threats-dia
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 // For MDB Angular Free
 import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
-import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
+
 
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
+<<<<<<< HEAD
 import { MultiLanguageComponent } from './multi-language/multi-language.component';
+=======
+import { ChangePasswordComponent } from './auth/change-password/change-password.component';
+import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
+import { TitleDescriptionComponent } from './navigation/title-description/title-description.component';
+import { MatDialog, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+>>>>>>> 5beee041035d62220b7d8750fa2d674eb8cecff9
 
 @NgModule({
   declarations: [
@@ -36,9 +43,15 @@ import { MultiLanguageComponent } from './multi-language/multi-language.componen
     FooterComponent,
     ThreatsFiltersComponent,
     ThreatsDiagramsComponent,
+    ThreatsDiagramsComponent,
+    ChangePasswordComponent,
     ChangeProfileComponent,
+<<<<<<< HEAD
     ThreatsDiagramsComponent,
     MultiLanguageComponent
+=======
+    TitleDescriptionComponent
+>>>>>>> 5beee041035d62220b7d8750fa2d674eb8cecff9
   ],
   imports: [
     BrowserModule,
@@ -53,11 +66,13 @@ import { MultiLanguageComponent } from './multi-language/multi-language.componen
     FontAwesomeModule,
     ChartsModule,
     WavesModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    MatDialogModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]
 })
