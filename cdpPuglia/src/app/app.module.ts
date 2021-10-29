@@ -24,14 +24,11 @@ import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap
 
 
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
-<<<<<<< HEAD
 import { MultiLanguageComponent } from './multi-language/multi-language.component';
-=======
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
 import { TitleDescriptionComponent } from './navigation/title-description/title-description.component';
-import { MatDialog, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
->>>>>>> 5beee041035d62220b7d8750fa2d674eb8cecff9
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -46,12 +43,8 @@ import { MatDialog, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular
     ThreatsDiagramsComponent,
     ChangePasswordComponent,
     ChangeProfileComponent,
-<<<<<<< HEAD
-    ThreatsDiagramsComponent,
+    TitleDescriptionComponent,
     MultiLanguageComponent
-=======
-    TitleDescriptionComponent
->>>>>>> 5beee041035d62220b7d8750fa2d674eb8cecff9
   ],
   imports: [
     BrowserModule,

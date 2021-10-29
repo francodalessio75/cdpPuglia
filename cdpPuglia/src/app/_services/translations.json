@@ -1,10 +1,32 @@
 {
-    "en":{
-        "submitButton":"submit",
-        "discardButton":"abort"
+    "en":{ 
+        "sections":{
+            "global":{
+                "languageLabel":"Language",
+                "italian":"italian",
+                "english":"english",
+                "submitButton":"submit",
+                "discardButton":"abort"
+            },
+            "login":{
+                "pageTitle":"Login Page:",
+                "pageDescription":"Applicaton Access Point"
+            }
+        }         
     },
-    "it":{
-        "submitButton":"salva",
-        "discardButton":"annulla"
+    "it":{ 
+        "sections":{
+            "global":{
+                "languageLabel":"Lingua",
+                "italian":"Italiano",
+                "english":"Inglese",
+                "submitButton":"invia",
+                "discardButton":"annulla"
+            },
+            "login":{
+                "pageTitle":"Pagina di Login: ",
+                "pageDescription":"Punto di Accesso Dell'Applicazione"
+            }
+        }         
     }
 }

@@ -17,9 +17,9 @@ export class MultiLanguageComponent implements OnInit{
 
   ngOnInit(){
     this.translationService.setCurrentLanguage(Languages.Language.it);
-    this.translationService.currentLanguageData$.subscribe((translationData)=>{
-      this.submitButtonLabel = translationData.submitButton;
-    })
+    // this.translationService.currentLanguageData$.subscribe((translationData)=>{
+    //   this.submitButtonLabel = translationData.submitButton;
+    // })
   }
  
   changeLanguage(lang:string){

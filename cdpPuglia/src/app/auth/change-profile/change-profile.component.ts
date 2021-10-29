@@ -12,7 +12,7 @@ import { AccountService } from 'src/app/_services/account.service';
 })
 export class ChangeProfileComponent implements OnInit {
   model: any = {};
-  currentUser: User ={};
+  currentUser: User ={username:'', password:''};
   constructor(
     private accountService: AccountService,
     private fb: FormBuilder

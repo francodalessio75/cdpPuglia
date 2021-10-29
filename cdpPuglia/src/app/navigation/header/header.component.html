@@ -43,12 +43,21 @@
           <button mat-button (click)="openChangePassword()" ><mat-icon>manage_accounts</mat-icon>Modifica Password</button>
         </mat-menu>
       </li>
-      
+      <li>
+        <button mat-button [matMenuTriggerFor]="belowMenu" style="font-size: 1.1rem;">
+          <mat-icon>language</mat-icon>
+          {{languageLabel}}
+        </button>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+          <button mat-button (click)="changeLanguage('it')" >{{italian}}</button>
+          <button mat-button (click)="changeLanguage('en')" >{{english}}</button>
+        </mat-menu>
+      </li>
     </ul>
   </div>
 </mat-toolbar-row>
 <mat-toolbar-row>
-  <span style="margin:auto">{{title}} {{description}}</span>
+  <span style="margin:auto">{{pageTitle}} {{pageDescription}}</span>
 </mat-toolbar-row>
 </mat-toolbar>
 

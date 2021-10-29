@@ -7,8 +7,6 @@
       fxLayoutGap="10px">
       <mat-form-field>
         <input
-          i18n
-          i18n-placeholder="@@usernamePlaceholder"
           [class.is-invalid]='loginForm.get("username")?.errors && loginForm.get("username")?.touched'
           formControlName='username'
           type="text"

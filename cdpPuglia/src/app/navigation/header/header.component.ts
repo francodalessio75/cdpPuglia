@@ -5,6 +5,8 @@ import { ChangeProfileComponent } from 'src/app/auth/change-profile/change-profi
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { HeaderService } from 'src/app/_services/header.service';
+import * as LanguagesEnum from '../../_services/LanguagesEnum'
+import { TranslationService } from 'src/app/_services/translation.service';
 
 
 @Component({
@@ -15,22 +17,32 @@ import { HeaderService } from 'src/app/_services/header.service';
 export class HeaderComponent implements OnInit {
   @Output() sideNavToggle = new EventEmitter<void>();
 
-  user:User = {};
-  title='';
-  description='';
+  //related to Language
+  languageLabel = 'Lingua';
+  italian = "Italiano";
+  english = "Inglese";
 
-  constructor(public accountService:AccountService, public headerService:HeaderService, public dialog: MatDialog) { }
+  user:User = {};
+  pageTitle='';
+  pageDescription='';
+
+  constructor(
+    public accountService:AccountService, 
+    public headerService:HeaderService, 
+    public dialog: MatDialog,
+    private translationService:TranslationService) { }
 
   ngOnInit(): void {
     this.accountService.currentUser$.subscribe(
       user => this.user = user
     );
-    this.headerService.titleDescription$.subscribe(
-      ({title, description }) => {
-        this.title = title;
-        this.description = description;
-      }
-    )
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.setLanguageData();
+    });
+    this.headerService.titleDescription$.subscribe((titleDescription)=>{
+      this.pageTitle = titleDescription.title;
+      this.pageDescription = titleDescription.description;
+    });
   }
 
   onToggleSideNav(){
@@ -40,6 +52,7 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.accountService.logout();
   }
+
   openChangePassword(): void {
     const dialogRef = this.dialog.open(ChangePasswordComponent, {
       // width: '250px',
@@ -48,8 +61,6 @@ export class HeaderComponent implements OnInit {
             width: '40%',
       disableClose: true,
       hasBackdrop: true
-       
-    
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -57,6 +68,7 @@ export class HeaderComponent implements OnInit {
     
     });
   }
+
   openChangeProfile(): void {
     const dialogRef = this.dialog.open(ChangeProfileComponent, {
       // width: '250px',
@@ -65,13 +77,31 @@ export class HeaderComponent implements OnInit {
       width: '40%',
       disableClose: true,
       hasBackdrop: true
-    
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      
-    
     });
+  }
+
+  changeLanguage(lang:string){
+    switch(lang){
+      case LanguagesEnum.Language.en:
+        this.translationService.setCurrentLanguage(LanguagesEnum.Language.en);
+        break;
+      case LanguagesEnum.Language.it:
+        this.translationService.setCurrentLanguage(LanguagesEnum.Language.it);
+        break;
+      default:
+      console.log("No such language exists!");
+      break;
+    }
+  }
+
+  private setLanguageData(){
+    let languageData = this.translationService.getCurrentLanguageData();
+    this.languageLabel = languageData.sections.global.languageLabel;
+    this.italian = languageData.sections.global.italian;
+    this.english = languageData.sections.global.english;
   }
 }

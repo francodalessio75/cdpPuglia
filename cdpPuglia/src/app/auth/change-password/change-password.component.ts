@@ -26,7 +26,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class ChangePasswordComponent implements OnInit {
 
   model: any = {};
-  currentUser: User ={};
+  currentUser: User ={username:'',password:''};
   loggedIn: boolean = false;
   checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
     let pass = group.get('newPassword')!.value;
