@@ -11,6 +11,10 @@
             "login":{
                 "pageTitle":"Login Page:",
                 "pageDescription":"Applicaton Access Point"
+            },
+            "threats":{
+                "pageTitle":"Page exposing threats: ",
+                "pageDescription":"Section where read and filter threats contents"
             }
         }         
     },
@@ -26,6 +30,10 @@
             "login":{
                 "pageTitle":"Pagina di Login: ",
                 "pageDescription":"Punto di Accesso Dell'Applicazione"
+            },
+            "threats":{
+                "pageTitle":"Pagina di consultazione minacce: ",
+                "pageDescription":"Sezione per consultare grafici ed applicare filtri di ricerca ai reports"
             }
         }         
     }

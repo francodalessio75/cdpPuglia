@@ -10,6 +10,10 @@ export interface LanguageData{
         login:{
             pageTitle:string;
             pageDescription:string;
+        },
+        threats:{
+            pageTitle:string;
+            pageDescription:string;
         }
     }
 }

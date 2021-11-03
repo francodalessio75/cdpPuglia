@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslationService } from '../_services/translation.service';
-import * as Languages from '../_services/LanguagesEnum'
+import * as Languages from '../enums/LanguagesEnum'
 
 
 @Component({

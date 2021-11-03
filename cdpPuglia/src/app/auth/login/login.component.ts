@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AccountService } from 'src/app/_services/account.service';
 import { HeaderService } from 'src/app/_services/header.service';
 import { TranslationService } from 'src/app/_services/translation.service';
-import * as LanguagesEnum from '../../_services/LanguagesEnum'
+import * as LanguagesEnum from '../../enums/LanguagesEnum'
 import * as LanguageModel from '../../_models/languageData'
 
 @Component({
