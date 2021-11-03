@@ -4,4 +4,9 @@
 }
 div {
     display:inline-block;
+    
 } 
+.center {
+    display: flex;
+    justify-content: center;
+  }

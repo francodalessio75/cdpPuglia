@@ -16,6 +16,4 @@ export class HeaderService {
   setCurrentTitleDescription( title:string, description:string ){
     this.currentTitleDescription.next({title,description});
   }
-
-
 }

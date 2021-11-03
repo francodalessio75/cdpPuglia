@@ -20,7 +20,10 @@ import { ThreatsFiltersComponent } from './threats/threats-filters/threats-filte
 import { ThreatsDiagramsComponent } from './threats/threats-diagrams/threats-diagrams.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 // For MDB Angular Free
-import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
+import { WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
+import {ChartsModule} from 'ng2-charts';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
@@ -29,6 +32,7 @@ import { ChangePasswordComponent } from './auth/change-password/change-password.
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
 import { TitleDescriptionComponent } from './navigation/title-description/title-description.component';
 import { MatDialog, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { ThreatsSearchParametersComponent } from './threats/threats-search-parameters/threats-search-parameters.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,8 @@ import { MatDialog, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular
     ChangeProfileComponent,
     ThreatsDiagramsComponent,
     MultiLanguageComponent,
-    TitleDescriptionComponent
+    TitleDescriptionComponent,
+    ThreatsSearchParametersComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,7 @@ import { MatDialog, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
+    MatRadioModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({ positionClass:'toast-bottom-right' }),

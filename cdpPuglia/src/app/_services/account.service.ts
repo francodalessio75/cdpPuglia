@@ -1,32 +1,42 @@
-import { Injectable } from '@angular/core'
+import { Injectable, OnInit } from '@angular/core'
 import {  HttpClient } from '@angular/common/http';
-import {  concatMap, map } from 'rxjs/operators';
+import {   map } from 'rxjs/operators';
 import { User } from '../_models/user';
-import { of, ReplaySubject } from 'rxjs';
+import {  ReplaySubject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService {
+export class AccountService{
 
   baseUrl = 'http://127.0.0.1:5000/';
 
-  private user:User = {
-    role:'viewer'
-  };
-
+  private user:User;
   private currentUserSource = new ReplaySubject<User>(1);
 
   /* used by authguard */
   currentUser$ = this.currentUserSource.asObservable();
 
-  constructor( private http:HttpClient, private router:Router) { }
+  constructor( 
+    private http:HttpClient, 
+    private router:Router) {
+      this.user ={
+        username:'',
+        role:"viewer"
+      };
+    }
+
+  
 
   getToken$(model:{username:string, password:string}){
     return this.http.post<{token:string}>(this.baseUrl + 'login',{ username:model.username,password:model.password})
       .pipe(
         map( tokenData => {
+          this.user ={
+            username:'',
+            role:"viewer"
+          };
           if(tokenData){
             this.user.username = model.username;
             this.user.password = model.password;
@@ -44,7 +54,7 @@ export class AccountService {
           map( userData => {
             if(userData){
               this.user.role = userData.role;
-              //this.setCurrentUser(this.user);
+              this.setCurrentUser(this.user);
               this.currentUserSource.next(this.user);
             }
           })

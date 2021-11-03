@@ -3,6 +3,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/_services/account.service';
 import { HeaderService } from 'src/app/_services/header.service';
+import { TranslationService } from 'src/app/_services/translation.service';
+import * as LanguagesEnum from '../../_services/LanguagesEnum'
+import * as LanguageModel from '../../_models/languageData'
 
 @Component({
   selector: 'app-login',
@@ -12,8 +15,14 @@ import { HeaderService } from 'src/app/_services/header.service';
 export class LoginComponent implements OnInit, OnDestroy{
   model:any = {};
 
-  title = 'Pagina di Login: ';
-  description = 'Form di autenticazione per accesso al sistema';
+  /* Related to Language */
+  language:LanguagesEnum.Language = LanguagesEnum.Language.it;
+  pageTitle = '';
+  pageDescription = '';
+  submitButton = '';
+  discardButton = '';
+  signInButton = '';
+  requiredFieldError = '';
 
   loginForm = this.fb.group({
     username: ['',Validators.required],
@@ -25,11 +34,15 @@ export class LoginComponent implements OnInit, OnDestroy{
     private accountService : AccountService,
     private router:Router,
     private fb:FormBuilder,
-    private headerService:HeaderService) { }
+    private headerService:HeaderService,
+    private translationService:TranslationService) { }
 
-    ngOnInit(){
-      this.headerService.setCurrentTitleDescription(this.title, this.description);
-    }
+  ngOnInit(){
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.setLanguageData();
+    });
+    this.setLanguageData();
+  }
 
 
   login(){
@@ -55,5 +68,16 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(){
     this.headerService.setCurrentTitleDescription('','');
+  }
+
+  private setLanguageData(){
+    let languageData = this.translationService.getCurrentLanguageData();
+    this.submitButton = languageData.sections.global.submitButton;
+    this.discardButton = languageData.sections.global.discardButton;
+    this.pageTitle = languageData.sections.login.pageTitle;
+    this.pageDescription = languageData.sections.login.pageDescription;
+    this.headerService.setCurrentTitleDescription(this.pageTitle,this.pageDescription);
+    this.signInButton = languageData.sections.login.signInButton;
+    this.requiredFieldError = languageData.sections.global.requiredFieldError;
   }
 }

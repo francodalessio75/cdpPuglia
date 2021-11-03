@@ -1,0 +1,23 @@
+export interface LanguageData{
+    sections:{
+        global:{
+            submitButton:string;
+            discardButton:string;
+            requiredFieldError:string;
+            saveButton:string;
+        },
+        login:{
+            pageTitle:string;
+            pageDescription:string;
+            signInButton:string;
+        },
+        menu:{
+            languageLabel:string;
+            italian:string;
+            english:string;
+            manageProfile:string;
+            changeProfile:string;
+            changePassword:string;
+        }
+    }
+}

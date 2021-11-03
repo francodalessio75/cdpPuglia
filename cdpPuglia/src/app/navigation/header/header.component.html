@@ -33,22 +33,31 @@
       <li *ngIf="(accountService.currentUser$  | async ) !== null ">
         <button mat-button [matMenuTriggerFor]="belowMenu" style="font-size: 1.1rem;">
           <mat-icon>account_box</mat-icon>
-          Gestisci Profilo
+          {{manageProfile}}
         </button>
         <mat-menu #belowMenu="matMenu" yPosition="below">
           <div>
             <p style="text-align: center;font-size: larger;">{{user.username}}({{user.role}})</p>
           </div>
-          <button mat-button (click)="openChangeProfile()" ><mat-icon>account_box</mat-icon>Modifica Profilo</button>
-          <button mat-button (click)="openChangePassword()" ><mat-icon>manage_accounts</mat-icon>Modifica Password</button>
+          <button mat-button (click)="openChangeProfile()" ><mat-icon>account_box</mat-icon>{{changeProfile}}</button>
+          <button mat-button (click)="openChangePassword()" ><mat-icon>manage_accounts</mat-icon>{{changePassword}}</button>
         </mat-menu>
       </li>
-      
+      <li>
+        <button mat-button [matMenuTriggerFor]="belowMenu" style="font-size: 1.1rem;">
+          <mat-icon>language</mat-icon>
+          {{languageLabel}}
+        </button>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+          <button mat-menu-item (click)="changeLanguage('it')" >{{italian}}</button>
+          <button mat-menu-item (click)="changeLanguage('en')" >{{english}}</button>
+        </mat-menu>
+      </li>
     </ul>
   </div>
 </mat-toolbar-row>
 <mat-toolbar-row>
-  <span style="margin:auto">{{title}} {{description}}</span>
+  <span style="margin:auto">{{pageTitle}} {{pageDescription}}</span>
 </mat-toolbar-row>
 </mat-toolbar>
 

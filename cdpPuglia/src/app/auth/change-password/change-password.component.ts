@@ -8,6 +8,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HeaderComponent } from 'src/app/navigation/header/header.component';
 import { User } from 'src/app/_models/user';
+import { TranslationService } from 'src/app/_services/translation.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -26,7 +27,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class ChangePasswordComponent implements OnInit {
 
   model: any = {};
-  currentUser: User ={};
+
+  /* Related to Language */
+  saveButton = '';
+  discardButton = '';
+  requiredFieldError = '';
+
+  currentUser: User ={username:'',password:''};
   loggedIn: boolean = false;
   checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
     let pass = group.get('newPassword')!.value;
@@ -58,10 +65,13 @@ export class ChangePasswordComponent implements OnInit {
     
     this.dialogRef.beforeClosed().subscribe(() => this.dialogRef.close());
     this.accountService.currentUser$.subscribe(user => {this.currentUser=user});
-    
-
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.setLanguageData();
+    });
+    this.setLanguageData();
   }
   constructor(
+    private translationService:TranslationService,
     private accountService: AccountService,
     private toastr: ToastrService,
     private fb: FormBuilder,
@@ -118,4 +128,11 @@ export class ChangePasswordComponent implements OnInit {
     console.log(this.model);
   }
   matcher = new MyErrorStateMatcher();
+  private setLanguageData(){
+    let languageData = this.translationService.getCurrentLanguageData();
+    this.saveButton = languageData.sections.global.saveButton;
+    this.discardButton = languageData.sections.global.discardButton;
+    this.requiredFieldError = languageData.sections.global.requiredFieldError;
+    
+  }
 }

@@ -1,33 +1,31 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import * as translationsData from './translations.json'
-import * as Languages from './LanguagesEnum'
-
-interface LanguageData{
-  submitButton:string;
-  discardButton:string;
-}
-
+import * as LanguagesEnum from './LanguagesEnum'
+import * as LanguageModel from '../_models/languageData'
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
+  //Tanslations JSON Data
   translationsData : any = (translationsData as any ).default;
-  private language:Languages.Language = Languages.Language.en;
-  private languageData = this.translationsData.en as LanguageData;
+  //Default Language setting
+  private language:LanguagesEnum.Language = LanguagesEnum.Language.it;
+  //Component Requested Language Data
+  private languageData : LanguageModel.LanguageData= this.translationsData.it;
 
-  
-  private currentLanguageData = new ReplaySubject<LanguageData>(1);
-  currentLanguageData$ = this.currentLanguageData.asObservable();
+  private currentLanguage = new ReplaySubject<LanguagesEnum.Language>(1);
+  currentLanguage$ = this.currentLanguage.asObservable();
 
   constructor() { }
 
-  setCurrentLanguage( language:Languages.Language ){
-    //this.currentLanguage.next(this.language);
+  setCurrentLanguage( language:LanguagesEnum.Language ){
     this.language = language;
-    this.languageData = this.translationsData[language] as LanguageData;
-    this.currentLanguageData.next(this.languageData);
-    console.log(this.languageData);
+    this.currentLanguage.next(this.language);
+  }
+
+  getCurrentLanguageData():LanguageModel.LanguageData{
+    return this.translationsData[this.language];
   }
 
 }

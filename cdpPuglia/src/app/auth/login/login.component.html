@@ -7,15 +7,13 @@
       fxLayoutGap="10px">
       <mat-form-field>
         <input
-          i18n
-          i18n-placeholder="@@usernamePlaceholder"
           [class.is-invalid]='loginForm.get("username")?.errors && loginForm.get("username")?.touched'
           formControlName='username'
           type="text"
           matInput
           placeholder="Username"
           >
-          <mat-error>Campo obbligatorio</mat-error>
+          <mat-error>{{requiredFieldError}}</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input
@@ -25,13 +23,13 @@
           matInput
           placeholder="Password"
           >
-        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Campo obbligatorio</mat-error>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">{{requiredFieldError}}</mat-error>
       </mat-form-field>
       <button
         type="submit"
         mat-raised-button
         color="primary"
-        [disabled]="loginForm.invalid">Accedi</button>
+        [disabled]="loginForm.invalid">{{signInButton}}</button>
     </form>
   </section>
   <!-- <app-change-password></app-change-password> -->

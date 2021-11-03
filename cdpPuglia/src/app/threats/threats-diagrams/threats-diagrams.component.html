@@ -1,5 +1,6 @@
-<div>
-  <div >
+<!-- <button (click)="addTime()" class="btn btn-outline-primary mr-3">aggiungi tempo</button> -->
+<div class="center">
+  <!-- <div >
     <canvas mdbChart
         [chartType]="chartType"
         [datasets]="chartDatasets"
@@ -11,8 +12,17 @@
         (chartClick)="chartClicked($event)"
         >
     </canvas>
+</div> -->
+<div style="display: block;">
+  <canvas baseChart 
+    [chartType]="barChartType"
+    [legend]="barChartLegend"    
+    [labels]="barChartLabels"
+    [datasets]="barChartData"
+    [options]="barChartOptions">    
+  </canvas>
 </div>
-<div>
+<!-- <div>
     <canvas mdbChart
         [chartType]="chartType1"
         [datasets]="chartDatasets1"
@@ -20,8 +30,11 @@
         [colors]="chartColors1"
         [options]="chartOptions1"
         [legend]="true"
+        scaleLength=32
         (chartHover)="chartHovered($event)"
         (chartClick)="chartClicked($event)">
     </canvas>
-  </div>
+  </div> -->
+  
+  <h1></h1>
   </div>

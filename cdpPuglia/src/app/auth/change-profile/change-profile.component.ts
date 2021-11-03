@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
+import { TranslationService } from 'src/app/_services/translation.service';
 
 
 @Component({
@@ -12,8 +12,14 @@ import { AccountService } from 'src/app/_services/account.service';
 })
 export class ChangeProfileComponent implements OnInit {
   model: any = {};
-  currentUser: User ={};
+
+  /* Related to Language */
+  saveButton = '';
+  discardButton = '';
+  requiredFieldError = '';
+  currentUser: User ={username:'', password:''};
   constructor(
+    private translationService:TranslationService,
     private accountService: AccountService,
     private fb: FormBuilder
   ) { }
@@ -30,6 +36,10 @@ export class ChangeProfileComponent implements OnInit {
 
   ngOnInit(){
     this.accountService.currentUser$.subscribe(user => {this.currentUser=user});
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.setLanguageData();
+    });
+    this.setLanguageData();
 
   }
   changeProfile() {
@@ -42,6 +52,13 @@ export class ChangeProfileComponent implements OnInit {
        console.log(error);
      });
     console.log(this.model);
+  }
+  private setLanguageData(){
+    let languageData = this.translationService.getCurrentLanguageData();
+    this.saveButton = languageData.sections.global.saveButton;
+    this.discardButton = languageData.sections.global.discardButton;
+    this.requiredFieldError = languageData.sections.global.requiredFieldError;
+    
   }
 
 }

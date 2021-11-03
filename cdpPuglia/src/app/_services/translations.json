@@ -1,10 +1,48 @@
 {
-    "en":{
-        "submitButton":"submit",
-        "discardButton":"abort"
+    "en":{ 
+        "sections":{
+            "global":{
+                "submitButton":"Submit",
+                "discardButton":"Abort",
+                "requiredFieldError": "Required field",
+                "saveButton" : "Save"
+            },
+            "login":{
+                "pageTitle":"Login Page:",
+                "pageDescription":"Applicaton Access Point",
+                "signInButton" : "Sign in"
+            },
+            "menu":{
+                "languageLabel":"Language",
+                "italian":"italian",
+                "english":"english",
+                "manageProfile": "Manage Profile",
+                "changeProfile": "Change Profile",
+                "changePassword": "Change Password"
+            }
+        }         
     },
-    "it":{
-        "submitButton":"salva",
-        "discardButton":"annulla"
+    "it":{ 
+        "sections":{
+            "global":{
+                "submitButton":"Invia",
+                "discardButton":"Annulla",
+                "requiredFieldError": "Campo obbligatorio",
+                "saveButton" : "Salva"
+            },
+            "login":{
+                "pageTitle":"Pagina di Login: ",
+                "pageDescription":"Punto di Accesso Dell'Applicazione",
+                "signInButton" : "Accedi"
+            },
+            "menu":{
+                "languageLabel":"Lingua",
+                "italian":"Italiano",
+                "english":"Inglese",
+                "manageProfile": "Gestisci Profilo",
+                "changeProfile": "Modifica Profilo",
+                "changePassword": "Modifica Password"                
+            }
+        }         
     }
 }

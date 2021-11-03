@@ -39,7 +39,7 @@
           placeholder="prova@example.com"
           [class.is-invalid]='changeProfileForm.get("email")?.errors && changeProfileForm.get("email")?.touched'
           >
-          <mat-error *ngIf="changeProfileForm.get('email')?.hasError('required')"><strong>Campo obbligatorio</strong></mat-error>
+          <mat-error *ngIf="changeProfileForm.get('email')?.hasError('required')"><strong>{{requiredFieldError}}</strong></mat-error>
           <mat-error *ngIf="changeProfileForm.get('email')?.hasError('pattern')">Formato email non valido</mat-error>
 
       </mat-form-field>
@@ -47,13 +47,13 @@
         type="salva"
         mat-raised-button
         color="primary"
-        [disabled]="changeProfileForm.invalid">Salva</button>
+        [disabled]="changeProfileForm.invalid">{{saveButton}}</button>
         <mat-dialog-actions>
         <button
         mat-button mat-dialog-close
         mat-raised-button
         color="primary"
-        >Annulla</button>
+        >{{discardButton}}</button>
       </mat-dialog-actions>
     </form>
   </section>
