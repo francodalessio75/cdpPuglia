@@ -29,7 +29,8 @@ import { ChangePasswordComponent } from './auth/change-password/change-password.
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
 import { TitleDescriptionComponent } from './navigation/title-description/title-description.component';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { ThreatsTableComponent } from './threats-table/threats-table.component';
+import { ThreatsTableComponent } from './threats/threats-table/threats-table.component';
+import { ThreatContentComponent } from './threats/threat-content/threat-content.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ThreatsTableComponent } from './threats-table/threats-table.component';
     ChangeProfileComponent,
     TitleDescriptionComponent,
     MultiLanguageComponent,
-    ThreatsTableComponent
+    ThreatsTableComponent,
+    ThreatContentComponent
   ],
   imports: [
     BrowserModule,

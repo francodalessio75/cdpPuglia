@@ -1,0 +1,24 @@
+.form {
+    min-width: 150px;
+    max-width: 100%;
+  }
+  
+  .full-width {
+    width: 27%;
+  }
+
+  .container{
+      width:100%;
+  }
+
+  .button{
+      height: 2rem;
+      margin-bottom: .5rem;
+      width:10%;
+      margin-left: 2rem;
+  }
+
+  .form-element.buttons{
+    text-align: right;
+  }
+

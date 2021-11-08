@@ -1,1 +1,43 @@
-<p>threats-filters works!</p>
+<div class="container">
+    <form 
+        [formGroup]="filterForm"
+        (ngSubmit)="filter()"
+        class="form"
+    >
+
+    <div class="form-element buttons">
+        <button mat-raised-button color="primary" type="submit" class="button" >Filtra</button>
+        <button mat-raised-button color="primary"  class="button" (click)="resetFilters()">Annulla Filtro</button>
+    </div>
+
+    <mat-form-field appearance="fill" class="form-element">
+        <mat-label>GRAVITA'</mat-label>
+        <select 
+            matNativeControl 
+            required 
+            formControlName='severity'
+            [(ngModel)]="selectedOption">
+            <option value="undefined">tutte</option>
+            <option value="low">Bassa</option>
+            <option value="medium">Media</option>
+            <option value="high">alta</option>
+            <option value="critica">critica</option>
+        </select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>IP SORGENTE</mat-label>
+        <input matInput formControlName='ipSrc'>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>IP DESTINATARIO</mat-label>
+        <input matInput formControlName='ipDst'>
+    </mat-form-field>
+  
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>PAROLA CHIAVE</mat-label>
+      <input matInput formControlName='label'>
+    </mat-form-field>
+  </form>
+</div>
