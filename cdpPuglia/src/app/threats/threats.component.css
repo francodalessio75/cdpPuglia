@@ -1,3 +1,10 @@
 .threats{
   text-align: center;
+  margin-bottom: 8rem;
+  margin-top: 6rem;
+  width: 100%;
+}
+
+.large-width{
+  width:80%
 }

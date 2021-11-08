@@ -1,7 +1,10 @@
 import { Component, OnInit} from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { Severity } from 'src/app/enums/SeverityEnum';
+import { Threat } from 'src/app/_models/threat';
 import { AccountService } from 'src/app/_services/account.service';
+import { ThreatsService } from 'src/app/_services/threats.service';
 import { TranslationService } from 'src/app/_services/translation.service';
 
 @Component({
@@ -10,14 +13,42 @@ import { TranslationService } from 'src/app/_services/translation.service';
   styleUrls: ['./threats-diagrams.component.css']
 })
 export class ThreatsDiagramsComponent implements OnInit{
+  threats!: Threat[];
 
   constructor( 
-    private accountService : AccountService,
-    private translationService:TranslationService){}
+    private translationService:TranslationService,
+    private threatsService: ThreatsService,
+    ){
+      this.threatsService.currentThreats$.subscribe(threats => {
+        this.feedDiagram(threats);
+      });
+    }
       
   public chartType: string = 'line';
   public chartType1: string = 'bar';
   
+  private feedDiagram(threats: Threat[]){
+    this.bubbleChartData=[];
+    for(let threat of threats){
+      this.bubbleChartData.push(
+        {data:{
+          x: threat.ts,
+          y: this.getSeverityValue(threat.severity)
+        }
+        }
+      )
+    }
+  }
+
+  private getSeverityValue(severity: Severity | undefined): number{
+    switch(severity){
+      case Severity.low: return 1;
+      case Severity.medium: return 2;
+      case Severity.high: return 3;
+      case Severity.critical: return 4;
+      default: return 1;
+    }
+  }
   
   // public chartDatasets: Array<any> = [
   //   { data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset' },
@@ -120,6 +151,7 @@ export class ThreatsDiagramsComponent implements OnInit{
   //  }    
   // };
   ngOnInit(){
+    this.threatsService.getThreats(-1);
     // this.translationService.currentLanguage$.subscribe((language)=>{
     //   this.setLanguageData();
     // });
@@ -195,22 +227,24 @@ export class ThreatsDiagramsComponent implements OnInit{
     },
     scales: {
       xAxes: [{  
+        stacked: true,
         gridLines: {
           // offsetGridLines: true offsetGridLines (boolean) If true, labels are shifted to be between grid lines.
       },
           ticks:{ 
+            
       // callback : (label, index) => {
       //   return this.monthsLabel[index] ? this.monthsLabel[index] : '';
       // }
     },    
         type: 'time',
         offset: false,
-        distribution: 'linear', //mostra solo i dati disponibili
+        distribution: 'series', //mostra solo i dati disponibili
                 
         time: {
-          min:'2021-06-04T10:00:00',
-          max:'2021-06-04T11:00:00',
-          unitStepSize:100,
+          // min:this.bubbleChartData[0].x,
+          max:this.bubbleChartData[3].x,
+          stepSize:10000,
           unit: 'second',
           tooltipFormat: 'DD mm ss', //tooltip
           displayFormats: {                                

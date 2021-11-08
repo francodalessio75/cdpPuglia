@@ -33,12 +33,4 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.headerService.setCurrentTitleDescription('','');
   }
-
-  getThreats(filter:number){
-    this.threatsService.getThreats(filter);
-  }
-
-  getThreat(threatId:number){
-    this.threatsService.getThreat(threatId);
-  }
 }

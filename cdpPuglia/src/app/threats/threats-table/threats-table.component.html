@@ -1,0 +1,61 @@
+<div class="example-container mat-elevation-z8">
+
+    <mat-table class="table" [dataSource]="dataSource" matSort >
+
+        <ng-container matColumnDef="ts">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>TIME-STAMP</th>
+            <td mat-cell *matCellDef="let element">{{element.ts | date : 'd/M/yyyy h:mm a' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="threatId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+            <td class="threat-id clickable" 
+                mat-cell *matCellDef="let 
+                element"(click)="getThreatContent(element.threatId)">
+                {{element.threatId}}
+            </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="ipSrc">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>IP SORGENTE</th>
+            <td mat-cell *matCellDef="let element">{{element.ipSrc}}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="ipDst">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>IP DESTINAZIONE</th>
+            <td mat-cell *matCellDef="let element">{{element.ipDst}}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="label">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>NOME REGOLA</th>
+            <td class="clickable" 
+                mat-cell 
+                *matCellDef="let element"
+
+                >{{element.label}}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="typeRule">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>TIPO REGOLA</th>
+            <td mat-cell *matCellDef="let element">{{element.typeRule}}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="severity">
+            <th  mat-header-cell *matHeaderCellDef mat-sort-header>GRAVITA'</th>
+            <td mat-cell *matCellDef="let element">{{element.severity}}</td>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+
+    </mat-table>
+
+    <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <div button class="align-right">
+        <button mat-raised-button color="primary" (click)="downloadCSV('test.csv')">ESPORTA</button>
+    </div>
+
+</div>
+
+

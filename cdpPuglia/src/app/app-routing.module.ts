@@ -7,11 +7,14 @@ import { NotFoundComponent } from './_errors/not-found/not-found.component';
 import { ServerErrorComponent } from './_errors/server-error/server-error.component';
 import { TestErrorsComponent } from './_errors/test-errors/test-errors.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { ThreatContentComponent } from './threats/threat-content/threat-content.component';
+
 
 const routes: Routes = [
   //{ path:'translations', component: MultiLanguageComponent },
   { path:'', component: ThreatsComponent, canActivate: [AuthGuard] },
   { path:'threats', component: ThreatsComponent, canActivate: [AuthGuard] },
+  { path:'threat-content', component: ThreatContentComponent, canActivate: [AuthGuard] },
   { path:'login', component: LoginComponent },
   { path:'changeprofile', component: ChangeProfileComponent },
   { path:'errors',component:TestErrorsComponent},

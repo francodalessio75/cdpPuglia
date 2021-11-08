@@ -21,3 +21,7 @@ a:active{
 .trend-dialog .mat-dialog-content{
   overflow-y: hidden !important;
 }
+
+/* .toolbar{
+  position: fixed;
+} */

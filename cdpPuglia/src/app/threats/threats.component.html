@@ -6,20 +6,28 @@
   <section>
     <h1>THREATS</h1>
     <p>Qui il grafico a barre temporale per attacco e severity</p>
+    <app-threats-diagrams></app-threats-diagrams>
   </section>
   <section>
     <h1>THREATS</h1>
     <p>Parametri di ricerca da inviare al beck-end</p>
   </section>
-  <section>
-    <h1>THREATS</h1>
-    <p>Filtri aggiuntivi manipolazione dinamica dataset da beck-end</p>
+  <section class="large-width">
+    <app-threats-filters></app-threats-filters>
   </section>
-  <section>
-    <h1>THREATS</h1>
-    <p>Elenco minacce trovate che soddisfano i filtri di recerca</p>
+  <section class="large-width">
+    <app-threats-table></app-threats-table> 
   </section>
 </div> -->
-<app-threats-diagrams></app-threats-diagrams>
-<app-threats-search-parameters></app-threats-search-parameters>
-<app-threats-table></app-threats-table>
+<section>
+  <app-threats-diagrams></app-threats-diagrams>
+</section>
+<section>
+  <app-threats-search-parameters></app-threats-search-parameters>
+</section>
+<section>
+  <app-threats-filters></app-threats-filters>
+</section>
+<section>
+  <app-threats-table></app-threats-table>
+</section>

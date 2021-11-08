@@ -29,7 +29,7 @@ PUT {{baseURL}}/user HTTP/1.1
 Authorization: Bearer {{login.response.body.token}}
 
 {
-    "email":"viewer",
+    "email":"viewer@gmail.com",
 }
 
 ###
@@ -39,8 +39,8 @@ Authorization: Bearer {{login.response.body.token}}
 
 {
     "currentPassword":"adminadmin",
-    "newPassword":"viewerviewer_1",
-    "confirmPassword":"viewerviewer_1"
+    "newPassword":"Viewerviewer_1!",
+    "confirmPassword":"Viewerviewer_1!"
 }
 
 ###

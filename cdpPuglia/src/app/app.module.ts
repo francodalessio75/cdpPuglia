@@ -31,9 +31,11 @@ import { MultiLanguageComponent } from './multi-language/multi-language.componen
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
 import { TitleDescriptionComponent } from './navigation/title-description/title-description.component';
-import { MatDialog, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { ThreatsSearchParametersComponent } from './threats/threats-search-parameters/threats-search-parameters.component';
-import { ThreatsTableComponent } from './threats-table/threats-table.component';
+import { ThreatsTableComponent } from './threats/threats-table/threats-table.component';
+import { ThreatContentComponent } from './threats/threat-content/threat-content.component';
+import {MatDialogModule,MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { ThreatsTableComponent } from './threats-table/threats-table.component';
     MultiLanguageComponent,
     TitleDescriptionComponent,
     ThreatsSearchParametersComponent,
-    ThreatsTableComponent
+    ThreatsTableComponent,
+    ThreatContentComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +73,7 @@ import { ThreatsTableComponent } from './threats-table/threats-table.component';
     WavesModule,
     MDBBootstrapModule,
     MatDialogModule
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
