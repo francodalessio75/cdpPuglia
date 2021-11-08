@@ -33,6 +33,7 @@ import { ChangeProfileComponent } from './auth/change-profile/change-profile.com
 import { TitleDescriptionComponent } from './navigation/title-description/title-description.component';
 import { MatDialog, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { ThreatsSearchParametersComponent } from './threats/threats-search-parameters/threats-search-parameters.component';
+import { ThreatsTableComponent } from './threats-table/threats-table.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ThreatsSearchParametersComponent } from './threats/threats-search-param
     ThreatsDiagramsComponent,
     MultiLanguageComponent,
     TitleDescriptionComponent,
-    ThreatsSearchParametersComponent
+    ThreatsSearchParametersComponent,
+    ThreatsTableComponent
   ],
   imports: [
     BrowserModule,

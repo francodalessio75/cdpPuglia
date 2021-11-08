@@ -5,7 +5,7 @@ import { ChangeProfileComponent } from 'src/app/auth/change-profile/change-profi
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { HeaderService } from 'src/app/_services/header.service';
-import * as LanguagesEnum from '../../_services/LanguagesEnum'
+import * as LanguagesEnum from '../../enums/LanguagesEnum'
 import { TranslationService } from 'src/app/_services/translation.service';
 
 

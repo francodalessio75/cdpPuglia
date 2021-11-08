@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThreatsService } from 'src/app/_services/threats.service';
 
 @Component({
   selector: 'app-threats-search-parameters',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThreatsSearchParametersComponent implements OnInit {
 
-  constructor() { }
+  checked=1;
+  constructor(
+    private threatsService: ThreatsService) { }
 
   ngOnInit(): void {
+  }
+
+  getThreats(){
+    this.threatsService.getThreats(this.checked);
+  }
+  setChecked(filter: number){
+    this.checked=filter;
   }
 
 }

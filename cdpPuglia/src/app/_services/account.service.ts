@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService{
+export class AccountService implements OnInit{
 
   baseUrl = 'http://127.0.0.1:5000/';
 
@@ -25,9 +25,12 @@ export class AccountService{
         username:'',
         role:"viewer"
       };
+      localStorage.setItem('user', JSON.stringify(this.user));
     }
 
-  
+  ngOnInit(){
+    this.user.role="viewer";
+  }
 
   getToken$(model:{username:string, password:string}){
     return this.http.post<{token:string}>(this.baseUrl + 'login',{ username:model.username,password:model.password})

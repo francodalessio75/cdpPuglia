@@ -18,7 +18,12 @@
                 "english":"english",
                 "manageProfile": "Manage Profile",
                 "changeProfile": "Change Profile",
-                "changePassword": "Change Password"
+                "changePassword": "Change Password",
+                "pageDescription":"Applicaton Access Point"
+            },
+            "threats":{
+                "pageTitle":"Page exposing threats: ",
+                "pageDescription":"Section where read and filter threats contents"
             }
         }         
     },
@@ -41,7 +46,12 @@
                 "english":"Inglese",
                 "manageProfile": "Gestisci Profilo",
                 "changeProfile": "Modifica Profilo",
-                "changePassword": "Modifica Password"                
+                "changePassword": "Modifica Password",                
+                "pageDescription":"Punto di Accesso Dell'Applicazione"
+            },
+            "threats":{
+                "pageTitle":"Pagina di consultazione minacce: ",
+                "pageDescription":"Sezione per consultare grafici ed applicare filtri di ricerca ai reports"
             }
         }         
     }

@@ -1,7 +1,15 @@
 .canvass{
     
-   width:30%;
+    text-align: center;
+   
 }
+canvas{
+    
+    width:800px !important;
+    /* height:600px !important; */
+    margin: 0 auto;
+  
+  }
 div {
     display:inline-block;
     
@@ -10,3 +18,4 @@ div {
     display: flex;
     justify-content: center;
   }
+  

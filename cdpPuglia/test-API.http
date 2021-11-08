@@ -25,11 +25,35 @@ Authorization: Bearer {{login.response.body.token}}
 
 ###
 
-PUT {{baseURL}}/user?email="f.dalessio@bvtech.it" HTTP/1.1
+PUT {{baseURL}}/user HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+{
+    "email":"viewer",
+}
+
+###
+
+PUT {{baseURL}}/user/update-password HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+{
+    "currentPassword":"adminadmin",
+    "newPassword":"viewerviewer_1",
+    "confirmPassword":"viewerviewer_1"
+}
+
+###
+
+GET {{baseURL}}/threats?filter=-1 HTTP/1.1
 Authorization: Bearer {{login.response.body.token}}
 
 ###
 
-PUT {{baseURL}}/user/update-password?currentPassword="adminadmin"&newPassword="adminadmin_1"&confirmPassword="adminadmin_1" HTTP/1.1
+GET {{baseURL}}/threats HTTP/1.1
 Authorization: Bearer {{login.response.body.token}}
 
+###
+
+GET {{baseURL}}/threats/0 HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}

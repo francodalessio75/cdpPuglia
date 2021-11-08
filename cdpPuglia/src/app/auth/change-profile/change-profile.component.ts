@@ -18,11 +18,13 @@ export class ChangeProfileComponent implements OnInit {
   discardButton = '';
   requiredFieldError = '';
   currentUser: User ={username:'', password:''};
+
   constructor(
     private translationService:TranslationService,
     private accountService: AccountService,
     private fb: FormBuilder
   ) { }
+
   changeProfileForm = this.fb.group({
     email: [
       '',
@@ -42,6 +44,7 @@ export class ChangeProfileComponent implements OnInit {
     this.setLanguageData();
 
   }
+
   changeProfile() {
     this.accountService.changeProfile$(
       this.changeProfileForm.controls.email.value)

@@ -18,6 +18,10 @@ export interface LanguageData{
             manageProfile:string;
             changeProfile:string;
             changePassword:string;
+        },
+        threats:{
+            pageTitle:string;
+            pageDescription:string;
         }
     }
 }

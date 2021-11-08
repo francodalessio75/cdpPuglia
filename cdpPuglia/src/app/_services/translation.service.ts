@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import * as translationsData from './translations.json'
-import * as LanguagesEnum from './LanguagesEnum'
+import * as LanguagesEnum from '../enums/LanguagesEnum'
 import * as LanguageModel from '../_models/languageData'
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class TranslationService {
   //Default Language setting
   private language:LanguagesEnum.Language = LanguagesEnum.Language.it;
   //Component Requested Language Data
-  private languageData : LanguageModel.LanguageData= this.translationsData.it;
+  private languageData : LanguageModel.LanguageData = this.translationsData.it;
 
   private currentLanguage = new ReplaySubject<LanguagesEnum.Language>(1);
   currentLanguage$ = this.currentLanguage.asObservable();

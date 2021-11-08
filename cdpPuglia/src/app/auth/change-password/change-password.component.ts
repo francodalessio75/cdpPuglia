@@ -34,7 +34,7 @@ export class ChangePasswordComponent implements OnInit {
   requiredFieldError = '';
 
   currentUser: User ={username:'',password:''};
-  loggedIn: boolean = false;
+
   checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
     let pass = group.get('newPassword')!.value;
     let confirmPass = group.get('repeatPassword')!.value
