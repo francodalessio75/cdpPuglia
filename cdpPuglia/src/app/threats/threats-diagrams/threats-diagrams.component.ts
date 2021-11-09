@@ -14,7 +14,8 @@ import { TranslationService } from 'src/app/_services/translation.service';
 })
 export class ThreatsDiagramsComponent implements OnInit{
   threats!: Threat[];
-
+  dayMonth: string='DD/MMMM';
+  public currentMonth:string='';
   constructor( 
     private translationService:TranslationService,
     private threatsService: ThreatsService,
@@ -31,12 +32,13 @@ export class ThreatsDiagramsComponent implements OnInit{
     this.bubbleChartData=[];
     for(let threat of threats){
       this.bubbleChartData.push(
-        {data:{
+        {data:[{
           x: threat.ts,
           y: this.getSeverityValue(threat.severity)
+        }]
         }
-        }
-      )
+      );
+      // this.barChartLabels.push(''+threat.ts)
     }
   }
 
@@ -170,7 +172,7 @@ export class ThreatsDiagramsComponent implements OnInit{
   barChartType: ChartType = 'bar';  
   barChartLegend = false;  
   monthsLabel: any[]=[];
-//   barChartLabels: any[] = [
+barChartLabels!: string[];
 //   '2021-06-04T10:10:00',
 //   '2021-06-04T10:10:01',
 //   '2021-06-04T10:11:03+02:00',
@@ -227,34 +229,97 @@ export class ThreatsDiagramsComponent implements OnInit{
     },
     scales: {
       xAxes: [{  
+        
+        // offset: true,
         stacked: true,
         gridLines: {
-          // offsetGridLines: true offsetGridLines (boolean) If true, labels are shifted to be between grid lines.
+          offsetGridLines: false// offsetGridLines (boolean) If true, labels are shifted to be between grid lines.
       },
           ticks:{ 
-            
-      // callback : (label, index) => {
-      //   return this.monthsLabel[index] ? this.monthsLabel[index] : '';
+            stepSize:1,
+            autoSkip: true,
+           
+            // callback:function(label:any,currentMonth):any{
+            //   if(currentMonth!==label){ 
+            //     currentMonth===label.split('-')[0];
+            //     return 'boh' +currentMonth;
+            //   }
+            //   else return 'aah';
+            // },
+          //   autoSkip: true,
+          //maxTicksLimit:1,
+          // maxRotation: 0,
+          // minRotation: 0,
+          //   display: true,
+            // maxTicksLimit: 7,
+      // callback : (label:string) => {
+      //   if(this.currentMonth!=label.split(' ')[1]) {
+      //     console.log(this.currentMonth);
+      //     this.currentMonth=='prova'+label.split(' ')[1];
+      //   console.log(label);
+      //   console.log(this.currentMonth);
+      //   return 'prova';}
+      //   else 
+      //   return 'a';
+
+        
       // }
     },    
         type: 'time',
-        offset: false,
+        
         distribution: 'series', //mostra solo i dati disponibili
-                
+        
         time: {
+         
+        unit: 'second',
           // min:this.bubbleChartData[0].x,
-          max:this.bubbleChartData[3].x,
-          stepSize:10000,
-          unit: 'second',
-          tooltipFormat: 'DD mm ss', //tooltip
-          displayFormats: {                                
-            second: 'hh:mm:ss',
+          // max:this.bubbleChartData[this.bubbleChartData.length-1].x,
+          
+         
+        //   unitStepSize: 1,
+        //   tooltipFormat: 'DD mm ss', //tooltip
+          displayFormats: {
+            
+            //day:'MMM DD',
+            // 'month': 'MMM DD',                                
+            second: 'hh:mm:ss'
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Date'
         }
+      //   scaleLabel: {
+      //     display: true,
+      //     labelString: 'value'
+      // }     
           // unit: 'month'
           //unit :'hour'
         }
         
-      }],
+      },
+      {
+        id: 'xAxis2',
+        type: 'time',
+        time:{
+          // unit: 'second',
+          displayFormats: {
+            
+            //day:'MMM DD',
+            // 'month': 'MMM DD',                                
+            second: 'MMM DD'
+        },
+        },ticks:{
+          maxTicksLimit:1, 
+        },
+        gridLines: {
+            offsetGridLines: true
+        },
+        scaleLabel: {
+            display: true,
+            labelString: 'Day of Year'
+        }
+    }
+     ],
       yAxes: [{
         ticks: {
           max:4,
