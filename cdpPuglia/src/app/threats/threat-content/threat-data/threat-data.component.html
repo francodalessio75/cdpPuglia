@@ -1,0 +1,17 @@
+<mat-grid-list 
+   cols="2" 
+   rowHeight="2rem"
+   gutterSize="2px"
+   text-align= "left">
+   <mat-grid-tile colspan="2" class="title-tile"><div class="title">DATI MINACCIA:</div></mat-grid-tile>
+   <mat-grid-tile></mat-grid-tile><mat-grid-tile></mat-grid-tile>
+   <mat-grid-tile><div class="label">IDENTIFICATIVO :</div></mat-grid-tile><mat-grid-tile><div class="content">{{threat.threatId}}</div></mat-grid-tile>
+   <mat-grid-tile><div class="label">GRAVITA' :</div></mat-grid-tile><mat-grid-tile><div class="content">{{threat.severity}} </div></mat-grid-tile>
+   <mat-grid-tile><div class="label">TIMESTAMP :</div></mat-grid-tile><mat-grid-tile><div class="content">{{threat.ts | date : 'd/M/yyyy h:mm a'}} </div></mat-grid-tile>
+   <mat-grid-tile><div class="label">NOME REGOLA :</div></mat-grid-tile><mat-grid-tile><div class="content">{{threat.label}} </div></mat-grid-tile>
+   <mat-grid-tile><div class="label">TIPO REGOLA :</div></mat-grid-tile><mat-grid-tile><div class="content">{{threat.typeRule}} </div></mat-grid-tile>
+   <mat-grid-tile><div class="label">KILL CHAIN :</div></mat-grid-tile><mat-grid-tile><div class="content">{{threat.killChain}} </div></mat-grid-tile>
+   <mat-grid-tile><div class="label">FAMIGLIA :</div></mat-grid-tile><mat-grid-tile><div class="content">{{threat.family}} </div></mat-grid-tile>
+   <mat-grid-tile><div class="label">AZIONE :</div></mat-grid-tile><mat-grid-tile><div class="content">{{threat.action}} </div></mat-grid-tile>
+   <mat-grid-tile><div class="label">MESSAGGIO MINACCIA :</div></mat-grid-tile><mat-grid-tile><div class="content">{{threat.msg}} </div></mat-grid-tile>
+   <mat-grid-tile></mat-grid-tile><mat-grid-tile></mat-grid-tile>

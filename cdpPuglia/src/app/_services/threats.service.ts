@@ -11,6 +11,7 @@ import * as lasTwelveHoursData from '../lastTwelveHours.json';
 import * as lasTwentyFourHoursData from '../lastTwentyFourHours.json';
 import * as lasSevenDaysData from '../lastSevenDays.json';
 import * as lastThirtyDaysData from '../lastThirtyDays.json';
+import * as threatData from '../threat.json';
 
 @Injectable({
   providedIn: 'root'
@@ -36,11 +37,14 @@ export class ThreatsService {
 
   lastThirtyDaysJSONData : any = (lastThirtyDaysData as any ).default;
   lastThirtyDaysData : Threat[] = this.lastThirtyDaysJSONData.data;
+
+  threatJSONData : any = (threatData as any ).default;
+  threatData : Threat = this.threatJSONData.data;
   
   currentThreats:Threat[]=[];
   filteredThreats:Threat[]=[];
 
-  
+  currentThreat:Threat = this.threatData;
 
   private currentThreatSource = new ReplaySubject<Threat>(1);
   currentThreat$ = this.currentThreatSource.asObservable();
@@ -90,7 +94,7 @@ export class ThreatsService {
     this.currentThreatsSource.next(threats);
   }
 
-  getThreat(threatId:number){
+  getThreat(){
     // return this.http.get<Threat>(this.baseUrl + 'threats/'+threatId)
     //   .pipe( 
     //     map(response =>{
@@ -103,6 +107,7 @@ export class ThreatsService {
     //   this.setThreat(threat.threatId!);
     //   console.log(threat);
     // }
+    this.emitThreat(this.currentThreat);
   }
 
   // public setThreat(threatId:Number){
@@ -148,9 +153,22 @@ export class ThreatsService {
     this.setAndEmitThreats(false,filteredThreats);
   }
 
-
   resetFilterThreats(){
-    this.setAndEmitThreats(false,this.lastHourData);
+    this.setAndEmitThreats(false,this.currentThreats);
+  }
+
+  emitThreat(threat:Threat){
+    this.currentThreatSource.next(this.currentThreat);
+  }
+
+  setThreat(threatId:number){
+    let threat:Threat | undefined = this.currentThreats.find( threat => {
+      threat.threatId === threatId
+    });
+
+    if(threat){
+      this.currentThreat = threat;
+    }
   }
     
 }

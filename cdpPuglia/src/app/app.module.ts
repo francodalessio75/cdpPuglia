@@ -35,6 +35,10 @@ import { ThreatsSearchParametersComponent } from './threats/threats-search-param
 import { ThreatsTableComponent } from './threats/threats-table/threats-table.component';
 import { ThreatContentComponent } from './threats/threat-content/threat-content.component';
 import {MatDialogModule,MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { ThreatDataComponent } from './threats/threat-content/threat-data/threat-data.component';
+import { MitreElementsComponent } from './threats/threat-content/mitre-elements/mitre-elements.component';
+import { CveDataComponent } from './threats/threat-content/cve-data/cve-data.component';
+import { ExternalLinksComponent } from './threats/threat-content/external-links/external-links.component';
 
 
 @NgModule({
@@ -55,7 +59,11 @@ import {MatDialogModule,MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dia
     TitleDescriptionComponent,
     ThreatsSearchParametersComponent,
     ThreatsTableComponent,
-    ThreatContentComponent
+    ThreatContentComponent,
+    ThreatDataComponent,
+    MitreElementsComponent,
+    CveDataComponent,
+    ExternalLinksComponent
   ],
   imports: [
     BrowserModule,

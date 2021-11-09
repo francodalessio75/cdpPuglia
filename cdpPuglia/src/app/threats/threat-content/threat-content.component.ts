@@ -17,7 +17,6 @@ export class ThreatContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.threat);
   }
 
 }

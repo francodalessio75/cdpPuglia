@@ -75,8 +75,8 @@ export class ThreatsTableComponent implements OnInit {
   }
 
   getThreatContent(threatId:string){
-  //   this.threatsService.setThreat(+threatId);
-  //   this.router.navigateByUrl('/threat-content');
+    this.threatsService.setThreat(+threatId);
+    this.router.navigateByUrl('/threat-content');
   }
 
   private setCSVData(){
