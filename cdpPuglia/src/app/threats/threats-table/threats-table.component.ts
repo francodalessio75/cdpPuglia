@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -22,7 +22,7 @@ interface CSVModel{
   templateUrl: './threats-table.component.html',
   styleUrls: ['./threats-table.component.css']
 })
-export class ThreatsTableComponent implements OnInit {
+export class ThreatsTableComponent {
   csvData!:CSVModel[];
 
   displayedColumns=[
@@ -35,7 +35,7 @@ export class ThreatsTableComponent implements OnInit {
     'severity'
   ];
 
-  threats:Threat[] = [];
+  @Input() threats!:Threat[];
 
   dataSource:MatTableDataSource<Threat> = new MatTableDataSource();
 
@@ -53,10 +53,6 @@ export class ThreatsTableComponent implements OnInit {
       console.log(threats);
     });
     
-  }
-
-  ngOnInit(): void {
-    this.threatsService.getThreats(-1);
   }
 
   ngAfterViewInit() {
@@ -117,14 +113,6 @@ export class ThreatsTableComponent implements OnInit {
       title: 'Filtered Threats Report',
       useBom: true,
       noDownload: false,
-      // headers: [
-      // 'ts',
-      // 'threatId',
-      // 'ipSrc',
-      // 'ipDst',
-      // 'label',
-      // 'typeRule',
-      // 'severity']
     };
 
     new ngxCsv(this.csvData,'threatsReport', options);

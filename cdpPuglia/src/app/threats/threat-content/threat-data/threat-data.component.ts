@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Threat } from 'src/app/_models/threat';
 import { ThreatsService } from 'src/app/_services/threats.service';
 
@@ -9,7 +9,7 @@ import { ThreatsService } from 'src/app/_services/threats.service';
   styleUrls: ['./threat-data.component.css']
 })
 export class ThreatDataComponent implements OnInit {
-  threat!:Threat;
+  @Input() threat!:Threat;
 
 
   constructor(private threatService:ThreatsService) {

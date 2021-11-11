@@ -40,6 +40,7 @@ export class ChangePasswordComponent implements OnInit {
     let confirmPass = group.get('repeatPassword')!.value
     return pass === confirmPass ? null : { notSame: true }
   }
+  
   changePasswordForm = this.fb.group({
     oldPassword: ['', Validators.required],
     newPassword: [

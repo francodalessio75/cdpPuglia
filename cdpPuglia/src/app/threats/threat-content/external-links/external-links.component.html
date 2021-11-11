@@ -1,1 +1,12 @@
-<p>external-links works!</p>
+<mat-grid-list cols="2" rowHeight="2rem">
+    <mat-grid-tile colspan="2"  class="title-tile"><div class="title">LINKS ESTERNI:</div></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile><mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile
+        *ngFor="let extRef of threat.externalRef"
+        colspan="2"
+        >
+        <div class="content">{{extRef}}</div>
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile><mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>
+

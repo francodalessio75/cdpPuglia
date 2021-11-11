@@ -43,6 +43,8 @@ Authorization: Bearer {{login.response.body.token}}
     "confirmPassword":"Viewerviewer_1!"
 }
 
+#################### THREATS #######################################
+
 ###
 
 GET {{baseURL}}/threats?filter=-1 HTTP/1.1
@@ -56,4 +58,19 @@ Authorization: Bearer {{login.response.body.token}}
 ###
 
 GET {{baseURL}}/threats/0 HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+#####################  
+
+GET {{baseURL}}/threats/0 HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+################# MITRE ########################
+
+GET {{baseURL}}/mitre/T1001.001 HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+################# CVE ########################
+
+GET {{baseURL}}/cve/0 HTTP/1.1
 Authorization: Bearer {{login.response.body.token}}

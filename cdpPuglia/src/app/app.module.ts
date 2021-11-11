@@ -22,7 +22,6 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 // For MDB Angular Free
 import { WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 import {ChartsModule} from 'ng2-charts';
-import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -39,6 +38,9 @@ import { ThreatDataComponent } from './threats/threat-content/threat-data/threat
 import { MitreElementsComponent } from './threats/threat-content/mitre-elements/mitre-elements.component';
 import { CveDataComponent } from './threats/threat-content/cve-data/cve-data.component';
 import { ExternalLinksComponent } from './threats/threat-content/external-links/external-links.component';
+import { IntelligenceDataComponent } from './threats/threat-content/intelligence-data/intelligence-data.component';
+import { TechniqueDetailsComponent } from './threats/threat-content/mitre-elements/technique-details/technique-details.component';
+import { CveDetailsComponent } from './threats/threat-content/cve-data/cve-details/cve-details.component';
 
 
 @NgModule({
@@ -63,7 +65,10 @@ import { ExternalLinksComponent } from './threats/threat-content/external-links/
     ThreatDataComponent,
     MitreElementsComponent,
     CveDataComponent,
-    ExternalLinksComponent
+    ExternalLinksComponent,
+    IntelligenceDataComponent,
+    TechniqueDetailsComponent,
+    CveDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,6 @@ import { ExternalLinksComponent } from './threats/threat-content/external-links/
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    MatRadioModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({ positionClass:'toast-bottom-right' }),

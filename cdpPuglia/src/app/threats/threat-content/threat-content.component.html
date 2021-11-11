@@ -1,11 +1,18 @@
 <ng-container class="main-container">
   <section>
-      <app-threat-data></app-threat-data>
+      <app-threat-data [threat]="threat"></app-threat-data>
     </section>
     <section>
-      <app-mitre-elements></app-mitre-elements>
+      <app-mitre-elements [threat]="threat"></app-mitre-elements>
     </section>
     <section>
-      <app-cve-data></app-cve-data>
+      <app-cve-data [threat]="threat"></app-cve-data>
+    </section>
+    <section>
+      <app-external-links [threat]="threat"></app-external-links>
+    </section>
+    <section>
+      <app-intelligence-data></app-intelligence-data>
     </section>
 </ng-container>
+

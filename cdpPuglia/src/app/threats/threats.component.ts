@@ -12,21 +12,18 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   title = 'Pagina consultazione minacce:';
   description = 'Sezione per consultare grafici ed applicare filtri di ricerca ai reports';
 
-  threat:Threat = {}
-  threats:Threat[] = [];
+  threat!:Threat;
+  threats!:Threat[];
 
   constructor(
     private headerService:HeaderService,
     private threatsService:ThreatsService) {
+      this.headerService.setCurrentTitleDescription(this.title, this.description);
+      this.threatsService.currentThreat$.subscribe(threat => this.threat = threat);
+      this.threatsService.currentThreats$.subscribe(threats => this.threats = threats);
     }
 
   ngOnInit(): void {
-    this.headerService.setCurrentTitleDescription(this.title, this.description);
-    this.threatsService.currentThreat$.subscribe(threat => this.threat = threat);
-    this.threatsService.currentThreats$.subscribe(threats =>{
-      this.threats = threats;
-      //console.log(threats);
-    });
     this.threatsService.getThreats(1);
   }
 
