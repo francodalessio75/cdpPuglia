@@ -1,0 +1,11 @@
+<mat-grid-list cols="2" rowHeight="2rem">
+  <mat-grid-tile colspan="2"  class="title-tile"><div class="title">ELEMENTI MATRICE MITRE:</div></mat-grid-tile>
+  <mat-grid-tile
+      *ngFor="let mitre of threat.mitre"
+      colspan="2"
+      >
+      <div class="content">{{mitre}}</div>
+  </mat-grid-tile>
+  <mat-grid-tile><div class="label"></div></mat-grid-tile><mat-grid-tile><button mat-raised-button color="primary">Visualizza matrice MITRE</button></mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile><mat-grid-tile></mat-grid-tile>
+</mat-grid-list>

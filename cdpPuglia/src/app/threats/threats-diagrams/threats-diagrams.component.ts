@@ -52,121 +52,9 @@ export class ThreatsDiagramsComponent implements OnInit{
     }
   }
   
-  // public chartDatasets: Array<any> = [
-  //   { data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset' },
-  //   { data: [28, 48, 40, 19, 86, 27, 90], label: 'My Second dataset' }
-  // ];
-
-  // public chartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-  // public chartColors: Array<any> = [
-  //   {
-  //     backgroundColor: 'rgba(105, 0, 132, .2)',
-  //     borderColor: 'rgba(200, 99, 132, .7)',
-  //     borderWidth: 2,
-  //   },
-  //   {
-  //     backgroundColor: 'rgba(0, 137, 132, .2)',
-  //     borderColor: 'rgba(0, 10, 130, .7)',
-  //     borderWidth: 2,
-  //   }
-  // ];
-
-  // public chartOptions: any = {
-  //   responsive: true,
-  //   scales: {
-  //     xAxes: [{
-  //       stacked: true
-  //       }],
-  //     yAxes: [
-  //     {
-  //       stacked: true,
-  //       stepSize: 1,
-  //       type: "time",
-  //     time: {
-  //       parser: "YYYY/MM/DD",
-  //       unit: "day",
-  //       displayFormats: {
-  //         day: "YYYY/MM/DD"
-  //       }
-  //     },
-  //     ticks: {
-  //       stepSize: 1,
-  //       reverse: true
-  //     }       
-  //     }
-  //   ]
-  // }
-    
- 
   
-  // };
-  // addTime(){
-  //   this.chartLabels1.push('prova');
-
-  // };
-  
-  // public chartClicked(e: any): void { }
-  // public chartHovered(e: any): void { }
-
-  // public chartDatasets1: Array<any> = [
-  //   { data: [1,3,4,1,3,0,2], label: 'My First dataset' }
-  // ];
-
-  // public chartLabels1: Array<any> = [];
-  // public chartLabels2: string='Range Temporale';
-
-  // public chartColors1: Array<any> = [
-  //   {
-  //     backgroundColor: [
-  //       'rgba(255, 99, 132, 0.2)',
-  //       'rgba(54, 162, 235, 0.2)',
-  //       'rgba(255, 206, 86, 0.2)',
-  //       'rgba(75, 192, 192, 0.2)',
-  //       'rgba(153, 102, 255, 0.2)',
-  //       'rgba(255, 159, 64, 0.2)'
-  //     ],
-  //     borderColor: [
-  //       'rgba(255,99,132,1)',
-  //       'rgba(54, 162, 235, 1)',
-  //       'rgba(255, 206, 86, 1)',
-  //       'rgba(75, 192, 192, 1)',
-  //       'rgba(153, 102, 255, 1)',
-  //       'rgba(255, 159, 64, 1)'
-  //     ],
-  //     borderWidth: 2,
-  //     barPercentage:0.3,
-     
-  //   }
-  // ];
-  // public chartOptions1: any = {
-  //   responsive: true,
-  //   scales: {
-  //     yAxes: [
-  //      {
-  //          display: true,
-  //          ticks: {
-  //            fontSize: 28
-  //          }
-  //      }
-  //    ]
-  //  }    
-  // };
   ngOnInit(){
     this.threatsService.getThreats(-1);
-    // this.translationService.currentLanguage$.subscribe((language)=>{
-    //   this.setLanguageData();
-    // });
-    // this.setLanguageData();
-    // let currentMonth = this.barChartLabels[0].split('-')[1]+' '+this.barChartLabels[0].split('-')[2].substring(0,2);
-    // this.monthsLabel[0] = currentMonth;
-    // for(let i = 1; i < this.barChartLabels.length; i++){
-    //   let month = this.barChartLabels[i].split('-')[0];
-    //   if(currentMonth != month){
-    //     this.monthsLabel[i] = month;
-    //     currentMonth = month;
-    //   }
-    // }
       
     }
   barChartType: ChartType = 'bar';  
@@ -346,9 +234,5 @@ barChartLabels!: string[];
       }]
     }
   };
-  
-  // private setLanguageData(){
-  //   let languageData = this.translationService.getCurrentLanguageData();
-  //   this.Basso = languageData.sections.global.saveButton;    
-  // }
+
 }

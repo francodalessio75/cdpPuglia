@@ -1,0 +1,46 @@
+{
+  "data": {
+	"ts": "2021-06-04T12:00:00+02:00",
+	"ruleId": 0,
+	"threatId": 0,
+	"ipSrc": "172.21.1.55",
+	"portSrc": 80,
+	"ipSrcLatitude": 44.9733,
+	"ipSrcLongitude": -93.2323,
+	"ipDst": "172.21.1.56",
+    "ipDstLatitude": 49.9733,
+    "ipDstLongitude": -80.2323,
+    "label": "Brute Force SSH",
+	"msg": "message of rule",
+	"killChain": [
+      "Command and Control",
+      "Initial Access"
+    ],
+	"family": "risk type",
+	"protocol": "tcp",
+	"typeRule": "behaviour",
+	"severity": "medium",
+    "action": "drop",
+    "cves": [
+      "CVE-2021-0022",
+      "CVE-2021-0023"
+    ],
+	 "mitre": [
+      "t1100",
+      "t1111"
+    ],
+    "externalRef": [
+      "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0022",
+      "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3156"
+    ],
+    "intelligence": [
+      {
+		"id": "0",
+		"ioc": "ioc",
+        "description": "descrizione",
+        "threathLevel": "medium"
+      }
+    ],
+    "portDst": 22
+  }
+}

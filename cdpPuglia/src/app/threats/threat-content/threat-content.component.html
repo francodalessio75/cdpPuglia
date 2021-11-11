@@ -1,1 +1,14 @@
-<p>threat-content works!</p>
+<ng-container class="main-container">
+  <section>
+      <app-threat-data></app-threat-data>
+    </section>
+    <section>
+      <app-mitre-elements></app-mitre-elements>
+    </section>
+    <section>
+      <app-cve-data></app-cve-data>
+    </section>
+    <section>
+      <app-threat-map [threat]="threat"></app-threat-map>
+    </section>
+</ng-container>
