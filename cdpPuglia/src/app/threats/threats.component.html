@@ -3,23 +3,6 @@
 <section style="text-align:center">
   <h1>THREATS</h1>
 </section>
-<!-- <div class="threats" fxLayout="column" fxLayoutAlign="center center">
-  <section>
-    <h1>THREATS</h1>
-    <p>Qui il grafico a barre temporale per attacco e severity</p>
-    <app-threats-diagrams></app-threats-diagrams>
-  </section>
-  <section>
-    <h1>THREATS</h1>
-    <p>Parametri di ricerca da inviare al beck-end</p>
-  </section>
-  <section class="large-width">
-    <app-threats-filters></app-threats-filters>
-  </section>
-  <section class="large-width">
-    <app-threats-table></app-threats-table> 
-  </section>
-</div> -->
 <section>
   <app-threats-diagrams></app-threats-diagrams>
 </section>
@@ -30,6 +13,6 @@
   <app-threats-filters></app-threats-filters>
 </section>
 <section>
-  <app-threats-table ></app-threats-table>
+  <app-threats-table [threats]="threats"></app-threats-table>
 </section>
 

@@ -20,9 +20,15 @@
 
   .content {
     position: absolute;
-    
     font-weight: bold;
     font-size: 1.1rem;
+  }
+
+  .clickable{
+    cursor:pointer;
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
   }
 
   button{

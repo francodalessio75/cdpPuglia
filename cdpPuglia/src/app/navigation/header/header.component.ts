@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatDialog , MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
 import { ChangeProfileComponent } from 'src/app/auth/change-profile/change-profile.component';
 import { User } from 'src/app/_models/user';

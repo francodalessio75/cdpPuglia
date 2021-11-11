@@ -1,0 +1,22 @@
+
+<mat-dialog-content>
+<mat-grid-list 
+   cols="4" 
+   rowHeight="2rem"
+   gutterSize="2px"
+   text-align= "left">
+   <mat-grid-tile colspan="4" class="title-tile"><div class="title">DETTAGLIO TECNICO ATTACCO MITRE:</div></mat-grid-tile>
+   <mat-grid-tile colspan="1"></mat-grid-tile><mat-grid-tile colspan="3"></mat-grid-tile>
+   <mat-grid-tile colspan="1"><div class="label">TECNICA :</div></mat-grid-tile><mat-grid-tile colspan="3"><div class="content">{{technique.data.id}}</div></mat-grid-tile>
+   <mat-grid-tile colspan="1"><div class="label">NOME :</div></mat-grid-tile><mat-grid-tile colspan="3"><div class="content">{{technique.data.name}}</div></mat-grid-tile>
+   <mat-grid-tile colspan="1"><div class="label" >KILL CHAIN PHASE :</div></mat-grid-tile><mat-grid-tile colspan="3"><div class="content">{{technique.data.killChainPhase}}</div></mat-grid-tile>
+   <mat-grid-tile colspan="1" rowspan="3"><div class="label description">DESCRIZIONE :</div></mat-grid-tile><mat-grid-tile colspan="3" rowspan="3" ><div class="content">{{technique.data.description}}</div></mat-grid-tile>
+   <mat-grid-tile colspan="1" rowspan="1"><div class="label">DATA SOURCE :</div></mat-grid-tile><mat-grid-tile rowspan="1" colspan="3"><div class="content">{{technique.data.dataSource}}</div></mat-grid-tile>
+   <mat-grid-tile colspan="1" rowspan="3"><div class="label description">DETECTION :</div></mat-grid-tile><mat-grid-tile rowspan="3" colspan="3"><div class="content">{{technique.data.detection}}</div></mat-grid-tile>
+   <mat-grid-tile colspan="1"><div class="label">PIATTAFORMA :</div></mat-grid-tile><mat-grid-tile colspan="3"><div class="content">{{technique.data.platform}}</div></mat-grid-tile>
+   <mat-grid-tile colspan="2"></mat-grid-tile><mat-grid-tile colspan="2"> <button mat-raised-button color="accent" (click)="close()">CHIUDI</button></mat-grid-tile> 
+   </mat-grid-list>
+</mat-dialog-content>
+   
+
+

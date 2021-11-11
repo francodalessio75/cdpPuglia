@@ -28,7 +28,7 @@
 	 "mitre": [
       "t1100",
       "t1111"
-    ],
+    ],						
     "externalRef": [
       "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0022",
       "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3156"
@@ -37,7 +37,13 @@
       {
 		"id": "0",
 		"ioc": "ioc",
-        "description": "descrizione",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+        "threathLevel": "medium"
+      },
+	  {
+		"id": "1",
+		"ioc": "ioc",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
         "threathLevel": "medium"
       }
     ],

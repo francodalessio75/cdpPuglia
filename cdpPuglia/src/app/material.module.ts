@@ -11,6 +11,10 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from "@angular/material/dialog";
+import { TechniqueDetailsComponent } from './threats/threat-content/mitre-elements/technique-details/technique-details.component';
+import { AppComponent } from './app.component';
 
 
 
@@ -28,8 +32,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatGridListModule
+    MatGridListModule,
+    MatRadioModule,
+    MatDialogModule
   ],
-  
+  bootstrap: [AppComponent],
+  entryComponents: [TechniqueDetailsComponent]
 })
 export class MaterialModule {}
