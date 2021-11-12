@@ -42,6 +42,7 @@ import { ThreatMapComponent } from './threats/threat-content/threat-map/threat-m
 import { IntelligenceDataComponent } from './threats/threat-content/intelligence-data/intelligence-data.component';
 import { TechniqueDetailsComponent } from './threats/threat-content/mitre-elements/technique-details/technique-details.component';
 import { CveDetailsComponent } from './threats/threat-content/cve-data/cve-details/cve-details.component';
+import { ThreatConnectionsComponent } from './threats/threat-content/threat-connections/threat-connections.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { CveDetailsComponent } from './threats/threat-content/cve-data/cve-detai
     ThreatMapComponent,
     IntelligenceDataComponent,
     TechniqueDetailsComponent,
-    CveDetailsComponent
+    CveDetailsComponent,
+    ThreatConnectionsComponent
   ],
   imports: [
     BrowserModule,
