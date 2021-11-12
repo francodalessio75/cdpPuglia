@@ -1,7 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Technique } from 'src/app/_models/technique';
-import { ThreatsService } from 'src/app/_services/threats.service';
-import { MitreElementsComponent } from '../mitre-elements.component';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
@@ -13,7 +11,6 @@ export class TechniqueDetailsComponent {
   technique!:Technique;
 
   constructor(
-    private threatsService :ThreatsService,
     private dialogRef: MatDialogRef<TechniqueDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) data : Technique
     ) {
@@ -22,5 +19,10 @@ export class TechniqueDetailsComponent {
 
   close() {
     this.dialogRef.close();
+  }
+
+  openSite(siteUrl:string|undefined){
+    if(siteUrl)
+      window.open(siteUrl, '_blank');
   }
 }

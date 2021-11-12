@@ -30,5 +30,12 @@
   }
 
   button{
-    left:80%;
+    left:10%;
+  }
+
+  .clickable{
+    cursor:pointer;
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
   }

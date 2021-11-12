@@ -11,24 +11,19 @@ import { Technique } from 'src/app/_models/technique';
   styleUrls: ['./mitre-elements.component.css']
 })
 export class MitreElementsComponent {
-  @Input() threat!:Threat;
+  @Input() threat! : Threat;
   technique!:Technique;
 
   constructor( 
     private threatService:ThreatsService,
     private dialog:MatDialog){
-      this.threatService.currentTechnique$.subscribe(
-        technique => {
-          this.technique = technique;
-          this.openDialog();
-        });
-  }
+      this.threatService.currentThreat$.subscribe(
+        threat => this.threat = threat
+      );
+    }
 
   openTechniqueDetails(mitre:string){
-    this.threatService.setTechnique(mitre);
-  }
-
-  openDialog(){
+    this.technique = this.threatService.getTechnique(mitre);
     const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
@@ -50,5 +45,9 @@ export class MitreElementsComponent {
         };
 
         this.dialog.open(TechniqueDetailsComponent, dialogConfig);
+  }
+
+  openSite(){
+    window.open('https://attack.mitre.org/matrices/enterprise/', '_blank');
   }
 }

@@ -47,7 +47,7 @@ export class ThreatsService {
   threatData : Threat = this.threatJSONData.data;
 
   techniqueJSONData : any = (techniqueData as any ).default;
-  techniqueData : Technique = this.techniqueJSONData.data;
+  techniqueData : Technique = this.techniqueJSONData;
 
   cveJSONData : any = (cveData as any ).default;
   cveData : CVE = this.cveJSONData as CVE;
@@ -55,9 +55,15 @@ export class ThreatsService {
   currentThreats:Threat[]=[];
   filteredThreats:Threat[]=[];
 
-  currentThreat:Threat = this.threatData;
   currentTechnique:Technique = this.techniqueData;
+
+  currentTechniques:Technique[] = [this.currentTechnique];
+
   currentCve:CVE = this.cveData;
+
+  currentCves:CVE[] = [this.currentCve];
+
+  currentThreat:Threat = this.threatData;
 
   private currentThreatSource = new ReplaySubject<Threat>(1);
   currentThreat$ = this.currentThreatSource.asObservable();
@@ -65,11 +71,11 @@ export class ThreatsService {
   private currentThreatsSource = new ReplaySubject<Threat[]>(1);
   currentThreats$ = this.currentThreatsSource.asObservable();
 
-  private currentTechniqueSource = new ReplaySubject<Technique>(1);
-  currentTechnique$ = this.currentTechniqueSource.asObservable();
+  // private currentTechniqueSource = new ReplaySubject<Technique>(1);
+  // currentTechnique$ = this.currentTechniqueSource.asObservable();
 
-  private currentCveSource = new ReplaySubject<CVE>(1);
-  currentCve$ = this.currentCveSource.asObservable();
+  // private currentCveSource = new ReplaySubject<CVE>(1);
+  // currentCve$ = this.currentCveSource.asObservable();
 
   constructor(
     private http:HttpClient) 
@@ -85,35 +91,43 @@ export class ThreatsService {
     //   )
     switch(filter){
       case -1:
-        this.setAndEmitThreats(true,this.lastHourData);
+        this.currentThreats = this.lastHourData;
+        this.currentThreatsSource.next(this.currentThreats);
         break;
       case -6:
-        this.setAndEmitThreats(true,this.lastSixHoursData);
+        this.currentThreats = this.lastSixHoursData;
+        this.currentThreatsSource.next(this.currentThreats);
         break;
       case -12:
-        this.setAndEmitThreats(true,this.lastTwelveHoursData);
+        this.currentThreats = this.lastTwelveHoursData;
+        this.currentThreatsSource.next(this.currentThreats);
         break;
       case 1:
-        this.setAndEmitThreats(true,this.lastTwentyFourHoursData);
+        this.currentThreats = this.lastTwentyFourHoursData;
+        this.currentThreatsSource.next(this.currentThreats);
         break;
       case 7:
-          this.setAndEmitThreats(true,this.lastSevenDaysData);
-          break;
+        this.currentThreats = this.lastSevenDaysData;
+        this.currentThreatsSource.next(this.currentThreats);
+        break;
       case 30:
-          this.setAndEmitThreats(true,this.lastThirtyDaysData);
-          break;
+        this.currentThreats = this.lastThirtyDaysData;
+        this.currentThreatsSource.next(this.currentThreats);
+        break;
       default:
-        this.setAndEmitThreats(true,this.lastHourData);
+        this.currentThreats = this.lastHourData;
+        this.currentThreatsSource.next(this.currentThreats);
         break;
     }
   }
 
-  private setAndEmitThreats(isAPI:boolean,threats:Threat[]){
-    isAPI ? this.currentThreats = threats : this.filteredThreats = threats;
-    this.currentThreatsSource.next(threats);
-  }
+  // private setAndEmitThreats(isAPI:boolean,threats:Threat[]){
+  //   isAPI ? this.currentThreats = threats : this.filteredThreats = threats;
+  //   this.currentThreatsSource.next(threats);
+  // }
 
   getThreat(){
+    this.currentThreatSource.next(this.currentThreat);
     // return this.http.get<Threat>(this.baseUrl + 'threats/'+threatId)
     //   .pipe( 
     //     map(response =>{
@@ -126,7 +140,6 @@ export class ThreatsService {
     //   this.setThreat(threat.threatId!);
     //   console.log(threat);
     // }
-    this.emitThreat(this.currentThreat);
   }
 
   filterThreats(severity:Severity,ipSrc:string, ipDst:string, label:string){
@@ -161,15 +174,11 @@ export class ThreatsService {
         filteredThreats.push(threat);
     });
 
-    this.setAndEmitThreats(false,filteredThreats);
+    this.currentThreatsSource.next(filteredThreats);
   }
 
   resetFilterThreats(){
-    this.setAndEmitThreats(false,this.currentThreats);
-  }
-
-  emitThreat(threat:Threat){
-    this.currentThreatSource.next(this.currentThreat);
+    this.currentThreatsSource.next(this.currentThreats);
   }
 
   setThreat(threatId:number){
@@ -179,10 +188,42 @@ export class ThreatsService {
 
     if(threat){
       this.currentThreat = threat;
+      this.currentTechniques = [];
+      this.currentCves = [];
+      for( let mitre in this.currentThreat.mitre ){
+        this.currentTechniques.push( this.getTechnique( mitre ) )
+      }
+      for( let cve in this.currentThreat.cves ){
+        this.currentCves.push( this.getCve( cve ) );
+      }
     }
   }
 
-  setTechnique(techniqueId:string){
+  // setTechnique(techniqueId:string){
+  //   // this.http.get<{data:Technique}>(this.baseUrl + 'mitre/'+'T1001.001')
+  //   //   .subscribe(
+  //   //     response =>{
+  //   //       this.currentTechnique = response.data;
+  //   //       this.currentTechniqueSource.next(this.currentTechnique);
+  //   //       console.log(response);
+  //   //     }
+  //   //   )
+  //   this.currentTechnique = techniqueData;
+  //   //setTimeout(() => {this.currentTechniqueSource.next(this.currentTechnique)}, 1000);
+  //   this.currentTechniqueSource.next(this.currentTechnique);
+  // }
+
+  getTechnique(mitre:string):Technique{
+    let technique:Technique | undefined;
+    technique = this.currentTechniques.find( technique => {
+      return technique.data.id === mitre 
+    });
+    if(technique)
+      return technique;
+    else
+      return {data:{}}
+    
+    //return this.currentTechnique;
     // this.http.get<{data:Technique}>(this.baseUrl + 'mitre/'+'T1001.001')
     //   .subscribe(
     //     response =>{
@@ -191,15 +232,30 @@ export class ThreatsService {
     //       console.log(response);
     //     }
     //   )
-    this.currentTechnique = techniqueData;
-    this.currentTechniqueSource.next(this.currentTechnique);
   }
 
-  getTechnique():Technique{
-    return this.currentTechnique;
-  }
+  // setCve(cveId:string){
+  //   // this.http.get<{data:Technique}>(this.baseUrl + 'cve/'+'0')
+  //   //   .subscribe(
+  //   //     response =>{
+  //   //       this.currentTechnique = response.data;
+  //   //       this.currentTechniqueSource.next(this.currentTechnique);
+  //   //       console.log(response);
+  //   //     }
+  //   //   )
+  //   this.currentCve = cveData;
+  //   this.currentCveSource.next(this.currentCve);
+  // }
 
-  setCve(cveId:string){
+  getCve( cveCode:string ):Technique{
+    let cve:CVE | undefined;
+    cve = this.currentCves.find( cve => {
+      return cve.data.cveId === cveCode 
+    });
+    if(cve)
+      return cve;
+    else
+      return {data:{}}
     // this.http.get<{data:Technique}>(this.baseUrl + 'cve/'+'0')
     //   .subscribe(
     //     response =>{
@@ -208,12 +264,6 @@ export class ThreatsService {
     //       console.log(response);
     //     }
     //   )
-    this.currentCve = cveData;
-    this.currentCveSource.next(this.currentCve);
-  }
-
-  getCve():Technique{
-    return this.currentCve;
   }
     
 }
