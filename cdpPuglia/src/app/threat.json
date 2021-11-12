@@ -8,8 +8,8 @@
 	"ipSrcLatitude": 44.9733,
 	"ipSrcLongitude": -93.2323,
 	"ipDst": "172.21.1.56",
-    "ipDstLatitude": 44.9733,
-    "ipDstLongitude": -93.2323,
+    "ipDstLatitude": 49.9733,
+    "ipDstLongitude": -80.2323,
     "label": "Brute Force SSH",
 	"msg": "message of rule",
 	"killChain": [
