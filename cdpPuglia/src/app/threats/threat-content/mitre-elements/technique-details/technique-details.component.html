@@ -7,7 +7,7 @@
    text-align= "left">
    <mat-grid-tile colspan="4" class="title-tile"><div class="title">DETTAGLIO TECNICO ATTACCO MITRE:</div></mat-grid-tile>
    <mat-grid-tile colspan="1"></mat-grid-tile><mat-grid-tile colspan="3"></mat-grid-tile>
-   <mat-grid-tile colspan="1"><div class="label">TECNICA :</div></mat-grid-tile><mat-grid-tile colspan="3"><div class="content">{{technique.data.id}}</div></mat-grid-tile>
+   <mat-grid-tile colspan="1"><div class="label">TECNICA :</div></mat-grid-tile><mat-grid-tile colspan="3"><div class="content clickable"><a (click)="openSite(technique.data.url)">{{technique.data.id}}</a></div></mat-grid-tile>
    <mat-grid-tile colspan="1"><div class="label">NOME :</div></mat-grid-tile><mat-grid-tile colspan="3"><div class="content">{{technique.data.name}}</div></mat-grid-tile>
    <mat-grid-tile colspan="1"><div class="label" >KILL CHAIN PHASE :</div></mat-grid-tile><mat-grid-tile colspan="3"><div class="content">{{technique.data.killChainPhase}}</div></mat-grid-tile>
    <mat-grid-tile colspan="1" rowspan="3"><div class="label description">DESCRIZIONE :</div></mat-grid-tile><mat-grid-tile colspan="3" rowspan="3" ><div class="content">{{technique.data.description}}</div></mat-grid-tile>

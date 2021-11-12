@@ -7,8 +7,8 @@ import { ThreatsService } from 'src/app/_services/threats.service';
   styleUrls: ['./threats-search-parameters.component.css']
 })
 export class ThreatsSearchParametersComponent implements OnInit {
-
   checked=1;
+  
   constructor(
     private threatsService: ThreatsService) { }
 
@@ -18,6 +18,7 @@ export class ThreatsSearchParametersComponent implements OnInit {
   getThreats(){
     this.threatsService.getThreats(this.checked);
   }
+
   setChecked(filter: number){
     this.checked=filter;
   }
