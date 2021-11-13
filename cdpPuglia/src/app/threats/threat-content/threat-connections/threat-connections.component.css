@@ -87,7 +87,24 @@ body{margin-top:20px; }
   display: block;
   
 }
-.prova {
-  position:absolute;
-  color: white;
+
+.container{
+  margin-top: 2%;
+  width:100%;
 }
+
+.title-tile {
+    font-size:2rem;
+    font-weight: bolder;
+    background-color: aqua;
+  }
+
+  .title {
+    position: absolute;
+    left: 30rem;
+  }
+
+  .h6{
+      font-size: 1rem;
+      font-weight: bold;
+  }

@@ -16,16 +16,20 @@
   .title {
     position: absolute;
     left: 30rem;
+    font-size: 2rem;
   }
 
   .content {
-    position: absolute;
+    cursor:pointer;
+    color: blue;
     font-weight: bold;
-    font-size: 1.1rem;
-    color:blue;
+    text-decoration: underline;
+    font-size: 1.5rem;
   }
 
   button{
     font-weight:550;
   }
+
+  
 

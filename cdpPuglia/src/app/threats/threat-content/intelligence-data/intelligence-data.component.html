@@ -19,7 +19,7 @@
 
         <ng-container matColumnDef="descritpion">
             <th mat-header-cell *matHeaderCellDef>Descrizione</th>
-            <td mat-cell *matCellDef="let element">{{element.description}}</td>
+            <td class="justified" mat-cell *matCellDef="let element">{{element.description}}</td>
         </ng-container>
 
         <ng-container matColumnDef="threathLevel">
@@ -31,7 +31,5 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
     </mat-table>
-    <section>
-        <button mat-raised-button color="accent" (click)="backToThreats()">CHIUDI</button>
-    </section>
+
 

@@ -4,11 +4,11 @@
     right: 5px;
     font-size:larger;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
 
 .title-tile {
-    font-size:1.2rem;
+    font-size:2rem;
     font-weight: bolder;
     background-color: aqua;
   }
@@ -22,5 +22,5 @@
     position: absolute;
     left: 1rem;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }

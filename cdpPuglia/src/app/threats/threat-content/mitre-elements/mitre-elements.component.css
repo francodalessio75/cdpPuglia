@@ -7,8 +7,8 @@
     font-size: 1.1rem;
   }
 
-.title-tile {
-    font-size:1.2rem;
+  .title-tile {
+    font-size:2rem;
     font-weight: bolder;
     background-color: aqua;
   }
@@ -21,7 +21,7 @@
   .content {
     position: absolute;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
 
   .clickable{
@@ -33,5 +33,6 @@
 
   button{
     font-weight:550;
+    font-size: 1.5rem;
   }
 
