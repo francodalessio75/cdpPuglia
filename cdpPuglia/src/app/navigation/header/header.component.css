@@ -27,4 +27,5 @@ a:active{
   width:100%;
   transition:0.2s linear;
   top:0px;
+  z-index: 9999;
 }

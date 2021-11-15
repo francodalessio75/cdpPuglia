@@ -1,6 +1,4 @@
-<h1>Range temporale
-</h1>
-<p>Seleziona un intervallo di tempo delle minacce da visualizzare:</p><mat-radio-group class="mat-radio-label" aria-label="Select an option">
+<mat-radio-group class="mat-radio-label" aria-label="Select an option">
 <mat-list>
     <mat-list-item><mat-radio-button value="-1" (click)="setChecked(-1)" [checked]="checked===-1">ultima ora </mat-radio-button>
     <mat-radio-button style="margin-left: 37px;"value="-6" (click)="setChecked(-6)" [checked]="checked===-6">ultime 6 ore</mat-radio-button>
@@ -11,7 +9,6 @@
     <mat-radio-button  value="7" (click)="setChecked(7)" [checked]="checked===7">ultimi 7 giorni</mat-radio-button> 
     <mat-radio-button  value="30" (click)="setChecked(30)" [checked]="checked===30">ultimi 30 giorni</mat-radio-button>
 </mat-list-item>
-<mat-list-item fxLayoutAlign="center center"><button mat-raised-button color="primary" (click)="getThreats()">Cerca</button></mat-list-item>
 </mat-list>
-
+<button mat-raised-button color="primary" (click)="getThreats()">Cerca</button>
  </mat-radio-group>

@@ -1,20 +1,31 @@
 <div class="main-container">
   <ng-container >
-    <section style="text-align:center">
-      <h1>THREATS</h1>
+    <section style="text-align:center; font-size:2rem; margin-bottom:2rem;">
+      THREATS
     </section>
     <section>
       <app-threats-diagrams></app-threats-diagrams>
     </section>
+    <hr>
+    <section style="text-align:center; font-size:2rem; margin-TOP:2rem;">
+      PARAMETRI DI RICERCA
+    </section>
     <section>
       <app-threats-search-parameters></app-threats-search-parameters>
     </section>
+    <hr>
+    <section style="text-align:center; font-size:2rem; margin-TOP:2rem;">
+      FILTRI SUI RISULTATI
+    </section>
     <section>
       <app-threats-filters></app-threats-filters>
+    </section>
+    <hr>
+    <section style="text-align:center; font-size:2rem; margin-TOP:2rem; margin-bottom:1rem">
+      ELENCO MINACCE
     </section>
     <section>
       <app-threats-table [threats]="threats"></app-threats-table>
     </section>
     </ng-container>
 </div>
-

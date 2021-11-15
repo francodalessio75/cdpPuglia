@@ -1,25 +1,30 @@
-<ng-container class="main-container">
+<div class="main-container">
+  <ng-container>
+    <section>
+        <app-threat-data [threat]="threat"></app-threat-data>
+      </section>
+      <section>
+        <app-threat-connections></app-threat-connections>
+      </section>
+      <section>
+        <app-threat-map [threat]="threat"></app-threat-map>
+      </section>
+      <section>
+        <app-mitre-elements [threat]="threat"></app-mitre-elements>
+      </section>
+      <section>
+        <app-cve-data [threat]="threat"></app-cve-data>
+      </section>
+      <section>
+        <app-external-links [threat]="threat"></app-external-links>
+      </section>
+      <section>
+        <app-intelligence-data></app-intelligence-data>
+      </section>
+  </ng-container>
   <section>
-      <app-threat-data [threat]="threat"></app-threat-data>
-    </section>
-    <section>
-      <app-threat-connections></app-threat-connections>
-    </section>
-    <section>
-      <app-threat-map [threat]="threat"></app-threat-map>
-    </section>
-    <section>
-      <app-mitre-elements [threat]="threat"></app-mitre-elements>
-    </section>
-    <section>
-      <app-cve-data [threat]="threat"></app-cve-data>
-    </section>
-    <section>
-      <app-external-links [threat]="threat"></app-external-links>
-    </section>
-    <section>
-      <app-intelligence-data></app-intelligence-data>
-    </section>
-    
-</ng-container>
+    <button mat-raised-button color="accent" (click)="backToThreats()">CHIUDI</button>
+</section>
+</div>
+
 

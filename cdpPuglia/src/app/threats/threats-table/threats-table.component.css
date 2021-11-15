@@ -1,5 +1,6 @@
 table{
   width: 100%;
+  text-align: left;
  }
  
  .mat-column-ts {
@@ -73,9 +74,7 @@ table{
    width: 15% !important;
    overflow-wrap: break-word;
    word-wrap: break-word;
- 
    word-break: break-word;
- 
    -ms-hyphens: auto;
    -moz-hyphens: auto;
    -webkit-hyphens: auto;
@@ -89,9 +88,7 @@ table{
   width: 12% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
-
   word-break: break-word;
-
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
@@ -105,9 +102,7 @@ table{
   width: 12% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
-
   word-break: break-word;
-
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
@@ -117,17 +112,12 @@ table{
 th.mat-header-cell {
   text-align: right;
   font-weight: bold;
-  font-size: .8rem;
+  font-size: 1.5rem;
   background-color:lightblue; 
 }
 
-.table{
-  text-align: left;
-  /* background-color: red; */
-}
-
 td.mat-cell{
-  font-size: .8rem;
+  font-size: 1.3rem;
 }
 
 .clickable{
@@ -144,5 +134,19 @@ td.mat-cell{
 
 .main-container{
   margin-bottom: 4rem;
+}
+
+button{
+  font-size: 1.5rem;
+}
+
+::ng-deep .mat-select-value {
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+::ng-deep .mat-option-text {
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

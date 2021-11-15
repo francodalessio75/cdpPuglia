@@ -17,4 +17,8 @@ export class ExternalLinksComponent {
     );
   }
 
+  openSite(extRef:string){
+    window.open(extRef, '_blank');
+  }
+
 }
