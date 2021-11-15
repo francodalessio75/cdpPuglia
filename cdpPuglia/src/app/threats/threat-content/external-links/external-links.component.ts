@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Threat } from 'src/app/_models/threat';
 import { ThreatsService } from 'src/app/_services/threats.service';
+import { TranslationService } from 'src/app/_services/translation.service';
 
 @Component({
   selector: 'app-external-links',
@@ -10,8 +11,12 @@ import { ThreatsService } from 'src/app/_services/threats.service';
 export class ExternalLinksComponent {
 
   @Input() threat!:Threat;
+  externalLinks='';
 
-  constructor( private threatService:ThreatsService) { 
+  constructor( 
+    private threatService:ThreatsService,
+    private translationService:TranslationService
+) { 
     this.threatService.currentThreat$.subscribe(
       threat => this.threat = threat
     );
@@ -20,5 +25,13 @@ export class ExternalLinksComponent {
   openSite(extRef:string){
     window.open(extRef, '_blank');
   }
-
+  ngOnInit(){
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.setLanguageData();
+    });
+    this.setLanguageData();
+  }
+  private setLanguageData(){
+    let languageData = this.translationService.getCurrentLanguageData();
+    this.externalLinks = languageData.sections.threats.threatContent.externalLinks.externalLinks;}
 }

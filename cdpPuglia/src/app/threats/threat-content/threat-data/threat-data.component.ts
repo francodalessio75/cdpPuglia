@@ -12,7 +12,14 @@ import { TranslationService } from 'src/app/_services/translation.service';
 })
 export class ThreatDataComponent implements OnInit {
   @Input() threat!:Threat;
-  datasThreat='';
+  threatDatas= '';
+  identifier= '';
+  severity= '';
+  ruleName= '';
+  typeRule= '';
+  family= '';
+  action= '';
+  threatMessage= '';
 
   constructor(
     private threatService:ThreatsService,
@@ -35,7 +42,15 @@ export class ThreatDataComponent implements OnInit {
   }
   private setLanguageData(){
     let languageData = this.translationService.getCurrentLanguageData();
-    this.datasThreat = languageData.sections.threats.datasThreat;
+    this.threatDatas = languageData.sections.threats.threatContent.threatData.threatDatas;
+    this.identifier = languageData.sections.threats.threatContent.threatData.identifier;
+    this.severity = languageData.sections.threats.threatContent.threatData.severity;
+    this.ruleName = languageData.sections.threats.threatContent.threatData.ruleName;
+    this.typeRule = languageData.sections.threats.threatContent.threatData.typeRule;
+    this.family = languageData.sections.threats.threatContent.threatData.family;
+    this.action = languageData.sections.threats.threatContent.threatData.action;
+    this.threatMessage = languageData.sections.threats.threatContent.threatData.threatMessage;
   }
 
 }
+

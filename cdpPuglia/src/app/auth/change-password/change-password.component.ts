@@ -18,6 +18,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     const invalidParent = !!(control?.parent?.invalid && control?.parent?.dirty);
     return invalidCtrl;
   }
+  
 }
 
 @Component({
@@ -33,6 +34,7 @@ export class ChangePasswordComponent implements OnInit {
   saveButton = '';
   discardButton = '';
   requiredFieldError = '';
+  chgPwd= '';
 
   currentUser: User ={username:'',password:''};
 
@@ -135,6 +137,7 @@ export class ChangePasswordComponent implements OnInit {
     this.saveButton = languageData.sections.global.saveButton;
     this.discardButton = languageData.sections.global.discardButton;
     this.requiredFieldError = languageData.sections.global.requiredFieldError;
+    this.chgPwd = languageData.sections.menu.changePassword;
     
   }
 }

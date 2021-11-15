@@ -1,6 +1,6 @@
 
     <mat-grid-list cols="2" rowHeight="2rem">
-        <mat-grid-tile colspan="2"  class="title-tile"><div class="title">INTELLIGENCE (Indici di compromissione):</div>
+        <mat-grid-tile colspan="2"  class="title-tile"><div class="title">INTELLIGENCE ({{intelligenceData}}):</div>
         </mat-grid-tile>
     </mat-grid-list>
 
@@ -18,12 +18,12 @@
         </ng-container>
 
         <ng-container matColumnDef="descritpion">
-            <th mat-header-cell *matHeaderCellDef>Descrizione</th>
+            <th mat-header-cell *matHeaderCellDef>{{description}}</th>
             <td class="justified" mat-cell *matCellDef="let element">{{element.description}}</td>
         </ng-container>
 
         <ng-container matColumnDef="threathLevel">
-            <th mat-header-cell *matHeaderCellDef>Livello di Minaccia</th>
+            <th mat-header-cell *matHeaderCellDef>{{threatLevel}}</th>
             <td mat-cell *matCellDef="let element">{{element.threathLevel}}</td>
         </ng-container>
 

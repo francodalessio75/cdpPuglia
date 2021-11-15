@@ -9,6 +9,25 @@
     vertical-align: middle;
     flex-direction: column-reverse;
     margin-top: 3rem;
+
+}
+.container{
+  width:100%;
+  text-align: center;
+}
+.form-element.buttons{
+  text-align: right;
+  display: inline-fles;
+}
+.searchButton{
+  text-align: right;
+}
+.radioBtn{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-flow: row wrap;
+  
 }
 
 mat-radio-button{

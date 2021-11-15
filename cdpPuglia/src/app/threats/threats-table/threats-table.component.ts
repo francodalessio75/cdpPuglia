@@ -6,6 +6,7 @@ import {  Router } from '@angular/router';
 import { Threat } from '../../_models/threat';
 import { ThreatsService } from '../../_services/threats.service';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
+import { TranslationService } from 'src/app/_services/translation.service';
 
 interface CSVModel{
   ts?:string;
@@ -24,6 +25,12 @@ interface CSVModel{
 })
 export class ThreatsTableComponent {
   csvData!:CSVModel[];
+  ipSrc='';
+  ipDst='';
+  nameRule='';
+  typeRule='';
+  severity='';
+  export='';
 
   displayedColumns=[
     'ts',
@@ -44,6 +51,7 @@ export class ThreatsTableComponent {
 
   constructor(
     public threatsService:ThreatsService,
+    private translationService:TranslationService,
     public router:Router) {
     this.threatsService.currentThreats$.subscribe(threats =>{
       this.dataSource = new MatTableDataSource(threats);
@@ -53,6 +61,12 @@ export class ThreatsTableComponent {
       console.log(threats);
     });
     
+  }
+  ngOnInit(){
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.setLanguageData();
+    });
+    this.setLanguageData();
   }
 
   ngAfterViewInit() {
@@ -84,7 +98,7 @@ export class ThreatsTableComponent {
       ipDst:'IP DESTINAZIONE',
       label:'NOME REGOLA',
       typeRule:'TIPO REGOLA',
-      severity:'GRAVITA\'',
+      severity:'GRAVITA\''
     }
     this.csvData.push(header);
     for( let threat of this.threats ){
@@ -116,6 +130,15 @@ export class ThreatsTableComponent {
     };
 
     new ngxCsv(this.csvData,'threatsReport', options);
+  }
+  private setLanguageData(){
+    let languageData = this.translationService.getCurrentLanguageData();
+    this.ipSrc = languageData.sections.threats.threatFilters.ipSource;
+    this.ipDst = languageData.sections.threats.threatFilters.ipDestination;
+    this.nameRule = languageData.sections.threats.threatContent.threatData.ruleName;
+    this.typeRule = languageData.sections.threats.threatContent.threatData.typeRule;
+    this.severity = languageData.sections.threats.threatContent.threatData.severity;
+    this.export = languageData.sections.threats.threatTable.export;  
   }
   
 }

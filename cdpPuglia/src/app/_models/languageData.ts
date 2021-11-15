@@ -5,7 +5,12 @@ export interface LanguageData{
             discardButton:string;
             requiredFieldError:string;
             saveButton:string;
+            close: string
         },
+        footer:{
+            threatTitle: string,
+            threatDescription: string
+        }
         login:{
             pageTitle:string;
             pageDescription:string;
@@ -22,8 +27,84 @@ export interface LanguageData{
         threats:{
             pageTitle:string;
             pageDescription:string;
-            datasThreat:string;
-            elMitreMatrix:string;
+            threatContent:{
+                cveData:{
+                    technicalDetail: string;
+                    entity: string;
+                    description: string;
+                },
+                externalLinks:{
+                    externalLinks: string
+                }
+                intelligenceData:{
+                    intelligenceData: string,
+                    description: string,
+                    threatLevel: string
+                },
+                mitreElements:{
+                    techniqueDetails:{
+                        technicalDetail:string,
+                        name: string,
+                        technique: string,
+                        description: string,
+                        platform: string,
+                    },
+                    elMitreMatrix: string,
+                    viewMitreMatrix: string
+                },
+                threatConnections:{
+                    connections:string,
+                    ipSrcSrcPort: string,
+                    protocol: string
+                    ipDstDstPort: string
+                },
+                threatData:{
+                    threatDatas: string,
+                    identifier: string,
+                    severity: string,
+                    ruleName: string,
+                    typeRule: string,
+                    family: string,
+                    action: string,
+                    threatMessage: string
+                },
+                threatMap:{
+                    localization:string
+                },
+                close: string,
+                threatC:string,
+                threatsList: string,
+                resultsFilters:string,
+                searchParameters: string,
+            },
+            threatFilters:{
+                severity:{
+                    severity:string,
+                    all:string,
+                    critical:string,
+                    high:string,
+                    medium:string,
+                    low:string
+                },
+                filterAll: string,
+                clearAll:string,
+                ipSource: string,
+                ipDestination: string,
+                keyWord: string
+            },
+            threatSearchParameters:{
+                search:string,
+                lastHour: string,
+                last6Hours: string,
+                last12Hours: string,
+                last24Hours: string,
+                last7Days: string,
+                last30Days: string
+            },
+            threatTable:{
+                export:string
+            },        
+            
         }
     }
 }
