@@ -23,7 +23,9 @@
             },
             "threats":{
                 "pageTitle":"Page exposing threats: ",
-                "pageDescription":"Section where read and filter threats contents"
+                "pageDescription":"Section where read and filter threats contents",
+                "datasThreat": "DATAS THREAT:",
+                "elMitreMatrix": "ELEMENTS OF THE MITRE MATRIX:"
             }
         }         
     },
@@ -51,7 +53,9 @@
             },
             "threats":{
                 "pageTitle":"Pagina di consultazione minacce: ",
-                "pageDescription":"Sezione per consultare grafici ed applicare filtri di ricerca ai reports"
+                "pageDescription":"Sezione per consultare grafici ed applicare filtri di ricerca ai reports",
+                "datasThreat": "DATI MINACCIA:",
+                "elMitreMatrix": "ELEMENTI DELLA MATRICE MITRE:"
             }
         }         
     }

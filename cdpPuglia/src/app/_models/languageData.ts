@@ -22,6 +22,8 @@ export interface LanguageData{
         threats:{
             pageTitle:string;
             pageDescription:string;
+            datasThreat:string;
+            elMitreMatrix:string;
         }
     }
 }
