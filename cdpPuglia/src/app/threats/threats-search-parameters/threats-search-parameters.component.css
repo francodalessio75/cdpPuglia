@@ -35,9 +35,6 @@ mat-radio-button{
   font-weight: bold;
 }
 
-button{
-  font-size:1.5rem;
-  position:absolute;
-  left:65%;
-  top:78%
+.button{
+  left:100%;
 }

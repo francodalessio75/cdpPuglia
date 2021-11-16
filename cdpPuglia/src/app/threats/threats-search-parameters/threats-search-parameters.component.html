@@ -9,11 +9,10 @@
     <mat-radio-button class="radioBtn"  value="1" (click)="setChecked(1)" [checked]="checked===1">{{last24Hours}}</mat-radio-button>
     <mat-radio-button  class="radioBtn"  value="7" (click)="setChecked(7)" [checked]="checked===7">{{last7Days}}</mat-radio-button> 
     <mat-radio-button  class="radioBtn"  value="30" (click)="setChecked(30)" [checked]="checked===30">{{last30Days}}</mat-radio-button>  
-    
-   </mat-list-item></mat-list>
-   <div class="form-element buttons">   <button  mat-raised-button color="primary" (click)="getThreats()">{{search}}</button></div> 
-  
-
+  </mat-list-item>
+   <mat-list-item class="button">
+    <button mat-raised-button color="primary" (click)="getThreats()" style="font-size: 1.5rem;">Cerca</button></mat-list-item>
+   </mat-list>
 </mat-radio-group>
 
 </div>

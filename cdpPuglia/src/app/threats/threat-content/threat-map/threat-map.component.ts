@@ -75,11 +75,13 @@ export class ThreatMapComponent implements OnInit {
     );
     polygonSeries.mapPolygons.template.setAll({
       tooltipText: "{name}",
-      interactive: true
+      interactive: true,
+      fill: am5.color(0xffffff),
+      stroke: am5.color(0x000000)
     });
     
     polygonSeries.mapPolygons.template.states.create("hover", {
-      fill: am5.color(0x677935)
+      fill: am5.color(0x1111)
     });
     
     // Create point series
