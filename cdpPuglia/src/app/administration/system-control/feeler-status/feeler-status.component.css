@@ -1,0 +1,51 @@
+
+.label {
+  position: absolute;
+  right: 5px;
+  font-size:larger;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.title-tile {
+  font-size:2rem;
+  font-weight: bolder;
+  background-color: aqua;
+}
+
+.title {
+  position: absolute;
+  
+}
+
+.content {
+  position: absolute;
+  font-weight: bolder;
+  font-size: 1.8rem;
+  left:2rem;
+}
+
+.suspended{
+  color: red;
+}
+
+.active{
+
+}
+
+.clickable{
+  cursor:pointer;
+  color: blue;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+button{
+  font-size:1.8rem;
+
+}
+
+.container{
+  margin-bottom: 2rem;
+}
+

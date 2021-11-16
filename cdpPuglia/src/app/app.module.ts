@@ -43,6 +43,13 @@ import { IntelligenceDataComponent } from './threats/threat-content/intelligence
 import { TechniqueDetailsComponent } from './threats/threat-content/mitre-elements/technique-details/technique-details.component';
 import { CveDetailsComponent } from './threats/threat-content/cve-data/cve-details/cve-details.component';
 import { ThreatConnectionsComponent } from './threats/threat-content/threat-connections/threat-connections.component';
+import { SystemControlComponent } from './administration/system-control/system-control.component';
+import { FeelerStatusComponent } from './administration/system-control/feeler-status/feeler-status.component';
+import { SystemRestartComponent } from './administration/system-control/system-restart/system-restart.component';
+import { RestartConfirmationComponent } from './administration/system-control/system-restart/restart-confirmation/restart-confirmation.component';
+import { RestartSuccessNotificationComponent } from './administration/system-control/system-restart/restart-success-notification/restart-success-notification.component';
+import { FeelerStopConfirmationComponent } from './administration/system-control/feeler-status/feeler-stop-confirmation/feeler-stop-confirmation.component';
+import { FeelerStopSuccessNotificationComponent } from './administration/system-control/feeler-status/feeler-stop-success-notification/feeler-stop-success-notification.component';
 
 
 @NgModule({
@@ -72,7 +79,14 @@ import { ThreatConnectionsComponent } from './threats/threat-content/threat-conn
     IntelligenceDataComponent,
     TechniqueDetailsComponent,
     CveDetailsComponent,
-    ThreatConnectionsComponent
+    ThreatConnectionsComponent,
+    SystemControlComponent,
+    FeelerStatusComponent,
+    SystemRestartComponent,
+    RestartConfirmationComponent,
+    RestartSuccessNotificationComponent,
+    FeelerStopConfirmationComponent,
+    FeelerStopSuccessNotificationComponent
   ],
   imports: [
     BrowserModule,

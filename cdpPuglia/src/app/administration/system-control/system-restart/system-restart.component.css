@@ -9,6 +9,7 @@
     vertical-align: middle;
     flex-direction: column-reverse;
     margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 mat-radio-button{
@@ -16,6 +17,26 @@ mat-radio-button{
   font-weight: bold;
 }
 
-.button{
-  left: 100%;
+button{
+  font-size:1.5rem;
+  left:45%;
+  margin-top: 3rem;
+}
+
+.title-tile {
+  font-size:2rem;
+  font-weight: bolder;
+  background-color: aqua;
+}
+
+.title {
+  position: absolute;
+  
+}
+mat-progress-spinner{
+  position:relative;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index: 10;
 }

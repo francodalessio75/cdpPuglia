@@ -16,7 +16,7 @@ export class ThreatsSearchParametersComponent implements OnInit {
   }
 
   getThreats(){
-    this.threatsService.getThreats(this.checked);
+    this.threatsService.getTrhreatsSimulation(this.checked);
   }
 
   setChecked(filter: number){

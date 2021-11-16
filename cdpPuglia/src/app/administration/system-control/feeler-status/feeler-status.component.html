@@ -1,0 +1,19 @@
+<mat-dialog-content >
+
+    <mat-grid-list 
+      class="container"
+       cols="2" 
+       rowHeight="2rem"
+       gutterSize="2px"
+       text-align= "left">
+       <mat-grid-tile colspan="2" class="title-tile"><div class="title">STATO DI SERVIZIO DELLA SONDA:</div></mat-grid-tile>
+       <mat-grid-tile colspan="2"></mat-grid-tile>
+       <mat-grid-tile colspan="1" rowspan="3"><div class="label">STATO CORRENTE :</div></mat-grid-tile>
+       <mat-grid-tile colspan="1" rowspan="3"><div class="content active" [ngClass]="{suspended:feeler.status !== 'active'}">{{feeler.status}}</div></mat-grid-tile>
+        <mat-grid-tile colspan="2"><button *ngIf="feeler.status === 'active'" mat-raised-button color="accent" (click)="stopFeeler()">ARRESTA</button></mat-grid-tile> 
+    </mat-grid-list>
+       
+</mat-dialog-content>
+       
+
+

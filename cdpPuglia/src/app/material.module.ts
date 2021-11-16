@@ -15,6 +15,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from "@angular/material/dialog";
 import { TechniqueDetailsComponent } from './threats/threat-content/mitre-elements/technique-details/technique-details.component';
 import { AppComponent } from './app.component';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -34,7 +36,9 @@ import { AppComponent } from './app.component';
     MatSortModule,
     MatGridListModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTreeModule,
+    MatProgressSpinnerModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [TechniqueDetailsComponent]

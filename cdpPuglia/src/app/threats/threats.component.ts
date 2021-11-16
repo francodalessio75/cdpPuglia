@@ -23,6 +23,8 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       this.threatsService.currentThreats$.subscribe(threats => this.threats = threats);
     }
 
+    _loading$ = this.threatsService.loading$;
+
   ngOnInit(): void {
     this.threatsService.getThreats(1);
   }

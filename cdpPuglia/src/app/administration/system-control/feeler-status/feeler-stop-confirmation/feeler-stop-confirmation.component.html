@@ -1,0 +1,8 @@
+<h1>System Stop Confirmation</h1>
+<div mat-dialog-content>
+    <p>{{message}}</p>
+</div>
+<div mat-dialog-actions>
+    <span class="margin"><button mat-raised-button color="accent" (click)="closeDialog()">NO</button></span>
+    <span class="margin"><button  mat-raised-button color="primary" (click)="confirmed()" cdkFocusInitial>Si'</button></span>
+</div>
