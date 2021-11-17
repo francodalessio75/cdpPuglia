@@ -16,6 +16,7 @@ export class ThreatsDiagramsComponent implements OnInit{
   threats!: Threat[];
   dayMonth: string='DD/MMMM';
   public currentMonth:string='';
+ 
   constructor( 
     private translationService:TranslationService,
     private threatsService: ThreatsService,
@@ -35,7 +36,7 @@ export class ThreatsDiagramsComponent implements OnInit{
         {data:[{
           x: threat.ts,
           y: this.getSeverityValue(threat.severity)
-        }]
+        }],legend:''+threat.label
         }
       );
       // this.barChartLabels.push(''+threat.ts)
@@ -55,7 +56,7 @@ export class ThreatsDiagramsComponent implements OnInit{
   
   ngOnInit(){
     this.threatsService.getThreats(-1);
-      
+     
     }
   barChartType: ChartType = 'bar';  
   barChartLegend = false;  
@@ -103,6 +104,9 @@ barChartLabels!: string[];
   ];
   barChartOptions: ChartOptions = {
     responsive: true,
+legend:{
+  position:'right'
+},
     tooltips: {
       callbacks: {
         label: function(tooltipItem) {
@@ -121,10 +125,12 @@ barChartLabels!: string[];
         // offset: true,
         stacked: true,
         gridLines: {
-          offsetGridLines: false// offsetGridLines (boolean) If true, labels are shifted to be between grid lines.
+          display: false// offsetGridLines (boolean) If true, labels are shifted to be between grid lines.
       },
           ticks:{ 
-            stepSize:1,
+            max:'2021-11-08T00:59:47',
+            min:'2021-11-08T00:00:47',
+              
             autoSkip: true,
            
             // callback:function(label:any,currentMonth):any{
@@ -155,7 +161,7 @@ barChartLabels!: string[];
     },    
         type: 'time',
         
-        distribution: 'series', //mostra solo i dati disponibili
+        distribution: 'linear', //mostra solo i dati disponibili
         
         time: {
          
@@ -164,13 +170,13 @@ barChartLabels!: string[];
           // max:this.bubbleChartData[this.bubbleChartData.length-1].x,
           
          
-        //   unitStepSize: 1,
+           unitStepSize: 5,
         //   tooltipFormat: 'DD mm ss', //tooltip
           displayFormats: {
             
             //day:'MMM DD',
             // 'month': 'MMM DD',                                
-            second: 'hh:mm:ss'
+            second: 'hh:mm'
         },
         scaleLabel: {
           display: true,
@@ -187,7 +193,7 @@ barChartLabels!: string[];
       },
       {
         id: 'xAxis2',
-        type: 'time',
+        type: '',
         time:{
           // unit: 'second',
           displayFormats: {
@@ -203,7 +209,7 @@ barChartLabels!: string[];
             offsetGridLines: true
         },
         scaleLabel: {
-            display: true,
+            display: false,
             labelString: 'Day of Year'
         }
     }
