@@ -19,15 +19,13 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   searchParameters='';
   resultsFilters='';
   threatsList='';
-  threatTitle = this.title;
-  threatDescription = this.description;
+  threatTitle = '';
+  threatDescription = '';
 
   constructor(
     private headerService:HeaderService,
     private threatsService:ThreatsService,
     private translationService:TranslationService) {
-      //this.setLanguageData();
-      //this.headerService.setCurrentTitleDescription(this.threatTitle, this.threatDescription);
       this.threatsService.currentThreat$.subscribe(threat => this.threat = threat);
       this.threatsService.currentThreats$.subscribe(threats => this.threats = threats);
     }
@@ -53,5 +51,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     this.threatsList = languageData.sections.threats.threatContent.threatsList;
     this.threatTitle = languageData.sections.footer.threatTitle;
     this.threatDescription = languageData.sections.footer.threatDescription;
+    this.headerService.setCurrentTitleDescription(this.threatTitle, this.threatDescription);
   }
 }
