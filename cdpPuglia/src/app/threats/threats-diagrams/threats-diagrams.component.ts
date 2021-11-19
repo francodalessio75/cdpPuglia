@@ -128,8 +128,8 @@ legend:{
           display: false// offsetGridLines (boolean) If true, labels are shifted to be between grid lines.
       },
           ticks:{ 
-            max:'2021-11-08T00:59:47',
-            min:'2021-11-08T00:00:47',
+            // max:'2021-11-08T00:59:47',
+            // min:'2021-11-08T00:00:47',
               
             autoSkip: true,
            
@@ -161,7 +161,7 @@ legend:{
     },    
         type: 'time',
         
-        distribution: 'linear', //mostra solo i dati disponibili
+        distribution: 'series', //mostra solo i dati disponibili
         
         time: {
          

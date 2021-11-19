@@ -1,10 +1,86 @@
-<mat-sidenav-container>
+<!-- <mat-sidenav-container>
   <mat-sidenav #sidenav role="navigation">
-    <!-- <app-sidenav-list (closeSideNav)="sidenav.close()"></app-sidenav-list>  -->
+    <app-sidenav-list (closeSideNav)="sidenav.close()"></app-sidenav-list>  
   </mat-sidenav>
   <mat-sidenav-content>
-    <!-- <app-header (sideNavToggle)="sidenav.toggle()"></app-header> -->
+   <app-header (sideNavToggle)="sidenav.toggle()"></app-header> 
     <router-outlet></router-outlet>
     <app-footer></app-footer>
   </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<mat-sidenav-container  class="sidenav-container">
+ 
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]=""
+      [mode]="'side'"
+      [opened]="true">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a *ngFor="let item of menuItems" mat-list-item [routerLink]="'/'+item">{{item | titlecase}}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar">
+      <mat-toolbar-row>
+        <div>LOGO</div>
+        <div
+        fxFlex
+        fxLayout
+        fxLayoutAlign="flex-end">
+        <ul
+          fxLayout
+          class="navigation-items"
+          fxLayoutGap="10px">
+          <li *ngIf="(accountService.currentUser$  | async ) === null ">
+            <a routerLink="/login">
+              <mat-icon>login</mat-icon>
+              Login
+            </a>
+          </li>
+          <li *ngIf="(accountService.currentUser$  | async ) !== null ">
+            <button mat-button (click)="logout()" style="font-size: 1.1rem;">
+              <mat-icon>logout</mat-icon>
+              Logout
+            </button>
+          </li>
+          <li *ngIf="(accountService.currentUser$  | async ) !== null ">
+            <button mat-button [matMenuTriggerFor]="belowMenu" style="font-size: 1.1rem;">
+              <mat-icon>account_box</mat-icon>
+              {{manageProfile}}
+            </button>
+            <mat-menu #belowMenu="matMenu" yPosition="below">
+              <p style="text-align: center;">{{user.username}}({{user.role}})</p>
+              <button mat-menu-item (click)="openChangeProfile()" ><mat-icon>account_box</mat-icon>{{changeProfile}}</button>
+              <button mat-menu-item (click)="openChangePassword()" ><mat-icon>manage_accounts</mat-icon>{{changePassword}}</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button mat-button [matMenuTriggerFor]="languageMenu" style="font-size: 1.1rem;">
+              <mat-icon>language</mat-icon>
+              {{languageLabel}}
+            </button>
+            <mat-menu #languageMenu="matMenu" yPosition="below">
+              <button mat-menu-item (click)="changeLanguage('it')" >{{italian}}</button>
+              <button mat-menu-item (click)="changeLanguage('en')" >{{english}}</button>
+            </mat-menu>
+          </li>
+        </ul>
+      </div>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <button
+        type="button"
+        aria-label="Toggle sidenav"
+        (click)="drawer.toggle()"
+        mat-icon-button
+        >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+        <span style="margin:auto">{{pageTitle}} {{pageDescription}}</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
 </mat-sidenav-container>
