@@ -1,0 +1,53 @@
+<div class="container">
+    <mat-grid-list 
+        class="container"
+        cols="1" 
+        rowHeight="2rem"
+        gutterSize="2px"
+        text-align= "left">
+            <mat-grid-tile 
+                colspan="1" 
+                class="title-tile">
+                <div class="title">
+                    DEFINIZIONE MANUALE DEL TEMPO DI SISTEMA
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile colspan="1"></mat-grid-tile>
+
+            <mat-grid-tile colspan="1"></mat-grid-tile>
+            <mat-grid-tile 
+                colspan="1" 
+                class="content">
+                Timezone:
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1">
+                <mat-form-field appearance="fill">
+                    <mat-label>Timezone</mat-label>
+                    <mat-select>
+                      <mat-option *ngFor="let timezone of timeZones" [value]="timezone.value">
+                        {{timezone.text}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1"></mat-grid-tile>
+
+            <mat-grid-tile colspan="1"></mat-grid-tile>
+
+            <mat-grid-tile colspan="1"></mat-grid-tile>
+            <mat-grid-tile 
+                colspan="1" 
+                class="content">
+                Data e ora:
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="datepicker" placeholder="select date">
+                    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker></mat-datepicker>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1"></mat-grid-tile>
+    </mat-grid-list>
+</div>

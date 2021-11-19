@@ -18,6 +18,7 @@ export class ChangeProfileComponent implements OnInit {
   discardButton = '';
   requiredFieldError = '';
   currentUser: User ={username:'', password:''};
+  chgProfile= '';
 
   constructor(
     private translationService:TranslationService,
@@ -61,6 +62,7 @@ export class ChangeProfileComponent implements OnInit {
     this.saveButton = languageData.sections.global.saveButton;
     this.discardButton = languageData.sections.global.discardButton;
     this.requiredFieldError = languageData.sections.global.requiredFieldError;
+    this.chgProfile = languageData.sections.menu.changeProfile;
     
   }
 

@@ -3,7 +3,7 @@
    rowHeight="2rem"
    gutterSize="2px"
    text-align= "left">
-   <mat-grid-tile colspan="2" class="title-tile"><div class="title">CONNESSIONI:</div></mat-grid-tile>
+   <mat-grid-tile colspan="2" class="title-tile"><div class="title">{{connections}} :</div></mat-grid-tile>
 </mat-grid-list>
 
 
@@ -14,7 +14,7 @@
                 <div class="timeline-step">
                     <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
                         <div class="inner-circle"></div>
-                        <p class="h6 mt-3 mb-1">Ip Sorgente: porta sorgente:</p>
+                        <p class="h6 mt-3 mb-1">{{ipSrcSrcPort}}</p>
                         <p class="h6 text-muted mb-0 mb-lg-0">{{threat.ipSrc}}:{{threat.portSrc}} </p>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                         </div>
                         
                         <div>
-                        <p class="h6 text-muted mb-0 mb-lg-0">PROTOCOLLO</p>
+                        <p class="h6 text-muted mb-0 mb-lg-0">{{protocol}}</p>
                         <p class="h6 text-muted mb-0 mb-lg-0">{{threat.protocol}}</p>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                 <div class="timeline-step">
                     <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
                         <div class="inner-circle"></div>
-                        <p class="h6 mt-3 mb-1">Ip Destinatario: porta destinatario</p>
+                        <p class="h6 mt-3 mb-1">{{ipDstDstPort}}</p>
                         <p class="h6 text-muted mb-0 mb-lg-0">{{threat.ipDst}}:{{threat.portDst}}</p>
                     </div>
                 </div>

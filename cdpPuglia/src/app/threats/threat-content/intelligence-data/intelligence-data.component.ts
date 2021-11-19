@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Severity } from 'src/app/enums/SeverityEnum';
 import { Threat } from 'src/app/_models/threat';
 import { ThreatsService } from 'src/app/_services/threats.service';
+import { TranslationService } from 'src/app/_services/translation.service';
 
 interface Intelligence{
   id?:number;
@@ -19,6 +20,9 @@ interface Intelligence{
 })
 export class IntelligenceDataComponent {
   @Input()intelligence:Intelligence[] = [{}];
+  intelligenceData='';
+  description='';
+  threatLevel='';
 
   displayedColumns=[
     'id',
@@ -31,6 +35,7 @@ export class IntelligenceDataComponent {
 
   constructor(
     private threatService:ThreatsService,
+    private translationService:TranslationService,
     private router:Router) {
     this.threatService.currentThreat$.subscribe(threat =>{
       if(threat.intelligence){
@@ -39,8 +44,21 @@ export class IntelligenceDataComponent {
       } 
     });
   }
+  ngOnInit(){
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.setLanguageData();
+    });
+    this.setLanguageData();
+
+  }
 
   backToThreats(){
     this.router.navigateByUrl('threats');
+  }
+  private setLanguageData(){
+    let languageData = this.translationService.getCurrentLanguageData();
+    this.intelligenceData = languageData.sections.threats.threatContent.intelligenceData.intelligenceData;
+    this.threatLevel = languageData.sections.threats.threatContent.intelligenceData.threatLevel;
+    this.description = languageData.sections.threats.threatContent.intelligenceData.description;
   }
 }

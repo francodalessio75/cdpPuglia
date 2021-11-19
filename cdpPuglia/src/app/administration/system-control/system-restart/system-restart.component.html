@@ -1,23 +1,34 @@
-<mat-progress-spinner [mode]="'indeterminate'" *ngIf="_loading$ | async"></mat-progress-spinner>
-<mat-dialog-content >
-
+<div class="container">
+    <mat-progress-spinner [mode]="'indeterminate'" *ngIf="_loading$ | async"></mat-progress-spinner>
     <mat-grid-list 
-      class="container"
-       cols="2" 
-       rowHeight="2rem"
-       gutterSize="2px"
-       text-align= "left">
-       <mat-grid-tile colspan="2" class="title-tile"><div class="title">RIAVVIO DEL SISTEMA:</div></mat-grid-tile>
+        class="container"
+        cols="2" 
+        rowHeight="2rem"
+        gutterSize="2px"
+        text-align= "left">
+            <mat-grid-tile colspan="2" class="title-tile"><div class="title">RIAVVIO DEL SISTEMA:</div></mat-grid-tile>
     </mat-grid-list>
-       
-</mat-dialog-content>
-<mat-radio-group class="mat-radio-label" aria-label="Select an option">
-    <mat-list>
-        <mat-list-item><mat-radio-button value="-1" (click)="setChecked(1)" [checked]="checked===1">Riavvio Hard (riavvio dell'appliance)</mat-radio-button>
-        <mat-radio-button style="margin-left: 37px;"value="-6" (click)="setChecked(2)" [checked]="checked===2">Riavvio Soft (riavvio dei servizi)</mat-radio-button>
-        </mat-list-item>
-        <mat-list-item><button mat-raised-button color="primary" (click)="restart()">RIAVVIA</button></mat-list-item>
-    </mat-list>
     
-</mat-radio-group>
-    
+    <label id="radio-label" class="radio-label">Modalità di riavvio</label>
+    <mat-radio-group
+        aria-labelledby="radio-label"
+        class="mat-radio-label" 
+        [(ngModel)]="choosenRestartMode">
+        <mat-list>
+            <mat-list-item>
+                <mat-radio-button
+                    *ngFor="let mode of restartModes"
+                    [value]="mode.value"
+                    class="radioBtn">{{mode.message}}
+                </mat-radio-button>
+            </mat-list-item>
+            <mat-list-item>
+                <button 
+                    mat-raised-button 
+                    color="primary" 
+                    (click)="restart()"
+                    class="button">RIAVVIA</button>
+            </mat-list-item>
+        </mat-list>
+    </mat-radio-group>
+</div>

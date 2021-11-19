@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { HeaderService } from 'src/app/_services/header.service';
 import { TranslationService } from 'src/app/_services/translation.service';
@@ -13,7 +14,7 @@ import * as LanguageModel from '../../_models/languageData'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy{
-  model:any = {};
+  user:User = {};
 
   /* Related to Language */
   language:LanguagesEnum.Language = LanguagesEnum.Language.it;
@@ -46,9 +47,9 @@ export class LoginComponent implements OnInit, OnDestroy{
 
 
   login(){
-    this.model.username = this.loginForm.value.username;
-    this.model.password = this.loginForm.value.password;
-    this.accountService.getToken$(this.model).subscribe(response => {
+    this.user.username = this.loginForm.value.username;
+    this.user.password = this.loginForm.value.password;
+    this.accountService.getToken$(this.user).subscribe(response => {
       this.accountService.getRole$().subscribe(userData => {
         this.router.navigateByUrl('/threats');
       }, error => {

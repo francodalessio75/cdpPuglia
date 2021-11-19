@@ -17,17 +17,17 @@
         </ng-container>
     
         <ng-container matColumnDef="ipSrc">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>IP SORGENTE</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ipSrc}}</th>
             <td mat-cell *matCellDef="let element">{{element.ipSrc}}</td>
         </ng-container>
     
         <ng-container matColumnDef="ipDst">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>IP DESTINAZIONE</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ipDst}}</th>
             <td mat-cell *matCellDef="let element">{{element.ipDst}}</td>
         </ng-container>
     
         <ng-container matColumnDef="label">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>NOME REGOLA</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{nameRule}}</th>
             <td class="clickable" 
                 mat-cell 
                 *matCellDef="let element"
@@ -36,13 +36,23 @@
         </ng-container>
     
         <ng-container matColumnDef="typeRule">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>TIPO REGOLA</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{typeRule}}</th>
             <td mat-cell *matCellDef="let element">{{element.typeRule}}</td>
         </ng-container>
     
-        <ng-container matColumnDef="severity">
-            <th  mat-header-cell *matHeaderCellDef mat-sort-header>GRAVITA'</th>
-            <td mat-cell *matCellDef="let element">{{element.severity}}</td>
+        <ng-container  matColumnDef="severity">
+            <th  mat-header-cell *matHeaderCellDef mat-sort-header>{{severity}}</th>
+            <td 
+                mat-cell 
+                *matCellDef="let element">
+                    <button class="gravity-label" [ngClass]="{
+                        'low': element.severity === 'low', 
+                        'medium': element.severity === 'medium', 
+                        'high': element.severity === 'high', 
+                        'critical': element.severity === 'critical'
+                    }" >{{element.severity}}</button>
+                    
+            </td>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -52,7 +62,7 @@
 
     <mat-paginator style="font-size: 1.2rem; font-weight: bold;" #paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     <div button class="align-right">
-        <button mat-raised-button color="primary" (click)="downloadCSV('test.csv')">ESPORTA</button>
+        <button mat-raised-button color="primary" (click)="downloadCSV('test.csv')">{{export}}</button>
     </div>
 
 </div>

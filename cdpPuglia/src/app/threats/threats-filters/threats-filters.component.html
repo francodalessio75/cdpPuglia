@@ -6,37 +6,37 @@
     >
 
     <div class="form-element buttons">
-        <button mat-raised-button color="primary" type="submit" class="button" >Filtra</button>
-        <button mat-raised-button color="primary"  class="button" (click)="resetFilters()">Annulla Filtro</button>
+        <button mat-raised-button color="primary" type="submit" class="button" >{{filterAll}}</button>
+        <button mat-raised-button color="primary"  class="button" (click)="resetFilters()">{{clearAll}}</button>
     </div>
 
     <mat-form-field appearance="fill" class="form-element">
-        <mat-label>GRAVITA'</mat-label>
+        <mat-label>{{severity}}</mat-label>
         <select 
             matNativeControl 
             required 
             formControlName='severity'
             [(ngModel)]="selectedOption">
-            <option value="undefined">tutte</option>
-            <option value="low">Bassa</option>
-            <option value="medium">Media</option>
-            <option value="high">alta</option>
-            <option value="critica">critica</option>
+            <option value="undefined">{{all}}</option>
+            <option value="low">{{low}}</option>
+            <option value="medium">{{medium}}</option>
+            <option value="high">{{high}}</option>
+            <option value="critica">{{critical}}</option>
         </select>
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="fill">
-        <mat-label>IP SORGENTE</mat-label>
+        <mat-label>{{ipSource}}</mat-label>
         <input matInput formControlName='ipSrc'>
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="fill">
-        <mat-label>IP DESTINATARIO</mat-label>
+        <mat-label>{{ipSource}}</mat-label>
         <input matInput formControlName='ipDst'>
     </mat-form-field>
   
     <mat-form-field class="full-width" appearance="fill">
-      <mat-label>PAROLA CHIAVE</mat-label>
+      <mat-label>{{keyWord}}</mat-label>
       <input matInput formControlName='label'>
     </mat-form-field>
   </form>

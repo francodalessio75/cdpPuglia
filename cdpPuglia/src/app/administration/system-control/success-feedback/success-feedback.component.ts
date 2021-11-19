@@ -3,14 +3,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-feeler-stop-success-notification',
-  templateUrl: './feeler-stop-success-notification.component.html',
-  styleUrls: ['./feeler-stop-success-notification.component.css']
+  selector: 'app-success-feedback',
+  templateUrl: './success-feedback.component.html',
+  styleUrls: ['./success-feedback.component.css']
 })
-export class FeelerStopSuccessNotificationComponent implements OnInit {
+export class SuccessFeedbackComponent implements OnInit {
 
   constructor(
-    public dialog: MatDialogRef<FeelerStopSuccessNotificationComponent>,
+    public dialog: MatDialogRef<SuccessFeedbackComponent>,
     @Inject(MAT_DIALOG_DATA) public message: string,
     private router:Router) { }
 

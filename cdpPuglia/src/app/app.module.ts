@@ -22,8 +22,7 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 // For MDB Angular Free
 import { WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 import {ChartsModule} from 'ng2-charts';
-
-
+import { CookieService } from 'ngx-cookie-service';
 
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { MultiLanguageComponent } from './multi-language/multi-language.component';
@@ -46,10 +45,11 @@ import { ThreatConnectionsComponent } from './threats/threat-content/threat-conn
 import { SystemControlComponent } from './administration/system-control/system-control.component';
 import { FeelerStatusComponent } from './administration/system-control/feeler-status/feeler-status.component';
 import { SystemRestartComponent } from './administration/system-control/system-restart/system-restart.component';
-import { RestartConfirmationComponent } from './administration/system-control/system-restart/restart-confirmation/restart-confirmation.component';
-import { RestartSuccessNotificationComponent } from './administration/system-control/system-restart/restart-success-notification/restart-success-notification.component';
-import { FeelerStopConfirmationComponent } from './administration/system-control/feeler-status/feeler-stop-confirmation/feeler-stop-confirmation.component';
-import { FeelerStopSuccessNotificationComponent } from './administration/system-control/feeler-status/feeler-stop-success-notification/feeler-stop-success-notification.component';
+import { NtpConfigurationComponent } from './administration/system-control/ntp-configuration/ntp-configuration.component';
+import { ConfirmationAlertComponent } from './administration/system-control/confirmation-alert/confirmation-alert.component';
+import { SuccessFeedbackComponent } from './administration/system-control/success-feedback/success-feedback.component';
+import { SystemTimeComponent } from './administration/system-control/system-time/system-time.component';
+
 
 
 @NgModule({
@@ -83,10 +83,10 @@ import { FeelerStopSuccessNotificationComponent } from './administration/system-
     SystemControlComponent,
     FeelerStatusComponent,
     SystemRestartComponent,
-    RestartConfirmationComponent,
-    RestartSuccessNotificationComponent,
-    FeelerStopConfirmationComponent,
-    FeelerStopSuccessNotificationComponent
+    NtpConfigurationComponent,
+    ConfirmationAlertComponent,
+    SuccessFeedbackComponent,
+    SystemTimeComponent
   ],
   imports: [
     BrowserModule,
@@ -102,13 +102,14 @@ import { FeelerStopSuccessNotificationComponent } from './administration/system-
     ChartsModule,
     WavesModule,
     MDBBootstrapModule,
-    MatDialogModule
-
+    MatDialogModule,
+    
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

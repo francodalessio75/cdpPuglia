@@ -3,14 +3,14 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-feeler-stop-confirmation',
-  templateUrl: './feeler-stop-confirmation.component.html',
-  styleUrls: ['./feeler-stop-confirmation.component.css']
+  selector: 'app-confirmation-alert',
+  templateUrl: './confirmation-alert.component.html',
+  styleUrls: ['./confirmation-alert.component.css']
 })
-export class FeelerStopConfirmationComponent implements OnInit {
+export class ConfirmationAlertComponent implements OnInit {
 
   constructor(
-    public dialog: MatDialogRef<FeelerStopConfirmationComponent>,
+    public dialog: MatDialogRef<ConfirmationAlertComponent>,
     @Inject(MAT_DIALOG_DATA) public message: string) { }
 
     closeDialog(): void {
@@ -21,7 +21,7 @@ export class FeelerStopConfirmationComponent implements OnInit {
       this.dialog.close(true);
     }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

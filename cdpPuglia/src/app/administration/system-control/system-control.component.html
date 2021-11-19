@@ -1,19 +1,21 @@
 <div class="main-container">
     <ng-container>
         <section>
-            <app-feeler-status [feeler]="feeler"></app-feeler-status>
-          </section>
-          <hr>
-        <section>
-            <app-system-restart></app-system-restart>
-          </section>
-          <hr>
-        <section>
-            <h1>NTP-SERVER-CONFIG</h1>
+          <app-feeler-status [feeler]="feeler"></app-feeler-status>
         </section>
+        <hr>
         <section>
-            <h1>MANUAL-TIME-SYSTEM-SETTING</h1>
+          <app-system-restart></app-system-restart>
         </section>
+        <hr>
+        <section>
+          <app-ntp-configuration></app-ntp-configuration>
+        </section>
+        <hr>
+        <section>
+          <app-system-time></app-system-time>
+        </section>
+        <hr>
     </ng-container>
   </div>
   

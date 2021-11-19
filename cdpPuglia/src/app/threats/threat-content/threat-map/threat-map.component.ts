@@ -6,6 +6,7 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import * as am5map from "@amcharts/amcharts5/map";
 import worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
+import { TranslationService } from 'src/app/_services/translation.service';
 
 @Component({
   selector: 'app-threat-map',
@@ -17,12 +18,14 @@ export class ThreatMapComponent implements OnInit {
   ipSrcLongitude!: number | undefined;
   ipDstLatitude!:  number | undefined;
   ipDstLongitude!: number | undefined;
+  localization='';
   //const root! :am5.Root | undefined;
   
   @Input() threat!: Threat;
   
   constructor(
     private threatsService: ThreatsService,
+    private translationService:TranslationService
   ) {
       this.threatsService.currentThreat$.subscribe(threat => {
       this.threat=threat;
@@ -37,6 +40,12 @@ export class ThreatMapComponent implements OnInit {
    
    }
   ngOnInit(): void {
+    /* Change language */
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.setLanguageData();
+    });
+    this.setLanguageData();
+
     console.log(this.threat);
     var root = am5.Root.new("chartdiv"); 
 
@@ -228,4 +237,8 @@ chart.appear(1000, 100);
     //   autoRotate: true
     // });
   }
+
+  private setLanguageData(){
+    let languageData = this.translationService.getCurrentLanguageData();
+    this.localization = languageData.sections.threats.threatContent.threatMap.localization;}
 }

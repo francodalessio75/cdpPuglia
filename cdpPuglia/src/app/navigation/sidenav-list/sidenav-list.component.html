@@ -27,7 +27,7 @@
     <div mat-subheader>External Servicies</div>
     <div mat-subheader>Technical Configuration</div>
     <div mat-subheader>IDS/IPS</div>
-    <mat-list-item routerLink="/system-control" (click)="onClose()">
+    <mat-list-item *ngIf="user.role === 'admin'" routerLink="/system-control" (click)="onClose()">
       <mat-icon>admin_panel_settings</mat-icon>
       <div mat-line>System Control</div>
     </mat-list-item>

@@ -13,8 +13,8 @@ post {{baseURL}}/login
 Content-Type: application/json
 
 {
-    "username":"admin",
-    "password":"adminadmin"
+    "username":"viewer",
+    "password":"viewerviewer"
 }
 
 

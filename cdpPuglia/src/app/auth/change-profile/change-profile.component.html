@@ -1,6 +1,6 @@
-<mat-dialog-content class="mat-typography" #closeAddExpenseModal><h1>
+<mat-dialog-content class="mat-typography" #closeAddExpenseModal>
+  <h1> {{chgProfile}}</h1>
 
-</h1>
 <section class="login-form">
     <form 
     [formGroup]="changeProfileForm"
@@ -42,13 +42,12 @@
           <mat-error *ngIf="changeProfileForm.get('email')?.hasError('required')"><strong>{{requiredFieldError}}</strong></mat-error>
           <mat-error *ngIf="changeProfileForm.get('email')?.hasError('pattern')">Formato email non valido</mat-error>
 
-      </mat-form-field>
+      </mat-form-field><mat-dialog-actions>
       <button
         type="salva"
         mat-raised-button
         color="primary"
         [disabled]="changeProfileForm.invalid">{{saveButton}}</button>
-        <mat-dialog-actions>
         <button
         mat-button mat-dialog-close
         mat-raised-button

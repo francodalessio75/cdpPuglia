@@ -4,16 +4,26 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
-import { RestartConfirmationComponent } from './restart-confirmation/restart-confirmation.component';
-import { RestartSuccessNotificationComponent } from './restart-success-notification/restart-success-notification.component';
+import { ConfirmationAlertComponent } from '../confirmation-alert/confirmation-alert.component';
+import { SuccessFeedbackComponent } from '../success-feedback/success-feedback.component';
+
+export interface RestartMode{
+  value:string,
+  message:string
+}
 
 @Component({
   selector: 'app-system-restart',
   templateUrl: './system-restart.component.html',
   styleUrls: ['./system-restart.component.css']
 })
-export class SystemRestartComponent implements OnInit {
-  checked=2;
+export class SystemRestartComponent {
+  choosenRestartMode!:string;
+  
+  restartModes:RestartMode[]=[
+    {value:'soft', message:'Riavvio Soft (riavvio dei servizi)'},
+    {value:'hard', message:'Riavvio Hard (riavvio dell\'appliance)'}
+  ];
 
   private _loading = new BehaviorSubject<boolean>(false);
   public readonly loading$ = this._loading.asObservable();
@@ -28,18 +38,9 @@ export class SystemRestartComponent implements OnInit {
 
    }
 
-  
-
-  ngOnInit(): void {
-  }
-
-  setChecked(filter: number){
-    this.checked=filter;
-  }
-
   restart():void{
     this.dialog
-      .open(RestartConfirmationComponent, {
+      .open(ConfirmationAlertComponent, {
         data: 'Il riavvio del sistema comporta una interruzione di operativita\' . Confermare l\'operazione?'
       })
       .afterClosed()
@@ -57,7 +58,7 @@ export class SystemRestartComponent implements OnInit {
   }
 
   spinnerSimulation(){
-    this.dialog.open(RestartSuccessNotificationComponent,{
+    this.dialog.open(SuccessFeedbackComponent,{
       data:'Rivisitare la sezione per verificare lo stato del sistema.'
     })
   }

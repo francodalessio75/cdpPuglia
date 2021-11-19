@@ -5,7 +5,13 @@
                 "submitButton":"Submit",
                 "discardButton":"Abort",
                 "requiredFieldError": "Required field",
-                "saveButton" : "Save"
+                "saveButton" : "Save",
+                "close": "Close"
+                
+            },
+            "footer":{
+                "threatTitle": "Threats consultation page",
+                "threatDescription": ": Section to consult graphs and apply search filters to reports"
             },
             "login":{
                 "pageTitle":"Login Page:",
@@ -23,7 +29,84 @@
             },
             "threats":{
                 "pageTitle":"Page exposing threats: ",
-                "pageDescription":"Section where read and filter threats contents"
+                "pageDescription":"Section where read and filter threats contents",
+                "threatContent":{
+                    "cveData":{
+                        "technicalDetail": "TECHNICAL DETAIL MITRE ATTACK",
+                        "entity": "ENTITY",
+                        "description": "DESCRIPTION"
+                    },
+                    "externalLinks":{
+                        "externalLinks": "EXTERNAL LINKS"
+                    },
+                    "intelligenceData":{
+                        "intelligenceData": "Indices of impairment",
+                        "description": "Description",
+                        "threatLevel": "Threat level"
+                    },
+                    "mitreElements":{
+                        "techniqueDetails":{
+                            "technicalDetail": "TECHNICAL DETAIL MITRE ATTACK",
+                            "name": "NAME",
+                            "technique": "TECHNIQUE",
+                            "description": "DESCRIPTION",
+                            "platform": "PLATFORM"
+                        },
+                        "elMitreMatrix": "ELEMENTS OF THE MITRE MATRIX:",
+                        "viewMitreMatrix": "View MITRE matrix"
+                    },
+                    "threatConnections":{
+                        "connections": "CONNECTIONS",
+                        "ipSrcSrcPort": "Ip source: source port",
+                        "protocol": "PROTOCOL",
+                        "ipDstDstPort": "Ip destination: destination port"
+                    },
+                    "threatData":{
+                        "threatDatas": "THREAT DATAS",
+                        "identifier": "IDENTIFIER",
+                        "severity": "SEVERITY",
+                        "ruleName": "RULE NAME",
+                        "typeRule": "RULE TYPE",
+                        "family": "FAMILY",
+                        "action": "ACTION",
+                        "threatMessage": "THREAT MESSAGE"
+                    },
+                    "threatMap":{
+                        "localization":"LOCALIZATION"
+                    },
+                
+                "threatC": "THREATS",
+                "threatsList": "LIST OF THREATS",
+                "resultsFilters": "FILTERS ON RESULTS",
+                "searchParameters":"SEARCH PARAMETERS"
+                },
+                "threatFilters":{
+                    "severity":{
+                        "severity": "SEVERITY",
+                        "all": "ALL",
+                        "critical": "CRITICAL",
+                        "high": "HIGH",
+                        "medium": "MEDIUM",
+                        "low": "LOW"
+                    },
+                    "filterAll": "Filter",
+                    "clearAll": "Clear All",
+                    "ipSource": "IP SOURCE",
+                    "ipDestination": "IP DESTINATION",
+                    "keyWord": "KEY WORD"
+                },
+                "threatSearchParameters":{
+                    "search": "Search",
+                    "lastHour": "last hour",
+                    "last6Hours": "last 6 hours",
+                    "last12Hours": "last 12 hours",
+                    "last24Hours": "last 24 hours",
+                    "last7Days": "last 7 days",
+                    "last30Days": "last 30 days"
+                },
+                "threatTable":{
+                    "export": "Export"
+                }                
             }
         }         
     },
@@ -33,7 +116,12 @@
                 "submitButton":"Invia",
                 "discardButton":"Annulla",
                 "requiredFieldError": "Campo obbligatorio",
-                "saveButton" : "Salva"
+                "saveButton" : "Salva",
+                "close": "Chiudi"
+            },
+            "footer":{
+                "threatTitle": "Pagina consultazione minacce",
+                "threatDescription": ":Sezione per consultare grafici ed applicare filtri di ricerca ai reports"
             },
             "login":{
                 "pageTitle":"Pagina di Login: ",
@@ -51,8 +139,88 @@
             },
             "threats":{
                 "pageTitle":"Pagina di consultazione minacce: ",
-                "pageDescription":"Sezione per consultare grafici ed applicare filtri di ricerca ai reports"
+                "pageDescription":"Sezione per consultare grafici ed applicare filtri di ricerca ai reports",
+                "threatContent":{
+                    "cveData":{
+                        "technicalDetail": "DETTAGLIO TECNICO ATTACCO MITRE",
+                        "entity": "ENTITA'",
+                        "description": "DESCRIZIONE"
+                    },
+                    "externalLinks":{
+                        "externalLinks": "LINK ESTERNI"
+                    },
+                    "intelligenceData":{
+                        "intelligenceData": "Indice di compromissione",
+                        "description": "Descrizione",
+                        "threatLevel": "Livello di Minaccia"
+                    },
+                    "mitreElements":{
+                        "techniqueDetails":{
+                            "technicalDetail": "DETTAGLIO TECNICO ATTACCO MITRE",
+                            "name": "NOME",
+                            "technique": "TECNICA",
+                            "description": "DESCRIZIONE",
+                            "platform": "PIATTAFORMA"
+                        },
+                        "elMitreMatrix": "ELEMENTI DELLA MATRICE MITRE",
+                        "viewMitreMatrix": "Visualizza Matrice MITRE"
+                    },
+                    "threatConnections":{
+                        "connections": "CONNESSIONI",
+                        "ipSrcSrcPort": "Ip sorgente: porta sorgente",
+                        "protocol": "PROTOCOLLO",
+                        "ipDstDstPort": "Ip destinazione: porta destinazione"
+                    },
+                    "threatData":{
+                        "threatDatas": "DATI MINACCIA",
+                        "identifier": "IDENTIFICATIVO",
+                        "severity": "GRAVITA'",
+                        "ruleName": "NOME REGOLA",
+                        "typeRule": "TIPO REGOLA",
+                        "family": "FAMIGLIA",
+                        "action": "AZIONE",
+                        "threatMessage": "MESSAGGIO MINACCIA"
+                    },
+                    "threatMap":{
+                        "localization":"LOCALIZZAZIONE"
+                                        },
+                
+                "threatC": "MINACCE",
+                "threatsList": "ELENCO MINACCE",
+                "resultsFilters": "FILTRI SUI RISULTATI",
+                "searchParameters":"PARAMETRI DI RICERCA"
+                },
+                "threatFilters":{
+                    "severity":{
+                        "severity": "GRAVITA'",
+                        "all": "TUTTE",
+                        "critical": "Critica",
+                        "high": "Alta",
+                        "medium": "Media",
+                        "low": "Bassa"
+                    },
+                    "filterAll": "Filtra",
+                    "clearAll": "Annulla Filtro",
+                    "ipSource": "IP SORGENTE",
+                    "ipDestination": "IP DESTINATARIO",
+                    "keyWord": "PAROLA CHIAVE"
+                },
+                "threatSearchParameters":{
+                    "search": "Cerca",
+                    "lastHour": "ultima ora",
+                    "last6Hours": "ultime 6 ore",
+                    "last12Hours": "ultime 12 ore",
+                    "last24Hours": "ultime 24 ore",
+                    "last7Days": "ultimi 7 giorni",
+                    "last30Days": "ultimi 30 giorni"
+                },
+                "threatTable":{
+                    "export": "Esporta"
+                }
+                
             }
+                 
+            
         }         
     }
 }

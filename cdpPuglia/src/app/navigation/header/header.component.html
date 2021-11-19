@@ -37,8 +37,8 @@
         </button>
         <mat-menu #belowMenu="matMenu" yPosition="below">
           <p style="text-align: center;">{{user.username}}({{user.role}})</p>
-          <button mat-menu-item (click)="openChangeProfile()" ><mat-icon>account_box</mat-icon>Modifica Profilo</button>
-          <button mat-menu-item (click)="openChangePassword()" ><mat-icon>manage_accounts</mat-icon>Modifica Password</button>
+          <button mat-menu-item (click)="openChangeProfile()" ><mat-icon>account_box</mat-icon>{{changeProfile}}</button>
+          <button mat-menu-item (click)="openChangePassword()" ><mat-icon>manage_accounts</mat-icon>{{changePassword}}</button>
         </mat-menu>
       </li>
       <li>
@@ -58,5 +58,4 @@
   <span style="margin:auto">{{pageTitle}} {{pageDescription}}</span>
 </mat-toolbar-row>
 </mat-toolbar>
-
 
