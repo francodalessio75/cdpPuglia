@@ -1,13 +1,6 @@
 <mat-toolbar color="primary" class="toolbar">
   <!--fxHide.gt-xs-->
   <mat-toolbar-row>
-  <div *ngIf="(accountService.currentUser$  | async ) !== null ">
-    <button
-      (click)="onToggleSideNav()"
-      mat-icon-button>
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
   <div>LOGO</div>
   <!--fxHide.xs-->
   <div

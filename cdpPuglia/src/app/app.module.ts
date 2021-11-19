@@ -22,7 +22,7 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 // For MDB Angular Free
 import { WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 import {ChartsModule} from 'ng2-charts';
-
+import { MatCardModule } from '@angular/material/card';
 
 
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
@@ -43,6 +43,12 @@ import { IntelligenceDataComponent } from './threats/threat-content/intelligence
 import { TechniqueDetailsComponent } from './threats/threat-content/mitre-elements/technique-details/technique-details.component';
 import { CveDetailsComponent } from './threats/threat-content/cve-data/cve-details/cve-details.component';
 import { ThreatConnectionsComponent } from './threats/threat-content/threat-connections/threat-connections.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { Sidenav1Component } from './navigation1/sidenav1/sidenav1.component';
+import { Header1Component } from './navigation1/header1/header1.component';
+import { CardComponent } from './card/card.component';
+import { Navigation1Component } from './navigation1/navigation1.component';
+
 
 
 @NgModule({
@@ -72,7 +78,12 @@ import { ThreatConnectionsComponent } from './threats/threat-content/threat-conn
     IntelligenceDataComponent,
     TechniqueDetailsComponent,
     CveDetailsComponent,
-    ThreatConnectionsComponent
+    ThreatConnectionsComponent,
+    DashboardComponent,
+    Sidenav1Component,
+    Header1Component,
+    CardComponent,
+    Navigation1Component
   ],
   imports: [
     BrowserModule,
@@ -88,7 +99,8 @@ import { ThreatConnectionsComponent } from './threats/threat-content/threat-conn
     ChartsModule,
     WavesModule,
     MDBBootstrapModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule
 
   ],
   providers: [
