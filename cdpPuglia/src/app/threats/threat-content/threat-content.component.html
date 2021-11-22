@@ -1,48 +1,86 @@
-<div class="grid-container">
-  <!-- <h1 class="mat-h1">Dashboard</h1> -->
-  <mat-grid-list cols="1" rowHeight="200px" columnWidth="10px">
-    <!--Mini Cards-->
-    <mat-grid-tile [colspan]="1"
-      [rowspan]="2">
-      <app-card title="Diagram">
-        <!-- <div class="main-container"> -->
-        <app-threat-data [threat]="threat"></app-threat-data>
-      </app-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1"
-    [rowspan]="1.2">
-    <app-card title="Diagram">
-        <app-threat-connections></app-threat-connections>
-      </app-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1"
-    [rowspan]="3">
-    <app-card title="Diagram">
-        <app-threat-map [threat]="threat"></app-threat-map>
-      </app-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1"
-    [rowspan]="1.2">
-    <app-card title="Diagram">
-        <app-mitre-elements [threat]="threat"></app-mitre-elements>
-      </app-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1"
-    [rowspan]="1.2">
-    <app-card title="Diagram">
-        <app-cve-data [threat]="threat"></app-cve-data>
-      </app-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1"
-    [rowspan]="1.2">
-    <app-card title="Diagram">
-        <app-external-links [threat]="threat"></app-external-links>
-      </app-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-        <app-intelligence-data></app-intelligence-data>
-    <button mat-raised-button color="accent" (click)="backToThreats()">{{close}}</button>
+<div class="action-buttons">
+  <button mat-button (click)="accordion.openAll()">Expand All</button>
+  <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+</div>
+<mat-accordion class="headers-align" multi>
 
-  </div>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{threatDatas}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-threat-data [threat]="threat"></app-threat-data>
+  </mat-expansion-panel>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{connections}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-threat-connections></app-threat-connections>
+  </mat-expansion-panel>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{localization}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-threat-map [threat]="threat"></app-threat-map>
+    </mat-expansion-panel>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{elMitreMatrix}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-mitre-elements [threat]="threat"></app-mitre-elements>
+  </mat-expansion-panel>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        CVE
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-cve-data [threat]="threat"></app-cve-data>
+  </mat-expansion-panel>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{externalLinks}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-external-links [threat]="threat"></app-external-links>
+  </mat-expansion-panel>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        INTELLIGENCE ({{intelligenceData}})
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-intelligence-data></app-intelligence-data>
+  </mat-expansion-panel>
+  <button mat-raised-button color="accent" (click)="backToThreats()">{{close}}</button>
 
 

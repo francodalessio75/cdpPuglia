@@ -12,7 +12,6 @@ import { TranslationService } from 'src/app/_services/translation.service';
 })
 export class ThreatDataComponent implements OnInit {
   @Input() threat!:Threat;
-  threatDatas= '';
   identifier= '';
   severity= '';
   ruleName= '';
@@ -42,7 +41,6 @@ export class ThreatDataComponent implements OnInit {
   }
   private setLanguageData(){
     let languageData = this.translationService.getCurrentLanguageData();
-    this.threatDatas = languageData.sections.threats.threatContent.threatData.threatDatas;
     this.identifier = languageData.sections.threats.threatContent.threatData.identifier;
     this.severity = languageData.sections.threats.threatContent.threatData.severity;
     this.ruleName = languageData.sections.threats.threatContent.threatData.ruleName;

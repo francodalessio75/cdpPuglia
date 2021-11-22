@@ -1,0 +1,71 @@
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 5rem;
+}
+
+.mat-radio-label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  flex-direction: column-reverse;
+  margin-top: 3rem;
+}
+
+.radio-label{
+  position:absolute;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  left:50%;
+}
+
+.container{
+  width:100%;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  left:50%;
+}
+
+.radioBtn{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+mat-radio-button{
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+button{
+  font-size:1.5rem;
+  left:45%;
+  margin-top: 3rem;
+}
+
+.title-tile {
+  font-size:2rem;
+  font-weight: bolder;
+  background-color: aqua;
+}
+
+.title {
+  position: absolute;
+}
+
+.label {
+  position: absolute;
+  right: 5px;
+  font-size:larger;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+

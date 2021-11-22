@@ -18,7 +18,6 @@ export class ThreatMapComponent implements OnInit {
   ipSrcLongitude!: number | undefined;
   ipDstLatitude!:  number | undefined;
   ipDstLongitude!: number | undefined;
-  localization='';
   //const root! :am5.Root | undefined;
   
   @Input() threat!: Threat;
@@ -224,5 +223,5 @@ chart.appear(1000, 100);
 
   private setLanguageData(){
     let languageData = this.translationService.getCurrentLanguageData();
-    this.localization = languageData.sections.threats.threatContent.threatMap.localization;}
+}
 }

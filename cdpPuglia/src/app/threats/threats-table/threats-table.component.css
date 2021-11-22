@@ -118,6 +118,33 @@ th.mat-header-cell {
 
 td.mat-cell{
   font-size: 1.3rem;
+  height: 2rem;;
+}
+
+.gravity-label{
+  width:10rem;
+  color:white;
+}
+
+.critical{
+  background-color: red;
+  font-weight: bold;
+}
+
+.high{
+  background-color:yellow;
+  color:black;
+  font-weight: bold;
+}
+
+.medium{
+  background-color: orange;
+  font-weight: bold;
+}
+
+.low{
+  font-weight: bold;
+  background-color: green;
 }
 
 .clickable{

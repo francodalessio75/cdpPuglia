@@ -15,6 +15,14 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from "@angular/material/dialog";
 import { TechniqueDetailsComponent } from './threats/threat-content/mitre-elements/technique-details/technique-details.component';
 import { AppComponent } from './app.component';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 
@@ -34,7 +42,16 @@ import { AppComponent } from './app.component';
     MatSortModule,
     MatGridListModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTreeModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatChipsModule
+
   ],
   bootstrap: [AppComponent],
   entryComponents: [TechniqueDetailsComponent]

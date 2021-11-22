@@ -1,6 +1,6 @@
 .form {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   
   .full-width {
@@ -15,10 +15,11 @@
   .button{
       margin-bottom: .5rem;
       margin-right: 2rem;
-      font-size: 1.5rem;
+      font-size: 1rem;
+      left:40%;
   }
 
-  .form-element.buttons{
+  /* .form-element.buttons{
     text-align: right;
-  }
+  } */
 

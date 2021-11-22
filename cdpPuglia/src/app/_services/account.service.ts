@@ -4,6 +4,7 @@ import {   map } from 'rxjs/operators';
 import { User } from '../_models/user';
 import {  ReplaySubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { UserRole } from '../enums/UserRoleEnum';
 
 @Injectable({
   providedIn: 'root'
@@ -13,37 +14,27 @@ export class AccountService implements OnInit{
   //baseUrl = 'http://127.0.0.1:5000/';
   baseUrl = 'http://localhost:5000/';
 
-  private user:User;
-  private currentUserSource = new ReplaySubject<User>(1);
+  private user!:User; 
 
+  private currentUserSource = new ReplaySubject<User>(1);
   /* used by authguard */
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor( 
     private http:HttpClient, 
-    private router:Router) {
-      this.user ={
-        username:'',
-        role:"viewer"
-      };
-      localStorage.setItem('user', JSON.stringify(this.user));
-    }
+    private router:Router) {}
 
   ngOnInit(){
-    this.user.role="viewer";
   }
 
-  getToken$(model:{username:string, password:string}){
-    return this.http.post<{token:string}>(this.baseUrl + 'login',{ username:model.username,password:model.password})
+  getToken$(user:User){
+    return this.http.post<{token:string}>(this.baseUrl + 'login',{ username:user.username,password:user.password})
       .pipe(
         map( tokenData => {
-          this.user ={
-            username:'',
-            role:"viewer"
-          };
           if(tokenData){
-            this.user.username = model.username;
-            this.user.password = model.password;
+            this.user = {username:'',password:''};
+            this.user.username = user.username;
+            this.user.password = user.password;
             this.user.token = tokenData.token;
             this.setCurrentUser(this.user);
             this.currentUserSource.next(this.user);
@@ -52,56 +43,61 @@ export class AccountService implements OnInit{
       );
   }
 
-    getRole$(){ 
-      return this.http.get<{role:string,user:string}>(this.baseUrl + 'user')
-        .pipe(
-          map( userData => {
-            if(userData){
-              this.user.role = userData.role;
-              this.setCurrentUser(this.user);
-              this.currentUserSource.next(this.user);
-            }
-          })
-        )
-    }
+  getRole$(){ 
+    return this.http.get<{role:string,user:string}>(this.baseUrl + 'user')
+      .pipe(
+        map( userData => {
+          if(userData){
+            this.user.role = this.checkRole(userData.role);
+            this.setCurrentUser(this.user);
+            this.currentUserSource.next(this.user);
+          }
+        }
+      )
+    )
+  }
 
-    changePassword$(currentPassword: string, newPassword: string, repeatPassword: string){ 
-      return this.http.put<{message:string,messageId:string}>(this.baseUrl + 'user/update-password', 
-      {
-        currentPassword: currentPassword,
-        newPassword: newPassword,
-        repeatPassword: repeatPassword
+  private checkRole(roleString:string):UserRole{
+    switch (roleString){
+      case 'viewer':
+        return UserRole.viewer;
+        break;
+      case 'admin':
+        return UserRole.admin;
+        break;
+      default:
+        return UserRole.viewer;
+    }
+  }
+
+changePassword$(currentPassword: string, newPassword: string, repeatPassword: string){ 
+  return this.http.put<{message:string,messageId:string}>(this.baseUrl + 'user/update-password', 
+  {
+    currentPassword: currentPassword,
+    newPassword: newPassword,
+    repeatPassword: repeatPassword
+  })
+    .pipe(
+      map( responseMessage => {
+        if(responseMessage){
+          console.log(responseMessage)
+        }
       })
-        .pipe(
-          map( responseMessage => {
-            if(responseMessage){
-              console.log(responseMessage)
-            }
-          })
-        )
-    }
-    changeProfile$(email: string){ 
-      return this.http.put<{message:string,messageId:string}>(this.baseUrl + 'user', 
-      {
-        email: email
-      })
-        .pipe(
-          map( responseMessage => {
-            if(responseMessage){
-              console.log(responseMessage)
-            }
-          })
-        )
-    }
+    )
+  }
 
-    login(model:{username:string, password:string}){
-      this.user.username = model.username; 
-      this.user.password = model.password; 
-      return this.getToken$(model);
-    }
-
-    getRole(){
-      return this.getRole$();
+  changeProfile$(email: string){ 
+    return this.http.put<{message:string,messageId:string}>(this.baseUrl + 'user', 
+    {
+      email: email
+    })
+      .pipe(
+        map( responseMessage => {
+          if(responseMessage){
+            console.log(responseMessage)
+          }
+        })
+      )
     }
 
   setCurrentUser( user:User ){

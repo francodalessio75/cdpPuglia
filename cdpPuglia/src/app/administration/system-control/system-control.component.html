@@ -1,0 +1,35 @@
+<div class="action-buttons">
+  <button mat-button (click)="accordion.openAll()">Expand All</button>
+  <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+</div>
+<mat-accordion class="headers-align">
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{feelerServiceStatus}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>miscellaneous_services</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+      <app-feeler-status [feeler]="feeler"></app-feeler-status>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{feelerServiceStatus}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>miscellaneous_services</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-system-restart></app-system-restart>
+  </mat-expansion-panel>
+
+</mat-accordion>  
+
+  
+  
+  

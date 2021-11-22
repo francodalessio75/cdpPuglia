@@ -10,8 +10,6 @@ import { ThreatsComponent } from './threats/threats.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from './navigation/header/header.component';
-import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -22,14 +20,12 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 // For MDB Angular Free
 import { WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 import {ChartsModule} from 'ng2-charts';
-import { MatCardModule } from '@angular/material/card';
-
+import { CookieService } from 'ngx-cookie-service';
 
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { MultiLanguageComponent } from './multi-language/multi-language.component';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
-import { TitleDescriptionComponent } from './navigation/title-description/title-description.component';
 import { ThreatsSearchParametersComponent } from './threats/threats-search-parameters/threats-search-parameters.component';
 import { ThreatsTableComponent } from './threats/threats-table/threats-table.component';
 import { ThreatContentComponent } from './threats/threat-content/threat-content.component';
@@ -43,12 +39,21 @@ import { IntelligenceDataComponent } from './threats/threat-content/intelligence
 import { TechniqueDetailsComponent } from './threats/threat-content/mitre-elements/technique-details/technique-details.component';
 import { CveDetailsComponent } from './threats/threat-content/cve-data/cve-details/cve-details.component';
 import { ThreatConnectionsComponent } from './threats/threat-content/threat-connections/threat-connections.component';
+import { SystemControlComponent } from './administration/system-control/system-control.component';
+import { FeelerStatusComponent } from './administration/system-control/feeler-status/feeler-status.component';
+import { SystemRestartComponent } from './administration/system-control/system-restart/system-restart.component';
+import { NtpConfigurationComponent } from './administration/system-control/ntp-configuration/ntp-configuration.component';
+import { ConfirmationAlertComponent } from './administration/system-control/confirmation-alert/confirmation-alert.component';
+import { SuccessFeedbackComponent } from './administration/system-control/success-feedback/success-feedback.component';
+import { SystemTimeComponent } from './administration/system-control/system-time/system-time.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { Sidenav1Component } from './navigation1/sidenav1/sidenav1.component';
-import { Header1Component } from './navigation1/header1/header1.component';
 import { CardComponent } from './card/card.component';
-import { Navigation1Component } from './navigation1/navigation1.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { HeaderComponent } from './navigation/header/header.component';
+import { SidenavComponent } from './navigation/sidenav/sidenav.component';
+
+
+
 
 
 
@@ -57,8 +62,6 @@ import { MatChipsModule } from '@angular/material/chips';
     AppComponent,
     LoginComponent,
     ThreatsComponent,
-    HeaderComponent,
-    SidenavListComponent,
     FooterComponent,
     ThreatsFiltersComponent,
     ThreatsDiagramsComponent,
@@ -67,7 +70,6 @@ import { MatChipsModule } from '@angular/material/chips';
     ChangeProfileComponent,
     ThreatsDiagramsComponent,
     MultiLanguageComponent,
-    TitleDescriptionComponent,
     ThreatsSearchParametersComponent,
     ThreatsTableComponent,
     ThreatContentComponent,
@@ -80,11 +82,17 @@ import { MatChipsModule } from '@angular/material/chips';
     TechniqueDetailsComponent,
     CveDetailsComponent,
     ThreatConnectionsComponent,
+    SystemControlComponent,
+    FeelerStatusComponent,
+    SystemRestartComponent,
+    NtpConfigurationComponent,
+    ConfirmationAlertComponent,
+    SuccessFeedbackComponent,
+    SystemTimeComponent,
     DashboardComponent,
-    Sidenav1Component,
-    Header1Component,
     CardComponent,
-    Navigation1Component
+    HeaderComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -100,14 +108,13 @@ import { MatChipsModule } from '@angular/material/chips';
     ChartsModule,
     WavesModule,
     MDBBootstrapModule,
-    MatDialogModule,
-    MatCardModule,
-    MatChipsModule
+    MatDialogModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

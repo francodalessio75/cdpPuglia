@@ -11,7 +11,6 @@ import { TranslationService } from 'src/app/_services/translation.service';
 export class ExternalLinksComponent {
 
   @Input() threat!:Threat;
-  externalLinks='';
 
   constructor( 
     private threatService:ThreatsService,
@@ -33,5 +32,4 @@ export class ExternalLinksComponent {
   }
   private setLanguageData(){
     let languageData = this.translationService.getCurrentLanguageData();
-    this.externalLinks = languageData.sections.threats.threatContent.externalLinks.externalLinks;}
-}
+}}

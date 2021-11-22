@@ -3,6 +3,7 @@ import { ReplaySubject } from 'rxjs';
 import * as translationsData from './translations.json'
 import * as LanguagesEnum from '../enums/LanguagesEnum'
 import * as LanguageModel from '../_models/languageData'
+import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,15 +18,30 @@ export class TranslationService {
   private currentLanguage = new ReplaySubject<LanguagesEnum.Language>(1);
   currentLanguage$ = this.currentLanguage.asObservable();
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
   setCurrentLanguage( language:LanguagesEnum.Language ){
     this.language = language;
+    this.cookieService.set('language',this.language);
     this.currentLanguage.next(this.language);
   }
 
   getCurrentLanguageData():LanguageModel.LanguageData{
-    return this.translationsData[this.language];
+    if(this.checkLanguageCookie())
+      return this.translationsData[this.cookieService.get('language')];
+    else
+      return this.translationsData[this.language];
   }
 
+  private checkLanguageCookie():Boolean{
+    switch (this.cookieService.get('language')){
+      case LanguagesEnum.Language.it:
+      case LanguagesEnum.Language.en:
+        return true;
+        break;
+      default:
+        return false;
+        break;
+    }
+  }
 }

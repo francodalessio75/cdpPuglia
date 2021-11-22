@@ -1,0 +1,43 @@
+
+.label {
+  position: absolute;
+  right: 5px;
+  font-size:larger;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+
+.active{
+  background-color: green;
+  color:white;
+  font-weight: bold;
+}
+
+.suspended{
+  background-color: gray;
+  color:white;
+  font-weight: bold;
+}
+
+.title {
+  position: absolute;
+  
+}
+
+.content {
+  position: absolute;
+  font-weight: bolder;
+  font-size: 1.8rem;
+  left:2rem;
+}
+
+
+button{
+  font-size:1.2rem;
+  border-radius: 1rem;
+}
+
+.container{
+  margin-bottom: 2rem;
+}

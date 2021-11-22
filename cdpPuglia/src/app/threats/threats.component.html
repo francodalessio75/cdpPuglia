@@ -1,31 +1,57 @@
-<div class="main-container">
-  <ng-container >
-    <section style="text-align:center; font-size:2rem; margin-bottom:2rem;">
-      {{threatsC}}
-    </section>
-    <section>
-      <app-threats-diagrams></app-threats-diagrams>
-    </section>
-    <hr>
-    <section style="text-align:center; font-size:2rem; margin-TOP:2rem;">
-      {{searchParameters}}
-    </section>
-    <section>
-      <app-threats-search-parameters></app-threats-search-parameters>
-    </section>
-    <hr>
-    <section style="text-align:center; font-size:2rem; margin-TOP:2rem;">
-      {{resultsFilters}}
-    </section>
-    <section>
-      <app-threats-filters></app-threats-filters>
-    </section>
-    <hr>
-    <section style="text-align:center; font-size:2rem; margin-TOP:2rem; margin-bottom:1rem">
-      {{threatsList}}
-    </section>
-    <section>
-      <app-threats-table [threats]="threats"></app-threats-table>
-    </section>
-    </ng-container>
+
+
+<div class="action-buttons">
+  <button mat-button (click)="accordion.openAll()">Expand All</button>
+  <button mat-button (click)="accordion.closeAll()">Collapse All</button>
 </div>
+<mat-accordion class="headers-align" multi>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{threatsC}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+      <app-threats-diagrams></app-threats-diagrams>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{searchParameters}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>search</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-threats-search-parameters></app-threats-search-parameters>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{resultsFilters}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>saved_search</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-threats-filters></app-threats-filters>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{threatsList}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>table_rows</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-threats-table [threats]="threats"></app-threats-table>
+  </mat-expansion-panel>
+
+</mat-accordion>

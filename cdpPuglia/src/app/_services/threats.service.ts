@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { Protocol } from '../enums/ProtocolEnum';
 import { Severity } from '../enums/SeverityEnum';
 import { TypeRule } from '../enums/TypeRuleEnum';
@@ -23,6 +23,9 @@ import { CVE } from '../_models/cve';
 })
 export class ThreatsService {
   private readonly baseUrl = 'http://127.0.0.1:5000/';
+
+  private _loading = new BehaviorSubject<boolean>(false);
+  public readonly loading$ = this._loading.asObservable();
 
   //TEST DATA COLLECTION
   lastHourJSONData : any = (lasHourData as any ).default;
@@ -119,6 +122,14 @@ export class ThreatsService {
         this.currentThreatsSource.next(this.currentThreats);
         break;
     }
+  }
+
+  getTrhreatsSimulation(filter:number){
+    this._loading.next(true);
+    setTimeout(()=>{
+      this.getThreats(filter);
+      this._loading.next(false);
+    },3000);
   }
 
   // private setAndEmitThreats(isAPI:boolean,threats:Threat[]){
@@ -266,4 +277,11 @@ export class ThreatsService {
     //   )
   }
     
+  showSpinner(){
+    this._loading.next(true);
+  }
+
+  hideSpinner(){
+    this._loading.next(false);
+  }
 }

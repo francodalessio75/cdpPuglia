@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 import { Router } from '@angular/router';
 import { Threat } from 'src/app/_models/threat';
 import { ThreatsService } from 'src/app/_services/threats.service';
 import { TranslationService } from 'src/app/_services/translation.service';
-import { IntelligenceDataComponent } from './intelligence-data/intelligence-data.component';
+
 
 
 @Component({
@@ -12,7 +13,17 @@ import { IntelligenceDataComponent } from './intelligence-data/intelligence-data
   styleUrls: ['./threat-content.component.css']
 })
 export class ThreatContentComponent implements OnInit {
+  @ViewChild(MatAccordion) accordion!: MatAccordion;
+
   threat!:Threat;
+  threatDatas= '';
+  connections='';
+  localization='';
+  elMitreMatrix='';
+  externalLinks='';
+  intelligenceData='';
+
+
   close='';
 
   constructor( 
@@ -37,6 +48,14 @@ export class ThreatContentComponent implements OnInit {
   }
   private setLanguageData(){
     let languageData = this.translationService.getCurrentLanguageData();
-    this.close = languageData.sections.global.close;}
+    this.close = languageData.sections.global.close;
+    this.threatDatas = languageData.sections.threats.threatContent.threatData.threatDatas;
+    this.connections = languageData.sections.threats.threatContent.threatConnections.connections;
+    this.localization = languageData.sections.threats.threatContent.threatMap.localization;
+    this.elMitreMatrix = languageData.sections.threats.threatContent.mitreElements.elMitreMatrix;
+    this.externalLinks = languageData.sections.threats.threatContent.externalLinks.externalLinks;
+    this.intelligenceData = languageData.sections.threats.threatContent.intelligenceData.intelligenceData;
+
+  }
 
 }
