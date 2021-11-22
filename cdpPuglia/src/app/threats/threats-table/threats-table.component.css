@@ -150,3 +150,8 @@ button{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.chip{
+  background-color: green;
+  width: 5rem;
+  text-align: center;
+}

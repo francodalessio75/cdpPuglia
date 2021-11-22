@@ -77,7 +77,8 @@ export class ThreatMapComponent implements OnInit {
       tooltipText: "{name}",
       interactive: true,
       fill: am5.color(0xffffff),
-      stroke: am5.color(0x000000)
+      stroke: am5.color(0x000000),
+      strokeWidth : 0.3
     });
     
     polygonSeries.mapPolygons.template.states.create("hover", {
@@ -107,7 +108,7 @@ export class ThreatMapComponent implements OnInit {
     let lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
 lineSeries.mapLines.template.setAll({
   stroke: root.interfaceColors.get("alternativeBackground"),
-  strokeOpacity: 0.3
+  strokeOpacity: 0.9
 });
 var arrowSeries = chart.series.push(
   am5map.MapPointSeries.new(root, {})

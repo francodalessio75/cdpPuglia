@@ -48,6 +48,7 @@ import { Sidenav1Component } from './navigation1/sidenav1/sidenav1.component';
 import { Header1Component } from './navigation1/header1/header1.component';
 import { CardComponent } from './card/card.component';
 import { Navigation1Component } from './navigation1/navigation1.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 
@@ -100,8 +101,8 @@ import { Navigation1Component } from './navigation1/navigation1.component';
     WavesModule,
     MDBBootstrapModule,
     MatDialogModule,
-    MatCardModule
-
+    MatCardModule,
+    MatChipsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

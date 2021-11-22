@@ -1,30 +1,48 @@
-<div class="main-container">
-  <ng-container>
-    <section>
+<div class="grid-container">
+  <!-- <h1 class="mat-h1">Dashboard</h1> -->
+  <mat-grid-list cols="1" rowHeight="200px" columnWidth="10px">
+    <!--Mini Cards-->
+    <mat-grid-tile [colspan]="1"
+      [rowspan]="2">
+      <app-card title="Diagram">
+        <!-- <div class="main-container"> -->
         <app-threat-data [threat]="threat"></app-threat-data>
-      </section>
-      <section>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1"
+    [rowspan]="1.2">
+    <app-card title="Diagram">
         <app-threat-connections></app-threat-connections>
-      </section>
-      <section>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1"
+    [rowspan]="3">
+    <app-card title="Diagram">
         <app-threat-map [threat]="threat"></app-threat-map>
-      </section>
-      <section>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1"
+    [rowspan]="1.2">
+    <app-card title="Diagram">
         <app-mitre-elements [threat]="threat"></app-mitre-elements>
-      </section>
-      <section>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1"
+    [rowspan]="1.2">
+    <app-card title="Diagram">
         <app-cve-data [threat]="threat"></app-cve-data>
-      </section>
-      <section>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1"
+    [rowspan]="1.2">
+    <app-card title="Diagram">
         <app-external-links [threat]="threat"></app-external-links>
-      </section>
-      <section>
+      </app-card>
+    </mat-grid-tile>
+  </mat-grid-list>
         <app-intelligence-data></app-intelligence-data>
-      </section>
-  </ng-container>
-  <section>
     <button mat-raised-button color="accent" (click)="backToThreats()">{{close}}</button>
-</section>
-</div>
+
+  </div>
 
 

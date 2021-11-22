@@ -15,7 +15,7 @@ import { ChangeProfileComponent } from './auth/change-profile/change-profile.com
 })
 export class AppComponent implements OnInit {
   title = 'Threats Report';
-  menuItems:string[] = ['dashboard', 'sales', 'orders', 'customers', 'products'];
+  menuItems:string[] = ['dashboard', 'threats', 'sales', 'orders', 'customers', 'products'];
   //related to Language
   languageLabel = '';
   italian = '';
