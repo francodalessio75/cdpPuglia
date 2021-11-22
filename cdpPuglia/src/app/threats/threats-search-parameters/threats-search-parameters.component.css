@@ -1,49 +1,18 @@
-.mat-radio-button ~ .mat-radio-button {
-    margin-left: 16px;
-  }
-  .mat-radio-label {
-    /* width: 50%!important;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    flex-direction: column-reverse;
-    margin-top: 3rem; */
-
-}
-.container{
-  /* width: 100%!important; */
-  text-align: center!important;
-  align-items: center;
-  justify-items: center;
-  
-}
-
 .radioBtn{
-    align-items: center;
-    text-align: center!important;
-    /* justify-content: center;
-    display: flex;
-    flex-flow: row wrap;  
-    font-size: 1rem!important;
-    margin-left: 2rem; */
+   margin-left: 4rem;
 }
+
 mat-radio-button{
   /* font-size: 1.5rem;*/
   font-weight: bold;
 }
+
 mat-radio-group{
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 0.5px;
-  grid-template-rows: repeat(2, 1fr);
-  row-gap: 0.5px;
-  
+  display: flex; 
+  flex-direction: column;
+  margin: 2% 0;
 }
 
 .button{
-  /* left:80%; */
-  display: inline!important;
+  margin-left:3%;
 }

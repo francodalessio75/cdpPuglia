@@ -5,7 +5,10 @@ export interface LanguageData{
             discardButton:string;
             requiredFieldError:string;
             saveButton:string;
-            close: string
+            close: string,
+            searchButton:string,
+            actionsLabel:string
+
         },
         footer:{
             threatTitle: string,
@@ -93,7 +96,6 @@ export interface LanguageData{
                 keyWord: string
             },
             threatSearchParameters:{
-                search:string,
                 lastHour: string,
                 last6Hours: string,
                 last12Hours: string,
@@ -103,8 +105,19 @@ export interface LanguageData{
             },
             threatTable:{
                 export:string
-            },        
+            }       
             
+        },
+        administration:{
+            systemControl:{
+                pageTitle:string;
+                pageDescription:string;
+                feelerStatus:{
+                    feelerServiceStatus:string,
+                    currentStatusLabel:string,
+                    stopFeeler:string
+                }
+            }
         }
     }
 }

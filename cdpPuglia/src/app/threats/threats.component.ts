@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Threat } from '../_models/threat';
 import { HeaderService } from '../_services/header.service';
 import { ThreatsService } from '../_services/threats.service';
 import { TranslationService } from '../_services/translation.service';
+import {MatAccordion} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-threats',
@@ -10,11 +11,14 @@ import { TranslationService } from '../_services/translation.service';
   styleUrls: ['./threats.component.css']
 })
 export class ThreatsComponent implements OnInit, OnDestroy {
-  title = 'Pagina consultazione minacce:';
-  description = 'Sezione per consultare grafici ed applicare filtri di ricerca ai reports';
+  @ViewChild(MatAccordion) accordion!: MatAccordion;
+
+  title = '';
+  description = '';
 
   threat!:Threat;
   threats!:Threat[];
+  
   threatsC='';
   searchParameters='';
   resultsFilters='';

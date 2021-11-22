@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageData } from 'src/app/_models/languageData';
 import { ThreatsService } from 'src/app/_services/threats.service';
 import { TranslationService } from 'src/app/_services/translation.service';
+
+export interface Range{
+  value:string,
+  message:string
+}
 
 @Component({
   selector: 'app-threats-search-parameters',
@@ -8,43 +14,52 @@ import { TranslationService } from 'src/app/_services/translation.service';
   styleUrls: ['./threats-search-parameters.component.css']
 })
 export class ThreatsSearchParametersComponent implements OnInit {
-  checked=1;
-  search='';
-  lastHour= '';
-  last6Hours= '';
-  last12Hours= '';
-  last24Hours= '';
-  last7Days= '';
-  last30Days= '';
+  choosenRange!:string;
+
+  languageData!:LanguageData;
+
+  ranges:Range[]=[
+    {value:'1', message: ''},
+    {value:'7', message:''},
+    {value:'30', message:''},
+    {value:'-1', message: ''},
+    {value:'-6', message:''},
+    {value:'-12', message:''}
+  ];
+
+  ranges_2:Range[]=[
+    
+  ];
   
+  search='';
+
   constructor(
     private threatsService: ThreatsService,
     private translationService:TranslationService
-) { }
+  ) {
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.languageData = this.translationService.getCurrentLanguageData();
+      this.setLanguageData(this.languageData);
+  });
+ }
 
   ngOnInit(): void {
-    this.translationService.currentLanguage$.subscribe((language)=>{
-      this.setLanguageData();
-    });
-    this.setLanguageData();
+    this.languageData = this.translationService.getCurrentLanguageData();
+    this.setLanguageData(this.languageData);
   }
 
   getThreats(){
-    this.threatsService.getTrhreatsSimulation(this.checked);
+    this.threatsService.getTrhreatsSimulation(+this.choosenRange);
   }
 
-  setChecked(filter: number){
-    this.checked=filter;
-  }
-  private setLanguageData(){
-    let languageData = this.translationService.getCurrentLanguageData();
-    this.search = languageData.sections.threats.threatSearchParameters.search;
-    this.lastHour = languageData.sections.threats.threatSearchParameters.lastHour;
-    this.last6Hours = languageData.sections.threats.threatSearchParameters.last6Hours;
-    this.last12Hours = languageData.sections.threats.threatSearchParameters.last12Hours;
-    this.last24Hours = languageData.sections.threats.threatSearchParameters.last24Hours;
-    this.last7Days = languageData.sections.threats.threatSearchParameters.last7Days;
-    this.last30Days = languageData.sections.threats.threatSearchParameters.last30Days;
+  private setLanguageData(languageData:LanguageData){
+    this.search = languageData.sections.global.searchButton;
+    this.ranges[0].message = languageData.sections.threats.threatSearchParameters.last24Hours;
+    this.ranges[1].message = languageData.sections.threats.threatSearchParameters.last7Days;
+    this.ranges[2].message = languageData.sections.threats.threatSearchParameters.last30Days;
+    this.ranges[3].message = languageData.sections.threats.threatSearchParameters.lastHour;
+    this.ranges[4].message = languageData.sections.threats.threatSearchParameters.last6Hours;
+    this.ranges[5].message = languageData.sections.threats.threatSearchParameters.last12Hours;
   }
 
 }

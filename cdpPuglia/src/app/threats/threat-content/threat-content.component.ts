@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 import { Router } from '@angular/router';
 import { Threat } from 'src/app/_models/threat';
 import { ThreatsService } from 'src/app/_services/threats.service';
 import { TranslationService } from 'src/app/_services/translation.service';
-import { IntelligenceDataComponent } from './intelligence-data/intelligence-data.component';
 
 
 @Component({
@@ -12,7 +12,9 @@ import { IntelligenceDataComponent } from './intelligence-data/intelligence-data
   styleUrls: ['./threat-content.component.css']
 })
 export class ThreatContentComponent implements OnInit {
+  
   threat!:Threat;
+
   close='';
 
   constructor( 

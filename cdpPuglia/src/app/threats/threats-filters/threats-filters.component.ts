@@ -55,14 +55,10 @@ export class ThreatsFiltersComponent implements OnInit {
 
   resetFilters(){
     this.filterForm.reset();
-    // this.filterForm.value.severity = 'undefined';
-    // this.filterForm.value.ipSrc = '';
-    // this.filterForm.value.ipDst = '';
-    // this.filterForm.value.label = '';
     this.selectedOption='undefined';
-
     this.filter();
   }
+  
   private setLanguageData(){
     let languageData = this.translationService.getCurrentLanguageData();
     this.severity = languageData.sections.threats.threatFilters.severity.severity;

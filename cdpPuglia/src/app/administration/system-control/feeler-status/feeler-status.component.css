@@ -4,13 +4,20 @@
   right: 5px;
   font-size:larger;
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 1rem;
 }
 
-.title-tile {
-  font-size:2rem;
-  font-weight: bolder;
-  background-color: aqua;
+
+.active{
+  background-color: green;
+  color:white;
+  font-weight: bold;
+}
+
+.suspended{
+  background-color: gray;
+  color:white;
+  font-weight: bold;
 }
 
 .title {
@@ -25,27 +32,12 @@
   left:2rem;
 }
 
-.suspended{
-  color: red;
-}
-
-.active{
-
-}
-
-.clickable{
-  cursor:pointer;
-  color: blue;
-  font-weight: bold;
-  text-decoration: underline;
-}
 
 button{
-  font-size:1.8rem;
-
+  font-size:1.2rem;
+  border-radius: 1rem;
 }
 
 .container{
   margin-bottom: 2rem;
 }
-

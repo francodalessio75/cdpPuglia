@@ -14,7 +14,7 @@ export class AccountService implements OnInit{
   //baseUrl = 'http://127.0.0.1:5000/';
   baseUrl = 'http://localhost:5000/';
 
-  private user!:User;
+  private user!:User; 
 
   private currentUserSource = new ReplaySubject<User>(1);
   /* used by authguard */
@@ -32,6 +32,7 @@ export class AccountService implements OnInit{
       .pipe(
         map( tokenData => {
           if(tokenData){
+            this.user = {username:'',password:''};
             this.user.username = user.username;
             this.user.password = user.password;
             this.user.token = tokenData.token;
@@ -99,8 +100,6 @@ changePassword$(currentPassword: string, newPassword: string, repeatPassword: st
       )
     }
 
-  
-    
   setCurrentUser( user:User ){
     this.user = user;
     localStorage.setItem('user', JSON.stringify(user));

@@ -20,9 +20,9 @@ export class SystemControlService {
   currentFeeler$ = this.currentFeelerSource.asObservable();
 
   getFeeler(){
-    this.currentFeeler.status = Math.floor(Math.random() * 1 ) > 0 
+    this.currentFeeler.status = Math.floor(Math.random() * 2 ) > 0 
     ? FeelerStatus.active 
-    : FeelerStatus.active;
+    : FeelerStatus.suspended;
 
     this.currentFeelerSource.next(this.currentFeeler);
   }

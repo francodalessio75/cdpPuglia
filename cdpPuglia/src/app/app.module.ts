@@ -10,8 +10,6 @@ import { ThreatsComponent } from './threats/threats.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from './navigation/header/header.component';
-import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -23,14 +21,11 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 import {ChartsModule} from 'ng2-charts';
 import { CookieService } from 'ngx-cookie-service';
-import { MatCardModule } from '@angular/material/card';
-
 
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { MultiLanguageComponent } from './multi-language/multi-language.component';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
-import { TitleDescriptionComponent } from './navigation/title-description/title-description.component';
 import { ThreatsSearchParametersComponent } from './threats/threats-search-parameters/threats-search-parameters.component';
 import { ThreatsTableComponent } from './threats/threats-table/threats-table.component';
 import { ThreatContentComponent } from './threats/threat-content/threat-content.component';
@@ -52,10 +47,12 @@ import { ConfirmationAlertComponent } from './administration/system-control/conf
 import { SuccessFeedbackComponent } from './administration/system-control/success-feedback/success-feedback.component';
 import { SystemTimeComponent } from './administration/system-control/system-time/system-time.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { Sidenav1Component } from './navigation1/sidenav1/sidenav1.component';
-import { Header1Component } from './navigation1/header1/header1.component';
 import { CardComponent } from './card/card.component';
-import { Navigation1Component } from './navigation1/navigation1.component';
+import { HeaderComponent } from './navigation/header/header.component';
+import { SidenavComponent } from './navigation/sidenav/sidenav.component';
+
+
+
 
 
 
@@ -64,8 +61,6 @@ import { Navigation1Component } from './navigation1/navigation1.component';
     AppComponent,
     LoginComponent,
     ThreatsComponent,
-    HeaderComponent,
-    SidenavListComponent,
     FooterComponent,
     ThreatsFiltersComponent,
     ThreatsDiagramsComponent,
@@ -74,7 +69,6 @@ import { Navigation1Component } from './navigation1/navigation1.component';
     ChangeProfileComponent,
     ThreatsDiagramsComponent,
     MultiLanguageComponent,
-    TitleDescriptionComponent,
     ThreatsSearchParametersComponent,
     ThreatsTableComponent,
     ThreatContentComponent,
@@ -95,10 +89,9 @@ import { Navigation1Component } from './navigation1/navigation1.component';
     SuccessFeedbackComponent,
     SystemTimeComponent,
     DashboardComponent,
-    Sidenav1Component,
-    Header1Component,
     CardComponent,
-    Navigation1Component
+    HeaderComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -114,9 +107,7 @@ import { Navigation1Component } from './navigation1/navigation1.component';
     ChartsModule,
     WavesModule,
     MDBBootstrapModule,
-    MatDialogModule,
-    MatCardModule
-
+    MatDialogModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

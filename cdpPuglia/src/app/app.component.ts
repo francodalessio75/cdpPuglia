@@ -14,8 +14,13 @@ import { ChangeProfileComponent } from './auth/change-profile/change-profile.com
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('sidenav') sidenav:any;
+
+  sidenvOpened = true;
+
   title = 'Threats Report';
   menuItems:string[] = ['dashboard', 'sales', 'orders', 'customers', 'products'];
+
   //related to Language
   languageLabel = '';
   italian = '';
@@ -47,7 +52,11 @@ export class AppComponent implements OnInit {
       this.pageDescription = titleDescription.description;
     });
     this.setCurrentUser();
-    
+  }
+
+  toggle(){
+    this.sidenav.toggle();
+    this.sidenvOpened = !this.sidenvOpened;
   }
 
   logout(){
@@ -58,6 +67,7 @@ export class AppComponent implements OnInit {
     const user : User = JSON.parse(localStorage.getItem('user')!);
     this.accountService.setCurrentUser(user);
   }
+
   openChangePassword(): void {
     const dialogRef = this.dialog.open(ChangePasswordComponent, {
       // width: '250px',
@@ -111,6 +121,5 @@ export class AppComponent implements OnInit {
     this.manageProfile = languageData.sections.menu.manageProfile;
     this.changeProfile = languageData.sections.menu.changeProfile;
     this.changePassword = languageData.sections.menu.changePassword;
-    
   }
 }
