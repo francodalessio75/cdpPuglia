@@ -164,11 +164,7 @@ arrowSeries.bullets.push(function(){
       container.children.push(arrow1);
       return am5.Bullet.new(root, { sprite: container });
     });
-    let planeDataItem = planeSeries.pushDataItem({
-      lineDataItem: lineDataItem,
-      positionOnLine: 0,
-      autoRotate: true
-    });
+    
     arrowSeries.pushDataItem({
       lineDataItem: lineDataItem,
       positionOnLine: 0.5,
@@ -176,25 +172,10 @@ arrowSeries.bullets.push(function(){
     });
     arrowSeries.pushDataItem({
       lineDataItem: lineDataItem2,
-      positionOnLine: 0.9,
+      positionOnLine: 0.5,
       autoRotate: true
     });
-    planeDataItem.animate({
-      key: "positionOnLine",
-      from:0,
-      to: 1,
-      duration: 10000,
-      loops: Infinity,
-      easing: am5.ease.yoyo(am5.ease.linear)
-    });
-    planeDataItem.on("positionOnLine", function(value) {
-      if (<number>value >= 0.99) {
-        arrow1.set("stateAnimationDuration",1)
-      } else if (<number>value <= 0.01) {
-        arrow1.set("rotation", 0);
-      }
-    
-    });
+   
     // Create line series
 //     let lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
 // lineSeries.mapLines.template.setAll({

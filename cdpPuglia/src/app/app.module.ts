@@ -23,6 +23,8 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 import {ChartsModule} from 'ng2-charts';
 import { CookieService } from 'ngx-cookie-service';
+import { MatCardModule } from '@angular/material/card';
+
 
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { MultiLanguageComponent } from './multi-language/multi-language.component';
@@ -49,6 +51,11 @@ import { NtpConfigurationComponent } from './administration/system-control/ntp-c
 import { ConfirmationAlertComponent } from './administration/system-control/confirmation-alert/confirmation-alert.component';
 import { SuccessFeedbackComponent } from './administration/system-control/success-feedback/success-feedback.component';
 import { SystemTimeComponent } from './administration/system-control/system-time/system-time.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { Sidenav1Component } from './navigation1/sidenav1/sidenav1.component';
+import { Header1Component } from './navigation1/header1/header1.component';
+import { CardComponent } from './card/card.component';
+import { Navigation1Component } from './navigation1/navigation1.component';
 
 
 
@@ -86,7 +93,12 @@ import { SystemTimeComponent } from './administration/system-control/system-time
     NtpConfigurationComponent,
     ConfirmationAlertComponent,
     SuccessFeedbackComponent,
-    SystemTimeComponent
+    SystemTimeComponent,
+    DashboardComponent,
+    Sidenav1Component,
+    Header1Component,
+    CardComponent,
+    Navigation1Component
   ],
   imports: [
     BrowserModule,
@@ -103,7 +115,8 @@ import { SystemTimeComponent } from './administration/system-control/system-time
     WavesModule,
     MDBBootstrapModule,
     MatDialogModule,
-    
+    MatCardModule
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

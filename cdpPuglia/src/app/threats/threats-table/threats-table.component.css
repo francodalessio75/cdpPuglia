@@ -1,6 +1,6 @@
-table{
-  width: 100%;
-  text-align: left;
+.table{
+  width: 90%;
+  text-align: center!important;
  }
  
  .mat-column-ts {

@@ -1,0 +1,22 @@
+<div class="grid-container">
+    <!-- <h1 class="mat-h1">Dashboard</h1> -->
+    <mat-grid-list cols="1" rowHeight="200px" columnWidth="10px">
+      <!--Mini Cards-->
+      <mat-grid-tile [colspan]="1"
+        [rowspan]="2">
+        <app-card title="Diagram">
+            <app-threats-diagrams></app-threats-diagrams>
+        </app-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1"
+      [rowspan]="1.2">
+      <app-card title="Diagram">
+          <app-threats-search-parameters></app-threats-search-parameters>
+      </app-card>
+    </mat-grid-tile>
+      <!--Charts-->
+    </mat-grid-list>
+   
+   <app-threats-filters></app-threats-filters>
+   <app-threats-table></app-threats-table>
+  </div>

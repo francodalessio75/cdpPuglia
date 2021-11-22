@@ -9,12 +9,15 @@ import { TestErrorsComponent } from './_errors/test-errors/test-errors.component
 import { AuthGuard } from './_guards/auth.guard';
 import { ThreatContentComponent } from './threats/threat-content/threat-content.component';
 import { SystemControlComponent } from './administration/system-control/system-control.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { Navigation1Component } from './navigation1/navigation1.component';
 
 
 const routes: Routes = [
   //{ path:'translations', component: MultiLanguageComponent },
-  { path:'', component: ThreatsComponent, canActivate: [AuthGuard] },
-  { path:'login', component: LoginComponent },
+  //{ path:'', component: ThreatsComponent, canActivate: [AuthGuard] },
+  { path:'', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent },
   { path:'threats', component: ThreatsComponent, canActivate: [AuthGuard] },
   { path:'threat-content', component: ThreatContentComponent, canActivate: [AuthGuard] },
   { path:'system-control', component: SystemControlComponent, canActivate: [AuthGuard] },
