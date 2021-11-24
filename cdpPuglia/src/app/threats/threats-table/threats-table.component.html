@@ -44,7 +44,10 @@
             <th  mat-header-cell *matHeaderCellDef mat-sort-header>{{severity}}</th>
             <td mat-cell *matCellDef="let element">
                 <mat-chip-list>
-                    <mat-chip class="chip">
+                    <mat-chip [ngClass]="{'low': element.severity === 'low', 
+                    'medium': element.severity === 'medium', 
+                    'high': element.severity === 'high', 
+                    'critical': element.severity === 'critical' }">
                       {{element.severity}}
                     </mat-chip>
                   </mat-chip-list></td>

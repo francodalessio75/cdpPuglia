@@ -42,6 +42,7 @@ icon:'dns'},
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
+  activeNode:any;
   private _transformer = (node: MenuItem, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
