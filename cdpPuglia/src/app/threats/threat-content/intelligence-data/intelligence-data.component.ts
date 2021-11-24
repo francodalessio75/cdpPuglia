@@ -20,6 +20,7 @@ interface Intelligence{
 })
 export class IntelligenceDataComponent {
   @Input()intelligence:Intelligence[] = [{}];
+  intelligenceData='';
   description='';
   threatLevel='';
 
@@ -56,6 +57,7 @@ export class IntelligenceDataComponent {
   }
   private setLanguageData(){
     let languageData = this.translationService.getCurrentLanguageData();
+    this.intelligenceData = languageData.sections.threats.threatContent.intelligenceData.intelligenceData;
     this.threatLevel = languageData.sections.threats.threatContent.intelligenceData.threatLevel;
     this.description = languageData.sections.threats.threatContent.intelligenceData.description;
   }

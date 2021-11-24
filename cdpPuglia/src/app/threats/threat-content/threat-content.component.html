@@ -3,7 +3,6 @@
   <button mat-button (click)="accordion.closeAll()">Collapse All</button>
 </div>
 <mat-accordion class="headers-align" multi>
-
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -15,6 +14,7 @@
     </mat-expansion-panel-header>
     <app-threat-data [threat]="threat"></app-threat-data>
   </mat-expansion-panel>
+
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -26,6 +26,7 @@
     </mat-expansion-panel-header>
     <app-threat-connections></app-threat-connections>
   </mat-expansion-panel>
+
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -37,6 +38,7 @@
     </mat-expansion-panel-header>
     <app-threat-map [threat]="threat"></app-threat-map>
     </mat-expansion-panel>
+
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -48,6 +50,7 @@
     </mat-expansion-panel-header>
     <app-mitre-elements [threat]="threat"></app-mitre-elements>
   </mat-expansion-panel>
+
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -59,6 +62,7 @@
     </mat-expansion-panel-header>
     <app-cve-data [threat]="threat"></app-cve-data>
   </mat-expansion-panel>
+
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -70,17 +74,34 @@
     </mat-expansion-panel-header>
     <app-external-links [threat]="threat"></app-external-links>
   </mat-expansion-panel>
+  
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        INTELLIGENCE ({{intelligenceData}})
+        {{externalLinks}}
       </mat-panel-title>
       <mat-panel-description>
         <mat-icon>insert_chart</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <app-intelligence-data></app-intelligence-data>
+    <app-external-links [threat]="threat"></app-external-links>
   </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Prova
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>table_rows</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-intelligence-data ></app-intelligence-data>
+  </mat-expansion-panel>
+</mat-accordion>
+ 
+
+
   <button mat-raised-button color="accent" (click)="backToThreats()">{{close}}</button>
 
 
