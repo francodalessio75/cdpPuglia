@@ -50,6 +50,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardComponent } from './card/card.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
+import { ManualtimeSettingComponent } from './administration/system-control/manualtime-setting/manualtime-setting.component';
 
 
 
@@ -91,7 +92,8 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
     DashboardComponent,
     CardComponent,
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    ManualtimeSettingComponent
   ],
   imports: [
     BrowserModule,

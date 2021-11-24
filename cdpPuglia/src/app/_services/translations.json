@@ -8,7 +8,18 @@
 				"saveButton": "SAVE",
 				"close": "CLOSE",
 				"searchButton": "SEARCH",
-				"actionsLabel":"ACTIONS"
+				"actionsLabel":"ACTIONS",
+				"startLable":"START",
+				"stopLabel":"STOP",
+				"confirmationRequestTitle":"Confirmation Request",
+				"confirmationSystemOffRequestMessage":"By confirming th action you won't be able to use system configurations for a while. Do you confirm the action?",
+				"transmissionSuccededTitle":"Action Transmission Succeded",
+				"transmissionSuccededMessage":"Please come back later to check System Status",
+				"yesButtonLabel":"YES",
+				"noButtonLabel":"NO",
+				"enabledButtonLabel":"Enabled",
+				"configureButtonLabel":"CONFIGURE",
+				"rebootNeededMessage":"Please note: in order to confirm new settings you must execute a system reboot"
 			},
 			"footer": {
 				"threatTitle": "Threats consultation page",
@@ -112,9 +123,16 @@
 					"pageTitle": "SYSTEM CONTROL",
 					"pageDescription": "",
                     "feelerStatus":{
-                        "feelerServiceStatus":"STATO DI SERVIZIONE DELLA SONDA",
-                        "currentStatusLabel":"STATO CORRENTE"
-                    }
+                        "feelerServiceStatusLabel":"FEELER SERVICE STATUS",
+                        "currentStatusLabel":"CURRENT STATUS"
+                    },
+					"rebootModeTitle":"Reboot Mode",
+					"softRebootMessage":"Soft Reboot (services reboot)",
+					"hardRebootMessage":"Hard Reboot (appliance reboot)",
+					"rebootButtonLabel":"REBOOT",
+					"systemRebootTitle":"System Reboot",
+					"configureNTPServerTitle":"NTP server configuration",
+					"NTPServerLabel":"NTP Server"
                 }
             }
 		}
@@ -128,7 +146,18 @@
 				"saveButton": "SALVA",
 				"close": "CHIUDI",
 				"searchButton": "CERCA",
-				"actionsLabel":"AZIONI"
+				"actionsLabel":"AZIONI",
+				"startLable":"RIAVVIA",
+				"stopLabel":"ARRESTA",
+				"confirmationRequestTitle":"Richiesta di Conferma",
+				"confirmationSystemOffRequestMessage":"Confermando la richiesta il sistema non sarà raggiungibile durante le fasi di completamento. Confermare?",
+				"transmissionSuccededTitle":"Richiesta Trasmessa con Successo",
+				"transmissionSuccededMessage":"Riaccedere alla sezione per verificare lo stato del Sistema",
+				"yesButtonLabel":"SI",
+				"noButtonLabel":"NO",
+				"enabledButtonLabel":"Abilitato",
+				"configureButtonLabel":"CONFIGURA",
+				"rebootNeededMessage":"Per confermare le nuove impostazioni sarà necessario eseguire un reboot del sistema."
 			},
 			"footer": {
 				"threatTitle": "Pagina consultazione minacce",
@@ -232,9 +261,16 @@
 					"pageTitle": "SYSTEM CONTROL",
 					"pageDescription": "",
                     "feelerStatus":{
-                        "feelerServiceStatus":"FEELER SERVICE STATUS",
-                        "currentStatusLabel":"CURRENT STATUS"
-                    }
+                        "feelerServiceStatusLabel":"STATO DI SERVIZIO DELLA SONDA",
+                        "currentStatusLabel":"STATO CORRENTE"
+                    },
+					"rebootModeTitle":"Tipo Riavvio",
+					"softRebootMessage":"Riavvio Soft (riavvio dei servizi)",
+					"hardRebootMessage":"Riavvio Hard (riavvio dell'appliance)",
+					"rebootButtonLabel":"RIAVVIA",
+					"systemRebootTitle":"Riavvio del Sistema",
+					"configureNTPServerTitle":"Configurazione server NTP",
+					"NTPServerLabel":"Server NTP"
                 }
             }
 		}

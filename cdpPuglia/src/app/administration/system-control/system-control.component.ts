@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
+import { FeelerStatus } from 'src/app/enums/FeelerStatusEnum';
 import { Feeler } from 'src/app/_models/feeler';
 import { LanguageData } from 'src/app/_models/languageData';
 import { HeaderService } from 'src/app/_services/header.service';
@@ -20,6 +21,9 @@ export class SystemControlComponent implements OnInit {
   pageTitle!:string;
   pageDescription!:string;
   feelerServiceStatus!:string;
+  systemRebootTitle!:string;
+  configureNTPServerTitle!:string;
+  systemTitle!:string;
   currentStatus!:string;
 
   constructor(
@@ -32,21 +36,29 @@ export class SystemControlComponent implements OnInit {
       this.translationService.currentLanguage$.subscribe(
         language => { 
           this.languageData = this.translationService.getCurrentLanguageData();
+          this.languageData = this.translationService.getCurrentLanguageData();
+          this.setLanguageData(this.languageData);
         }
       );
    }
 
   ngOnInit(): void {
-    this.systemControlService.getFeeler();
+    this.systemControlService.emitFeeler();
     this.languageData = this.translationService.getCurrentLanguageData();
     this.setLanguageData(this.languageData);
   }
 
+  restart(restartMode:string){
+    this.systemControlService.startFeeler(restartMode);
+  }
+
   setLanguageData(languageData:LanguageData){
-    this.feelerServiceStatus = languageData.sections.administration.systemControl.feelerStatus.feelerServiceStatus;
+    this.feelerServiceStatus = languageData.sections.administration.systemControl.feelerStatus.feelerServiceStatusLabel;
     //this.currentStatus = languageData.sections.administration.systemControl.feelerStatus.currentStatus;
     this.pageTitle = languageData.sections.administration.systemControl.pageTitle;
     this.pageDescription = languageData.sections.administration.systemControl.pageDescription;
+    this.systemRebootTitle = languageData.sections.administration.systemControl.systemRebootTitle;
+    this.configureNTPServerTitle = languageData.sections.administration.systemControl.configureNTPServerTitle;
     this.headerService.setCurrentTitleDescription(this.pageTitle, this.pageDescription);
   }
 

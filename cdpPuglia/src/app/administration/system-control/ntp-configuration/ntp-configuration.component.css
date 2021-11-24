@@ -1,71 +1,56 @@
-.mat-radio-button ~ .mat-radio-button {
-  margin-left: 5rem;
+button{
+  font-size:1.2rem;
+  border-radius: 1rem;
+  top:5rem;
+  left:3rem
 }
 
-.mat-radio-label {
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  flex-direction: column-reverse;
-  margin-top: 3rem;
-}
-
-.radio-label{
-  position:absolute;
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  font-weight: bold;
-  left:50%;
-}
-
-.container{
-  width:100%;
+.header-cell{
+  font-size: 1.2rem;
+  width:30rem;
   text-align: center;
-  padding-bottom: 2rem;
+  font-weight: bold;
 }
 
-.radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0;
-  left:50%;
+table{
+  position: relative;
+  width:40%;
+  left:30%;
 }
 
-.radioBtn{
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-flow: row wrap;
-}
 
 mat-radio-button{
+  position:absolute;
+  font-weight: bold;
+  left:43%;
+}
+
+mat-label{
+  font-size:1.3rem;
+  font-weight: bold;
+  color:grey;
+  margin-right: 2rem;
+}
+
+.radioLabel{
+  position:absolute;
+ margin-right: 0rem;
+ left:36.5%;
+}
+
+.rightRadio{
+  margin-left: 10rem;
+}
+
+
+.field{
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.full-width{
   font-size: 1.3rem;
-  font-weight: bold;
+  width:15%;
 }
 
-button{
-  font-size:1.5rem;
-  left:45%;
-  margin-top: 3rem;
-}
-
-.title-tile {
-  font-size:2rem;
-  font-weight: bolder;
-  background-color: aqua;
-}
-
-.title {
-  position: absolute;
-}
-
-.label {
-  position: absolute;
-  right: 5px;
-  font-size:larger;
-  font-weight: bold;
-  font-size: 1.8rem;
-}
 

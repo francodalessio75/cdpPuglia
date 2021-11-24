@@ -106,6 +106,10 @@ changePassword$(currentPassword: string, newPassword: string, repeatPassword: st
     this.currentUserSource.next(this.user);
   }
 
+  getCurrentUser():User{
+    return this.user;
+  }
+
   logout(){
     localStorage.removeItem('user');
     this.currentUserSource.next(null!);

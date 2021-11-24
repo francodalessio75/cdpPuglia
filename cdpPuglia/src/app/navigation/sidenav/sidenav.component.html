@@ -24,7 +24,9 @@
           <mat-icon>compass_calibration</mat-icon>
           <div mat-line>Network Services</div>
         </mat-list-item>
-        <mat-list-item routerLink="/system-control">
+        <mat-list-item 
+          routerLink="/system-control"
+          *ngIf="role === 'admin'">
             <mat-icon>compass_calibration</mat-icon>
             <div mat-line>System C&C</div>
           </mat-list-item>

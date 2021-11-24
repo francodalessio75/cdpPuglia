@@ -2,9 +2,9 @@
   <button mat-button (click)="accordion.openAll()">Expand All</button>
   <button mat-button (click)="accordion.closeAll()">Collapse All</button>
 </div>
-<mat-accordion class="headers-align">
+<mat-accordion class="headers-align" multi>
 
-  <mat-expansion-panel>
+  <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{feelerServiceStatus}}
@@ -16,16 +16,28 @@
       <app-feeler-status [feeler]="feeler"></app-feeler-status>
   </mat-expansion-panel>
 
-  <mat-expansion-panel>
+  <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{feelerServiceStatus}}
+        {{systemRebootTitle}}
       </mat-panel-title>
       <mat-panel-description>
         <mat-icon>miscellaneous_services</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
     <app-system-restart></app-system-restart>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{configureNTPServerTitle}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>miscellaneous_services</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-ntp-configuration></app-ntp-configuration>
   </mat-expansion-panel>
 
 </mat-accordion>  

@@ -12,12 +12,14 @@
   background-color: green;
   color:white;
   font-weight: bold;
+  width:9rem;
 }
 
 .suspended{
   background-color: gray;
-  color:white;
+  color:black;
   font-weight: bold;
+  width:9rem;
 }
 
 .title {
@@ -39,5 +41,19 @@ button{
 }
 
 .container{
-  margin-bottom: 2rem;
+  text-align: center;
 }
+
+.header-cell{
+  font-size: 1.2rem;
+  width:30rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+table{
+  position: relative;
+  width:40%;
+  left:30%;
+}
+

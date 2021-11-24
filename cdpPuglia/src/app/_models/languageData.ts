@@ -7,8 +7,18 @@ export interface LanguageData{
             saveButton:string;
             close: string,
             searchButton:string,
-            actionsLabel:string
-
+            actionsLabel:string,
+            startLable:string,
+            stopLabel:string,
+            confirmationRequestTitle:string,
+            confirmationSystemOffRequestMessage:string,
+            transmissionSuccededTitle:string,
+            transmissionSuccededMessage:string,
+            yesButtonLabel:string,
+            noButtonLabel:string,
+            enabledButtonLabel:string,
+            configureButtonLabel:string,
+            rebootNeededMessage:string
         },
         footer:{
             threatTitle: string,
@@ -113,10 +123,16 @@ export interface LanguageData{
                 pageTitle:string;
                 pageDescription:string;
                 feelerStatus:{
-                    feelerServiceStatus:string,
-                    currentStatusLabel:string,
-                    stopFeeler:string
+                    feelerServiceStatusLabel:string,
+                    currentStatusLabel:string
                 }
+                rebootModeTitle:string;
+                softRebootMessage:string;
+                hardRebootMessage:string;
+                rebootButtonLabel:string;
+                systemRebootTitle:string;
+                configureNTPServerTitle:string;
+                NTPServerLabel:string;
             }
         }
     }

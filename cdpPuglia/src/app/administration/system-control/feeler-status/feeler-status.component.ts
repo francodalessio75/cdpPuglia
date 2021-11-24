@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Feeler } from 'src/app/_models/feeler';
 import { SystemControlService } from 'src/app/_services/system-control.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationAlertComponent } from '../confirmation-alert/confirmation-alert.component';
 import { SuccessFeedbackComponent } from '../success-feedback/success-feedback.component';
@@ -9,22 +9,29 @@ import { LanguageData } from 'src/app/_models/languageData';
 import { TranslationService } from 'src/app/_services/translation.service';
 import { FeelerStatus } from 'src/app/enums/FeelerStatusEnum';
 
+export interface TableRow{
+  status:string;
+  action:string;
+}
 
 @Component({
   selector: 'app-feeler-status',
   templateUrl: './feeler-status.component.html',
   styleUrls: ['./feeler-status.component.css']
 })
-export class FeelerStatusComponent implements OnInit, AfterViewInit {
+export class FeelerStatusComponent implements OnInit {
   @Input() feeler!:Feeler
 
-  displayedColumns: string[] = [];
-
   languageData!:LanguageData;
+  confirmationSystemOffRequestMessage!:string;
+  transmissionSuccededMessage!:string;
   
-  dataSource:{status:string, action:string}[] = [
-    
-  ];
+  displayedColumns: string[] = ['status','action'];
+
+  tableHeaders:string[] = [];
+  
+  dataSource:TableRow[] = [];
+
   constructor(
     private systemControlService : SystemControlService,
     private dialog:MatDialog,
@@ -43,24 +50,26 @@ export class FeelerStatusComponent implements OnInit, AfterViewInit {
 
    ngOnInit(): void {
      this.languageData = this.translationService.getCurrentLanguageData();
-     this.systemControlService.getFeeler();
+     this.systemControlService.emitFeeler();
+     this.setLanguageData(this.languageData);
   }
 
-  ngAfterViewInit(){
-    this.setLanguageData(this.languageData);
-  }
 
   stopFeeler(){
-     this.dialog
+    this.dialog
       .open( ConfirmationAlertComponent,{
-        data: 'L\'arresto del sistema comporta una interruzione di operativita\' . Confermare l\'operazione?'
+        hasBackdrop:true,
+        disableClose:true,
+        data: this.confirmationSystemOffRequestMessage
       })
       .afterClosed()
       .subscribe((confirmed:Boolean) => {
         if(confirmed){
           this.systemControlService.stopFeeler();
           this.dialog.open(SuccessFeedbackComponent,{
-            data:'Rivisitare la sezione per verificare lo stato del sistema.'
+            hasBackdrop:true,
+            disableClose:true,
+            data:this.transmissionSuccededMessage
         })
       }else {
         this.toastr.info("Operazione Annulata");
@@ -69,10 +78,16 @@ export class FeelerStatusComponent implements OnInit, AfterViewInit {
   }
 
   setLanguageData(languageData:LanguageData){
-    this.displayedColumns[0] = languageData.sections.administration.systemControl.feelerStatus.currentStatusLabel;
-    this.displayedColumns[1] = languageData.sections.global.actionsLabel;
-    //let action = this.feeler.status === FeelerStatus.active ? languageData.sections.administration.systemControl.
-    //this.dataSource[0] = {status:this.feeler.status, action:};
+    this.tableHeaders = [];
+    this.tableHeaders.push(languageData.sections.administration.systemControl.feelerStatus.currentStatusLabel);
+    this.tableHeaders.push(languageData.sections.global.actionsLabel);
+
+    this.dataSource = [];
+    let action = this.feeler.status === FeelerStatus.active 
+      ? languageData.sections.global.stopLabel : '';
+    this.dataSource.push({status:this.feeler.status+'', action:action});
+    this.confirmationSystemOffRequestMessage = languageData.sections.global.confirmationSystemOffRequestMessage;
+    this.transmissionSuccededMessage = languageData.sections.global.transmissionSuccededMessage;
   }
 }
 
