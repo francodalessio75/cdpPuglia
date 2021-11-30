@@ -9,7 +9,7 @@
 
         <ng-container matColumnDef="threatId">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-            <td class="threat-id clickable" 
+            <td class="clickable" 
                 mat-cell *matCellDef="let 
                 element"(click)="getThreatContent(element.threatId)">
                 {{element.threatId}}
@@ -37,7 +37,12 @@
     
         <ng-container matColumnDef="typeRule">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>{{typeRule}}</th>
-            <td mat-cell *matCellDef="let element">{{element.typeRule}}</td>
+            <td 
+                class="clickable" 
+                mat-cell *matCellDef="let 
+                element" (click)="test()">
+                test
+            </td>
         </ng-container>
     
         <ng-container  matColumnDef="severity">

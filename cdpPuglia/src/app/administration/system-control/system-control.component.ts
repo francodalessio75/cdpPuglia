@@ -64,9 +64,9 @@ export class SystemControlComponent implements OnInit {
     //this.currentStatus = languageData.sections.administration.systemControl.feelerStatus.currentStatus;
     this.pageTitle = languageData.sections.administration.systemControl.pageTitle;
     this.pageDescription = languageData.sections.administration.systemControl.pageDescription;
-    this.systemRebootTitle = languageData.sections.administration.systemControl.systemRebootTitle;
-    this.configureNTPServerTitle = languageData.sections.administration.systemControl.configureNTPServerTitle;
-    this.configureNTPServerTitle = languageData.sections.administration.systemControl.manualTimeSettingTitle;
+    this.systemRebootTitle = languageData.sections.administration.systemControl.systemReboot.systemRebootTitle;
+    this.configureNTPServerTitle = languageData.sections.administration.systemControl.ntpConfiguration.configureNTPServerTitle;
+    this.manualTimeSettingTitle = languageData.sections.administration.systemControl.manualTimeSetting.manualTimeSettingTitle;
     this.headerService.setCurrentTitleDescription(this.pageTitle, this.pageDescription);
   }
 

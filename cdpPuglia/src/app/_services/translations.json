@@ -19,7 +19,10 @@
 				"noButtonLabel":"NO",
 				"enabledButtonLabel":"Enabled",
 				"configureButtonLabel":"CONFIGURE",
-				"rebootNeededMessage":"Please note: in order to confirm new settings you must execute a system reboot"
+				"rebootNeededMessage":"Please note: in order to confirm new settings you must execute a system reboot",
+				"timeLabel":"Time",
+				"dateLabel":"Date",
+				"timezoneLabel":"Timezone"
 			},
 			"footer": {
 				"threatTitle": "Threats consultation page",
@@ -126,14 +129,20 @@
                         "feelerServiceStatusLabel":"FEELER SERVICE STATUS",
                         "currentStatusLabel":"CURRENT STATUS"
                     },
-					"rebootModeTitle":"Reboot Mode",
-					"softRebootMessage":"Soft Reboot (services reboot)",
-					"hardRebootMessage":"Hard Reboot (appliance reboot)",
-					"rebootButtonLabel":"REBOOT",
-					"systemRebootTitle":"System Reboot",
-					"configureNTPServerTitle":"NTP server configuration",
-					"manualTimeSettingTitle":"Manual time setting configuration",
-					"NTPServerLabel":"NTP Server"
+					"systemReboot":{
+						"systemRebootTitle":"System Reboot",
+						"rebootModeTitle":"Reboot Mode",
+						"rebootButtonLabel":"REBOOT",
+						"softRebootMessage":"Soft Reboot (services reboot)",
+						"hardRebootMessage":"Hard Reboot (appliance reboot)"
+					},
+					"ntpConfiguration":{
+						"configureNTPServerTitle":"NTP server configuration",
+						"NTPServerLabel":"NTP Server"
+					},
+					"manualTimeSetting":{
+						"manualTimeSettingTitle":"Manual time setting configuration"
+					}
                 }
             }
 		}
@@ -158,7 +167,10 @@
 				"noButtonLabel":"NO",
 				"enabledButtonLabel":"Abilitato",
 				"configureButtonLabel":"CONFIGURA",
-				"rebootNeededMessage":"Per confermare le nuove impostazioni sarà necessario eseguire un reboot del sistema."
+				"rebootNeededMessage":"Per confermare le nuove impostazioni sarà necessario eseguire un reboot del sistema.",
+				"timeLabel":"Time",
+				"dateLabel":"Date",
+				"timezoneLabel":"Timezone"
 			},
 			"footer": {
 				"threatTitle": "Pagina consultazione minacce",
@@ -265,14 +277,20 @@
                         "feelerServiceStatusLabel":"STATO DI SERVIZIO DELLA SONDA",
                         "currentStatusLabel":"STATO CORRENTE"
                     },
-					"rebootModeTitle":"Tipo Riavvio",
-					"softRebootMessage":"Riavvio Soft (riavvio dei servizi)",
-					"hardRebootMessage":"Riavvio Hard (riavvio dell'appliance)",
-					"rebootButtonLabel":"RIAVVIA",
-					"systemRebootTitle":"Riavvio del Sistema",
-					"configureNTPServerTitle":"Configurazione server NTP",
-					"manualTimeSettingTitle":"Definizione manuale del tempo di Sistema",
-					"NTPServerLabel":"Server NTP"
+					"systemReboot":{
+						"systemRebootTitle":"Riavvio del Sistema",
+						"rebootModeTitle":"Tipo Riavvio",
+						"rebootButtonLabel":"RIAVVIA",
+						"softRebootMessage":"Riavvio Soft (riavvio dei servizi)",
+						"hardRebootMessage":"Riavvio Hard (riavvio dell'appliance)"
+					},
+					"ntpConfiguration":{
+						"configureNTPServerTitle":"Configurazione server NTP",
+						"NTPServerLabel":"Server NTP"
+					},
+					"manualTimeSettings":{
+						"manualTimeSettingTitle":"Definizione manuale del tempo di Sistema"
+					}
                 }
             }
 		}

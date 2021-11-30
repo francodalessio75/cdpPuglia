@@ -111,3 +111,9 @@ Authorization: Bearer {{login.response.body.token}}
     "datetime":"210531130000",
     "timezone":"Europe/Rome"
 }
+
+################# RULES #############################
+
+### get rule
+GET {{baseURL}}/rules/0 HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}

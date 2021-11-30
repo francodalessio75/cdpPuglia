@@ -117,7 +117,7 @@ export class NtpConfigurationComponent {
 
   setLanguageData(languageData:LanguageData){
     this.configureButtonLabel = languageData.sections.global.configureButtonLabel;
-    this.NTPServerLabel = languageData.sections.administration.systemControl.NTPServerLabel;
+    this.NTPServerLabel = languageData.sections.administration.systemControl.ntpConfiguration.NTPServerLabel;
     this.enabledButtonlabel = languageData.sections.global.enabledButtonLabel;
     this.yesButtonlabel = languageData.sections.global.noButtonLabel;
     this.noButtonlabel = languageData.sections.global.yesButtonLabel;

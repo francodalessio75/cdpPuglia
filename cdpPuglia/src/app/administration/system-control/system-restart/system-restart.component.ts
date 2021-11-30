@@ -87,12 +87,12 @@ export class SystemRestartComponent {
   }
 
   setLanguageData(languageData:LanguageData){
-    this.tableHeaders[0] = languageData.sections.administration.systemControl.rebootModeTitle;
+    this.tableHeaders[0] = languageData.sections.administration.systemControl.systemReboot.rebootModeTitle;
 
-    this.rebootButtonLabel = languageData.sections.administration.systemControl.rebootButtonLabel;
+    this.rebootButtonLabel = languageData.sections.administration.systemControl.systemReboot.rebootButtonLabel;
 
-    this.rebootModes[0].message = languageData.sections.administration.systemControl.softRebootMessage;
-    this.rebootModes[1].message = languageData.sections.administration.systemControl.hardRebootMessage;
+    this.rebootModes[0].message = languageData.sections.administration.systemControl.systemReboot.softRebootMessage;
+    this.rebootModes[1].message = languageData.sections.administration.systemControl.systemReboot.hardRebootMessage;
     
     this.confirmationSystemOffRequestMessage = languageData.sections.global.confirmationSystemOffRequestMessage;
     this.transmissionSuccededMessage = languageData.sections.global.transmissionSuccededMessage;

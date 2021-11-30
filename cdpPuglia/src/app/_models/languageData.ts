@@ -18,7 +18,10 @@ export interface LanguageData{
             noButtonLabel:string,
             enabledButtonLabel:string,
             configureButtonLabel:string,
-            rebootNeededMessage:string
+            rebootNeededMessage:string,
+            timeLabel:string,
+            dateLabel:string,
+            timezoneLabel:string
         },
         footer:{
             threatTitle: string,
@@ -125,15 +128,21 @@ export interface LanguageData{
                 feelerStatus:{
                     feelerServiceStatusLabel:string,
                     currentStatusLabel:string
+                };
+                systemReboot:{
+                    systemRebootTitle:string;
+                    rebootModeTitle:string;
+                    rebootButtonLabel:string;
+                    softRebootMessage:string;
+                    hardRebootMessage:string;
+                };
+                ntpConfiguration:{
+                    configureNTPServerTitle:string;
+                    NTPServerLabel:string;
+                },
+                manualTimeSetting:{
+                    manualTimeSettingTitle:string;
                 }
-                rebootModeTitle:string;
-                softRebootMessage:string;
-                hardRebootMessage:string;
-                rebootButtonLabel:string;
-                systemRebootTitle:string;
-                configureNTPServerTitle:string;
-                manualTimeSettingTitle:string;
-                NTPServerLabel:string;
             }
         }
     }
