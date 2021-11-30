@@ -15,11 +15,14 @@
   font-weight: bold;
   font-size: 1.5rem;
 }
+.main-container{
+  text-align: center;
+  margin-left:23%;
 
+}
 
   .table{
     width:70%;
-    position:absolute;
     text-align: center;
     left:15%;
     margin-top: 1rem;

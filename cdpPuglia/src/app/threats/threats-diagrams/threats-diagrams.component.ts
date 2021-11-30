@@ -1,3 +1,4 @@
+import { BLACK_ON_WHITE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 import { Component, OnInit} from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
@@ -36,7 +37,8 @@ export class ThreatsDiagramsComponent implements OnInit{
         {data:[{
           x: threat.ts,
           y: this.getSeverityValue(threat.severity)
-        }],legend:''+threat.label
+        }],legend:''+threat.label,
+        backgroundColor:"black"
         }
       );
       // this.barChartLabels.push(''+threat.ts)

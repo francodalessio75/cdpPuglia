@@ -16,6 +16,12 @@ import { FeelerStatus } from 'src/app/enums/FeelerStatusEnum';
   styleUrls: ['./feeler-status.component.css']
 })
 export class FeelerStatusComponent implements OnInit, AfterViewInit {
+  // Current Status
+  currentStatus:string = '';
+  activateBtn:string = '';
+  shutdownBtn: string = '';
+  suspendedBtn: string = '';
+
   @Input() feeler!:Feeler
 
   displayedColumns: string[] = [];
@@ -44,6 +50,10 @@ export class FeelerStatusComponent implements OnInit, AfterViewInit {
    ngOnInit(): void {
      this.languageData = this.translationService.getCurrentLanguageData();
      this.systemControlService.getFeeler();
+     this.translationService.currentLanguage$.subscribe((language)=>{
+      this.setLanguageData1();
+    });
+    this.setLanguageData1();
   }
 
   ngAfterViewInit(){
@@ -67,6 +77,12 @@ export class FeelerStatusComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  private setLanguageData1(){
+    let languageData = this.translationService.getCurrentLanguageData();
+    this.currentStatus = languageData.sections.systemControl.currentStatus.currentStatus;
+    this.activateBtn = languageData.sections.systemControl.currentStatus.activateBtn;
+    this.shutdownBtn = languageData.sections.systemControl.currentStatus.shutdownBtn;
+    this.suspendedBtn = languageData.sections.systemControl.currentStatus.suspendedBtn;}
 
   setLanguageData(languageData:LanguageData){
     this.displayedColumns[0] = languageData.sections.administration.systemControl.feelerStatus.currentStatusLabel;

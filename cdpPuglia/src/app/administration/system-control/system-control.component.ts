@@ -15,6 +15,11 @@ export class SystemControlComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   
   feeler!:Feeler;
+  //System Restart
+  systemRestart: string = '';
+
+   // Current Status
+   currentStatusTitle: string = '';
 
   languageData!:LanguageData;
   pageTitle!:string;
@@ -26,20 +31,24 @@ export class SystemControlComponent implements OnInit {
     private systemControlService : SystemControlService,
     private translationService:TranslationService,
     private headerService:HeaderService) {
+      this.translationService.currentLanguage$.subscribe(
+        language => {
+          this.languageData = this.translationService.getCurrentLanguageData();
+          this.setLanguageData(this.languageData);
+        }
+      );
       this.systemControlService.currentFeeler$.subscribe(
         feeler => this.feeler = feeler
-      );
-      this.translationService.currentLanguage$.subscribe(
-        language => { 
-          this.languageData = this.translationService.getCurrentLanguageData();
-        }
       );
    }
 
   ngOnInit(): void {
     this.systemControlService.getFeeler();
     this.languageData = this.translationService.getCurrentLanguageData();
-    this.setLanguageData(this.languageData);
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.setLanguageData1();
+    });
+    this.setLanguageData1();
   }
 
   setLanguageData(languageData:LanguageData){
@@ -48,6 +57,10 @@ export class SystemControlComponent implements OnInit {
     this.pageTitle = languageData.sections.administration.systemControl.pageTitle;
     this.pageDescription = languageData.sections.administration.systemControl.pageDescription;
     this.headerService.setCurrentTitleDescription(this.pageTitle, this.pageDescription);
+  }
+  setLanguageData1(){
+    this.systemRestart = this.languageData.sections.systemControl.systemRestart.systemRestart;
+    this.currentStatusTitle = this.languageData.sections.systemControl.currentStatus.currentStatusTitle;
   }
 
 }

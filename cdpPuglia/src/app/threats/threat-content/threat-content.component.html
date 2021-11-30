@@ -74,30 +74,19 @@
     </mat-expansion-panel-header>
     <app-external-links [threat]="threat"></app-external-links>
   </mat-expansion-panel>
-  
-  <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{externalLinks}}
-      </mat-panel-title>
-      <mat-panel-description>
-        <mat-icon>insert_chart</mat-icon>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <app-external-links [threat]="threat"></app-external-links>
-  </mat-expansion-panel>
 
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Prova
+        {{intelligenceData}}
       </mat-panel-title>
       <mat-panel-description>
         <mat-icon>table_rows</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <app-intelligence-data ></app-intelligence-data>
+     <app-intelligence-data></app-intelligence-data>
   </mat-expansion-panel>
+
 </mat-accordion>
  
 

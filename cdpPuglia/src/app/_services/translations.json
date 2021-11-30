@@ -116,7 +116,22 @@
                         "currentStatusLabel":"STATO CORRENTE"
                     }
                 }
-            }
+            },			
+			"systemControl":{
+				"currentStatus":{
+					"currentStatusTitle": "Probe (?) current status",
+					"currentStatus":"Current status",
+					"activateBtn":"active",
+					"shutdownBtn": "SHUTDOWN",
+					"suspendedBtn": "suspended"
+				},			
+				"systemRestart":{
+					"systemRestart": "System Restart",
+					"hardRestart": "Hard restart (appliance's restart)",
+					"softRestart": "Soft restart (services' restart)",
+					"restartBtn":"RESTART"
+				}
+			}
 		}
 	},
 	"it": {
@@ -236,7 +251,24 @@
                         "currentStatusLabel":"CURRENT STATUS"
                     }
                 }
-            }
+            },
+			"systemControl":{
+				"currentStatus":{
+					"currentStatusTitle": "Stato corrente della sonda",
+					"currentStatus":"Stato corrente",
+					"activeBtn":"attiva",
+					"shutdownBtn": "ARRESTA",
+					"suspendedBtn": "sospesa"
+				},
+			
+				
+				"systemRestart":{
+					"systemRestart": "Riavvio del sistema",
+					"hardRestart": "Riavvio hard (riavvio dell'appliance)",
+					"softRestart": "Riavvio soft (riavvio dei servizi)",
+					"restartBtn":"RIAVVIA"
+				}
+			}
 		}
 	}
 }

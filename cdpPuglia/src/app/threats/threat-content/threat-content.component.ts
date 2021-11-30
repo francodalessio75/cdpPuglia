@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
+import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Threat } from 'src/app/_models/threat';
 import { ThreatsService } from 'src/app/_services/threats.service';
@@ -14,6 +15,8 @@ import { TranslationService } from 'src/app/_services/translation.service';
 })
 export class ThreatContentComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
 
   threat!:Threat;
   threatDatas= '';

@@ -11,7 +11,7 @@
        gutterSize="2px"
        text-align= "left">
        <mat-grid-tile colspan="3"></mat-grid-tile>
-       <mat-grid-tile colspan="1" rowspan="1"><div class="label">STATO CORRENTE :</div></mat-grid-tile>
+       <mat-grid-tile colspan="1" rowspan="1"><div class="label">{{currentStatus}} :</div></mat-grid-tile>
        <mat-grid-tile colspan="1" rowspan="1"> 
             <button
                 [disabled]="true"
@@ -19,7 +19,7 @@
                     {{feeler.status}}
        </button>
         </mat-grid-tile>
-        <mat-grid-tile colspan="1"><button *ngIf="feeler.status === 'active'" mat-raised-button color="accent" (click)="stopFeeler()">ARRESTA</button></mat-grid-tile> 
+        <mat-grid-tile colspan="1"><button *ngIf="feeler.status === 'active'" mat-raised-button color="accent" (click)="stopFeeler()">{{shutdownBtn}}</button></mat-grid-tile> 
     </mat-grid-list>
        
 </mat-dialog-content>

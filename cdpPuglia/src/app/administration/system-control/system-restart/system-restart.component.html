@@ -6,7 +6,7 @@
         rowHeight="2rem"
         gutterSize="2px"
         text-align= "left">
-            <mat-grid-tile colspan="2" class="title-tile"><div class="title">RIAVVIO DEL SISTEMA:</div></mat-grid-tile>
+            <mat-grid-tile colspan="2" class="title-tile"><div class="title">{{systemRestart}}:</div></mat-grid-tile>
     </mat-grid-list>
     
     <label id="radio-label" class="radio-label">Modalità di riavvio</label>
@@ -17,9 +17,12 @@
         <mat-list>
             <mat-list-item>
                 <mat-radio-button
-                    *ngFor="let mode of restartModes"
-                    [value]="mode.value"
-                    class="radioBtn">{{mode.message}}
+                    value="hard"
+                    class="radioBtn">{{hardRestart}}
+                </mat-radio-button>
+                <mat-radio-button
+                    value="soft"
+                    class="radioBtn">{{softRestart}}
                 </mat-radio-button>
             </mat-list-item>
             <mat-list-item>
@@ -27,7 +30,7 @@
                     mat-raised-button 
                     color="primary" 
                     (click)="restart()"
-                    class="button">RIAVVIA</button>
+                    class="button">{{restartBtn}}</button>
             </mat-list-item>
         </mat-list>
     </mat-radio-group>

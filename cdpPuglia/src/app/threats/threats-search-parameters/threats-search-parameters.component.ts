@@ -14,7 +14,7 @@ export interface Range{
   styleUrls: ['./threats-search-parameters.component.css']
 })
 export class ThreatsSearchParametersComponent implements OnInit {
-  choosenRange!:string;
+  choosenRange = '1';
 
   languageData!:LanguageData;
 

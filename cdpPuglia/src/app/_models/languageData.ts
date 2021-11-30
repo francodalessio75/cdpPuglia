@@ -118,6 +118,21 @@ export interface LanguageData{
                     stopFeeler:string
                 }
             }
+        },
+        systemControl:{
+            currentStatus:{
+                currentStatusTitle: string,
+                currentStatus:string,
+                activateBtn:string,
+                shutdownBtn: string,
+                suspendedBtn: string
+            },			
+            systemRestart:{
+                systemRestart: string,
+                hardRestart: string,
+                softRestart: string,
+                restartBtn:string
+            }
         }
     }
 }
