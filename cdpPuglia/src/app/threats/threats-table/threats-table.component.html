@@ -1,57 +1,70 @@
 <div class="main-container">
+  <mat-table class="table" [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="ts">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>TIME-STAMP</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.ts | date: "d/M/yyyy h:mm a" }}
+      </td>
+    </ng-container>
 
-    <mat-table class="table" [dataSource]="dataSource" matSort >
+    <ng-container matColumnDef="threatId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td
+        class="threat-id clickable"
+        mat-cell
+        *matCellDef="let element"
+        (click)="getThreatContent(element.threatId)"
+      >
+        {{ element.threatId }}
+      </td>
+    </ng-container>
 
-        <ng-container matColumnDef="ts">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>TIME-STAMP</th>
-            <td mat-cell *matCellDef="let element">{{element.ts | date : 'd/M/yyyy h:mm a' }}</td>
-        </ng-container>
+    <ng-container matColumnDef="ipSrc">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ ipSrc }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.ipSrc }}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="threatId">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-            <td class="threat-id clickable" 
-                mat-cell *matCellDef="let 
-                element"(click)="getThreatContent(element.threatId)">
-                {{element.threatId}}
-            </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="ipSrc">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ipSrc}}</th>
-            <td mat-cell *matCellDef="let element">{{element.ipSrc}}</td>
-        </ng-container>
-    
-        <ng-container matColumnDef="ipDst">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ipDst}}</th>
-            <td mat-cell *matCellDef="let element">{{element.ipDst}}</td>
-        </ng-container>
-    
-        <ng-container matColumnDef="label">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{nameRule}}</th>
-            <td class="clickable" 
-                mat-cell 
-                *matCellDef="let element"
+    <ng-container matColumnDef="ipDst">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ ipDst }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.ipDst }}</td>
+    </ng-container>
 
-                >{{element.label}}</td>
-        </ng-container>
+    <ng-container matColumnDef="label">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ nameRule }}</th>
+       <td
+      class="clickable"
+        mat-cell
+        *matCellDef="let element"
+        (click)="getRuleDetails(element.label)">
+        {{ element.label }}
+      </td>
+    </ng-container>
+
     
-        <ng-container matColumnDef="typeRule">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{typeRule}}</th>
-            <td mat-cell *matCellDef="let element">{{element.typeRule}}</td>
-        </ng-container>
-    
-        <ng-container  matColumnDef="severity">
-            <th  mat-header-cell *matHeaderCellDef mat-sort-header>{{severity}}</th>
-            <td mat-cell *matCellDef="let element">
-                <mat-chip-list>
-                    <mat-chip [ngClass]="{'low': element.severity === 'low', 
-                    'medium': element.severity === 'medium', 
-                    'high': element.severity === 'high', 
-                    'critical': element.severity === 'critical' }">
-                      {{element.severity}}
-                    </mat-chip>
-                  </mat-chip-list></td>
-            <!-- <td 
+    <ng-container matColumnDef="typeRule">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ typeRule }}</th>
+      <td class="clickable" mat-cell *matCellDef="let element">
+        {{ element.typeRule }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="severity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ severity }}</th>
+      <td mat-cell *matCellDef="let element" >
+        <mat-chip-list>
+          <mat-chip
+            [ngClass]="{
+              low: element.severity === 'low',
+              medium: element.severity === 'medium',
+              high: element.severity === 'high',
+              critical: element.severity === 'critical'
+            }"
+          >
+            {{ element.severity }}
+          </mat-chip>
+        </mat-chip-list>
+      </td>
+      <!-- <td 
                 mat-cell 
                 *matCellDef="let element">
                     <button class="gravity-label" [ngClass]="{
@@ -60,19 +73,22 @@
                         'high': element.severity === 'high', 
                         'critical': element.severity === 'critical'
                     }" >{{element.severity}}</button> </td>-->
-        </ng-container>
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
 
-    </mat-table>
-
-    <mat-paginator style="font-size: 1.2rem; font-weight: bold;" #paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-    <div button class="align-right">
-        <button mat-raised-button color="primary" (click)="downloadCSV('test.csv')">{{export}}</button>
-    </div>
-
+  <mat-paginator
+    style="font-size: 1.2rem; font-weight: bold"
+    #paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+  ></mat-paginator>
+  <div button class="align-right">
+    <button mat-raised-button color="primary" (click)="downloadCSV('test.csv')">
+      {{ export }}
+    </button>
+  </div>
 </div>
 
 <!-- color="{{ element.severity == 'low' ? 'primary' : ( element.severity == 'medium' ? 'accent' : 'warn' ) }}" -->
-

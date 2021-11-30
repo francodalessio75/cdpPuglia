@@ -1,0 +1,13 @@
+.align-right{
+    text-align: right;
+    padding-bottom: .2rem;
+    padding-right: .2rem;
+  }
+  
+  .main-container{
+    margin-bottom: 4rem;
+  }
+  
+  button{
+    font-size: 1.5rem;
+  }

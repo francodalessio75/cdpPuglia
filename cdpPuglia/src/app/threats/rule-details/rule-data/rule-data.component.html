@@ -1,0 +1,37 @@
+
+<mat-grid-list 
+   cols="2" 
+   rowHeight="2rem"
+   gutterSize="2px"
+   text-align= "left">
+
+
+   <mat-grid-tile>
+       <div class="label">Nome regola </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="content">{{rule.overview.label}}</div>
+    </mat-grid-tile>
+   <mat-grid-tile>
+       <div class="label">Tipo regola </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="content">{{rule.overview.type}} </div>
+    </mat-grid-tile>
+   <mat-grid-tile>
+       <div class="label">Gravità </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="content">{{rule.overview.severity}} </div>
+    </mat-grid-tile>
+   <mat-grid-tile>
+       <div class="label">Descrizione </div>
+    </mat-grid-tile>
+    <!-- VEDI RULE CSS  -->
+    <!-- [rowspan]="row.value()" -->
+    <!-- {{rule.overview.summary}} -->
+    <mat-grid-tile [rowspan]="8">
+        <div  class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ex excepturi quas minima libero pariatur saepe illum maxime labore aliquid dolorem corporis placeat, rem odit doloribus expedita possimus quae itaque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas accusantium fugit reiciendis accusamus illo facere commodi vitae dolores itaque aliquam, sequi assumenda placeat maxime animi, nemo quos et pariatur eos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ex excepturi quas minima libero pariatur saepe illum maxime labore aliquid dolorem corporis placeat, rem odit doloribus expedita possimus quae itaque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas accusantium fugit reiciendis accusamus illo facere commodi vitae dolores itaque aliquam, sequi assumenda placeat maxime animi, nemo quos et pariatur eos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ex excepturi quas minima libero pariatur saepe illum maxime labore aliquid dolorem corporis placeat, rem odit doloribus expedita possimus quae itaque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas accusantium fugit reiciendis accusamus illo facere commodi vitae dolores itaque aliquam, sequi assumenda placeat maxime animi, nemo quos et pariatur eos! </div>
+    </mat-grid-tile>
+
+</mat-grid-list>

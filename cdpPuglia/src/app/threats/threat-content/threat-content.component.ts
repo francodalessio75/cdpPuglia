@@ -23,6 +23,7 @@ export class ThreatContentComponent implements OnInit {
   externalLinks='';
   intelligenceData='';
 
+  mitre!: string[];
 
   close='';
 
@@ -33,6 +34,7 @@ export class ThreatContentComponent implements OnInit {
     this.threatService.currentThreat$.subscribe(threat => {
       this.threat = threat;
     });
+    
   }
 
   ngOnInit(): void {
@@ -41,6 +43,8 @@ export class ThreatContentComponent implements OnInit {
       this.setLanguageData();
     });
     this.setLanguageData();
+
+    this.mitre = this.threatService.getMitre();
   }
 
   backToThreats(){

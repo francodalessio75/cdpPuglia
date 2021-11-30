@@ -1,0 +1,68 @@
+<!-- 
+<div class="action-buttons">
+  <button mat-button (click)="accordion.openAll()">Expand All</button>
+  <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+</div> -->
+
+<mat-accordion class="headers-align" multi>
+
+<mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ruleDataTitle}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-rule-data [rule]="rule"></app-rule-data>
+</mat-expansion-panel>
+<mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{technicalDetailsTitle}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-tecnical-details [rule]="rule"></app-tecnical-details>
+</mat-expansion-panel>
+
+<mat-expansion-panel [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{mitreElementsTitle}}
+    </mat-panel-title>
+    <mat-panel-description>
+      <mat-icon>insert_chart</mat-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <app-mitre-elements [mitre]="mitre"></app-mitre-elements>
+</mat-expansion-panel>
+
+<mat-expansion-panel [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+     {{ cveTitle }}
+    </mat-panel-title>
+    <mat-panel-description>
+      <mat-icon>insert_chart</mat-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <app-cve-data [threat]="threat">
+
+  </app-cve-data>
+</mat-expansion-panel>
+
+</mat-accordion>
+
+
+<div button class="align-right">
+  <button mat-raised-button color="primary" (click)="backToThreats()">
+    Chiudi
+  </button>
+</div>
+
+
+

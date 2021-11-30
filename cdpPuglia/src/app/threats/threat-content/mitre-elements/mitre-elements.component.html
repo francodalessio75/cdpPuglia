@@ -1,7 +1,7 @@
 <mat-grid-list cols="2" rowHeight="2rem">
   <mat-grid-tile></mat-grid-tile><mat-grid-tile></mat-grid-tile>
   <mat-grid-tile
-      *ngFor="let mitre of threat.mitre"
+      *ngFor="let mitre of mitre"
       colspan="2"
       >
       <div class="content clickable" (click)="openTechniqueDetails(mitre)">{{mitre}}</div>

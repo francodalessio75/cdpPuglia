@@ -51,6 +51,9 @@ import { CardComponent } from './card/card.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
+import { RuleDetailsComponent } from './threats/rule-details/rule-details.component';
+import { RuleDataComponent } from './threats/rule-details/rule-data/rule-data.component';
+import { TecnicalDetailsComponent } from './threats/rule-details/tecnical-details/tecnical-details.component';
 
 
 
@@ -64,7 +67,6 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
     ThreatsComponent,
     FooterComponent,
     ThreatsFiltersComponent,
-    ThreatsDiagramsComponent,
     ThreatsDiagramsComponent,
     ChangePasswordComponent,
     ChangeProfileComponent,
@@ -92,7 +94,10 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
     DashboardComponent,
     CardComponent,
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    RuleDetailsComponent,
+    RuleDataComponent,
+    TecnicalDetailsComponent
   ],
   imports: [
     BrowserModule,

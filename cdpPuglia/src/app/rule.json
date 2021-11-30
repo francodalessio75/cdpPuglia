@@ -1,0 +1,28 @@
+{
+  
+    "cve": [
+      {
+        "description": "description CVE-2021-0022",
+        "id": "CVE-2021-0022"
+      }
+    ],
+    "mitre": [
+      "T1001.001",
+      "t1111"
+    ],
+    "overview": {
+      "label": "Rule name 0",
+      "severity": "medium",
+      "summary": "extended rule description",
+      "type": "signature"
+    },
+    "ruleId": "0",
+    "technical": {
+      "category": "threat type",
+      "defaultStatus": true,
+      "family": "Brute Force",
+      "killChain": "Kill Chain Framework",
+      "protocol": "TCP"
+  }
+  
+}

@@ -1,9 +1,0 @@
-ng add @angular/material
-npm install hammerjs /*Gesture supprt for mobile devices*/ inserire nel file main.ts import 'hammerjs'
-ng g m material
-ng g c auth/signup --module app.module
-ng g c auth/login --module app.module 
-ng g c threats --module app.module
-ng g c welcome --module app.module
-added <router-outlet> in app component
-npm install @angular/flex-layout --save /*responsive behavior*/
