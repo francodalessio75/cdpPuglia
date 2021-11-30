@@ -177,4 +177,23 @@ button{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
+.low{
+  background-color: yellowgreen;
+  width: 5rem;
+  justify-content: center;
+}
+.medium{
+  background-color: yellow;
+  width: 5rem;
+  justify-content: center;
+}
+.high{
+  background-color: orange;
+  width: 5rem;
+  justify-content: center;
+}
+.critical{
+  background-color: red;
+  width: 5rem;
+  text-align: center;
+}

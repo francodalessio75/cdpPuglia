@@ -1,3 +1,18 @@
 mat-expansion-panel{
     text-align: center;
 }
+
+mat-progress-spinner{
+    position:fixed;
+    z-index: 999;
+    top: 30%;
+    right: 50%;
+
+}
+
+.modal{
+    opacity: 0.2;
+}
+
+
+

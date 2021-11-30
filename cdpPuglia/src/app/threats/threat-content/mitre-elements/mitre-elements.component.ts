@@ -14,7 +14,6 @@ import { TranslationService } from 'src/app/_services/translation.service';
 export class MitreElementsComponent{
   @Input() threat! : Threat;
   technique!:Technique;
-  elMitreMatrix='';
   viewMitreMatrix='';
 
   constructor( 
@@ -62,7 +61,6 @@ export class MitreElementsComponent{
   }
   private setLanguageData(){
     let languageData = this.translationService.getCurrentLanguageData();
-    this.elMitreMatrix = languageData.sections.threats.threatContent.mitreElements.elMitreMatrix;
     this.viewMitreMatrix = languageData.sections.threats.threatContent.mitreElements.viewMitreMatrix;
   }
 }

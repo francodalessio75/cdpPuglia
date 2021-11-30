@@ -4,6 +4,7 @@ import { HeaderService } from '../_services/header.service';
 import { ThreatsService } from '../_services/threats.service';
 import { TranslationService } from '../_services/translation.service';
 import {MatAccordion} from '@angular/material/expansion';
+import { SpinnerService } from '../_services/spinner.service';
 
 @Component({
   selector: 'app-threats',
@@ -26,6 +27,8 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   threatTitle = '';
   threatDescription = '';
 
+  loading:boolean = false;
+
   constructor(
     private headerService:HeaderService,
     private threatsService:ThreatsService,
@@ -33,8 +36,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       this.threatsService.currentThreat$.subscribe(threat => this.threat = threat);
       this.threatsService.currentThreats$.subscribe(threats => this.threats = threats);
     }
-
-    _loading$ = this.threatsService.loading$;
 
   ngOnInit(): void {
     this.threatsService.getThreats(1);

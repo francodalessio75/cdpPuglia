@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit, OnDestroy{
   login(){
     this.user.username = this.loginForm.value.username;
     this.user.password = this.loginForm.value.password;
-    this.accountService.getToken$(this.user).subscribe(response => {
+    this.accountService.login$(this.user).subscribe(response => {
       this.accountService.getRole$().subscribe(userData => {
         this.router.navigateByUrl('/threats');
       }, error => {

@@ -49,7 +49,7 @@ export class ThreatsSearchParametersComponent implements OnInit {
   }
 
   getThreats(){
-    this.threatsService.getTrhreatsSimulation(+this.choosenRange);
+    this.threatsService.getThreats(+this.choosenRange);
   }
 
   private setLanguageData(languageData:LanguageData){

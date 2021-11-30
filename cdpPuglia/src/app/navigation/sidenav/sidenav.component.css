@@ -1,6 +1,19 @@
 .sidenav {
     width: 15%;
   }
+  .txtColor:hover{
+    color: red;
+    cursor: pointer;
+  }
+  
+  .background-highlight{
+    background: lightgrey;
+    font-weight: bold;
+  }
+
+  mat-tree-node{
+    cursor: pointer;
+  }
   
   /* .sidenav .mat-toolbar {
     background: inherit;

@@ -16,7 +16,6 @@
                           class="radioBtn"
                           >{{rebootMode.message}}
                           </mat-radio-button>
-                          <!-- [disabled]="feeler.status === 'active'" -->
                     </mat-list-item>
                 </mat-list>
             </mat-radio-group>
@@ -32,8 +31,9 @@
   mat-raised-button
   color=warn
   (click)="restart()"
-  [disabled]="choosenRebootMode === '' || feeler.status === 'active'">
+  [disabled]="choosenRebootMode === ''">
     {{rebootButtonLabel}} 
 </button>
+
 
 

@@ -48,6 +48,7 @@ import { SuccessFeedbackComponent } from './administration/system-control/succes
 import { SystemTimeComponent } from './administration/system-control/system-time/system-time.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardComponent } from './card/card.component';
+import { MatChipsModule } from '@angular/material/chips';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { ManualtimeSettingComponent } from './administration/system-control/manualtime-setting/manualtime-setting.component';

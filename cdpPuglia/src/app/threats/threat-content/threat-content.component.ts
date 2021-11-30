@@ -6,14 +6,23 @@ import { ThreatsService } from 'src/app/_services/threats.service';
 import { TranslationService } from 'src/app/_services/translation.service';
 
 
+
 @Component({
   selector: 'app-threat-content',
   templateUrl: './threat-content.component.html',
   styleUrls: ['./threat-content.component.css']
 })
 export class ThreatContentComponent implements OnInit {
-  
+  @ViewChild(MatAccordion) accordion!: MatAccordion;
+
   threat!:Threat;
+  threatDatas= '';
+  connections='';
+  localization='';
+  elMitreMatrix='';
+  externalLinks='';
+  intelligenceData='';
+
 
   close='';
 
@@ -39,6 +48,14 @@ export class ThreatContentComponent implements OnInit {
   }
   private setLanguageData(){
     let languageData = this.translationService.getCurrentLanguageData();
-    this.close = languageData.sections.global.close;}
+    this.close = languageData.sections.global.close;
+    this.threatDatas = languageData.sections.threats.threatContent.threatData.threatDatas;
+    this.connections = languageData.sections.threats.threatContent.threatConnections.connections;
+    this.localization = languageData.sections.threats.threatContent.threatMap.localization;
+    this.elMitreMatrix = languageData.sections.threats.threatContent.mitreElements.elMitreMatrix;
+    this.externalLinks = languageData.sections.threats.threatContent.externalLinks.externalLinks;
+    this.intelligenceData = languageData.sections.threats.threatContent.intelligenceData.intelligenceData;
+
+  }
 
 }

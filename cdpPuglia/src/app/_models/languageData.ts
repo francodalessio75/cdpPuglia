@@ -132,6 +132,7 @@ export interface LanguageData{
                 rebootButtonLabel:string;
                 systemRebootTitle:string;
                 configureNTPServerTitle:string;
+                manualTimeSettingTitle:string;
                 NTPServerLabel:string;
             }
         }

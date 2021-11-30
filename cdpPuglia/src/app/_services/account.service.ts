@@ -5,6 +5,7 @@ import { User } from '../_models/user';
 import {  ReplaySubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserRole } from '../enums/UserRoleEnum';
+import {Observable} from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +28,10 @@ export class AccountService implements OnInit{
   ngOnInit(){
   }
 
-  getToken$(user:User){
-    return this.http.post<{token:string}>(this.baseUrl + 'login',{ username:user.username,password:user.password})
+  login$(user:User){
+    return this.http.post<{token:string}>(
+      this.baseUrl + 'login',
+      { username:user.username,password:user.password})
       .pipe(
         map( tokenData => {
           if(tokenData){
@@ -50,7 +53,7 @@ export class AccountService implements OnInit{
           if(userData){
             this.user.role = this.checkRole(userData.role);
             this.setCurrentUser(this.user);
-            this.currentUserSource.next(this.user);
+            //this.currentUserSource.next(this.user);
           }
         }
       )

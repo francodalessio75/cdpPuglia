@@ -42,7 +42,16 @@
     
         <ng-container  matColumnDef="severity">
             <th  mat-header-cell *matHeaderCellDef mat-sort-header>{{severity}}</th>
-            <td 
+            <td mat-cell *matCellDef="let element">
+                <mat-chip-list>
+                    <mat-chip [ngClass]="{'low': element.severity === 'low', 
+                    'medium': element.severity === 'medium', 
+                    'high': element.severity === 'high', 
+                    'critical': element.severity === 'critical' }">
+                      {{element.severity}}
+                    </mat-chip>
+                  </mat-chip-list></td>
+            <!-- <td 
                 mat-cell 
                 *matCellDef="let element">
                     <button class="gravity-label" [ngClass]="{
@@ -50,9 +59,7 @@
                         'medium': element.severity === 'medium', 
                         'high': element.severity === 'high', 
                         'critical': element.severity === 'critical'
-                    }" >{{element.severity}}</button>
-                    
-            </td>
+                    }" >{{element.severity}}</button> </td>-->
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -67,4 +74,5 @@
 
 </div>
 
+<!-- color="{{ element.severity == 'low' ? 'primary' : ( element.severity == 'medium' ? 'accent' : 'warn' ) }}" -->
 

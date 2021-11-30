@@ -81,7 +81,7 @@ export class NtpConfigurationComponent {
   });
 
   ngOnInit(){
-    this.systemControlService.emitNTP();
+    this.systemControlService.getNTP();
     this.languageData = this.translationService.getCurrentLanguageData();
     this.setLanguageData(this.languageData);
     this.ntpForm.patchValue({
@@ -99,7 +99,7 @@ export class NtpConfigurationComponent {
     )
     .afterClosed().subscribe((confirmed:boolean) => {
       if(confirmed){
-        this.systemControlService.configureNTPServer(
+        this.systemControlService.setNTPNameAndStatus(
           this.ntpForm.value.serverName,
           this.ntpEnabled
         );
@@ -107,7 +107,7 @@ export class NtpConfigurationComponent {
           hasBackdrop:true,
           disableClose:true,
           data:this.transmissionSuccededMessage + 
-               this.rebootNeededMessage
+               '\n'+this.rebootNeededMessage
         })
       }else{
         this.toastr.info("Operazione Annulata");

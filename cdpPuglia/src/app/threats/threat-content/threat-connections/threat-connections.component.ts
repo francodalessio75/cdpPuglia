@@ -11,7 +11,6 @@ import { TranslationService } from 'src/app/_services/translation.service';
 })
 export class ThreatConnectionsComponent implements OnInit {
   threat!:Threat;
-  connections='';
   ipSrcSrcPort = '';
   protocol = '';
   ipDstDstPort = '';
@@ -33,7 +32,6 @@ export class ThreatConnectionsComponent implements OnInit {
 
   private setLanguageData(){
     let languageData = this.translationService.getCurrentLanguageData();
-    this.connections = languageData.sections.threats.threatContent.threatConnections.connections;
     this.ipSrcSrcPort = languageData.sections.threats.threatContent.threatConnections.ipSrcSrcPort;
     this.ipDstDstPort = languageData.sections.threats.threatContent.threatConnections.ipDstDstPort;
     this.protocol = languageData.sections.threats.threatContent.threatConnections.protocol;

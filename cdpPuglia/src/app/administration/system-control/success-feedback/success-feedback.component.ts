@@ -28,7 +28,7 @@ export class SuccessFeedbackComponent implements OnInit {
 
   closeDialog(): void {
     this.dialog.close();
-    this.router.navigateByUrl('/threats');
+    //this.router.navigateByUrl('/threats');
   }
 
   ngOnInit(): void {

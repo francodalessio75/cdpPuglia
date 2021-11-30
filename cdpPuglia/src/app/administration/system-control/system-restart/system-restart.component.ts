@@ -1,13 +1,9 @@
-import { Language } from '@amcharts/amcharts5/.internal/core/util/Language';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject } from 'rxjs';
-import { FeelerStatus } from 'src/app/enums/FeelerStatusEnum';
 import { Feeler } from 'src/app/_models/feeler';
 import { LanguageData } from 'src/app/_models/languageData';
+//import { SpinnerService } from 'src/app/_services/spinner.service';
 import { SystemControlService } from 'src/app/_services/system-control.service';
 import { TranslationService } from 'src/app/_services/translation.service';
 import { ConfirmationAlertComponent } from '../confirmation-alert/confirmation-alert.component';
@@ -45,6 +41,7 @@ export class SystemRestartComponent {
   dataSource:string[] = ['rebootRadioButtons']
 
   constructor(
+    //private spinnerService:SpinnerService,
     private dialog:MatDialog,
     private toastr:ToastrService,
     private translationService:TranslationService,

@@ -8,8 +8,8 @@
             mat-cell
             *matCellDef="let element">
             <button  
-                [ngClass]="{'active': element.status === 'active' , 'suspended': element.status === 'suspended'}" >
-                {{element.status}}
+                [ngClass]="{'active': feeler.status === 'active' , 'suspended': feeler.status === 'suspended'}">
+                {{feeler.status}}
             </button>  
         </td>
     </ng-container>
@@ -19,7 +19,11 @@
         <td
             mat-cell
             *matCellDef="let element"> 
-            <button mat-raised-button color=warn (click)="stopFeeler()">
+            <button
+              mat-raised-button
+              color=warn
+              (click)="stopFeeler()"
+              *ngIf="feeler.status === 'active'">
                 {{element.action}} 
             </button>
                 

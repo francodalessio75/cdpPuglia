@@ -19,8 +19,7 @@ export class AppComponent implements OnInit {
   sidenvOpened = true;
 
   title = 'Threats Report';
-  menuItems:string[] = ['dashboard', 'sales', 'orders', 'customers', 'products'];
-
+  menuItems:string[] = ['dashboard', 'threats', 'sales', 'orders', 'customers', 'products'];
   //related to Language
   languageLabel = '';
   italian = '';

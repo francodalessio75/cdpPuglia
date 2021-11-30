@@ -1,30 +1,96 @@
-<div class="main-container">
-  <ng-container>
-    <section>
-      <app-threat-data [threat]="threat"></app-threat-data>
-    </section>
-    <section>
-      <app-threat-connections></app-threat-connections>
-    </section>
-    <section>
-      <app-threat-map [threat]="threat"></app-threat-map>
-    </section>
-    <section>
-      <app-mitre-elements [threat]="threat"></app-mitre-elements>
-    </section>
-    <section>
-      <app-cve-data [threat]="threat"></app-cve-data>
-    </section>
-    <section>
-      <app-external-links [threat]="threat"></app-external-links>
-    </section>
-    <section>
-      <app-intelligence-data [threat]="threat"></app-intelligence-data>
-    </section>
-  </ng-container>
-  <section>
-    <button mat-raised-button color="accent" (click)="backToThreats()">{{close}}</button>
-</section>
+<div class="action-buttons">
+  <button mat-button (click)="accordion.openAll()">Expand All</button>
+  <button mat-button (click)="accordion.closeAll()">Collapse All</button>
 </div>
+<mat-accordion class="headers-align" multi>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{threatDatas}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-threat-data [threat]="threat"></app-threat-data>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{connections}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-threat-connections></app-threat-connections>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{localization}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-threat-map [threat]="threat"></app-threat-map>
+    </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{elMitreMatrix}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-mitre-elements [threat]="threat"></app-mitre-elements>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        CVE
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-cve-data [threat]="threat"></app-cve-data>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{externalLinks}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-external-links [threat]="threat"></app-external-links>
+  </mat-expansion-panel>
+  
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{externalLinks}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>insert_chart</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-external-links [threat]="threat"></app-external-links>
+  </mat-expansion-panel>
+
+<section>
+  <app-intelligence-data [threat]="threat"></app-intelligence-data>
+</section>
+ 
+<button mat-raised-button color="accent" (click)="backToThreats()">{{close}}</button>
 
 
