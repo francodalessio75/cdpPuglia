@@ -1,15 +1,16 @@
-h1{
-    font-weight: bold;
-    font-size: 3rem;
-}
-p{
-    font-size: 2rem;
-}
-
 button{
-    font-size: 2rem;
+    font-size: 1rem;
+    margin-left: 4rem;
 }
 
-.margin{
-    margin-left: 25%;
+mat-card-subtitle{
+    font-size: 1.3rem;
+}
+
+mat-card-title{
+    font: 1.5rem;
+}
+
+mat-card-actions{
+    text-align: center;
 }

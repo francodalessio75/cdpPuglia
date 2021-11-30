@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
         if(user) {
           return true
         }else{
-          //this.toastr.error('Accesso non autorizzato. Necessaria Autenticazione.');
+          this.toastr.error('Accesso non autorizzato. Necessaria Autenticazione.');
           this.router.navigateByUrl('/login');
           return false;
         }

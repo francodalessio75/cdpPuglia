@@ -7,8 +7,21 @@ export interface LanguageData{
             saveButton:string;
             close: string,
             searchButton:string,
-            actionsLabel:string
-
+            actionsLabel:string,
+            startLable:string,
+            stopLabel:string,
+            confirmationRequestTitle:string,
+            confirmationSystemOffRequestMessage:string,
+            transmissionSuccededTitle:string,
+            transmissionSuccededMessage:string,
+            yesButtonLabel:string,
+            noButtonLabel:string,
+            enabledButtonLabel:string,
+            configureButtonLabel:string,
+            rebootNeededMessage:string,
+            timeLabel:string,
+            dateLabel:string,
+            timezoneLabel:string
         },
         footer:{
             threatTitle: string,
@@ -113,9 +126,22 @@ export interface LanguageData{
                 pageTitle:string;
                 pageDescription:string;
                 feelerStatus:{
-                    feelerServiceStatus:string,
-                    currentStatusLabel:string,
-                    stopFeeler:string
+                    feelerServiceStatusLabel:string,
+                    currentStatusLabel:string
+                };
+                systemReboot:{
+                    systemRebootTitle:string;
+                    rebootModeTitle:string;
+                    rebootButtonLabel:string;
+                    softRebootMessage:string;
+                    hardRebootMessage:string;
+                };
+                ntpConfiguration:{
+                    configureNTPServerTitle:string;
+                    NTPServerLabel:string;
+                },
+                manualTimeSetting:{
+                    manualTimeSettingTitle:string;
                 }
             }
         },

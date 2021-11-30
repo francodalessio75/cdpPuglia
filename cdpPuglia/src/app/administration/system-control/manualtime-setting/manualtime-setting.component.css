@@ -1,0 +1,43 @@
+
+  .header-cell{
+    font-size: 1.2rem;
+    width:30rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  table{
+    position: relative;
+    width:40%;
+    left:30%;
+  }
+  
+  mat-label{
+    font-size:1.3rem;
+    font-weight: bold;
+    color:grey;
+    margin-right: 2rem;
+  }
+  
+
+  .field{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .full-width{
+    font-size: 1.3rem;
+    width:15%;
+  }
+
+  button{
+    font-size:1.2rem;
+    border-radius: 1rem;
+  }
+
+  mat-select{
+      width:5rem;
+  }
+  
+  
+  

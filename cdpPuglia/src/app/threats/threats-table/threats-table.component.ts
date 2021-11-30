@@ -62,6 +62,7 @@ export class ThreatsTableComponent {
     });
     
   }
+  
   ngOnInit(){
     this.translationService.currentLanguage$.subscribe((language)=>{
       this.setLanguageData();
@@ -78,6 +79,10 @@ export class ThreatsTableComponent {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  test(){
+    console.log('ok');
   }
 
   getThreats(filter:number){

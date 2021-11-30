@@ -15,15 +15,15 @@ export class TranslationService {
   //Component Requested Language Data
   private languageData : LanguageModel.LanguageData = this.translationsData.it;
 
-  private currentLanguage = new ReplaySubject<LanguagesEnum.Language>(1);
-  currentLanguage$ = this.currentLanguage.asObservable();
+  private currentLanguageSource = new ReplaySubject<LanguagesEnum.Language>(1);
+  currentLanguage$ = this.currentLanguageSource.asObservable();
 
   constructor(private cookieService: CookieService) { }
 
   setCurrentLanguage( language:LanguagesEnum.Language ){
     this.language = language;
     this.cookieService.set('language',this.language);
-    this.currentLanguage.next(this.language);
+    this.currentLanguageSource.next(this.language);
   }
 
   getCurrentLanguageData():LanguageModel.LanguageData{
