@@ -6,7 +6,9 @@
     <app-sidenav></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-header (sidenavToggled)="toggle();" [sidenavOpened]="sidenvOpened"></app-header>
+    <app-header
+      (sidenavToggled)="toggle();"
+      [sidenavOpened]="sidenvOpened"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>

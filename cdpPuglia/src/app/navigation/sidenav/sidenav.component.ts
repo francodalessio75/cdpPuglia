@@ -1,16 +1,13 @@
 import { FlatTreeControl, NestedTreeControl } from '@angular/cdk/tree';
 import { Component, OnInit } from '@angular/core';
-import {
-  MatTreeFlatDataSource,
-  MatTreeFlattener,
-  MatTreeModule,
-  MatTreeNestedDataSource,
-} from '@angular/material/tree';
+import { UserRole } from 'src/app/enums/UserRoleEnum';
 import { AccountService } from 'src/app/_services/account.service';
+import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule, MatTreeNestedDataSource} from '@angular/material/tree';
 
 interface MenuItem {
   name: string;
   icon?: string;
+  link?:string;
   children?: MenuItem[];
 }
 interface ExampleFlatNode {
@@ -68,14 +65,17 @@ export class SidenavComponent implements OnInit {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor(private accountService: AccountService) {
+  constructor(
+    private accountService:AccountService
+  ) {
+    this.accountService.currentUser$.subscribe(
+      user => this.role = user.role!
+    );
     this.dataSource.data = TREE_DATA;
-    this.accountService.currentUser$.subscribe((user) => {
-      this.role = user.role + '';
-    });
-  }
-  ngOnInit(): void {
-    this.role = this.accountService.getCurrentUser().role + '';
+   }
+
+  ngOnInit(){
+    this.role = this.accountService.getCurrentUser().role!;
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;

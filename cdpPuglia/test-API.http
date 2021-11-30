@@ -13,8 +13,8 @@ post {{baseURL}}/login
 Content-Type: application/json
 
 {
-    "username":"viewer",
-    "password":"viewerviewer"
+    "username":"admin",
+    "password":"adminadmin"
 }
 
 
@@ -42,6 +42,7 @@ Authorization: Bearer {{login.response.body.token}}
     "newPassword":"Viewerviewer_1!",
     "confirmPassword":"Viewerviewer_1!"
 }
+
 
 #################### THREATS #######################################
 
@@ -73,4 +74,46 @@ Authorization: Bearer {{login.response.body.token}}
 ################# CVE ########################
 
 GET {{baseURL}}/cve/0 HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+
+################# SYSTEM CONTROL #############################
+
+POST {{baseURL}}/administration/system-command-and-control/system-control/action/stop HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+### get status
+GET {{baseURL}}/administration/system-command-and-control/system-control/status HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+### get time
+GET {{baseURL}}/administration/system-command-and-control/system-control/time HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+### get ntp time
+GET {{baseURL}}/administration/system-command-and-control/system-control/time/ntp HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+### put ntp time
+PUT {{baseURL}}/administration/system-command-and-control/system-control/time/ntp HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+{
+    "ntp":"newntp",
+    "enabled":true
+}
+
+### put system control time
+PUT {{baseURL}}/administration/system-command-and-control/system-control/time HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+{
+    "datetime":"210531130000",
+    "timezone":"Europe/Rome"
+}
+
+################# RULES #############################
+
+### get rule
+GET {{baseURL}}/rules/0 HTTP/1.1
 Authorization: Bearer {{login.response.body.token}}

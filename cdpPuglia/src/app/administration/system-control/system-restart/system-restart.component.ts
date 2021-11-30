@@ -1,13 +1,15 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject } from 'rxjs';
+import { Feeler } from 'src/app/_models/feeler';
+import { LanguageData } from 'src/app/_models/languageData';
+//import { SpinnerService } from 'src/app/_services/spinner.service';
+import { SystemControlService } from 'src/app/_services/system-control.service';
+import { TranslationService } from 'src/app/_services/translation.service';
 import { ConfirmationAlertComponent } from '../confirmation-alert/confirmation-alert.component';
 import { SuccessFeedbackComponent } from '../success-feedback/success-feedback.component';
 
-export interface RestartMode{
+interface RestartMode{
   value:string,
   message:string
 }
@@ -18,49 +20,83 @@ export interface RestartMode{
   styleUrls: ['./system-restart.component.css']
 })
 export class SystemRestartComponent {
-  choosenRestartMode!:string;
+  @Input() feeler!:Feeler;
+
+  choosenRebootMode:string='soft';
+
+  languageData!:LanguageData;
+  confirmationSystemOffRequestMessage!:string;
+  transmissionSuccededMessage!:string;
+  rebootButtonLabel!:string;
+
+  displayedColumns: string[] = ['restartMode'];
+
+  tableHeaders:string[] = [];
   
-  restartModes:RestartMode[]=[
-    {value:'soft', message:'Riavvio Soft (riavvio dei servizi)'},
-    {value:'hard', message:'Riavvio Hard (riavvio dell\'appliance)'}
+  rebootModes:RestartMode[]=[
+    {value:'soft', message:''},
+    {value:'hard', message:''}
   ];
 
-  private _loading = new BehaviorSubject<boolean>(false);
-  public readonly loading$ = this._loading.asObservable();
-
-  _loading$ = this.loading$;
+  dataSource:string[] = ['rebootRadioButtons']
 
   constructor(
+    //private spinnerService:SpinnerService,
     private dialog:MatDialog,
-    private router:Router,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private translationService:TranslationService,
+    private systemControlService:SystemControlService
   ) {
-
+      this.translationService.currentLanguage$.subscribe(
+        language => {
+          this.languageData = this.translationService.getCurrentLanguageData();
+          this.setLanguageData(this.languageData);
+        }
+      );
+      this.systemControlService.currentFeeler$.subscribe(
+        feeler => this.feeler = feeler
+      );
    }
+
+   
+   ngOnInit(){
+    this.languageData = this.translationService.getCurrentLanguageData();
+    this.setLanguageData(this.languageData);
+   }
+  
 
   restart():void{
     this.dialog
       .open(ConfirmationAlertComponent, {
-        data: 'Il riavvio del sistema comporta una interruzione di operativita\' . Confermare l\'operazione?'
+        hasBackdrop:true,
+        disableClose:true,
+        data: this.confirmationSystemOffRequestMessage
       })
       .afterClosed()
       .subscribe((confirmed: Boolean) => {
-        this._loading.next(true);
         if (confirmed) {
-          setTimeout(() => {
-            this.spinnerSimulation();
-            this._loading.next(false);
-          }, 3000);
+          this.systemControlService.startFeeler(this.choosenRebootMode);
+          this.dialog.open(SuccessFeedbackComponent,{
+            hasBackdrop:true,
+            disableClose:true,
+            data:this.transmissionSuccededMessage
+          })
         } else {
           this.toastr.info("Operazione Annulata");
         }
-      });
+      }
+    );
   }
 
-  spinnerSimulation(){
-    this.dialog.open(SuccessFeedbackComponent,{
-      data:'Rivisitare la sezione per verificare lo stato del sistema.'
-    })
-  }
+  setLanguageData(languageData:LanguageData){
+    this.tableHeaders[0] = languageData.sections.administration.systemControl.systemReboot.rebootModeTitle;
 
+    this.rebootButtonLabel = languageData.sections.administration.systemControl.systemReboot.rebootButtonLabel;
+
+    this.rebootModes[0].message = languageData.sections.administration.systemControl.systemReboot.softRebootMessage;
+    this.rebootModes[1].message = languageData.sections.administration.systemControl.systemReboot.hardRebootMessage;
+    
+    this.confirmationSystemOffRequestMessage = languageData.sections.global.confirmationSystemOffRequestMessage;
+    this.transmissionSuccededMessage = languageData.sections.global.transmissionSuccededMessage;
+  }
 }

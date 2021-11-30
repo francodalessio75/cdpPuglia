@@ -14,7 +14,7 @@ export interface Range{
   styleUrls: ['./threats-search-parameters.component.css']
 })
 export class ThreatsSearchParametersComponent implements OnInit {
-  choosenRange!:string;
+  choosenRange:string = '1';
 
   languageData!:LanguageData;
 
@@ -49,7 +49,7 @@ export class ThreatsSearchParametersComponent implements OnInit {
   }
 
   getThreats(){
-    this.threatsService.getTrhreatsSimulation(+this.choosenRange);
+    this.threatsService.getThreats(+this.choosenRange);
   }
 
   private setLanguageData(languageData:LanguageData){

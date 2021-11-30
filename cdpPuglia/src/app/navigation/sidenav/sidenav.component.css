@@ -10,6 +10,10 @@
     background: lightgrey;
     font-weight: bold;
   }
+
+  mat-tree-node{
+    cursor: pointer;
+  }
   
   /* .sidenav .mat-toolbar {
     background: inherit;

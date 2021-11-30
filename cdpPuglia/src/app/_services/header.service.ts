@@ -5,9 +5,6 @@ import { ReplaySubject } from 'rxjs';
   providedIn: 'root'
 })
 export class HeaderService {
-  title ='';
-  description = '';
-  constructor() { }
   
   private currentTitleDescription = new ReplaySubject<{title:string, description:string}>(1);
   titleDescription$ = this.currentTitleDescription.asObservable();

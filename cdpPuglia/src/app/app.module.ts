@@ -45,7 +45,6 @@ import { SystemRestartComponent } from './administration/system-control/system-r
 import { NtpConfigurationComponent } from './administration/system-control/ntp-configuration/ntp-configuration.component';
 import { ConfirmationAlertComponent } from './administration/system-control/confirmation-alert/confirmation-alert.component';
 import { SuccessFeedbackComponent } from './administration/system-control/success-feedback/success-feedback.component';
-import { SystemTimeComponent } from './administration/system-control/system-time/system-time.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardComponent } from './card/card.component';
 import { MatChipsModule } from '@angular/material/chips';
@@ -54,6 +53,8 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { RuleDetailsComponent } from './threats/rule-details/rule-details.component';
 import { RuleDataComponent } from './threats/rule-details/rule-data/rule-data.component';
 import { TecnicalDetailsComponent } from './threats/rule-details/tecnical-details/tecnical-details.component';
+import { ManualtimeSettingComponent } from './administration/system-control/manualtime-setting/manualtime-setting.component';
+
 
 
 
@@ -90,14 +91,14 @@ import { TecnicalDetailsComponent } from './threats/rule-details/tecnical-detail
     NtpConfigurationComponent,
     ConfirmationAlertComponent,
     SuccessFeedbackComponent,
-    SystemTimeComponent,
     DashboardComponent,
     CardComponent,
     HeaderComponent,
     SidenavComponent,
     RuleDetailsComponent,
     RuleDataComponent,
-    TecnicalDetailsComponent
+    TecnicalDetailsComponent,
+    ManualtimeSettingComponent
   ],
   imports: [
     BrowserModule,

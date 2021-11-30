@@ -1,34 +1,43 @@
 <div class="container">
-    <mat-grid-list 
-        class="container"
-        cols="2" 
-        rowHeight="2rem"
-        gutterSize="2px"
-        text-align= "left">
-            <mat-grid-tile colspan="2" class="title-tile"><div class="title">CONFIGURAZIONE SERVER NTP</div></mat-grid-tile>
-            <mat-grid-tile colspan="2"></mat-grid-tile>
-            <mat-grid-tile colspan="1" rowspan="3"><div class="label">SERVER NTP :</div></mat-grid-tile>
-    </mat-grid-list>
-        
-    <label id="radio-label" class="radio-label">Abilitato</label>
-    <mat-radio-group 
-        aria-labelledby="radio-label"
-        class="mat-radio-label" 
-        [(ngModel)]="choosenConfigMode">
-            <mat-list>
-                <mat-list-item>
-                    <mat-radio-button
-                        *ngFor="let mode of configModes"
-                        [value]="mode"
-                        class="radioBtn">{{mode}}
-                    </mat-radio-button>
-                </mat-list-item>
-                <mat-list-item>
-                    <button 
-                    mat-raised-button 
-                    color="primary" 
-                    class="button">CONFIGURA</button>
-                </mat-list-item>
-            </mat-list>  
-    </mat-radio-group>
+    <form 
+        [formGroup]="ntpForm"
+        (ngSubmit)="configure()"
+        class="form"
+    >
+
+    <div>
+        <mat-label>{{NTPServerLabel}}</mat-label>
+        <mat-form-field class="full-width" appearance="fill">
+            <input 
+            matInput formControlName='serverName'>
+        </mat-form-field>
+        <button
+            mat-raised-button
+            color="primary"
+            class="button"
+            type="submit"
+            >{{configureButtonLabel}}
+        </button>
+    </div>
+
+    <div class="field">
+        <mat-label class="radioLabel">{{enabledButtonlabel}}</mat-label>
+       <mat-radio-group
+          formControlName='enabled'
+          aria-label="Select an option"
+          [(ngModel)]="ntpEnabled">
+          <mat-list>
+              <mat-radio-button
+                *ngFor="let configMode of configModes"
+                [value]="configMode.value"
+                [ngClass]="{'rightRadio': configMode.value , 'leftadio': !configMode.value}" >
+                {{configMode.message}}
+              </mat-radio-button>
+          </mat-list>
+            <!-- <mat-radio-button value="true">{{yesButtonlabel}}</mat-radio-button>
+            <mat-radio-button class="rightRadio" value="false">{{noButtonlabel}}</mat-radio-button> -->
+        </mat-radio-group>
+    </div>
+
+</form>
 </div>

@@ -1,72 +1,28 @@
-.mat-radio-button ~ .mat-radio-button {
-  margin-left: 16px;
+button{
+  font-size:1.2rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
 }
 
-.mat-radio-label {
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  flex-direction: column-reverse;
-  margin-top: 3rem;
-
-}
-
-.radio-label{
-  position:absolute;
-  left:45%;
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  font-weight: bold;
-
-}
-
-.container{
-  width:100%;
+.header-cell{
+  font-size: 1.2rem;
+  width:30rem;
   text-align: center;
-  padding-bottom: 2rem;
+  font-weight: bold;
 }
 
-.radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0;
-  left:50%;
+table{
+  position: relative;
+  width:40%;
+  left:30%;
 }
 
 .radioBtn{
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-flow: row wrap;
+  margin-left: 4rem;
 }
 
 mat-radio-button{
-  font-size: 1.3rem;
-  font-weight: bold;
+ /* font-size: 1.5rem;*/
+ font-weight: bold;
 }
 
-button{
-  font-size:1.5rem;
-  left:45%;
-  margin-top: 3rem;
-}
-
-.title-tile {
-  font-size:2rem;
-  font-weight: bolder;
-  background-color: aqua;
-}
-
-.title {
-  position: absolute;
-}
-
-mat-progress-spinner{
-  position:relative;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  z-index: 10;
-}

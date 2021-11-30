@@ -8,7 +8,21 @@
 				"saveButton": "SAVE",
 				"close": "CLOSE",
 				"searchButton": "SEARCH",
-				"actionsLabel":"ACTIONS"
+				"actionsLabel":"ACTIONS",
+				"startLable":"START",
+				"stopLabel":"STOP",
+				"confirmationRequestTitle":"Confirmation Request",
+				"confirmationSystemOffRequestMessage":"By confirming this action you won't be able to use system configurations for a while. Do you confirm the action?",
+				"transmissionSuccededTitle":"Action Transmission Succeded",
+				"transmissionSuccededMessage":"Please wait for server response or come back later",
+				"yesButtonLabel":"YES",
+				"noButtonLabel":"NO",
+				"enabledButtonLabel":"Enabled",
+				"configureButtonLabel":"CONFIGURE",
+				"rebootNeededMessage":"Please note: in order to confirm new settings you must execute a system reboot",
+				"timeLabel":"Time",
+				"dateLabel":"Date",
+				"timezoneLabel":"Timezone"
 			},
 			"footer": {
 				"threatTitle": "Threats consultation page",
@@ -112,11 +126,40 @@
 					"pageTitle": "SYSTEM CONTROL",
 					"pageDescription": "",
                     "feelerStatus":{
-                        "feelerServiceStatus":"STATO DI SERVIZIONE DELLA SONDA",
-                        "currentStatusLabel":"STATO CORRENTE"
-                    }
+                        "feelerServiceStatusLabel":"FEELER SERVICE STATUS",
+                        "currentStatusLabel":"CURRENT STATUS"
+                    },
+					"systemReboot":{
+						"systemRebootTitle":"System Reboot",
+						"rebootModeTitle":"Reboot Mode",
+						"rebootButtonLabel":"REBOOT",
+						"softRebootMessage":"Soft Reboot (services reboot)",
+						"hardRebootMessage":"Hard Reboot (appliance reboot)"
+					},
+					"ntpConfiguration":{
+						"configureNTPServerTitle":"NTP server configuration",
+						"NTPServerLabel":"NTP Server"
+					},
+					"manualTimeSetting":{
+						"manualTimeSettingTitle":"Manual time setting configuration"
+					}
                 }
-            }
+            },			
+			"systemControl":{
+				"currentStatus":{
+					"currentStatusTitle": "Probe (?) current status",
+					"currentStatus":"Current status",
+					"activateBtn":"active",
+					"shutdownBtn": "SHUTDOWN",
+					"suspendedBtn": "suspended"
+				},			
+				"systemRestart":{
+					"systemRestart": "System Restart",
+					"hardRestart": "Hard restart (appliance's restart)",
+					"softRestart": "Soft restart (services' restart)",
+					"restartBtn":"RESTART"
+				}
+			}
 		}
 	},
 	"it": {
@@ -128,7 +171,21 @@
 				"saveButton": "SALVA",
 				"close": "CHIUDI",
 				"searchButton": "CERCA",
-				"actionsLabel":"AZIONI"
+				"actionsLabel":"AZIONI",
+				"startLable":"RIAVVIA",
+				"stopLabel":"ARRESTA",
+				"confirmationRequestTitle":"Richiesta di Conferma",
+				"confirmationSystemOffRequestMessage":"Confermando la richiesta il sistema non sarà raggiungibile durante le fasi di completamento. Confermare?",
+				"transmissionSuccededTitle":"Richiesta Trasmessa con Successo",
+				"transmissionSuccededMessage":"Attendere la risposta del server o uscire e rientrare tra qualche minuto",
+				"yesButtonLabel":"SI",
+				"noButtonLabel":"NO",
+				"enabledButtonLabel":"Abilitato",
+				"configureButtonLabel":"CONFIGURA",
+				"rebootNeededMessage":"Per confermare le nuove impostazioni sarà necessario eseguire un reboot del sistema.",
+				"timeLabel":"Time",
+				"dateLabel":"Date",
+				"timezoneLabel":"Timezone"
 			},
 			"footer": {
 				"threatTitle": "Pagina consultazione minacce",
@@ -232,11 +289,42 @@
 					"pageTitle": "SYSTEM CONTROL",
 					"pageDescription": "",
                     "feelerStatus":{
-                        "feelerServiceStatus":"FEELER SERVICE STATUS",
-                        "currentStatusLabel":"CURRENT STATUS"
-                    }
+                        "feelerServiceStatusLabel":"STATO DI SERVIZIO DELLA SONDA",
+                        "currentStatusLabel":"STATO CORRENTE"
+                    },
+					"systemReboot":{
+						"systemRebootTitle":"Riavvio del Sistema",
+						"rebootModeTitle":"Tipo Riavvio",
+						"rebootButtonLabel":"RIAVVIA",
+						"softRebootMessage":"Riavvio Soft (riavvio dei servizi)",
+						"hardRebootMessage":"Riavvio Hard (riavvio dell'appliance)"
+					},
+					"ntpConfiguration":{
+						"configureNTPServerTitle":"Configurazione server NTP",
+						"NTPServerLabel":"Server NTP"
+					},
+					"manualTimeSettings":{
+						"manualTimeSettingTitle":"Definizione manuale del tempo di Sistema"
+					}
                 }
-            }
+            },
+			"systemControl":{
+				"currentStatus":{
+					"currentStatusTitle": "Stato corrente della sonda",
+					"currentStatus":"Stato corrente",
+					"activeBtn":"attiva",
+					"shutdownBtn": "ARRESTA",
+					"suspendedBtn": "sospesa"
+				},
+			
+				
+				"systemRestart":{
+					"systemRestart": "Riavvio del sistema",
+					"hardRestart": "Riavvio hard (riavvio dell'appliance)",
+					"softRestart": "Riavvio soft (riavvio dei servizi)",
+					"restartBtn":"RIAVVIA"
+				}
+			}
 		}
 	}
 }

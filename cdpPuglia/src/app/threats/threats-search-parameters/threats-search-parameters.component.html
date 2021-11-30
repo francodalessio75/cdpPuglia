@@ -7,9 +7,10 @@
                 *ngFor="let range of ranges"
                 [value]="range.value"
                 class="radioBtn"
+                [checked]="(1==1)"
             >{{range.message}}
             </mat-radio-button>
-            <button class="button" mat-raised-button color="primary" (click)="getThreats()">{{search}}</button>
+            <button [disabled]="choosenRange === ''" class="button" mat-raised-button color="primary" (click)="getThreats()">{{search}}</button>
         </mat-list>
     </mat-radio-group>
 </div>

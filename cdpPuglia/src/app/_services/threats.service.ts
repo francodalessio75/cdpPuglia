@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
-import { Protocol } from '../enums/ProtocolEnum';
 import { Severity } from '../enums/SeverityEnum';
-import { TypeRule } from '../enums/TypeRuleEnum';
 import { Threat } from '../_models/threat';
 import * as lasHourData from '../lastHour.json';
 import * as lasSixHoursData from '../lastSixHours.json';
@@ -18,6 +16,8 @@ import * as ruleData from '../rule.json';
 import { Technique } from '../_models/technique';
 import { CVE } from '../_models/cve';
 import { Rule } from '../_models/rule';
+import { SpinnerService } from './spinner.service';
+
 
 @Injectable({
   providedIn: 'root',
@@ -25,8 +25,6 @@ import { Rule } from '../_models/rule';
 export class ThreatsService {
   private readonly baseUrl = 'http://127.0.0.1:5000/';
 
-  private _loading = new BehaviorSubject<boolean>(false);
-  public readonly loading$ = this._loading.asObservable();
 
   //TEST DATA COLLECTION
   lastHourJSONData: any = (lasHourData as any).default;
@@ -90,7 +88,10 @@ export class ThreatsService {
   // private currentCveSource = new ReplaySubject<CVE>(1);
   // currentCve$ = this.currentCveSource.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http:HttpClient,
+    private spinnerService:SpinnerService) 
+  { }
 
   getThreats(filter: number) {
     // this.http.get<{data:Threat[]}>(this.baseUrl + 'threats/?filter='+filter)
@@ -100,45 +101,45 @@ export class ThreatsService {
     //       this.setAndEmitThreats(true,response.data);
     //     }
     //   )
-    switch (filter) {
-      case -1:
-        this.currentThreats = this.lastHourData;
-        this.currentThreatsSource.next(this.currentThreats);
-        break;
-      case -6:
-        this.currentThreats = this.lastSixHoursData;
-        this.currentThreatsSource.next(this.currentThreats);
-        break;
-      case -12:
-        this.currentThreats = this.lastTwelveHoursData;
-        this.currentThreatsSource.next(this.currentThreats);
-        break;
-      case 1:
-        this.currentThreats = this.lastTwentyFourHoursData;
-        this.currentThreatsSource.next(this.currentThreats);
-        break;
-      case 7:
-        this.currentThreats = this.lastSevenDaysData;
-        this.currentThreatsSource.next(this.currentThreats);
-        break;
-      case 30:
-        this.currentThreats = this.lastThirtyDaysData;
-        this.currentThreatsSource.next(this.currentThreats);
-        break;
-      default:
-        this.currentThreats = this.lastHourData;
-        this.currentThreatsSource.next(this.currentThreats);
-        break;
-    }
-  }
+    this.spinnerService.setLoading(true);
+    setTimeout( () => {
 
-  getTrhreatsSimulation(filter: number) {
-    this._loading.next(true);
-    setTimeout(() => {
-      this.getThreats(filter);
-      this._loading.next(false);
-    }, 3000);
-  }
+      switch(filter){
+        case -1:
+          this.currentThreats = this.lastHourData;
+          this.currentThreatsSource.next(this.currentThreats);
+          break;
+        case -6:
+          this.currentThreats = this.lastSixHoursData;
+          this.currentThreatsSource.next(this.currentThreats);
+          break;
+        case -12:
+          this.currentThreats = this.lastTwelveHoursData;
+          this.currentThreatsSource.next(this.currentThreats);
+          break;
+        case 1:
+          this.currentThreats = this.lastTwentyFourHoursData;
+          this.currentThreatsSource.next(this.currentThreats);
+          break;
+        case 7:
+          this.currentThreats = this.lastSevenDaysData;
+          this.currentThreatsSource.next(this.currentThreats);
+          break;
+        case 30:
+          this.currentThreats = this.lastThirtyDaysData;
+          this.currentThreatsSource.next(this.currentThreats);
+          break;
+        default:
+          this.currentThreats = this.lastHourData;
+          this.currentThreatsSource.next(this.currentThreats);
+          break;
+        }
+
+      },2000);
+      this.spinnerService.setLoading(false);
+    }
+  
+
 
   // private setAndEmitThreats(isAPI:boolean,threats:Threat[]){
   //   isAPI ? this.currentThreats = threats : this.filteredThreats = threats;
@@ -308,13 +309,5 @@ export class ThreatsService {
     //       console.log(response);
     //     }
     //   )
-  }
-
-  showSpinner() {
-    this._loading.next(true);
-  }
-
-  hideSpinner() {
-    this._loading.next(false);
   }
 }

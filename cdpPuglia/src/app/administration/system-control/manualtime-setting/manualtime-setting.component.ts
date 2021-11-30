@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -6,61 +6,54 @@ import { Language } from 'src/app/enums/LanguagesEnum';
 import { Feeler } from 'src/app/_models/feeler';
 import { LanguageData } from 'src/app/_models/languageData';
 import { NTP } from 'src/app/_models/NTP';
+import { Timezone } from 'src/app/_models/timezone';
 import { SystemControlService } from 'src/app/_services/system-control.service';
 import { TranslationService } from 'src/app/_services/translation.service';
 import { ConfirmationAlertComponent } from '../confirmation-alert/confirmation-alert.component';
 import { SuccessFeedbackComponent } from '../success-feedback/success-feedback.component';
-
-
-interface EnabledRadio{
-  value:boolean,
-  message:string
-}
+import * as timezones from './timeZones.json';
 
 @Component({
-  selector: 'app-ntp-configuration',
-  templateUrl: './ntp-configuration.component.html',
-  styleUrls: ['./ntp-configuration.component.css']
+  selector: 'app-manualtime-setting',
+  templateUrl: './manualtime-setting.component.html',
+  styleUrls: ['./manualtime-setting.component.css']
 })
-export class NtpConfigurationComponent {
+export class ManualtimeSettingComponent {
   @Input() feeler!:Feeler;
 
   ntp!:NTP;
-  ntpEnabled!:boolean;
 
   languageData!:LanguageData;
   language!:Language;
   confirmationSystemOffRequestMessage!:string;
   transmissionSuccededMessage!:string;
   configureButtonLabel!:string;
-  NTPServerLabel!:string;
-  enabledButtonlabel!:string;
-  yesButtonlabel!:string;
-  noButtonlabel!:string;
   rebootNeededMessage!:string;
+  timezoneLabel!:string;
+  dateLabel!:string;
+  timeLabel!:string;
 
-  displayedColumns:string[] = ['name','status'];
+  timezonesData : any = (timezones as any ).default;
+  timezones : Timezone[] = this.timezonesData;
+
+
+  displayedColumns:string[] = ['timezone','date', 'time'];
 
   tableHeaders:string[] = [];
 
-  configModes:EnabledRadio[] = [
-    {value:true,message:''},
-    {value:false,message:''}
-  ];
-
-  dataSource:string[] = ['configMode'];
-
+  dataSource:string[] = ['timeSettings'];
+  
   constructor(
-    private dialog:MatDialog,
+    private dialog : MatDialog,
     private toastr:ToastrService,
     private translationService:TranslationService,
     private systemControlService:SystemControlService,
     private formBuilder:FormBuilder
-  ){
+  ) {
     this.translationService.currentLanguage$.subscribe(
       language => {
         this.language = language;
-        this.languageData = this.translationService.getCurrentLanguageData();
+        this.translationService.getCurrentLanguageData();
         this.setLanguageData(this.languageData);
       }
     );
@@ -68,24 +61,24 @@ export class NtpConfigurationComponent {
       feeler => this.feeler = feeler
     );
     this.systemControlService.currentNTP$.subscribe(
-      ntp => {
-        this.ntp = ntp;
-        this.ntpEnabled = ntp.enabled!;
-      }
+      ntp => this.ntp = ntp
     );
   }
 
-  ntpForm = this.formBuilder.group({
-    serverName:[,Validators.required],
-    enabled:['']
+  timeForm = this.formBuilder.group({
+    timezone:['',Validators.required],
+    datetime:['',Validators.required],
+    time:['',Validators.required]
   });
 
   ngOnInit(){
     this.systemControlService.getNTP();
     this.languageData = this.translationService.getCurrentLanguageData();
     this.setLanguageData(this.languageData);
-    this.ntpForm.patchValue({
-      serverName:this.ntp.ntp
+    this.timeForm.patchValue({
+      timezone:this.ntp.timezone,
+      datetime:this.ntp.datetime?.substring(0,14),
+      time:this.ntp.datetime?.substring(5,14)
     });
   }
 
@@ -99,17 +92,16 @@ export class NtpConfigurationComponent {
     )
     .afterClosed().subscribe((confirmed:boolean) => {
       if(confirmed){
-        this.systemControlService.setNTPNameAndStatus(
-          this.ntpForm.value.serverName,
-          this.ntpEnabled
-        );
+        this.systemControlService.setNTPTimeAndTimeZone('','');
         this.dialog.open(SuccessFeedbackComponent,{
           hasBackdrop:true,
           disableClose:true,
           data:this.transmissionSuccededMessage + 
                '\n'+this.rebootNeededMessage
         })
-      }else{
+      }
+      else
+      {
         this.toastr.info("Operazione Annulata");
       }
     })
@@ -117,15 +109,11 @@ export class NtpConfigurationComponent {
 
   setLanguageData(languageData:LanguageData){
     this.configureButtonLabel = languageData.sections.global.configureButtonLabel;
-    this.NTPServerLabel = languageData.sections.administration.systemControl.ntpConfiguration.NTPServerLabel;
-    this.enabledButtonlabel = languageData.sections.global.enabledButtonLabel;
-    this.yesButtonlabel = languageData.sections.global.noButtonLabel;
-    this.noButtonlabel = languageData.sections.global.yesButtonLabel;
-    this.transmissionSuccededMessage = languageData.sections.global.transmissionSuccededMessage;
     this.confirmationSystemOffRequestMessage = languageData.sections.global.confirmationSystemOffRequestMessage;
+    this.transmissionSuccededMessage = languageData.sections.global.transmissionSuccededMessage;
     this.rebootNeededMessage = languageData.sections.global.rebootNeededMessage;
-    this.configModes[0].message = languageData.sections.global.yesButtonLabel;
-    this.configModes[1].message = languageData.sections.global.noButtonLabel;
+    this.timezoneLabel = languageData.sections.global.timezoneLabel;
+    this.dateLabel = languageData.sections.global.dateLabel;
+    this.timeLabel = languageData.sections.global.timeLabel;
   }
-
 }
