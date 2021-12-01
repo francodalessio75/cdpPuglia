@@ -17,37 +17,32 @@ interface ExampleFlatNode {
   icon?: string;
 }
 const TREE_DATA: MenuItem[] = [
-  { name:'Dashboard',
-  icon:'dashboard_customize',
-  children: [{name:'Configure Dashboard'}]
-},
-  { name:'Threats',
-    icon: 'flash_on',
-    link:'/threats'}, 
-  {name:'Administration'},
-  { name:'Network Group and Assets',
-icon:'people_outline'}, 
-  {name:'Network Addresses',
-icon:'dns'},
-  {name:'System C&C',
-  icon:'compass_calibration'
-},
-  {name:'External Servicies'},
-  {name:'Technical Configuration'},
-  {name:'IDS/IPS'},
-  {name:'User Administration'},
-  {name:'System C&C',
-   link:'system-control'},
-  {name:'Activity Tracking',
-  children: [{name:'figlio1'}]},
+  {
+    name: 'Dashboard',
+    icon: 'dashboard_customize',
+    children: [{ name: 'Configure Dashboard' }],
+  },
+  { name: 'Threats', icon: 'flash_on' },
+  { name: 'Administration' },
+  { name: 'Network Group and Assets', icon: 'people_outline' },
+  { name: 'Network Addresses', icon: 'dns' },
+  { name: 'System C&C', icon: 'compass_calibration' },
+  { name: 'External Servicies' },
+  { name: 'Technical Configuration' },
+  { name: 'IDS/IPS' },
+  { name: 'User Administration' },
+  { name: 'System C&C' },
+  { name: 'Activity Tracking', children: [{ name: 'figlio1' }] },
 ];
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.css']
+  styleUrls: ['./sidenav.component.css'],
 })
-export class SidenavComponent {
-  activeNode:any;
+export class SidenavComponent{
+  activeNode: any;
+  role!: String;
+
   private _transformer = (node: MenuItem, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
@@ -56,15 +51,14 @@ export class SidenavComponent {
     };
   };
   treeControl = new FlatTreeControl<ExampleFlatNode>(
-    node => node.level,
-    node => node.expandable,
-    
+    (node) => node.level,
+    (node) => node.expandable
   );
   treeFlattener = new MatTreeFlattener(
     this._transformer,
-    node => node.level,
-    node => node.expandable,
-    node => node.children,   
+    (node) => node.level,
+    (node) => node.expandable,
+    (node) => node.children
   );
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
   constructor() {

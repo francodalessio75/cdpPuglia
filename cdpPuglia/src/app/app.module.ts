@@ -50,6 +50,9 @@ import { CardComponent } from './card/card.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
+import { RuleDetailsComponent } from './threats/rule-details/rule-details.component';
+import { RuleDataComponent } from './threats/rule-details/rule-data/rule-data.component';
+import { TecnicalDetailsComponent } from './threats/rule-details/tecnical-details/tecnical-details.component';
 import { ManualtimeSettingComponent } from './administration/system-control/manualtime-setting/manualtime-setting.component';
 
 
@@ -65,7 +68,6 @@ import { ManualtimeSettingComponent } from './administration/system-control/manu
     ThreatsComponent,
     FooterComponent,
     ThreatsFiltersComponent,
-    ThreatsDiagramsComponent,
     ThreatsDiagramsComponent,
     ChangePasswordComponent,
     ChangeProfileComponent,
@@ -93,6 +95,9 @@ import { ManualtimeSettingComponent } from './administration/system-control/manu
     CardComponent,
     HeaderComponent,
     SidenavComponent,
+    RuleDetailsComponent,
+    RuleDataComponent,
+    TecnicalDetailsComponent,
     ManualtimeSettingComponent
   ],
   imports: [

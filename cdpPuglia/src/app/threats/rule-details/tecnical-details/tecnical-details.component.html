@@ -1,0 +1,53 @@
+<mat-grid-list 
+   cols="2" 
+   rowHeight="2rem"
+   gutterSize="2px"
+   text-align= "left">
+
+
+   <mat-grid-tile>
+       <div class="label">Kill Chain </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+    <!-- Se sono presenti più di una fase, devono essere concatenati con una dicitura di questo tipo:
+    Command and Control or Inital Access -->
+        <div class="content">{{rule.technical.killChain}}</div>
+    </mat-grid-tile>
+
+   <mat-grid-tile>
+       <div class="label">Famiglia </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+    <!-- Enumerativo (Brute Force | Web | Worm | Others)
+    A tale lista potrebbero essere eventualmente integrati nel prosieguo dell’analisi dei requisiti ulteriori valori
+    La Gui deve recepirli e visualizzarli automaticamente -->
+        <div class="content">{{rule.technical.family}} </div>
+    </mat-grid-tile>
+
+   <mat-grid-tile>
+       <div class="label">Categoria </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <div class="content">{{rule.technical.category}} </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <div class="label">Protocollo </div>
+     </mat-grid-tile>
+
+     <mat-grid-tile>
+         <div class="content">{{rule.technical.protocol}} </div>
+     </mat-grid-tile>
+
+    <mat-grid-tile>
+            <div class="label">Stato di default </div>
+     </mat-grid-tile>
+
+     <mat-grid-tile> 
+         <input class="content" type="checkbox" name="rule-technical-status" id="rule-technical-status" [checked]="rule.technical.defaultStatus">
+     </mat-grid-tile>
+         
+</mat-grid-list>

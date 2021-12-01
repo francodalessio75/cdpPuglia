@@ -1,6 +1,7 @@
 import { UserRole } from "../enums/UserRoleEnum";
 
 export interface User{
+  id?:string;
   username?:string;
   password?:string
   token?:string;

@@ -1,4 +1,5 @@
 export const enum UserRole{
     admin='admin',
-    viewer='viewer'
+    viewer='viewer',
+    superadmin='superadmin'
 }

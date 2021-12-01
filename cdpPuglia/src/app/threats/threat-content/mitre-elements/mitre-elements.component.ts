@@ -5,6 +5,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import { TechniqueDetailsComponent } from './technique-details/technique-details.component';
 import { Technique } from 'src/app/_models/technique';
 import { TranslationService } from 'src/app/_services/translation.service';
+import { Rule } from 'src/app/_models/rule';
 
 @Component({
   selector: 'app-mitre-elements',
@@ -12,16 +13,18 @@ import { TranslationService } from 'src/app/_services/translation.service';
   styleUrls: ['./mitre-elements.component.css']
 })
 export class MitreElementsComponent{
-  @Input() threat! : Threat;
+ 
   technique!:Technique;
   viewMitreMatrix='';
+
+  @Input() mitre!: string[];
 
   constructor( 
     private threatService:ThreatsService,
     private translationService:TranslationService,
     private dialog:MatDialog){
       this.threatService.currentThreat$.subscribe(
-        threat => this.threat = threat
+        threat => this.mitre = threat.mitre!
       );
     }
 
@@ -30,7 +33,10 @@ export class MitreElementsComponent{
         this.setLanguageData();
       });
       this.setLanguageData();
-    }
+
+      // this.mitre=threat.mitre!
+    } 
+
   openTechniqueDetails(mitre:string){
     this.technique = this.threatService.getTechnique(mitre);
     const dialogConfig = new MatDialogConfig();
@@ -52,8 +58,9 @@ export class MitreElementsComponent{
             platform: this.technique.data.platform
           }
         };
-
+        console.log(dialogConfig);
         this.dialog.open(TechniqueDetailsComponent, dialogConfig);
+        
   }
 
   openSite(){
