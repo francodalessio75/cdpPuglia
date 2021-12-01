@@ -1,59 +1,12 @@
 .sidenav {
-    width: 15%;
-  }
-  .txtColor:hover{
-    color: red;
-    cursor: pointer;
-  }
-  
-  .background-highlight{
-    background: lightgrey;
-    font-weight: bold;
-  }
+  width: 15%;
+}
+.txtColor:hover{
+  color: red;
+  cursor: pointer;
+}
 
-  mat-tree-node{
-    cursor: pointer;
-  }
-  
-  /* .sidenav .mat-toolbar {
-    background: inherit;
-  } */
-  
-  /* .mat-toolbar.mat-primary {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  } */
-  
-  /** Header.css */
-  /* a{
-    text-decoration: none;
-    color: white;
-  }
-   */
-  /* a:hover,
-  a:active{
-    color:lightgrey
-  } */
-  
-  /* .navigation-items{
-    list-style: none;
-    padding:0;
-    margin:0;
-  }
-   */
-  /* .nav-caption{
-    display:inline-block;
-    padding-left: 6px;
-  } */
-  /* .trend-dialog .mat-dialog-content{
-    overflow-y: hidden !important;
-  } */
-  
-  /* .toolbar{
-    position: fixed;
-    width:100%;
-    transition:0.2s linear;
-    top:0px;
-    z-index: 9999;
-  } */
+.background-highlight{
+  background: lightgrey;
+  font-weight: bold;
+}

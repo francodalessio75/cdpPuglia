@@ -47,43 +47,28 @@ icon:'dns'},
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
-  role!:UserRole;
   activeNode:any;
   private _transformer = (node: MenuItem, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
-      level: level,
+      level: level
     };
   };
-
   treeControl = new FlatTreeControl<ExampleFlatNode>(
     node => node.level,
     node => node.expandable,
     
   );
-
   treeFlattener = new MatTreeFlattener(
     this._transformer,
     node => node.level,
     node => node.expandable,
     node => node.children,   
   );
-
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-
-  constructor(
-    private accountService:AccountService
-  ) {
-    this.accountService.currentUser$.subscribe(
-      user => this.role = user.role!
-    );
+  constructor() {
     this.dataSource.data = TREE_DATA;
-   }
-
-  ngOnInit(){
-    this.role = this.accountService.getCurrentUser().role!;
   }
-
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 }
