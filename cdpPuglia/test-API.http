@@ -117,3 +117,21 @@ Authorization: Bearer {{login.response.body.token}}
 ### get rule
 GET {{baseURL}}/rules/0 HTTP/1.1
 Authorization: Bearer {{login.response.body.token}}
+
+
+################# ADMINISTRATION USERS #############################
+
+### get users
+GET {{baseURL}}/administration/users HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+### create user
+POST {{baseURL}}/administration/users/signup HTTP/1.1
+Authorization: Bearer {{login.response.body.token}}
+
+{
+    "username":"franco",
+    "email":"f.dalessio@bv-tech.it",
+    "role":"admin"
+}
+

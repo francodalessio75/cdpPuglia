@@ -42,14 +42,24 @@
 
     
     <ng-container matColumnDef="typeRule">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ typeRule }}</th>
+     <th
+       mat-header-cell
+       *matHeaderCellDef
+       mat-sort-header>{{
+       typeRule
+       }}</th>
       <td class="clickable" mat-cell *matCellDef="let element">
         {{ element.typeRule }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="severity">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ severity }}</th>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header>{{
+        severity
+        }}</th>
       <td mat-cell *matCellDef="let element" >
         <mat-chip-list>
           <mat-chip
