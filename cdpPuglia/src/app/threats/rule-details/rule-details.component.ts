@@ -33,7 +33,7 @@ export class RuleDetailsComponent implements OnInit {
     this.threatsService.getThreat();
     this.threatsService.getRule('');
     this.mitre = this.threatsService.getMitre('');
-
+    
   }
 
   backToThreats(){
