@@ -40,6 +40,7 @@ const TREE_DATA: MenuItem[] = [
   styleUrls: ['./sidenav.component.css'],
 })
 export class SidenavComponent implements OnInit {
+  
   activeNode: any;
   role!: String;
 
