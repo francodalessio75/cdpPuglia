@@ -38,8 +38,10 @@ export class TranslationService {
       case LanguagesEnum.Language.it:
       case LanguagesEnum.Language.en:
         return true;
+        break;
       default:
         return false;
+        break;
     }
   }
 }
