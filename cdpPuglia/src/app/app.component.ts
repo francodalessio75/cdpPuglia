@@ -7,14 +7,18 @@ import { TranslationService } from './_services/translation.service';
 import * as LanguagesEnum from './enums/LanguagesEnum'
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { ChangeProfileComponent } from './auth/change-profile/change-profile.component';
+import { Translatable } from './interfaces/translatable';
+import { LanguageData } from './_models/languageData';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, Translatable{
   @ViewChild('sidenav') sidenav:any;
+
+  languageData!:LanguageData
 
   sidenvOpened = true;
 
@@ -36,20 +40,23 @@ export class AppComponent implements OnInit {
     public accountService:AccountService, 
     public headerService:HeaderService, 
     public dialog: MatDialog,
-    private translationService:TranslationService) { }
+    private translationService:TranslationService) {
+      this.accountService.currentUser$.subscribe(
+        user => this.user = user
+      );
+      this.translationService.currentLanguage$.subscribe((language)=>{
+        this.languageData = this.translationService.getCurrentLanguageData();
+        this.setLanguageData(this.languageData);
+      });
+      this.headerService.titleDescription$.subscribe((titleDescription)=>{
+        this.pageTitle = titleDescription.title;
+        this.pageDescription = titleDescription.description;
+      });
+     }
 
   ngOnInit(){    
-    this.accountService.currentUser$.subscribe(
-      user => this.user = user
-    );
-    this.translationService.currentLanguage$.subscribe((language)=>{
-      this.setLanguageData();
-    });
-    this.setLanguageData();
-    this.headerService.titleDescription$.subscribe((titleDescription)=>{
-      this.pageTitle = titleDescription.title;
-      this.pageDescription = titleDescription.description;
-    });
+    this.languageData = this.translationService.getCurrentLanguageData();
+    this.setLanguageData(this.languageData);
     this.setCurrentUser();
   }
 
@@ -112,8 +119,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  private setLanguageData(){
-    let languageData = this.translationService.getCurrentLanguageData();
+  setLanguageData(languageData:LanguageData){
     this.languageLabel = languageData.sections.menu.languageLabel;
     this.italian = languageData.sections.menu.italian;
     this.english = languageData.sections.menu.english;
