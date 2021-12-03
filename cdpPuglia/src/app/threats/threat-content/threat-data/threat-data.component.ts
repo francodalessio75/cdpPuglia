@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Translatable } from 'src/app/interfaces/translatable';
+import { LanguageData } from 'src/app/_models/languageData';
 import { Threat } from 'src/app/_models/threat';
 import { AccountService } from 'src/app/_services/account.service';
 import { ThreatsService } from 'src/app/_services/threats.service';
@@ -10,7 +12,7 @@ import { TranslationService } from 'src/app/_services/translation.service';
   templateUrl: './threat-data.component.html',
   styleUrls: ['./threat-data.component.css']
 })
-export class ThreatDataComponent implements OnInit {
+export class ThreatDataComponent implements OnInit, Translatable {
   @Input() threat!:Threat;
   identifier= '';
   severity= '';
@@ -19,6 +21,8 @@ export class ThreatDataComponent implements OnInit {
   family= '';
   action= '';
   threatMessage= '';
+
+  languageData!:LanguageData;
 
   constructor(
     private threatService:ThreatsService,
@@ -30,17 +34,21 @@ export class ThreatDataComponent implements OnInit {
         this.threat = threat;
       }
     );
+
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.languageData = this.translationService.getCurrentLanguageData();
+      this.setLanguageData(this.languageData);
+    });
    }
 
   ngOnInit(): void {
     this.threatService.getThreat();
-    this.translationService.currentLanguage$.subscribe((language)=>{
-      this.setLanguageData();
-    });
-    this.setLanguageData();
+    
+    this.languageData = this.translationService.getCurrentLanguageData();
+      this.setLanguageData(this.languageData);
   }
-  private setLanguageData(){
-    let languageData = this.translationService.getCurrentLanguageData();
+
+  setLanguageData(languageData:LanguageData){
     this.identifier = languageData.sections.threats.threatContent.threatData.identifier;
     this.severity = languageData.sections.threats.threatContent.threatData.severity;
     this.ruleName = languageData.sections.threats.threatContent.threatData.ruleName;

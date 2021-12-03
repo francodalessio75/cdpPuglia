@@ -9,6 +9,7 @@ import { LanguageData } from 'src/app/_models/languageData';
 import { TranslationService } from 'src/app/_services/translation.service';
 import { FeelerStatus } from 'src/app/enums/FeelerStatusEnum';
 import { SpinnerService } from 'src/app/_services/spinner.service';
+import { Translatable } from 'src/app/interfaces/translatable';
 
 export interface TableRow{
   status:string;
@@ -20,7 +21,7 @@ export interface TableRow{
   templateUrl: './feeler-status.component.html',
   styleUrls: ['./feeler-status.component.css']
 })
-export class FeelerStatusComponent implements OnInit {
+export class FeelerStatusComponent implements OnInit, Translatable {
   // Current Status
   currentStatus:string = '';
   activateBtn:string = '';

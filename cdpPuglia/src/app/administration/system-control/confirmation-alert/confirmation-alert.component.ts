@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Translatable } from 'src/app/interfaces/translatable';
 import { LanguageData } from 'src/app/_models/languageData';
 import { TranslationService } from 'src/app/_services/translation.service';
 
@@ -9,7 +10,7 @@ import { TranslationService } from 'src/app/_services/translation.service';
   templateUrl: './confirmation-alert.component.html',
   styleUrls: ['./confirmation-alert.component.css']
 })
-export class ConfirmationAlertComponent implements OnInit{
+export class ConfirmationAlertComponent implements OnInit, Translatable{
   languageData!:LanguageData;
   confirmationRequestTitle!:string;
   yesButtonLabel!:string;

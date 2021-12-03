@@ -7,6 +7,8 @@ import { Threat } from '../../_models/threat';
 import { ThreatsService } from '../../_services/threats.service';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { TranslationService } from 'src/app/_services/translation.service';
+import { Translatable } from 'src/app/interfaces/translatable';
+import { LanguageData } from 'src/app/_models/languageData';
 
 interface CSVModel {
   ts?: string;
@@ -23,7 +25,7 @@ interface CSVModel {
   templateUrl: './threats-table.component.html',
   styleUrls: ['./threats-table.component.css'],
 })
-export class ThreatsTableComponent {
+export class ThreatsTableComponent implements Translatable {
   csvData!: CSVModel[];
   ipSrc = '';
   ipDst = '';
@@ -49,6 +51,8 @@ export class ThreatsTableComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  languageData!:LanguageData;
+
   constructor(
     public threatsService: ThreatsService,
     private translationService: TranslationService,
@@ -59,14 +63,16 @@ export class ThreatsTableComponent {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.threats = threats;
-      console.log(threats);
+      this.translationService.currentLanguage$.subscribe((language) => {
+        this.languageData = this.translationService.getCurrentLanguageData();
+        this.setLanguageData(this.languageData);
+      });
     });
   }
   ngOnInit() {
-    this.translationService.currentLanguage$.subscribe((language) => {
-      this.setLanguageData();
-    });
-    this.setLanguageData();
+    
+    this.languageData = this.translationService.getCurrentLanguageData();
+    this.setLanguageData(this.languageData);
   }
 
   ngAfterViewInit() {
@@ -137,8 +143,8 @@ export class ThreatsTableComponent {
 
     new ngxCsv(this.csvData, 'threatsReport', options);
   }
-  private setLanguageData() {
-    let languageData = this.translationService.getCurrentLanguageData();
+  
+  setLanguageData(languageData:LanguageData) {
     this.ipSrc = languageData.sections.threats.threatFilters.ipSource;
     this.ipDst = languageData.sections.threats.threatFilters.ipDestination;
     this.nameRule =

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { FeelerStatus } from 'src/app/enums/FeelerStatusEnum';
+import { Translatable } from 'src/app/interfaces/translatable';
 import { Feeler } from 'src/app/_models/feeler';
 import { LanguageData } from 'src/app/_models/languageData';
 import { HeaderService } from 'src/app/_services/header.service';
@@ -13,7 +14,7 @@ import { TranslationService } from 'src/app/_services/translation.service';
   templateUrl: './system-control.component.html',
   styleUrls: ['./system-control.component.css']
 })
-export class SystemControlComponent implements OnInit {
+export class SystemControlComponent implements OnInit, Translatable {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   
   feeler!:Feeler;
@@ -58,10 +59,8 @@ export class SystemControlComponent implements OnInit {
   ngOnInit(): void {
     this.systemControlService.getFeeler();
     this.languageData = this.translationService.getCurrentLanguageData();
-    this.translationService.currentLanguage$.subscribe((language)=>{
-      this.setLanguageData1();
-    });
-    this.setLanguageData1();
+    
+    this.setLanguageData(this.languageData);
   }
 
   restart(restartMode:string){
@@ -77,8 +76,6 @@ export class SystemControlComponent implements OnInit {
     this.configureNTPServerTitle = languageData.sections.administration.systemControl.ntpConfiguration.configureNTPServerTitle;
     this.manualTimeSettingTitle = languageData.sections.administration.systemControl.manualTimeSetting.manualTimeSettingTitle;
     this.headerService.setCurrentTitleDescription(this.pageTitle, this.pageDescription);
-  }
-  setLanguageData1(){
     this.systemRestart = this.languageData.sections.systemControl.systemRestart.systemRestart;
     this.currentStatusTitle = this.languageData.sections.systemControl.currentStatus.currentStatusTitle;
   }

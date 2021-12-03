@@ -7,13 +7,15 @@ import * as am5map from "@amcharts/amcharts5/map";
 import worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import { TranslationService } from 'src/app/_services/translation.service';
+import { Translatable } from 'src/app/interfaces/translatable';
+import { LanguageData } from 'src/app/_models/languageData';
 
 @Component({
   selector: 'app-threat-map',
   templateUrl: './threat-map.component.html',
   styleUrls: ['./threat-map.component.css']
 })
-export class ThreatMapComponent implements OnInit {
+export class ThreatMapComponent implements OnInit, Translatable {
   ipSrcLatitude!:  number | undefined;
   ipSrcLongitude!: number | undefined;
   ipDstLatitude!:  number | undefined;
@@ -21,6 +23,8 @@ export class ThreatMapComponent implements OnInit {
   //const root! :am5.Root | undefined;
   
   @Input() threat!: Threat;
+
+  languageData!:LanguageData;
   
   constructor(
     private threatsService: ThreatsService,
@@ -32,18 +36,18 @@ export class ThreatMapComponent implements OnInit {
       this.ipSrcLongitude=threat.ipSrcLongitude;
       this.ipDstLatitude=threat.ipDstLatitude;
       this.ipDstLongitude=threat.ipDstLongitude;
+      this.translationService.currentLanguage$.subscribe((language)=>{
+        this.languageData = this.translationService.getCurrentLanguageData();
+        this.setLanguageData(this.languageData);
+      });
     });
     
    }
-   ngAfterViewInit(){
-   
-   }
+  
   ngOnInit(): void {
-    /* Change language */
-    this.translationService.currentLanguage$.subscribe((language)=>{
-      this.setLanguageData();
-    });
-    this.setLanguageData();
+
+    this.languageData = this.translationService.getCurrentLanguageData();
+        this.setLanguageData(this.languageData);
 
     console.log(this.threat);
     var root = am5.Root.new("chartdiv"); 
@@ -176,42 +180,7 @@ arrowSeries.bullets.push(function(){
       autoRotate: true
     });
    
-    // Create line series
-//     let lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
-// lineSeries.mapLines.template.setAll({
-//   stroke: root.interfaceColors.get("alternativeBackground"),
-//   strokeOpacity: 0.3
-// });
     
-    // let route=lineSeries.pushDataItem({
-    //   pointsToConnect: [london, london2]
-    // });
-      
-//     lineSeries.mapLines.template.setAll({
-//       stroke: am5.color(0xffba00),
-//       strokeWidth: 2,
-//       strokeOpacity: 1
-//     });
-//     pointSeries.bullets.push(function() {
-//       return am5.Bullet.new(root, {
-//         sprite: am5.Circle.new(root, {
-//           radius: 5,
-//           fill: am5.color(0xff0000)
-//         })
-//       });
-//     });
-//     pointSeries.bullets.push(function() {
-//       var container = am5.Container.new(root, {});
-//       container.children.push(am5.Graphics.new(root, {
-//         svgPath: "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
-//         scale: 0.06,
-//         centerY: am5.p50,
-//         centerX: am5.p50,
-//         fill: am5.color(0x000000)
-//       }));
-//       return am5.Bullet.new(root, { sprite: container });
-//     });
-
 chart.appear(1000, 100);
     
     // var plane = pointSeries.pushDataItem({
@@ -221,7 +190,7 @@ chart.appear(1000, 100);
     // });
   }
 
-  private setLanguageData(){
-    let languageData = this.translationService.getCurrentLanguageData();
-}
+  setLanguageData(languageData:LanguageData){
+    
+  }
 }

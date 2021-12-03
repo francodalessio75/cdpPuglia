@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Severity } from 'src/app/enums/SeverityEnum';
+import { Translatable } from 'src/app/interfaces/translatable';
+import { LanguageData } from 'src/app/_models/languageData';
 import { ThreatsService } from 'src/app/_services/threats.service';
 import { TranslationService } from 'src/app/_services/translation.service';
 
@@ -9,7 +11,7 @@ import { TranslationService } from 'src/app/_services/translation.service';
   templateUrl: './threats-filters.component.html',
   styleUrls: ['./threats-filters.component.css']
 })
-export class ThreatsFiltersComponent implements OnInit {
+export class ThreatsFiltersComponent implements OnInit, Translatable {
   selectedOption='undefined';
   filterAll='';
   clearAll='';
@@ -23,6 +25,8 @@ export class ThreatsFiltersComponent implements OnInit {
   ipDestination='';
   keyWord='';
 
+  languageData!:LanguageData;
+
   filterForm: FormGroup = this.fb.group({
     severity: [''],
     ipSrc: [''],
@@ -34,14 +38,16 @@ export class ThreatsFiltersComponent implements OnInit {
     private fb:FormBuilder,
     private threatsService:ThreatsService,
     private translationService:TranslationService
-) { }
+) {
+  this.translationService.currentLanguage$.subscribe((language)=>{
+    this.languageData = this.languageData = this.translationService.getCurrentLanguageData();
+    this.setLanguageData(this.languageData);
+  });
+ }
 
   ngOnInit(): void {
-    this.translationService.currentLanguage$.subscribe((language)=>{
-      this.setLanguageData();
-    });
-    this.setLanguageData();
-
+    this.languageData = this.languageData = this.translationService.getCurrentLanguageData();
+    this.setLanguageData(this.languageData);
   }
 
   filter(){
@@ -59,8 +65,7 @@ export class ThreatsFiltersComponent implements OnInit {
     this.filter();
   }
   
-  private setLanguageData(){
-    let languageData = this.translationService.getCurrentLanguageData();
+  setLanguageData(languageData:LanguageData){
     this.severity = languageData.sections.threats.threatFilters.severity.severity;
     this.all = languageData.sections.threats.threatFilters.severity.all;
     this.critical = languageData.sections.threats.threatFilters.severity.critical;

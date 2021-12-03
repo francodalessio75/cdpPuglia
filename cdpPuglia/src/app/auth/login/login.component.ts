@@ -1,19 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Translatable } from 'src/app/interfaces/translatable';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { HeaderService } from 'src/app/_services/header.service';
 import { TranslationService } from 'src/app/_services/translation.service';
 import * as LanguagesEnum from '../../enums/LanguagesEnum';
-import * as LanguageModel from '../../_models/languageData';
+import { LanguageData } from '../../_models/languageData';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy, Translatable {
   user: User = {};
 
   /* Related to Language */
@@ -24,6 +25,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   discardButton = '';
   signInButton = '';
   requiredFieldError = '';
+
+  languageData!:LanguageData;
 
   loginForm = this.fb.group({
     username: ['', Validators.required],
@@ -36,13 +39,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private headerService: HeaderService,
     private translationService: TranslationService
-  ) {}
+  ) {
+    this.translationService.currentLanguage$.subscribe((language) => {
+      this.languageData = this.translationService.getCurrentLanguageData();
+      this.setLanguageData(this.languageData);
+    });
+  }
 
   ngOnInit() {
-    this.translationService.currentLanguage$.subscribe((language) => {
-      this.setLanguageData();
-    });
-    this.setLanguageData();
+    this.languageData = this.translationService.getCurrentLanguageData();
+    this.setLanguageData(this.languageData);
   }
 
   login() {
@@ -74,8 +80,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.headerService.setCurrentTitleDescription('', '');
   }
 
-  private setLanguageData() {
-    let languageData = this.translationService.getCurrentLanguageData();
+  setLanguageData(languageData:LanguageData) {
     this.submitButton = languageData.sections.global.submitButton;
     this.discardButton = languageData.sections.global.discardButton;
     this.pageTitle = languageData.sections.login.pageTitle;

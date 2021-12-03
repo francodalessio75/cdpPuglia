@@ -7,6 +7,8 @@ import { User } from 'src/app/_models/user';
 import { TranslationService } from 'src/app/_services/translation.service';
 import { AccountService } from 'src/app/_services/account.service';
 import { HeaderComponent } from 'src/app/navigation/header/header.component';
+import { Translatable } from 'src/app/interfaces/translatable';
+import { LanguageData } from 'src/app/_models/languageData';
 
 
 
@@ -24,9 +26,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.css'],
 })
-export class ChangePasswordComponent implements OnInit {
+export class ChangePasswordComponent implements OnInit, Translatable {
 
   model: any = {};
+
+  languageData!:LanguageData;
 
   /* Related to Language */
   saveButton = '';
@@ -60,18 +64,6 @@ export class ChangePasswordComponent implements OnInit {
   // , { validators: this.checkPasswords }
   );
 
-  ngOnInit(){
-    this.changePasswordForm.controls.newPassword.valueChanges.subscribe(() => {
-      this.changePasswordForm.controls.repeatPassword.updateValueAndValidity();
-    });
-    
-    this.dialogRef.beforeClosed().subscribe(() => this.dialogRef.close());
-    this.accountService.currentUser$.subscribe(user => {this.currentUser=user});
-    this.translationService.currentLanguage$.subscribe((language)=>{
-      this.setLanguageData();
-    });
-    this.setLanguageData();
-  }
   constructor(
     private translationService:TranslationService,
     private accountService: AccountService,
@@ -80,7 +72,23 @@ export class ChangePasswordComponent implements OnInit {
     public dialogRef: MatDialogRef<HeaderComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.languageData = this.translationService.getCurrentLanguageData();
+      this.setLanguageData(this.languageData);
+    });
     dialogRef.disableClose = true;
+  }
+
+  ngOnInit(){
+    this.changePasswordForm.controls.newPassword.valueChanges.subscribe(() => {
+      this.changePasswordForm.controls.repeatPassword.updateValueAndValidity();
+    });
+    
+    this.dialogRef.beforeClosed().subscribe(() => this.dialogRef.close());
+    this.accountService.currentUser$.subscribe(user => this.currentUser=user);
+    
+    this.languageData = this.translationService.getCurrentLanguageData();
+    this.setLanguageData(this.languageData);
   }
 
   newPasswordStrengthValidator(): ValidatorFn {
@@ -129,9 +137,10 @@ export class ChangePasswordComponent implements OnInit {
      });
     console.log(this.model);
   }
+
   matcher = new MyErrorStateMatcher();
-  private setLanguageData(){
-    let languageData = this.translationService.getCurrentLanguageData();
+
+  setLanguageData(languageData:LanguageData){
     this.saveButton = languageData.sections.global.saveButton;
     this.discardButton = languageData.sections.global.discardButton;
     this.requiredFieldError = languageData.sections.global.requiredFieldError;

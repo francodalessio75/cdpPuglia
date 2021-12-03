@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Language } from 'src/app/enums/LanguagesEnum';
+import { Translatable } from 'src/app/interfaces/translatable';
 import { Feeler } from 'src/app/_models/feeler';
 import { LanguageData } from 'src/app/_models/languageData';
 import { NTP } from 'src/app/_models/NTP';
@@ -22,7 +23,7 @@ interface EnabledRadio{
   templateUrl: './ntp-configuration.component.html',
   styleUrls: ['./ntp-configuration.component.css']
 })
-export class NtpConfigurationComponent {
+export class NtpConfigurationComponent implements Translatable{
   @Input() feeler!:Feeler;
 
   ntp!:NTP;

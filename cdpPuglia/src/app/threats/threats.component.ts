@@ -5,13 +5,15 @@ import { ThreatsService } from '../_services/threats.service';
 import { TranslationService } from '../_services/translation.service';
 import {MatAccordion} from '@angular/material/expansion';
 import { SpinnerService } from '../_services/spinner.service';
+import { Translatable } from '../interfaces/translatable';
+import { LanguageData } from '../_models/languageData';
 
 @Component({
   selector: 'app-threats',
   templateUrl: './threats.component.html',
   styleUrls: ['./threats.component.css']
 })
-export class ThreatsComponent implements OnInit, OnDestroy {
+export class ThreatsComponent implements OnInit, OnDestroy, Translatable {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
 
   title = '';
@@ -29,27 +31,32 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
   loading:boolean = false;
 
+  languageData!:LanguageData;
+
   constructor(
     private headerService:HeaderService,
     private threatsService:ThreatsService,
     private translationService:TranslationService) {
       this.threatsService.currentThreat$.subscribe(threat => this.threat = threat);
       this.threatsService.currentThreats$.subscribe(threats => this.threats = threats);
+      this.translationService.currentLanguage$.subscribe((language)=>{
+        this.languageData = this.translationService.getCurrentLanguageData();
+        this.setLanguageData(this.languageData);
+      });
     }
 
   ngOnInit(): void {
     this.threatsService.getThreats(1);
-    this.translationService.currentLanguage$.subscribe((language)=>{
-      this.setLanguageData();
-    });
-    this.setLanguageData();
+    
+    this.languageData = this.translationService.getCurrentLanguageData();
+    this.setLanguageData(this.languageData);
   }
 
   ngOnDestroy(){
     this.headerService.setCurrentTitleDescription('','');
   }
-  private setLanguageData(){
-    let languageData = this.translationService.getCurrentLanguageData();
+
+  setLanguageData(languageData:LanguageData){
     this.threatsC = languageData.sections.threats.threatContent.threatC;
     this.searchParameters = languageData.sections.threats.threatContent.searchParameters;
     this.resultsFilters = languageData.sections.threats.threatContent.resultsFilters;

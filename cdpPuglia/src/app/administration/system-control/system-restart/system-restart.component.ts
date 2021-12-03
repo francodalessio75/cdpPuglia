@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { Translatable } from 'src/app/interfaces/translatable';
 import { Feeler } from 'src/app/_models/feeler';
 import { LanguageData } from 'src/app/_models/languageData';
 //import { SpinnerService } from 'src/app/_services/spinner.service';
@@ -19,7 +20,7 @@ interface RestartMode{
   templateUrl: './system-restart.component.html',
   styleUrls: ['./system-restart.component.css']
 })
-export class SystemRestartComponent {
+export class SystemRestartComponent implements Translatable{
   @Input() feeler!:Feeler;
 
   choosenRebootMode:string='soft';

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Severity } from 'src/app/enums/SeverityEnum';
+import { Translatable } from 'src/app/interfaces/translatable';
 import { LanguageData } from 'src/app/_models/languageData';
 import { Threat } from 'src/app/_models/threat';
 import { ThreatsService } from 'src/app/_services/threats.service';
@@ -19,7 +20,7 @@ interface Intelligence{
   templateUrl: './intelligence-data.component.html',
   styleUrls: ['./intelligence-data.component.css']
 })
-export class IntelligenceDataComponent {
+export class IntelligenceDataComponent implements Translatable {
   @Input() threat!:Threat;
   intelligence:Intelligence[] = [{}];
 
@@ -65,7 +66,7 @@ export class IntelligenceDataComponent {
     this.router.navigateByUrl('threats');
   }
 
-  private setLanguageData(languageData:LanguageData){
+  setLanguageData(languageData:LanguageData){
     this.intelligenceData = languageData.sections.threats.threatContent.intelligenceData.intelligenceData;
     this.threatLevel = languageData.sections.threats.threatContent.intelligenceData.threatLevel;
     this.description = languageData.sections.threats.threatContent.intelligenceData.description;

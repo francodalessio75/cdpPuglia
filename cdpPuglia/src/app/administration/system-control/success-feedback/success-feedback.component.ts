@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Translatable } from 'src/app/interfaces/translatable';
 import { LanguageData } from 'src/app/_models/languageData';
 import { TranslationService } from 'src/app/_services/translation.service';
 
@@ -9,7 +10,7 @@ import { TranslationService } from 'src/app/_services/translation.service';
   templateUrl: './success-feedback.component.html',
   styleUrls: ['./success-feedback.component.css']
 })
-export class SuccessFeedbackComponent implements OnInit {
+export class SuccessFeedbackComponent implements OnInit, Translatable {
   languageData!:LanguageData;
   transmissionSuccededTitle!:string;
 
