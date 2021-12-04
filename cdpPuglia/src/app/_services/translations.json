@@ -140,7 +140,7 @@
 						"configureNTPServerTitle":"NTP server configuration",
 						"NTPServerLabel":"NTP Server"
 					},
-					"manualTimeSetting":{
+					"manualTimeSettings":{
 						"manualTimeSettingTitle":"Manual time setting configuration"
 					}
                 }
