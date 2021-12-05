@@ -54,23 +54,20 @@ export class ThreatsService {
   cveJSONData: any = (cveData as any).default;
   cveData: CVE = this.cveJSONData as CVE;
 
+  ruleJSONData: any = (ruleData as any).default;
+  ruleData: Rule = this.ruleJSONData as Rule;
+
+  currentThreat: Threat = this.threatData;
   currentThreats: Threat[] = [];
   filteredThreats: Threat[] = [];
 
   currentTechnique: Technique = this.techniqueData;
-
   currentTechniques: Technique[] = [this.currentTechnique];
 
-  ruleJSONData: any = (ruleData as any).default;
-  ruleData: Rule = this.ruleJSONData as Rule;
   currentRule: Rule = this.ruleData;
 
   currentCve: CVE = this.cveData;
-
   currentCves: CVE[] = [this.currentCve];
-
-  currentThreat: Threat = this.threatData;
-
 
 
   private currentThreatSource = new ReplaySubject<Threat>(1);
@@ -138,13 +135,7 @@ export class ThreatsService {
       },2000);
       this.spinnerService.setLoading(false);
     }
-  
 
-
-  // private setAndEmitThreats(isAPI:boolean,threats:Threat[]){
-  //   isAPI ? this.currentThreats = threats : this.filteredThreats = threats;
-  //   this.currentThreatsSource.next(threats);
-  // }
 
   getThreat() {
     this.currentThreatSource.next(this.currentThreat);
@@ -167,7 +158,8 @@ export class ThreatsService {
     ipSrc: string,
     ipDst: string,
     label: string
-  ) {
+  ) 
+  {
     let filteredThreats: Threat[] = [];
     let matchSeverity = false;
     let matchIpSrc = false;
@@ -177,11 +169,7 @@ export class ThreatsService {
     this.currentThreats.forEach((threat) => {
       matchSeverity = matchIpSrc = matchIpDst = containsLabel = false;
 
-      if (
-        !severity ||
-        threat.severity === severity ||
-        severity === Severity.undefined
-      ) {
+      if ( !severity || threat.severity === severity || severity === Severity.undefined) {
         matchSeverity = true;
       }
 
@@ -197,8 +185,9 @@ export class ThreatsService {
         containsLabel = true;
       }
 
-      if (matchSeverity && matchIpSrc && matchIpDst && containsLabel)
+      if (matchSeverity && matchIpSrc && matchIpDst && containsLabel){
         filteredThreats.push(threat);
+      }
     });
 
     this.currentThreatsSource.next(filteredThreats);
@@ -208,14 +197,13 @@ export class ThreatsService {
     this.currentThreatsSource.next(this.currentThreats);
   }
 
-  
-
   setThreat(threatId: number) {
     let threat: Threat | undefined = this.currentThreats.find((threat) => {
       threat.threatId === threatId;
     });
 
     if (threat) {
+      /**** To be called API to get all threat details */
       this.currentThreat = threat;
       this.currentTechniques = [];
       this.currentCves = [];
@@ -247,8 +235,12 @@ export class ThreatsService {
     technique = this.currentTechniques.find((technique) => {
       return technique.data.id === mitre;
     });
-    if (technique) return technique;
-    else return { data: {} };
+    if (technique){
+      return technique;
+    } 
+    else{
+      return { data: {} };
+    } 
 
     //return this.currentTechnique;
     // this.http.get<{data:Technique}>(this.baseUrl + 'mitre/'+'T1001.001')
@@ -296,11 +288,17 @@ export class ThreatsService {
 
   getCve(cveCode: string): Technique {
     let cve: CVE | undefined;
+
     cve = this.currentCves.find((cve) => {
       return cve.data.cveId === cveCode;
     });
-    if (cve) return cve;
-    else return { data: {} };
+
+    if(cve){
+      return cve;
+    }
+    else{
+      return { data: {} };
+    } 
     // this.http.get<{data:Technique}>(this.baseUrl + 'cve/'+'0')
     //   .subscribe(
     //     response =>{

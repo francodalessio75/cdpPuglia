@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Translatable } from 'src/app/interfaces/translatable';
 import { Feeler } from 'src/app/_models/feeler';
 import { LanguageData } from 'src/app/_models/languageData';
-//import { SpinnerService } from 'src/app/_services/spinner.service';
 import { SystemControlService } from 'src/app/_services/system-control.service';
 import { TranslationService } from 'src/app/_services/translation.service';
 import { ConfirmationAlertComponent } from '../confirmation-alert/confirmation-alert.component';
@@ -42,7 +41,6 @@ export class SystemRestartComponent implements Translatable{
   dataSource:string[] = ['rebootRadioButtons']
 
   constructor(
-    //private spinnerService:SpinnerService,
     private dialog:MatDialog,
     private toastr:ToastrService,
     private translationService:TranslationService,
