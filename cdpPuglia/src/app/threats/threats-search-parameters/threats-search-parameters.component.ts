@@ -27,7 +27,7 @@ export class ThreatsSearchParametersComponent implements OnInit, Translatable {
     {value:'-6', message:''},
     {value:'-12', message:''}
   ];
-
+  
   ranges_2:Range[]=[
     
   ];
