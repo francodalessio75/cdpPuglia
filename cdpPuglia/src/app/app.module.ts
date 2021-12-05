@@ -31,13 +31,9 @@ import { ThreatsTableComponent } from './threats/threats-table/threats-table.com
 import { ThreatContentComponent } from './threats/threat-content/threat-content.component';
 import {MatDialogModule,MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { ThreatDataComponent } from './threats/threat-content/threat-data/threat-data.component';
-import { MitreElementsComponent } from './threats/threat-content/mitre-elements/mitre-elements.component';
-import { CveDataComponent } from './threats/threat-content/cve-data/cve-data.component';
 import { ExternalLinksComponent } from './threats/threat-content/external-links/external-links.component';
 import { ThreatMapComponent } from './threats/threat-content/threat-map/threat-map.component';
 import { IntelligenceDataComponent } from './threats/threat-content/intelligence-data/intelligence-data.component';
-import { TechniqueDetailsComponent } from './threats/threat-content/mitre-elements/technique-details/technique-details.component';
-import { CveDetailsComponent } from './threats/threat-content/cve-data/cve-details/cve-details.component';
 import { ThreatConnectionsComponent } from './threats/threat-content/threat-connections/threat-connections.component';
 import { SystemControlComponent } from './administration/system-control/system-control.component';
 import { FeelerStatusComponent } from './administration/system-control/feeler-status/feeler-status.component';
@@ -52,8 +48,15 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { RuleDetailsComponent } from './threats/rule-details/rule-details.component';
 import { RuleDataComponent } from './threats/rule-details/rule-data/rule-data.component';
-import { TecnicalDetailsComponent } from './threats/rule-details/tecnical-details/tecnical-details.component';
+
 import { ManualtimeSettingComponent } from './administration/system-control/manualtime-setting/manualtime-setting.component';
+import { CveDataComponent } from './shared-components/cve-data/cve-data.component';
+import { CveDetailsComponent } from './shared-components/cve-data/cve-details/cve-details.component';
+import { MitreElementsComponent } from './shared-components/mitre-elements/mitre-elements.component';
+import { TechniqueDetailsComponent } from './shared-components/mitre-elements/technique-details/technique-details.component';
+import { TecnicalDetailsComponent } from './threats/rule-details/tecnical-details/tecnical-details.component';
+
+
 
 
 

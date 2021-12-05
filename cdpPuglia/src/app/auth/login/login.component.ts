@@ -54,21 +54,17 @@ export class LoginComponent implements OnInit, OnDestroy, Translatable {
   login() {
     this.user.username = this.loginForm.value.username;
     this.user.password = this.loginForm.value.password;
-
-    this.accountService.getToken$(this.user);
-    this.accountService.getRole$();
-    this.router.navigateByUrl('/threats');
-    // this.accountService.getToken$(this.user).subscribe(response => {
-    //   this.accountService.getRole$().subscribe(userData => {
-    //     this.router.navigateByUrl('/threats');
-    //   }, error => {
-    //     console.log(error);
-    //     this.router.navigateByUrl('/threats');
-    //   })
-    // },
-    //  error => {
-    //    console.log(error);
-    //  });
+    this.accountService.getToken$(this.user).subscribe(response => {
+      this.accountService.getRole$().subscribe(userData => {
+        this.router.navigateByUrl('/threats');
+      }, error => {
+        console.log(error);
+        this.router.navigateByUrl('/threats');
+      })
+    },
+     error => {
+       console.log(error);
+     });
   }
 
   logout() {

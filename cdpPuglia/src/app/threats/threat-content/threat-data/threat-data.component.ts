@@ -14,6 +14,7 @@ import { TranslationService } from 'src/app/_services/translation.service';
 })
 export class ThreatDataComponent implements OnInit, Translatable {
   @Input() threat!:Threat;
+
   identifier= '';
   severity= '';
   ruleName= '';
@@ -42,8 +43,6 @@ export class ThreatDataComponent implements OnInit, Translatable {
    }
 
   ngOnInit(): void {
-    this.threatService.getThreat();
-    
     this.languageData = this.translationService.getCurrentLanguageData();
       this.setLanguageData(this.languageData);
   }

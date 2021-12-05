@@ -1,0 +1,11 @@
+<mat-grid-list cols="2" rowHeight="2rem">
+    <mat-grid-tile></mat-grid-tile><mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile
+        *ngFor="let mitre of mitre"
+        colspan="2"
+        >
+        <div class="content clickable" (click)="openTechniqueDetails(mitre)">{{mitre}}</div>
+    </mat-grid-tile>
+    <mat-grid-tile><div class="label"></div></mat-grid-tile><mat-grid-tile><button mat-raised-button color="primary" (click)="openSite()">{{viewMitreMatrix}}</button></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile><mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>

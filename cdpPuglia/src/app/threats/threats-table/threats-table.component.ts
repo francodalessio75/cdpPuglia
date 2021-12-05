@@ -70,7 +70,6 @@ export class ThreatsTableComponent implements Translatable {
     });
   }
   ngOnInit() {
-    
     this.languageData = this.translationService.getCurrentLanguageData();
     this.setLanguageData(this.languageData);
   }
