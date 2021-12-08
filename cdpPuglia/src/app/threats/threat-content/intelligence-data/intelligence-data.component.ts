@@ -3,17 +3,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Severity } from 'src/app/enums/SeverityEnum';
 import { Translatable } from 'src/app/interfaces/translatable';
+import { Intelligence } from 'src/app/_models/intelligence';
 import { LanguageData } from 'src/app/_models/languageData';
 import { Threat } from 'src/app/_models/threat';
 import { ThreatsService } from 'src/app/_services/threats.service';
 import { TranslationService } from 'src/app/_services/translation.service';
 
-interface Intelligence{
-  id?:number;
-  ioc?:string;
-  description?:string;
-  threathLevel?:Severity;
-}
 
 @Component({
   selector: 'app-intelligence-data',
@@ -22,7 +17,7 @@ interface Intelligence{
 })
 export class IntelligenceDataComponent implements Translatable {
   @Input() threat!:Threat;
-  intelligence:Intelligence[] = [{}];
+  intelligences:Intelligence[] = [{}];
 
   languageData!:LanguageData;
 
@@ -45,8 +40,8 @@ export class IntelligenceDataComponent implements Translatable {
     private router:Router) {
       this.threatService.currentThreat$.subscribe(threat =>{
         if(threat.intelligence){
-          this.intelligence = threat.intelligence as Intelligence[];
-          this.dataSource = new MatTableDataSource(this.intelligence);
+          this.intelligences = threat.intelligence as Intelligence[];
+          this.dataSource = new MatTableDataSource(this.intelligences);
         } 
       });
       this.translationService.currentLanguage$.subscribe(
@@ -57,7 +52,7 @@ export class IntelligenceDataComponent implements Translatable {
       );
   }
   ngOnInit(){
-    this.intelligence = this.threat.intelligence!;
+    this.intelligences = this.threat.intelligence as Intelligence[];
     this.languageData = this.translationService.getCurrentLanguageData();
     this.setLanguageData( this.languageData);
   }

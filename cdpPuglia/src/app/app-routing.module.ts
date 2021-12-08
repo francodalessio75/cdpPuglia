@@ -11,9 +11,10 @@ import { ThreatContentComponent } from './threats/threat-content/threat-content.
 import { SystemControlComponent } from './administration/system-control/system-control.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RuleDetailsComponent } from './threats/rule-details/rule-details.component';
+import { UsersAdministrationComponent } from './administration/users-administration/users-administration.component';
+import { UserDetailsComponent } from './administration/users-administration/user-details/user-details.component';
 
 const routes: Routes = [
-  //{ path:'translations', component: MultiLanguageComponent },
   { path: '', component: ThreatsComponent, canActivate: [AuthGuard] },
   //{ path:'', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent },
@@ -32,7 +33,17 @@ const routes: Routes = [
   {
     path: 'system-control',
     component: SystemControlComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'users-administration',
+    component: UsersAdministrationComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'user-details',
+    component: UserDetailsComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'changeprofile', component: ChangeProfileComponent },
   { path: 'errors', component: TestErrorsComponent },
