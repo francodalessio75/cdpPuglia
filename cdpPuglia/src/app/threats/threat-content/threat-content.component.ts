@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Translatable } from 'src/app/interfaces/translatable';
 import { LanguageData } from 'src/app/_models/languageData';
+import { Mitre } from 'src/app/_models/mitre';
 import { Threat } from 'src/app/_models/threat';
 import { ThreatsService } from 'src/app/_services/threats.service';
 import { TranslationService } from 'src/app/_services/translation.service';
@@ -30,7 +31,7 @@ export class ThreatContentComponent implements OnInit, Translatable {
   externalLinks='';
   intelligenceData='';
 
-  mitre!: string[];
+  mitres!: Mitre[];
 
   close='';
 
@@ -53,7 +54,7 @@ export class ThreatContentComponent implements OnInit, Translatable {
     this.languageData = this.translationService.getCurrentLanguageData();
     this.setLanguageData(this.languageData);
 
-    this.mitre = this.threatService.getMitre();
+    this.mitres = this.threatService.getMitres();
   }
 
   backToThreats(){

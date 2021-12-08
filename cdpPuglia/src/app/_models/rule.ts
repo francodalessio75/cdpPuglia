@@ -1,12 +1,13 @@
-import { TypeRule } from "../enums/TypeRuleEnum";
+import { RuleType } from "../enums/TypeRuleEnum";
 import { Severity } from "../enums/SeverityEnum";
+import { Mitre } from "./mitre";
 
 
 export interface Rule {
 
 overview: {
     label?: string;
-    type?:TypeRule;
+    type?:RuleType;
     severity?: Severity;
     summary?: string;
 },
@@ -23,7 +24,7 @@ cve: [
         description?:string;
     }
 ],
-mitre?:string[];
+mitres?:Mitre[];
 
 }
 

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { Severity } from '../enums/SeverityEnum';
 import { Threat } from '../_models/threat';
 import * as lasHourData from '../lastHour.json';
@@ -17,6 +17,8 @@ import { Technique } from '../_models/technique';
 import { CVE } from '../_models/cve';
 import { Rule } from '../_models/rule';
 import { SpinnerService } from './spinner.service';
+import { Mitre } from '../_models/mitre';
+import { Intelligence } from '../_models/intelligence';
 
 
 @Injectable({
@@ -207,8 +209,8 @@ export class ThreatsService {
       this.currentThreat = threat;
       this.currentTechniques = [];
       this.currentCves = [];
-      for (let mitre in this.currentThreat.mitre) {
-        this.currentTechniques.push(this.getTechnique(mitre));
+      for (let mitre  in this.currentThreat.mitres) {
+        this.currentTechniques.push(this.getTechnique((mitre as Mitre).id as Mitre));
       }
       for (let cve in this.currentThreat.cves) {
         this.currentCves.push(this.getCve(cve));
@@ -230,10 +232,10 @@ export class ThreatsService {
   //   this.currentTechniqueSource.next(this.currentTechnique);
   // }
 
-  getTechnique(mitre: string): Technique {
+  getTechnique(mitre: Mitre): Technique {
     let technique: Technique | undefined;
     technique = this.currentTechniques.find((technique) => {
-      return technique.data.id === mitre;
+      return technique.data.id === mitre.id;
     });
     if (technique){
       return technique;
@@ -252,6 +254,7 @@ export class ThreatsService {
     //     }
     //   )
   }
+
 
   // setCve(cveId:string){
   //   // this.http.get<{data:Technique}>(this.baseUrl + 'cve/'+'0')
@@ -274,14 +277,14 @@ export class ThreatsService {
     this.currentRuleSource.next(this.currentRule);
   }
 
-  getMitre(ruleId:string = ''):string[] {
+  getMitres(ruleId:string = ''):Mitre[] {
 
     if (ruleId === '') {
 
-      return this.currentThreat.mitre!;
+      return this.currentThreat.mitres!;
 
     } else {
-      return this.currentRule.mitre!;
+      return this.currentRule.mitres!;
     }
 
   }

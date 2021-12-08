@@ -57,18 +57,24 @@ export class ThreatsTableComponent implements Translatable {
     public threatsService: ThreatsService,
     private translationService: TranslationService,
     public router: Router
-  ) {
+  ) 
+  {
+
     this.threatsService.currentThreats$.subscribe((threats) => {
       this.dataSource = new MatTableDataSource(threats);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.threats = threats;
-      this.translationService.currentLanguage$.subscribe((language) => {
-        this.languageData = this.translationService.getCurrentLanguageData();
-        this.setLanguageData(this.languageData);
-      });
+      console.log(threats);
     });
+
+    this.translationService.currentLanguage$.subscribe((language) => {
+      this.languageData = this.translationService.getCurrentLanguageData();
+      this.setLanguageData(this.languageData);
+    });
+
   }
+
   ngOnInit() {
     this.languageData = this.translationService.getCurrentLanguageData();
     this.setLanguageData(this.languageData);

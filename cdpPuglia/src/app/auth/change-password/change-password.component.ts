@@ -112,6 +112,7 @@ export class ChangePasswordComponent implements OnInit, Translatable {
       return !newPasswordValid ? { newPasswordStrength: true } : null;
     };
   }
+  
   onNoClick(): void {
     this.dialogRef.close();
   }

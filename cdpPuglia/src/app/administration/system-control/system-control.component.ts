@@ -58,8 +58,8 @@ export class SystemControlComponent implements OnInit, Translatable {
 
   ngOnInit(): void {
     this.systemControlService.getFeeler();
-    this.languageData = this.translationService.getCurrentLanguageData();
     
+    this.languageData = this.translationService.getCurrentLanguageData();
     this.setLanguageData(this.languageData);
   }
 

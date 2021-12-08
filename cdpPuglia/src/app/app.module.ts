@@ -55,6 +55,9 @@ import { CveDetailsComponent } from './shared-components/cve-data/cve-details/cv
 import { MitreElementsComponent } from './shared-components/mitre-elements/mitre-elements.component';
 import { TechniqueDetailsComponent } from './shared-components/mitre-elements/technique-details/technique-details.component';
 import { TecnicalDetailsComponent } from './threats/rule-details/tecnical-details/tecnical-details.component';
+import { UsersAdministrationComponent } from './administration/users-administration/users-administration.component';
+import { UsersTableComponent } from './administration/users-administration/users-table/users-table.component';
+import { UserDetailsComponent } from './administration/users-administration/user-details/user-details.component';
 
 
 
@@ -101,7 +104,10 @@ import { TecnicalDetailsComponent } from './threats/rule-details/tecnical-detail
     RuleDetailsComponent,
     RuleDataComponent,
     TecnicalDetailsComponent,
-    ManualtimeSettingComponent
+    ManualtimeSettingComponent,
+    UsersAdministrationComponent,
+    UsersTableComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

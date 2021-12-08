@@ -6,6 +6,7 @@ import { Technique } from 'src/app/_models/technique';
 import { TranslationService } from 'src/app/_services/translation.service';
 import { Translatable } from 'src/app/interfaces/translatable';
 import { LanguageData } from 'src/app/_models/languageData';
+import { Mitre } from 'src/app/_models/mitre';
 
 @Component({
   selector: 'app-mitre-elements',
@@ -17,7 +18,9 @@ export class MitreElementsComponent implements Translatable{
   technique!:Technique;
   viewMitreMatrix='';
 
-  @Input() mitre!: string[];
+  @Input() mitres!: Mitre[];
+
+  mitredIds!:string[];
 
   languageData!:LanguageData;
 
@@ -26,7 +29,13 @@ export class MitreElementsComponent implements Translatable{
     private translationService:TranslationService,
     private dialog:MatDialog){
       this.threatService.currentThreat$.subscribe(
-        threat => this.mitre = threat.mitre!
+        threat =>{
+           this.mitres = threat.mitres!
+           this.mitres.forEach(
+              mitre => this.mitredIds.push(mitre.id!)
+           );
+           console.log(this.mitredIds);
+        }
       );
 
       this.translationService.currentLanguage$.subscribe((language)=>{
@@ -40,7 +49,7 @@ export class MitreElementsComponent implements Translatable{
       this.setLanguageData(this.languageData);
     } 
 
-  openTechniqueDetails(mitre:string){
+  openTechniqueDetails(mitre:Mitre){
     this.technique = this.threatService.getTechnique(mitre);
     const dialogConfig = new MatDialogConfig();
 

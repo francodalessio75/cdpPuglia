@@ -11,22 +11,22 @@
     </mat-list-item>
     <mat-divider></mat-divider>
     <div mat-subheader>Administration</div>
-    <mat-list-item>
+    <mat-list-item *ngIf="role === 'admin'" routerLink="/users-administration">
       <mat-icon>people_outline</mat-icon>
-      <div mat-line>Network Group and Assets</div>
+      <div style="font-weight: bold;"  mat-line>Users</div>
     </mat-list-item>
-    <mat-list-item>
+    <!-- <mat-list-item>
       <mat-icon>dns</mat-icon>
       <div mat-line>Network Addresses</div>
-    </mat-list-item>
-    <mat-list-item>
+    </mat-list-item> -->
+    <!-- <mat-list-item>
       <mat-icon>compass_calibration</mat-icon>
       <div mat-line>Network Services</div>
-    </mat-list-item>
+    </mat-list-item> -->
     <mat-divider></mat-divider>
-    <div mat-subheader>External Servicies</div>
+    <!-- <div mat-subheader>External Servicies</div>
     <div mat-subheader>Technical Configuration</div>
-    <div mat-subheader>IDS/IPS</div>
+    <div mat-subheader>IDS/IPS</div> -->
     <mat-list-item *ngIf="role === 'admin'" routerLink="/system-control">
       <mat-icon>admin_panel_settings</mat-icon>
       <div mat-line style="font-weight: bold;">System C&C</div>

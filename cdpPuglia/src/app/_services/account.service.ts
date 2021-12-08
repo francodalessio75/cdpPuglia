@@ -9,7 +9,7 @@ import { UserRole } from '../enums/UserRoleEnum';
 @Injectable({
   providedIn: 'root',
 })
-export class AccountService implements OnInit {
+export class AccountService {
   baseUrl = 'http://127.0.0.1:5000/';
   //baseUrl = 'http://localhost:5000/';
 
@@ -19,8 +19,6 @@ export class AccountService implements OnInit {
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
-
-  ngOnInit() {}
 
   getToken$(user: User) {
     return this.http.post<{token:string}>(this.baseUrl + 'login',{ username:user.username,password:user.password})

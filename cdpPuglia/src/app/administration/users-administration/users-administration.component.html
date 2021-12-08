@@ -1,0 +1,30 @@
+<mat-progress-spinner
+*ngIf="loading"
+    diameter="80"
+    mode="indeterminate">
+</mat-progress-spinner>
+
+<div class="container" [ngClass]="{'modal':loading}">
+    
+    <div class="action-buttons">
+        <button mat-button (click)="accordion.openAll()">Expand All</button>
+        <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+    </div>
+
+    <mat-accordion class="headers-align" multi>
+
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Users
+              </mat-panel-title>
+              <mat-panel-description>
+                <mat-icon>people_outline</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+              <app-users-table [users]='users'></app-users-table>
+          </mat-expansion-panel>
+
+    </mat-accordion>
+
+</div>
