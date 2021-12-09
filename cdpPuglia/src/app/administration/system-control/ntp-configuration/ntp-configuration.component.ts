@@ -85,9 +85,11 @@ export class NtpConfigurationComponent implements Translatable{
     this.systemControlService.getNTP();
     this.languageData = this.translationService.getCurrentLanguageData();
     this.setLanguageData(this.languageData);
+
     this.ntpForm.patchValue({
       serverName:this.ntp.ntp
     });
+    
   }
 
   configure(){

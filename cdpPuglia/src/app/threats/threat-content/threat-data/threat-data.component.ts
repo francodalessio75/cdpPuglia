@@ -18,7 +18,7 @@ export class ThreatDataComponent implements OnInit, Translatable {
   identifier= '';
   severity= '';
   ruleName= '';
-  typeRule= '';
+  ruleType= '';
   family= '';
   action= '';
   threatMessage= '';
@@ -51,7 +51,7 @@ export class ThreatDataComponent implements OnInit, Translatable {
     this.identifier = languageData.sections.threats.threatContent.threatData.identifier;
     this.severity = languageData.sections.threats.threatContent.threatData.severity;
     this.ruleName = languageData.sections.threats.threatContent.threatData.ruleName;
-    this.typeRule = languageData.sections.threats.threatContent.threatData.typeRule;
+    this.ruleType = languageData.sections.threats.threatContent.threatData.ruleType;
     this.family = languageData.sections.threats.threatContent.threatData.family;
     this.action = languageData.sections.threats.threatContent.threatData.action;
     this.threatMessage = languageData.sections.threats.threatContent.threatData.threatMessage;

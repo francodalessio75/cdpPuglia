@@ -21,20 +21,22 @@ export class RuleDetailsComponent implements OnInit {
   cveTitle:string= 'CVE';
 
   elMitreMatrix='';
-  threat!:Threat;
+  threat!:Threat;//?
 
   mitres!: Mitre[];
   
   constructor(private threatsService: ThreatsService, private router:Router) {
 
-    this.threatsService.currentRule$.subscribe( rule => this.rule=rule);
+    this.threatsService.currentRule$.subscribe( 
+      rule => {
+        this.rule=rule;
+        this.mitres = this.threatsService.getMitres(this.rule.overview.label);
+      });
    }
 
   ngOnInit(): void {
-    this.threatsService.getThreat();
+    this.threatsService.getThreat();//?
     this.threatsService.getRule('');
-    this.mitres = this.threatsService.getMitres('');
-    
   }
 
   backToThreats(){

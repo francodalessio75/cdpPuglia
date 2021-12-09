@@ -81,7 +81,7 @@
 						"identifier": "IDENTIFIER",
 						"severity": "SEVERITY",
 						"ruleName": "RULE NAME",
-						"typeRule": "RULE TYPE",
+						"ruleType": "RULE TYPE",
 						"family": "FAMILY",
 						"action": "ACTION",
 						"threatMessage": "THREAT MESSAGE"
@@ -244,7 +244,7 @@
 						"identifier": "IDENTIFICATIVO",
 						"severity": "GRAVITA'",
 						"ruleName": "NOME REGOLA",
-						"typeRule": "TIPO REGOLA",
+						"ruleType": "TIPO REGOLA",
 						"family": "FAMIGLIA",
 						"action": "AZIONE",
 						"threatMessage": "MESSAGGIO MINACCIA"

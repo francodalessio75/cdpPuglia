@@ -79,7 +79,7 @@ export interface LanguageData{
                     identifier: string,
                     severity: string,
                     ruleName: string,
-                    typeRule: string,
+                    ruleType: string,
                     family: string,
                     action: string,
                     threatMessage: string

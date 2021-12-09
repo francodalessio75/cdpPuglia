@@ -1,6 +1,6 @@
 import { Protocol } from "../enums/ProtocolEnum";
 import { Severity } from "../enums/SeverityEnum";
-import { RuleType } from "../enums/TypeRuleEnum";
+import { RuleType } from "../enums/RuleTypeEnum";
 import { Mitre } from "./mitre";
 
 export interface Threat{
@@ -20,7 +20,7 @@ export interface Threat{
     killChain?:string[];
     family?:string;
     protocol?:Protocol;
-    typeRule?:RuleType;
+    ruleType?:RuleType;
     severity?:Severity;
     action?:string;
     cves?:string[];

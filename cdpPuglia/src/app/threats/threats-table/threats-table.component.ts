@@ -16,7 +16,7 @@ interface CSVModel {
   ipSrc?: string;
   ipDst?: string;
   label?: string;
-  typeRule?: string;
+  ruleType?: string;
   severity?: string;
 }
 
@@ -29,8 +29,8 @@ export class ThreatsTableComponent implements Translatable {
   csvData!: CSVModel[];
   ipSrc = '';
   ipDst = '';
-  nameRule = '';
-  typeRule = '';
+  ruleName = '';
+  ruleType = '';
   severity = '';
   export = '';
 
@@ -40,7 +40,7 @@ export class ThreatsTableComponent implements Translatable {
     'ipSrc',
     'ipDst',
     'label',
-    'typeRule',
+    'ruleType',
     'severity',
   ];
 
@@ -98,7 +98,7 @@ export class ThreatsTableComponent implements Translatable {
   getRuleDetails(ruleId: string) {
     // console.log(ruleId);
     this.threatsService.getRule(ruleId);
-     this.router.navigateByUrl('/rule-details');
+    this.router.navigateByUrl('/rule-details');
   }
 
 
@@ -115,7 +115,7 @@ export class ThreatsTableComponent implements Translatable {
       ipSrc: 'IP SORGENTE',
       ipDst: 'IP DESTINAZIONE',
       label: 'NOME REGOLA',
-      typeRule: 'TIPO REGOLA',
+      ruleType: 'TIPO REGOLA',
       severity: "GRAVITA'",
     };
     this.csvData.push(header);
@@ -126,7 +126,7 @@ export class ThreatsTableComponent implements Translatable {
       row.ipSrc = threat.ipSrc;
       row.ipDst = threat.ipDst;
       row.label = threat.label;
-      row.typeRule = threat.typeRule;
+      row.ruleType = threat.ruleType;
       row.severity = threat.severity;
       this.csvData.push(row);
     }
@@ -152,10 +152,10 @@ export class ThreatsTableComponent implements Translatable {
   setLanguageData(languageData:LanguageData) {
     this.ipSrc = languageData.sections.threats.threatFilters.ipSource;
     this.ipDst = languageData.sections.threats.threatFilters.ipDestination;
-    this.nameRule =
+    this.ruleName =
       languageData.sections.threats.threatContent.threatData.ruleName;
-    this.typeRule =
-      languageData.sections.threats.threatContent.threatData.typeRule;
+    this.ruleType =
+      languageData.sections.threats.threatContent.threatData.ruleType;
     this.severity =
       languageData.sections.threats.threatContent.threatData.severity;
     this.export = languageData.sections.threats.threatTable.export;

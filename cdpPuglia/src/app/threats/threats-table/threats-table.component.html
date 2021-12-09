@@ -39,7 +39,7 @@
     </ng-container>
 
     <ng-container matColumnDef="label">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ nameRule }}</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ ruleName }}</th>
        <td
       class="clickable"
         mat-cell
@@ -50,15 +50,15 @@
     </ng-container>
 
     
-    <ng-container matColumnDef="typeRule">
+    <ng-container matColumnDef="ruleType">
      <th
        mat-header-cell
        *matHeaderCellDef
        mat-sort-header>{{
-       typeRule
+       ruleType
        }}</th>
       <td class="clickable" mat-cell *matCellDef="let element">
-        {{ element.typeRule }}
+        ruleType
       </td>
     </ng-container>
 

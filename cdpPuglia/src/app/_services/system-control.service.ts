@@ -14,7 +14,8 @@ export class SystemControlService {
 
 
   currentFeeler : Feeler = {status:FeelerStatus.active};
-  currentNTP:NTP = { ntp:'pool.ntp.org', enabled:true}
+
+  currentNTP:NTP = { ntp:'pool.ntp.org', enabled:true, datetime:'210531130000'}
 
   constructor(
     private http:HttpClient,

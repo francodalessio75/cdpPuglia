@@ -280,7 +280,6 @@ export class ThreatsService {
   getMitres(ruleId:string = ''):Mitre[] {
 
     if (ruleId === '') {
-
       return this.currentThreat.mitres!;
 
     } else {
