@@ -32,7 +32,7 @@ export class SystemControlComponent implements OnInit, Translatable {
   feelerServiceStatus!:string;
   systemRebootTitle!:string;
   configureNTPServerTitle!:string;
-  manualTimeSettingTitle!:string;
+  manualTimeSettingTitle:string = 'Definizione manuale del tempo di sistema';
   systemTitle!:string;
   currentStatus!:string;
 

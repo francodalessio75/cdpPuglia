@@ -5,31 +5,27 @@
         class="form"
     >
 
-    <div>
+    <div class="time">
         <mat-label>{{timezoneLabel}}</mat-label>
         <mat-select formControlName="timezone">
             <mat-option *ngFor="let timezone of timezones" [value]="timezone.name">
                 {{timezone.name}}
             </mat-option>
         </mat-select>
-        
-        <mat-label class="radioLabel">{{dateLabel}}</mat-label>
-        <mat-form-field class="full-width" appearance="fill">
-            <!-- <input 
-            matInput formControlName='datetime'> -->
-            <!-- <input [owlDateTime]="dt2" placeholder="Date Time">
-            <span [owlDateTimeTrigger]="dt2"><i class="fa fa-calendar"></i></span>
-            <owl-date-time #dt2></owl-date-time> -->
-            <!-- <input formControlName='datetime'
-           [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2">
-            <owl-date-time #dtPicker2></owl-date-time> -->
+
+         <!-- <p>{{ dateView.value | date: 'yyMMdd' }} -- {{ timeView.value}}</p> 
+         -->
+         <input type="button" (click)="formatTime()" >
+         
+         <mat-label class="radioLabel">{{dateLabel}}</mat-label>
+         <mat-form-field class="full-width" appearance="fill">
+            <input matInput type="date" formControlName='datetime'>
         </mat-form-field>
 
-        <mat-label class="radioLabel">{{timeLabel}}</mat-label>
         <mat-form-field class="full-width" appearance="fill">
-            <input 
-            matInput formControlName='time'>
+            <input matInput value="00:00:00" type="time" step="1" formControlName='time'>
         </mat-form-field>
+        
     </div>
 
     <div>
@@ -44,3 +40,6 @@
 
 </form>
 </div>
+
+
+

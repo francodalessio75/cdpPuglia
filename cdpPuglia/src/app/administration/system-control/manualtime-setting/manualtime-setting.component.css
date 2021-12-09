@@ -40,4 +40,11 @@
   }
   
   
-  
+  .time {
+    margin: 10px 0;
+    padding: 20px 0;
+  }
+
+  .full-width:last-child {
+    margin-left: 10px;
+  }

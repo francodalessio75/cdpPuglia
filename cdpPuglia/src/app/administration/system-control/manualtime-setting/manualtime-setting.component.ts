@@ -37,13 +37,16 @@ export class ManualtimeSettingComponent implements Translatable {
   timezonesData : any = (timezones as any ).default;
   timezones : Timezone[] = this.timezonesData;
 
+  dateView!:string;
+  timeView!:any;
 
   displayedColumns:string[] = ['timezone','date', 'time'];
 
   tableHeaders:string[] = [];
 
   dataSource:string[] = ['timeSettings'];
-  
+  dataFormat!:string;
+
   constructor(
     private dialog : MatDialog,
     private toastr:ToastrService,
@@ -81,7 +84,28 @@ export class ManualtimeSettingComponent implements Translatable {
       datetime:this.ntp.datetime?.substring(0,14),
       time:this.ntp.datetime?.substring(5,14)
     });
+
+
   }
+
+
+
+
+  formatTime():void{
+
+    // let dateViewFormat: string = this.dateView.toString('mm/dd/yy');
+    // console.log(this.timeForm.value.time);
+      let timeViewFormat: string[] = [];
+      timeViewFormat = this.timeForm.value.time.split(":");
+
+      let dateTimeViewFormat: string;
+      dateTimeViewFormat = this.timeForm.value.datetime;
+
+    
+     console.log(`${this.timeForm.value.datetime}${timeViewFormat[0]}${timeViewFormat[1]}${timeViewFormat[2]}`);
+    
+  }
+
 
   configure(){
     this.dialog.open(
@@ -93,6 +117,7 @@ export class ManualtimeSettingComponent implements Translatable {
     )
     .afterClosed().subscribe((confirmed:boolean) => {
       if(confirmed){
+
         this.systemControlService.setNTPTimeAndTimeZone('','');
         this.dialog.open(SuccessFeedbackComponent,{
           hasBackdrop:true,
