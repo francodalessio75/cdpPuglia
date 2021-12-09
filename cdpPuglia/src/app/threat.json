@@ -18,7 +18,7 @@
     ],
 	"family": "risk type",
 	"protocol": "tcp",
-	"RuleType": "behaviour",
+	"ruleType": "behaviour",
 	"severity": "medium",
     "action": "drop",
     "cves": [

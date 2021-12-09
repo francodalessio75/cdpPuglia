@@ -37,8 +37,7 @@ export class ThreatsDiagramsComponent implements OnInit{
         {data:[{
           x: threat.ts,
           y: this.getSeverityValue(threat.severity)
-        }],legend:''+threat.label,
-        backgroundColor:"black"
+        }],legend:''+threat.label
         }
       );
       // this.barChartLabels.push(''+threat.ts)

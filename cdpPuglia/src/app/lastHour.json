@@ -1,45 +1,58 @@
 {
 	"data": [
-	{
-	"label":"Emotet",
-"threatId":"47",
-"severity":"medium",
-"ipSrc":"135.153.187",
-"ipDst":"89.246.226",
-"ts":"2021-11-08T00:21:47"
-},{
-	"label":"Emotet",
-"threatId":"9",
-"severity":"high",
-"ipSrc":"201.247.35",
-"ipDst":"138.215.70",
-"ts":"2021-11-08T00:21:09"
-},{
-	"label":"Emotet",
-"threatId":"9",
-"severity":"high",
-"ipSrc":"201.247.35",
-"ipDst":"138.215.70",
-"ts":"2021-11-08T00:21:09"
-},{
-	"label":"Emotet",
-"threatId":"9",
-"severity":"high",
-"ipSrc":"201.247.35",
-"ipDst":"138.215.70",
-"ts":"2021-11-08T00:21:00"
-},{
-	"label":"Emotet",
-"threatId":"9",
-"severity":"high",
-"ipSrc":"201.247.35",
-"ipDst":"138.215.70",
-"ts":"2021-11-08T00:21:03"
-},{
-	"label":"Emotet",
-"threatId":"9",
-"severity":"high",
-"ipSrc":"201.247.35",
-"ipDst":"138.215.70",
-"ts":"2021-11-08T00:21:19"
-}]}
+		{
+			"label": "Emotet",
+			"threatId": "47",
+			"severity": "medium",
+			"ipSrc": "135.153.187",
+			"ruleType": "behavior",
+			"ipDst": "89.246.226",
+			"ts": "2021-11-08T00:21:47"
+		},
+		{
+			"label": "Emotet",
+			"threatId": "9",
+			"severity": "high",
+			"ipSrc": "201.247.35",
+			"ruleType": "behavior",
+			"ipDst": "138.215.70",
+			"ts": "2021-11-08T00:21:09"
+		},
+		{
+			"label": "Emotet",
+			"threatId": "9",
+			"severity": "high",
+			"ipSrc": "201.247.35",
+			"ruleType": "behavior",
+			"ipDst": "138.215.70",
+			"ts": "2021-11-08T00:21:09"
+		},
+		{
+			"label": "Emotet",
+			"threatId": "9",
+			"severity": "high",
+			"ipSrc": "201.247.35",
+			"ruleType": "behavior",
+			"ipDst": "138.215.70",
+			"ts": "2021-11-08T00:21:00"
+		},
+		{
+			"label": "Emotet",
+			"threatId": "9",
+			"severity": "high",
+			"ipSrc": "201.247.35",
+			"ruleType": "behavior",
+			"ipDst": "138.215.70",
+			"ts": "2021-11-08T00:21:03"
+		},
+		{
+			"label": "Emotet",
+			"threatId": "9",
+			"severity": "high",
+			"ipSrc": "201.247.35",
+			"ruleType": "behavior",
+			"ipDst": "138.215.70",
+			"ts": "2021-11-08T00:21:19"
+		}
+	]
+}
