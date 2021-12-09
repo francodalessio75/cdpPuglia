@@ -1,0 +1,25 @@
+mat-form-field {
+    width: 300px;
+    font-size:1.5rem;
+  }
+  .mat-dialog-content{
+    height: 370px;
+            width: auto;
+    overflow-y: hidden !important;
+  }
+
+  mat-label{
+      font-weight: bold;
+      font-size:1.5rem;
+  }
+
+  .readonly{
+      background-color:lightgray;
+      font-weight:bold;
+      padding-left: 2rem;
+  }
+
+  .select-td{
+    font-weight: bold;
+    text-align: center;
+  }

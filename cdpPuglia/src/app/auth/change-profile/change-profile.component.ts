@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Translatable } from 'src/app/interfaces/translatable';
+import { LanguageData } from 'src/app/_models/languageData';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { TranslationService } from 'src/app/_services/translation.service';
@@ -10,7 +12,7 @@ import { TranslationService } from 'src/app/_services/translation.service';
   templateUrl: './change-profile.component.html',
   styleUrls: ['./change-profile.component.css']
 })
-export class ChangeProfileComponent implements OnInit {
+export class ChangeProfileComponent implements OnInit, Translatable {
   model: any = {};
 
   /* Related to Language */
@@ -20,11 +22,18 @@ export class ChangeProfileComponent implements OnInit {
   currentUser: User ={username:'', password:''};
   chgProfile= '';
 
+  languageData!:LanguageData;
+
   constructor(
     private translationService:TranslationService,
     private accountService: AccountService,
     private fb: FormBuilder
-  ) { }
+  ) { 
+    this.translationService.currentLanguage$.subscribe((language)=>{
+      this.languageData = this.translationService.getCurrentLanguageData();
+      this.setLanguageData(this.languageData);
+    });
+  }
 
   changeProfileForm = this.fb.group({
     email: [
@@ -39,10 +48,9 @@ export class ChangeProfileComponent implements OnInit {
 
   ngOnInit(){
     this.accountService.currentUser$.subscribe(user => {this.currentUser=user});
-    this.translationService.currentLanguage$.subscribe((language)=>{
-      this.setLanguageData();
-    });
-    this.setLanguageData();
+   
+    this.languageData = this.translationService.getCurrentLanguageData();
+    this.setLanguageData(this.languageData);
 
   }
 
@@ -57,8 +65,8 @@ export class ChangeProfileComponent implements OnInit {
      });
     console.log(this.model);
   }
-  private setLanguageData(){
-    let languageData = this.translationService.getCurrentLanguageData();
+  
+  setLanguageData(languageData:LanguageData){
     this.saveButton = languageData.sections.global.saveButton;
     this.discardButton = languageData.sections.global.discardButton;
     this.requiredFieldError = languageData.sections.global.requiredFieldError;

@@ -1,8 +1,10 @@
-import { FlatTreeControl, NestedTreeControl } from '@angular/cdk/tree';
-import { Component, OnInit } from '@angular/core';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { Component } from '@angular/core';
 import { UserRole } from 'src/app/enums/UserRoleEnum';
 import { AccountService } from 'src/app/_services/account.service';
-import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule, MatTreeNestedDataSource} from '@angular/material/tree';
+import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import { User } from 'src/app/_models/user';
+import { ReplaySubject } from 'rxjs';
 
 interface MenuItem {
   name: string;
@@ -40,29 +42,49 @@ const TREE_DATA: MenuItem[] = [
   styleUrls: ['./sidenav.component.css'],
 })
 export class SidenavComponent{
+  
   activeNode: any;
-  role!: String;
+  
+  user!:User;
+  role!:UserRole | undefined;
+
+  // private userIsAdmin = new ReplaySubject<boolean>(1);
+  // userIsAdmin$ = this.userIsAdmin.asObservable();
 
   private _transformer = (node: MenuItem, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
-      level: level
+      level: level,
     };
   };
+
   treeControl = new FlatTreeControl<ExampleFlatNode>(
     (node) => node.level,
     (node) => node.expandable
   );
+
   treeFlattener = new MatTreeFlattener(
     this._transformer,
     (node) => node.level,
     (node) => node.expandable,
     (node) => node.children
   );
+
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-  constructor() {
+
+  constructor( private accountService:AccountService) {
+
+    this.accountService.currentUser$.subscribe(
+      user => {
+        this.user = user;
+        this.role = user?.role
+      }
+    );
+
     this.dataSource.data = TREE_DATA;
-  }
+
+   }
+
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 }

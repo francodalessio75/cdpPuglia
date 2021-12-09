@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Translatable } from 'src/app/interfaces/translatable';
 import { LanguageData } from 'src/app/_models/languageData';
 import { ThreatsService } from 'src/app/_services/threats.service';
 import { TranslationService } from 'src/app/_services/translation.service';
@@ -13,7 +14,7 @@ export interface Range{
   templateUrl: './threats-search-parameters.component.html',
   styleUrls: ['./threats-search-parameters.component.css']
 })
-export class ThreatsSearchParametersComponent implements OnInit {
+export class ThreatsSearchParametersComponent implements OnInit, Translatable {
   choosenRange:string = '1';
 
   languageData!:LanguageData;
@@ -52,7 +53,7 @@ export class ThreatsSearchParametersComponent implements OnInit {
     this.threatsService.getThreats(+this.choosenRange);
   }
 
-  private setLanguageData(languageData:LanguageData){
+  setLanguageData(languageData:LanguageData){
     this.search = languageData.sections.global.searchButton;
     this.ranges[0].message = languageData.sections.threats.threatSearchParameters.last24Hours;
     this.ranges[1].message = languageData.sections.threats.threatSearchParameters.last7Days;

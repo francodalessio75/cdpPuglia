@@ -1,0 +1,99 @@
+
+    <h1>User Details</h1>
+        <form
+          [formGroup]="userForm"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          (ngSubmit)="updateUser()"
+          fxLayoutGap="10px">
+        <table>
+            <tr>
+                <td>
+                    <mat-label>username</mat-label>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input
+                        class='readonly'
+                        formControlName="username"
+                        readonly
+                        matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-label>User Role</mat-label>
+                </td>
+                <td class="select-td">
+                    <mat-select formControlName="role">
+                    <mat-option
+                        *ngFor="let role of roles"
+                        [value]="role">
+                        {{role}}
+                    </mat-option>
+                    </mat-select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-label>email</mat-label>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input
+                        formControlName="email"
+                        matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-label>active</mat-label>
+                </td>
+                <td>
+                    <mat-checkbox
+                    formControlName="active"
+                    [checked]="!!user.status"
+                    class="cb-margin"
+                    >
+                    </mat-checkbox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-label>created</mat-label>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input
+                        class='readonly'
+                        formControlName="created"
+                        readonly
+                        matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <button
+                      type="submit"
+                      mat-raised-button
+                      color="primary"
+                      [disabled]="userForm.invalid">
+                        submit
+                    </button>
+                </td>
+                <td>
+                    <button mat-dialog-close mat-raised-button color="primary">
+                        discard
+                    </button>
+                </td>
+            </tr>
+        </table>
+    
+        </form>
+    
+    
+    

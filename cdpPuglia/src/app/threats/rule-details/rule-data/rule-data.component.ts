@@ -7,7 +7,7 @@ import { ThreatsService } from 'src/app/_services/threats.service';
   templateUrl: './rule-data.component.html',
   styleUrls: ['./rule-data.component.css']
 })
-export class RuleDataComponent implements OnInit {
+export class RuleDataComponent {
 
   @Input() rule!:Rule;
 
@@ -15,10 +15,4 @@ export class RuleDataComponent implements OnInit {
     this.threatsService.currentRule$.subscribe(rule => this.rule=rule)
     console.log(this.rule)
    }
-
-  ngOnInit(): void {
-
-    this.threatsService.getRule('');
-  }
-
 } 

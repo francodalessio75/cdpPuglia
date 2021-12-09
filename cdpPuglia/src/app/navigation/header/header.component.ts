@@ -9,13 +9,14 @@ import { EventEmitter } from '@angular/core';
 import * as LanguagesEnum from '../../enums/LanguagesEnum';
 import { LanguageData } from 'src/app/_models/languageData';
 import { HeaderService } from 'src/app/_services/header.service';
+import { Translatable } from 'src/app/interfaces/translatable';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, Translatable {
   @Output() sidenavToggled : EventEmitter<void> = new EventEmitter();
 
   @Input() sidenavOpened = true;
@@ -117,7 +118,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  private setLanguageData(languageData:LanguageData){
+  setLanguageData(languageData:LanguageData){
     this.languageLabel = languageData.sections.menu.languageLabel;
     this.italian = languageData.sections.menu.italian;
     this.english = languageData.sections.menu.english;

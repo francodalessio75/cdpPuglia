@@ -13,7 +13,6 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from "@angular/material/dialog";
-import { TechniqueDetailsComponent } from './threats/threat-content/mitre-elements/technique-details/technique-details.component';
 import { AppComponent } from './app.component';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -23,6 +22,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -50,10 +50,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatDatepickerModule,
     MatCardModule,
     MatExpansionModule,
-    MatChipsModule
-
-  ],
-  bootstrap: [AppComponent],
-  entryComponents: [TechniqueDetailsComponent]
+    MatChipsModule,
+    MatCheckboxModule
+  ]
 })
 export class MaterialModule {}

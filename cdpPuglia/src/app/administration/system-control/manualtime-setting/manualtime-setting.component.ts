@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Language } from 'src/app/enums/LanguagesEnum';
+import { Translatable } from 'src/app/interfaces/translatable';
 import { Feeler } from 'src/app/_models/feeler';
 import { LanguageData } from 'src/app/_models/languageData';
 import { NTP } from 'src/app/_models/NTP';
@@ -18,7 +19,7 @@ import * as timezones from './timeZones.json';
   templateUrl: './manualtime-setting.component.html',
   styleUrls: ['./manualtime-setting.component.css']
 })
-export class ManualtimeSettingComponent {
+export class ManualtimeSettingComponent implements Translatable {
   @Input() feeler!:Feeler;
 
   ntp!:NTP;

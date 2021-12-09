@@ -1,4 +1,4 @@
-export const enum TypeRule{
+export const enum RuleType{
     behaviour="behaviour",
     signature="signature"
 }

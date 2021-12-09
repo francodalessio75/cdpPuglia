@@ -81,7 +81,7 @@
    hyphens: auto;
  }
 
- .mat-column-typeRule {
+ .mat-column-ruleType {
   word-wrap: break-word !important;
   white-space: unset !important;
   flex: 0 0 12% !important;

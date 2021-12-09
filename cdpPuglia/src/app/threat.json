@@ -18,16 +18,23 @@
     ],
 	"family": "risk type",
 	"protocol": "tcp",
-	"typeRule": "behaviour",
+	"ruleType": "behaviour",
 	"severity": "medium",
     "action": "drop",
     "cves": [
       "CVE-2021-0022",
       "CVE-2021-0023"
     ],
-	 "mitre": [
-      "T1001.001",
-      "t1111"
+	 "mitres": [
+      {
+          "id":"T1001.001",
+          "name":""
+      },
+      {
+        "id":"t1111",
+        "name":""
+      }
+      
     ],						
     "externalRef": [
       "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0022",

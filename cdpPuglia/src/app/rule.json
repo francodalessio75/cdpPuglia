@@ -6,9 +6,16 @@
         "id": "CVE-2021-0022"
       }
     ],
-    "mitre": [
-      "T1001.001",
-      "t1111"
+    "mitres": [
+      {
+          "id":"T1001.001",
+          "name":""
+      },
+      {
+        "id":"t1111",
+        "name":""
+      }
+      
     ],
     "overview": {
       "label": "Rule name 0",

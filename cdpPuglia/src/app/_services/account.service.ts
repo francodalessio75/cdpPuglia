@@ -9,79 +9,71 @@ import { UserRole } from '../enums/UserRoleEnum';
 @Injectable({
   providedIn: 'root',
 })
-export class AccountService implements OnInit {
-  //baseUrl = 'http://127.0.0.1:5000/';
-  baseUrl = 'http://localhost:5000/';
+export class AccountService {
+  baseUrl = 'http://127.0.0.1:5000/';
+  //baseUrl = 'http://localhost:5000/';
 
   private user!: User;
 
   private currentUserSource = new ReplaySubject<User>(1);
-  /* used by authguard */
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  ngOnInit() {}
-
   getToken$(user: User) {
-    // return this.http.post<{token:string}>(this.baseUrl + 'login',{ username:user.username,password:user.password})
-    //   .pipe(
-    //     map( tokenData => {
-    //       if(tokenData){
-    //         this.user = {username:'',password:''};
-    //         this.user.username = user.username;
-    //         this.user.password = user.password;
-    //         this.user.token = tokenData.token;
-    //         this.setCurrentUser(this.user);
-    //         this.currentUserSource.next(this.user);
-    //       }
-    //     })
-    //   );
-
-    this.user = { username: '', password: '' };
-    this.user.username = 'admin';
-    this.user.password = 'adminadmin';
-    this.user.token =
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNzkzOTY2NiwianRpIjoiNjI5MWJjM2YtODdmZi00NzY2LTllOWMtN2IyNTdmNmZjMTAwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIn0sIm5iZiI6MTYzNzkzOTY2NiwiZXhwIjoxNjY5NDc1NjY2fQ.R7yTVONWEEr4-VoBvECUBWF8BkNZPjrESUswEj-FRpI';
-    this.setCurrentUser(this.user);
-    this.currentUserSource.next(this.user);
-    // return new Observable<{ token: string }>();
+    return this.http.post<{token:string}>(this.baseUrl + 'login',{ username:user.username,password:user.password})
+      .pipe(
+        map( tokenData => {
+          if(tokenData){
+            this.user = {username:'',password:''};
+            this.user.username = user.username;
+            this.user.password = user.password;
+            this.user.token = tokenData.token;
+            this.setCurrentUser(this.user);
+            this.currentUserSource.next(this.user);
+          }
+        })
+      );
+     // #region   JUST IN CASE OF MIDDLEWARE NOT WOKING
+    // this.user = { username: '', password: '' };
+    // this.user.username = 'admin';
+    // this.user.password = 'adminadmin';
+    // this.user.token =
+    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNzkzOTY2NiwianRpIjoiNjI5MWJjM2YtODdmZi00NzY2LTllOWMtN2IyNTdmNmZjMTAwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIn0sIm5iZiI6MTYzNzkzOTY2NiwiZXhwIjoxNjY5NDc1NjY2fQ.R7yTVONWEEr4-VoBvECUBWF8BkNZPjrESUswEj-FRpI';
+    // this.setCurrentUser(this.user);
+    // this.currentUserSource.next(this.user);
+    // // return new Observable<{ token: string }>();
+    // #endregion
   }
 
   getRole$() {
-    // return this.http.get<{role:string,user:string}>(this.baseUrl + 'user')
-    //   .pipe(
-    //     map( userData => {
-    //       if(userData){
-    //         this.user.role = this.checkRole(userData.role);
-    //         this.setCurrentUser(this.user);
-    //         this.currentUserSource.next(this.user);
-    //       }
-    //     }
-    //   )
-    // )
+    return this.http.get<{role:string,user:string}>(this.baseUrl + 'user')
+      .pipe(
+        map( userData => {
 
-    this.user.role = this.checkRole('admin');
-    this.setCurrentUser(this.user);
-    this.currentUserSource.next(this.user);
-    // return new Observable<{ role: string; user: string }>();
+          if(userData){
+
+            if(userData.role)
+              this.user.role = userData.role as UserRole;
+
+            this.setCurrentUser(this.user);
+
+            this.currentUserSource.next(this.user);
+
+          }
+        }
+      )
+    )
+
+    /*  #region JUST IN CASE OF MIDDLEWARE NOT WOKING */
+    // this.user.role = this.checkRole('admin');
+    // this.setCurrentUser(this.user);
+    // this.currentUserSource.next(this.user);
+    /* #endregion */
   }
 
   getCurrentUser(): User {
     return this.user;
-  }
-
-  private checkRole(roleString: string): UserRole {
-    switch (roleString) {
-      case 'viewer':
-        return UserRole.viewer;
-        break;
-      case 'admin':
-        return UserRole.admin;
-        break;
-      default:
-        return UserRole.viewer;
-    }
   }
 
   changePassword$(

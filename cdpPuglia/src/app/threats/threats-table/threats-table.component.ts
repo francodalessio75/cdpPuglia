@@ -7,6 +7,8 @@ import { Threat } from '../../_models/threat';
 import { ThreatsService } from '../../_services/threats.service';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { TranslationService } from 'src/app/_services/translation.service';
+import { Translatable } from 'src/app/interfaces/translatable';
+import { LanguageData } from 'src/app/_models/languageData';
 
 interface CSVModel {
   ts?: string;
@@ -14,7 +16,7 @@ interface CSVModel {
   ipSrc?: string;
   ipDst?: string;
   label?: string;
-  typeRule?: string;
+  ruleType?: string;
   severity?: string;
 }
 
@@ -23,12 +25,12 @@ interface CSVModel {
   templateUrl: './threats-table.component.html',
   styleUrls: ['./threats-table.component.css'],
 })
-export class ThreatsTableComponent {
+export class ThreatsTableComponent implements Translatable {
   csvData!: CSVModel[];
   ipSrc = '';
   ipDst = '';
-  nameRule = '';
-  typeRule = '';
+  ruleName = '';
+  ruleType = '';
   severity = '';
   export = '';
 
@@ -38,7 +40,7 @@ export class ThreatsTableComponent {
     'ipSrc',
     'ipDst',
     'label',
-    'typeRule',
+    'ruleType',
     'severity',
   ];
 
@@ -49,11 +51,15 @@ export class ThreatsTableComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  languageData!:LanguageData;
+
   constructor(
     public threatsService: ThreatsService,
     private translationService: TranslationService,
     public router: Router
-  ) {
+  ) 
+  {
+
     this.threatsService.currentThreats$.subscribe((threats) => {
       this.dataSource = new MatTableDataSource(threats);
       this.dataSource.paginator = this.paginator;
@@ -61,12 +67,17 @@ export class ThreatsTableComponent {
       this.threats = threats;
       console.log(threats);
     });
-  }
-  ngOnInit() {
+
     this.translationService.currentLanguage$.subscribe((language) => {
-      this.setLanguageData();
+      this.languageData = this.translationService.getCurrentLanguageData();
+      this.setLanguageData(this.languageData);
     });
-    this.setLanguageData();
+
+  }
+
+  ngOnInit() {
+    this.languageData = this.translationService.getCurrentLanguageData();
+    this.setLanguageData(this.languageData);
   }
 
   ngAfterViewInit() {
@@ -87,7 +98,7 @@ export class ThreatsTableComponent {
   getRuleDetails(ruleId: string) {
     // console.log(ruleId);
     this.threatsService.getRule(ruleId);
-     this.router.navigateByUrl('/rule-details');
+    this.router.navigateByUrl('/rule-details');
   }
 
 
@@ -104,7 +115,7 @@ export class ThreatsTableComponent {
       ipSrc: 'IP SORGENTE',
       ipDst: 'IP DESTINAZIONE',
       label: 'NOME REGOLA',
-      typeRule: 'TIPO REGOLA',
+      ruleType: 'TIPO REGOLA',
       severity: "GRAVITA'",
     };
     this.csvData.push(header);
@@ -115,7 +126,7 @@ export class ThreatsTableComponent {
       row.ipSrc = threat.ipSrc;
       row.ipDst = threat.ipDst;
       row.label = threat.label;
-      row.typeRule = threat.typeRule;
+      row.ruleType = threat.ruleType;
       row.severity = threat.severity;
       this.csvData.push(row);
     }
@@ -137,14 +148,14 @@ export class ThreatsTableComponent {
 
     new ngxCsv(this.csvData, 'threatsReport', options);
   }
-  private setLanguageData() {
-    let languageData = this.translationService.getCurrentLanguageData();
+  
+  setLanguageData(languageData:LanguageData) {
     this.ipSrc = languageData.sections.threats.threatFilters.ipSource;
     this.ipDst = languageData.sections.threats.threatFilters.ipDestination;
-    this.nameRule =
+    this.ruleName =
       languageData.sections.threats.threatContent.threatData.ruleName;
-    this.typeRule =
-      languageData.sections.threats.threatContent.threatData.typeRule;
+    this.ruleType =
+      languageData.sections.threats.threatContent.threatData.ruleType;
     this.severity =
       languageData.sections.threats.threatContent.threatData.severity;
     this.export = languageData.sections.threats.threatTable.export;

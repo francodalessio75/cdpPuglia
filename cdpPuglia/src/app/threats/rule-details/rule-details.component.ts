@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Router } from '@angular/router';
+import { Mitre } from 'src/app/_models/mitre';
 import { Rule } from 'src/app/_models/rule';
 import { Threat } from 'src/app/_models/threat';
 import { ThreatsService } from 'src/app/_services/threats.service';
@@ -20,20 +21,22 @@ export class RuleDetailsComponent implements OnInit {
   cveTitle:string= 'CVE';
 
   elMitreMatrix='';
-  threat!:Threat;
+  threat!:Threat;//?
 
-  mitre!: string[];
+  mitres!: Mitre[];
   
   constructor(private threatsService: ThreatsService, private router:Router) {
 
-    this.threatsService.currentRule$.subscribe( rule => this.rule=rule);
+    this.threatsService.currentRule$.subscribe( 
+      rule => {
+        this.rule=rule;
+        this.mitres = this.threatsService.getMitres(this.rule.overview.label);
+      });
    }
 
   ngOnInit(): void {
-    this.threatsService.getThreat();
+    this.threatsService.getThreat();//?
     this.threatsService.getRule('');
-    this.mitre = this.threatsService.getMitre('');
-
   }
 
   backToThreats(){
