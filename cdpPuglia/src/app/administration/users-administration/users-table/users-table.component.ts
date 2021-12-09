@@ -8,7 +8,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Translatable } from 'src/app/interfaces/translatable';
 import { LanguageData } from 'src/app/_models/languageData';
 import { User } from 'src/app/_models/user';
-import { SpinnerService } from 'src/app/_services/spinner.service';
 import { TranslationService } from 'src/app/_services/translation.service';
 import { UsersAdministrationService } from 'src/app/_services/users-admin.service';
 import { UserDetailsComponent } from '../user-details/user-details.component';

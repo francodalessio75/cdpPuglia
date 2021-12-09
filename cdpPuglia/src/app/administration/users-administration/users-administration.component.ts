@@ -21,8 +21,7 @@ export class UsersAdministrationComponent implements OnInit, HasSpinner {
   
   constructor(
     private spinnerService:SpinnerService,
-    private usersAdministrationService:UsersAdministrationService,
-    private toastrService:ToastrService
+    private usersAdministrationService:UsersAdministrationService
   ) 
   {
     this.spinnerService.loading$.subscribe(
