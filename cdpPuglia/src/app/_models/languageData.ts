@@ -140,7 +140,7 @@ export interface LanguageData{
                     configureNTPServerTitle:string;
                     NTPServerLabel:string;
                 },
-                manualTimeSetting:{
+                manualTimeSettings:{
                     manualTimeSettingTitle:string;
                 }
             }

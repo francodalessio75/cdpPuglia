@@ -1,48 +1,34 @@
 <div class="container">
-    <form 
-        [formGroup]="timeForm"
-        (ngSubmit)="configure()"
-        class="form"
-    >
+    <form [formGroup]="timeForm" (ngSubmit)="configure()" class="form">
+       
+        <div class="wrapper-container">
+            <div class="time">
+                <mat-label>{{timezoneLabel}}</mat-label>
+                <mat-form-field class="full-width select-field" appearance="fill">
+                    <mat-select formControlName="timezoneControl">
+                        <mat-option *ngFor="let timezone of timezones" [value]="timezone.name">
+                            {{timezone.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="time">
+                <mat-label class="radioLabel">{{dateLabel}}</mat-label>
+                <mat-form-field class="full-width input-field" appearance="fill">
+                    <input matInput type="date" formControlName="dateControl">
+                </mat-form-field>
 
-    <div>
-        <mat-label>{{timezoneLabel}}</mat-label>
-        <mat-select formControlName="timezone">
-            <mat-option *ngFor="let timezone of timezones" [value]="timezone.name">
-                {{timezone.name}}
-            </mat-option>
-        </mat-select>
-        
-        <mat-label class="radioLabel">{{dateLabel}}</mat-label>
-        <mat-form-field class="full-width" appearance="fill">
-            <input 
-            matInput formControlName='datetime'>
-            <!-- <input 
-            matInput formControlName='datetime'> -->
-            <!-- <input [owlDateTime]="dt2" placeholder="Date Time">
-            <span [owlDateTimeTrigger]="dt2"><i class="fa fa-calendar"></i></span>
-            <owl-date-time #dt2></owl-date-time> -->
-            <!-- <input formControlName='datetime'
-           [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2">
-            <owl-date-time #dtPicker2></owl-date-time> -->
-        </mat-form-field>
+                <mat-form-field class="full-width input-field" appearance="fill">
+                    <input matInput value="00:00:00" type="time" step="1" formControlName="timeControl">
+                </mat-form-field>
+            </div>
+            <div class="button-item">
+                <button mat-raised-button color="primary" class="button" type="submit"
+                    [disabled]="timeForm.invalid">{{configureButtonLabel}}
+                </button>
+            </div>
+        </div>
 
-        <mat-label class="radioLabel">{{timeLabel}}</mat-label>
-        <mat-form-field class="full-width" appearance="fill">
-            <input 
-            matInput formControlName='time'>
-        </mat-form-field>
-    </div>
+    </form>
 
-    <div>
-        <button
-            mat-raised-button
-            color="primary"
-            class="button"
-            type="submit"
-            >{{configureButtonLabel}}
-        </button>
-    </div>
-
-</form>
 </div>

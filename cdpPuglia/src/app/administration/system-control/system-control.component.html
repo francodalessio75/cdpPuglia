@@ -38,7 +38,7 @@
       <app-system-restart></app-system-restart>
     </mat-expansion-panel>
   
-    <mat-expansion-panel [expanded]="true" [ngClass]="{'modal':feeler.status === 'suspended'}">
+    <mat-expansion-panel [expanded]="true" *ngIf="feeler.status === 'active'">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{configureNTPServerTitle}}
@@ -50,7 +50,7 @@
       <app-ntp-configuration></app-ntp-configuration>
     </mat-expansion-panel>
 
-    <mat-expansion-panel [expanded]="true" [ngClass]="{'modal':feeler.status === 'suspended'}">
+    <mat-expansion-panel [expanded]="true" *ngIf="feeler.status === 'active'">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{manualTimeSettingTitle}}

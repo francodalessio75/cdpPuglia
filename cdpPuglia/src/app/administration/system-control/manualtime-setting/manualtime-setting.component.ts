@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { Language } from 'src/app/enums/LanguagesEnum';
 import { Translatable } from 'src/app/interfaces/translatable';
 import { Feeler } from 'src/app/_models/feeler';
 import { LanguageData } from 'src/app/_models/languageData';
-import { NTP } from 'src/app/_models/NTP';
+import { Timesetting } from 'src/app/_models/timeSetting';
 import { Timezone } from 'src/app/_models/timezone';
 import { SystemControlService } from 'src/app/_services/system-control.service';
 import { TranslationService } from 'src/app/_services/translation.service';
@@ -20,36 +21,41 @@ import * as timezones from './timeZones.json';
   styleUrls: ['./manualtime-setting.component.css']
 })
 export class ManualtimeSettingComponent implements Translatable {
-  @Input() feeler!:Feeler;
+  @Input() feeler!: Feeler;
 
-  ntp!:NTP;
+  timesetting!: Timesetting;
 
-  languageData!:LanguageData;
-  language!:Language;
-  confirmationSystemOffRequestMessage!:string;
-  transmissionSuccededMessage!:string;
-  configureButtonLabel!:string;
-  rebootNeededMessage!:string;
-  timezoneLabel!:string;
-  dateLabel!:string;
-  timeLabel!:string;
+  languageData!: LanguageData;
+  language!: Language;
+  confirmationSystemOffRequestMessage!: string;
+  transmissionSuccededMessage!: string;
+  configureButtonLabel!: string;
+  rebootNeededMessage!: string;
+  timezoneLabel!: string;
+  dateLabel!: string;
+  timeLabel!: string;
 
-  timezonesData : any = (timezones as any ).default;
-  timezones : Timezone[] = this.timezonesData;
+  timezonesData: any = (timezones as any).default;
+  timezones: Timezone[] = this.timezonesData;
+  timezone!: string;
 
+  formattedDateValue!: any;
+  formattedTimeValue!: string;
+  dateIsoValue!: string;
 
-  displayedColumns:string[] = ['timezone','date', 'time'];
+  displayedColumns: string[] = ['timezone', 'date', 'time'];
 
-  tableHeaders:string[] = [];
+  tableHeaders: string[] = [];
 
-  dataSource:string[] = ['timeSettings'];
-  
+  dataSource: string[] = ['timeSettings'];
+  dataFormat!: string;
+
   constructor(
-    private dialog : MatDialog,
-    private toastr:ToastrService,
-    private translationService:TranslationService,
-    private systemControlService:SystemControlService,
-    private formBuilder:FormBuilder
+    private dialog: MatDialog,
+    private toastr: ToastrService,
+    private translationService: TranslationService,
+    private systemControlService: SystemControlService,
+    private formBuilder: FormBuilder
   ) {
     this.translationService.currentLanguage$.subscribe(
       language => {
@@ -61,54 +67,72 @@ export class ManualtimeSettingComponent implements Translatable {
     this.systemControlService.currentFeeler$.subscribe(
       feeler => this.feeler = feeler
     );
-    this.systemControlService.currentNTP$.subscribe(
-      ntp => this.ntp = ntp
+    this.systemControlService.currentTIMESETTING$.subscribe(
+      timesetting => {
+        this.timesetting = timesetting
+        this.formatFormValues(this.timesetting?.datetime);
+        this.timeForm.setValue({
+          timezoneControl: this.timesetting.timezone,
+          dateControl: this.formattedDateValue,
+          timeControl: this.formattedTimeValue
+        });
+      }
     );
   }
 
   timeForm = this.formBuilder.group({
-    timezone:['',Validators.required],
-    datetime:['',Validators.required],
-    time:['',Validators.required]
+    timezoneControl: ['', Validators.required],
+    dateControl: ['', Validators.required],
+    timeControl: ['', Validators.required]
   });
 
-  ngOnInit(){
-    this.systemControlService.getNTP();
+  ngOnInit() {
+    this.systemControlService.getTIMESETTING();
     this.languageData = this.translationService.getCurrentLanguageData();
     this.setLanguageData(this.languageData);
-    this.timeForm.patchValue({
-      timezone:this.ntp.timezone,
-      datetime:this.ntp.datetime?.substring(0,14),
-      time:this.ntp.datetime?.substring(5,14)
-    });
   }
 
-  configure(){
+  formatFormValues(datetimeValue: string | undefined) {
+    const dateAndTime = datetimeValue!.split('T')
+    this.formattedDateValue = dateAndTime[0];
+    this.formattedTimeValue = dateAndTime[1].substring(0, 8);
+  }
+
+
+  dateToIso8601() {
+    let convertDate = this.timeForm.controls.dateControl.value;
+    convertDate = convertDate.split("-").reverse().join(".");
+    const convertTime = this.timeForm.controls.timeControl.value.substring(1, 8);
+    this.dateIsoValue = `${convertDate} ${convertTime}`
+  }
+
+
+  configure() {
     this.dialog.open(
-      ConfirmationAlertComponent,{
-        hasBackdrop:true,
-        disableClose:true,
-        data:this.confirmationSystemOffRequestMessage
-      }
+      ConfirmationAlertComponent, {
+      hasBackdrop: true,
+      disableClose: true,
+      data: this.confirmationSystemOffRequestMessage
+    }
     )
-    .afterClosed().subscribe((confirmed:boolean) => {
-      if(confirmed){
-        this.systemControlService.setNTPTimeAndTimeZone('','');
-        this.dialog.open(SuccessFeedbackComponent,{
-          hasBackdrop:true,
-          disableClose:true,
-          data:this.transmissionSuccededMessage + 
-               '\n'+this.rebootNeededMessage
-        })
-      }
-      else
-      {
-        this.toastr.info("Operazione Annulata");
-      }
-    })
+      .afterClosed().subscribe((confirmed: boolean) => {
+        if (confirmed) {
+         this.dateToIso8601();
+         this.systemControlService.setDateTimeAndTimeZone(this.dateIsoValue,this.timeForm.controls.timezoneControl.value);
+          this.dialog.open(SuccessFeedbackComponent, {
+            hasBackdrop: true,
+            disableClose: true,
+            data: this.transmissionSuccededMessage +
+              '\n' + this.rebootNeededMessage
+          })
+        }
+        else {
+          this.toastr.info("Operazione Annulata");
+        }
+      })
   }
 
-  setLanguageData(languageData:LanguageData){
+  setLanguageData(languageData: LanguageData) {
     this.configureButtonLabel = languageData.sections.global.configureButtonLabel;
     this.confirmationSystemOffRequestMessage = languageData.sections.global.confirmationSystemOffRequestMessage;
     this.transmissionSuccededMessage = languageData.sections.global.transmissionSuccededMessage;

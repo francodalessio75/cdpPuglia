@@ -16,6 +16,7 @@
             color="primary"
             class="button"
             type="submit"
+            [disabled]="ntpForm.invalid"
             >{{configureButtonLabel}}
         </button>
     </div>
@@ -30,7 +31,8 @@
               <mat-radio-button
                 *ngFor="let configMode of configModes"
                 [value]="configMode.value"
-                [ngClass]="{'rightRadio': configMode.value , 'leftadio': !configMode.value}" >
+                [ngClass]="{'rightRadio': configMode.value , 'leftadio': !configMode.value}" 
+                [disabled]="ntpForm.invalid">
                 {{configMode.message}}
               </mat-radio-button>
           </mat-list>

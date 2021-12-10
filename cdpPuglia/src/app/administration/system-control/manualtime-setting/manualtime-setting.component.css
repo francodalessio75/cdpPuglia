@@ -5,29 +5,29 @@
     text-align: center;
     font-weight: bold;
   }
-  
+
   table{
     position: relative;
     width:40%;
     left:30%;
   }
-  
+
   mat-label{
     font-size:1.3rem;
     font-weight: bold;
     color:grey;
     margin-right: 2rem;
   }
-  
+
 
   .field{
     margin-top: 1rem;
     margin-bottom: 2rem;
   }
-  
+
   .full-width{
     font-size: 1.3rem;
-    width:15%;
+     width:15%;
   }
 
   button{
@@ -36,8 +36,38 @@
   }
 
   mat-select{
-      width:5rem;
+      /* width:5rem; */
+      width: 27vw;
   }
-  
-  
-  
+
+
+  .time {
+    margin: 10px 0;
+    padding: 20px 0;
+  }
+
+  .full-width:last-child {
+    margin-left: 10px;
+  }
+
+.wrapper-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.time {
+  align-content: flex-start;
+}
+
+.button-item {
+  text-align: end;
+}
+
+.select-field {
+  width: 27vw;
+}
+
+.input-field {
+  width: 15vw;
+}
