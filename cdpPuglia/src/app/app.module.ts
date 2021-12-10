@@ -58,6 +58,7 @@ import { TecnicalDetailsComponent } from './threats/rule-details/tecnical-detail
 import { UsersAdministrationComponent } from './administration/users-administration/users-administration.component';
 import { UsersTableComponent } from './administration/users-administration/users-table/users-table.component';
 import { UserDetailsComponent } from './administration/users-administration/user-details/user-details.component';
+import { GridLayoutModule } from './gridLayout.module';
 
 
 
@@ -123,7 +124,8 @@ import { UserDetailsComponent } from './administration/users-administration/user
     ChartsModule,
     WavesModule,
     MDBBootstrapModule,
-    MatDialogModule
+    MatDialogModule,
+    GridLayoutModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

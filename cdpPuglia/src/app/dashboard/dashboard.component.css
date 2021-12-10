@@ -1,11 +1,69 @@
-.grid-container {
-    margin: 20px;
-  }
-  
-  app-line-chart, app-bar-chart, app-radar-chart, app-pie-chart {
-    flex-grow: 1;
-  }
-  
-  app-table{
-    height: 700px !important;
-  }
+:host {
+  display: block;
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+}
+:host .playground-container {
+  width: 100%;
+}
+:host .controls-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+:host .controls-container > * {
+  margin: 8px 24px 8px 0;
+}
+:host .grid-container {
+  padding: 4px;
+  box-sizing: border-box;
+  border: 1px solid gray;
+  border-radius: 2px;
+  background: #313131;
+}
+:host ktd-grid-item {
+  color: #121212;
+}
+:host ktd-grid {
+  transition: height 500ms ease;
+}
+:host .grid-item-content {
+  box-sizing: border-box;
+  background: #ccc;
+  border: 1px solid;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:host .grid-item-remove-handle {
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  right: 0;
+}
+:host .grid-item-remove-handle::after {
+  content: 'x';
+  color: #121212;
+  font-size: 16px;
+  font-weight: 300;
+  font-family: Arial, sans-serif;
+}
+:host ktd-grid-item {
+  cursor: grab;
+}
+:host ktd-grid-item.ktd-grid-item-dragging {
+  cursor: grabbing;
+}
+:host mat-chip-list, :host mat-chip {
+  pointer-events: none;
+  user-select: none;
+}

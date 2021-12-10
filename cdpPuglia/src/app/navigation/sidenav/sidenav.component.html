@@ -15,6 +15,10 @@
       <mat-icon>people_outline</mat-icon>
       <div style="font-weight: bold;"  mat-line>Users</div>
     </mat-list-item>
+    <mat-list-item *ngIf="role === 'admin'" routerLink="/dashboard">
+      <!-- <mat-icon>people_outline</mat-icon> -->
+      <div style="font-weight: bold;"   mat-line>Dashboard</div>
+    </mat-list-item>
     <!-- <mat-list-item>
       <mat-icon>dns</mat-icon>
       <div mat-line>Network Addresses</div>
