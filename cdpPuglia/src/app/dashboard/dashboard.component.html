@@ -25,7 +25,7 @@
         <mat-option [value]="'diagram'">Diagram</mat-option>
         <mat-option [value]="'table'">Table</mat-option>
       </mat-select>
-      <button (click)="onInsertWidgetChange(widget.value)">insert</button>
+      <button (click)="onInsertWidgetChange()">insert</button>
     </mat-form-field>
     <mat-form-field color="accent" style="width: 64px">
       <mat-label>Columns</mat-label>
@@ -122,19 +122,19 @@
         [transition]="currentTransition"
         [dragStartThreshold]="dragStartThreshold"
         [draggable]="!disableDrag"
-        [resizable]="!disableResize">
-        <div class="grid-item-content"
-        *ngIf="item.id === '1'">
-          <table>
-            <tr>
-              <app-threats-search-parameters></app-threats-search-parameters>
-            </tr>
-            <tr>
-              <app-threats-diagrams></app-threats-diagrams>
-            </tr>
-          </table>
+        [resizable]="!disableResize"
+        class="grid-item">
+        <div class="grid-item-content" *ngIf="item.id === '0'">
+          <app-threats-search-parameters></app-threats-search-parameters>
         </div>
-        <div class="grid-item-content">
+        <div class="grid-item-content" *ngIf="item.id === '1'">
+          <app-threats-diagrams></app-threats-diagrams>
+        </div>
+        <div class="grid-item-content" *ngIf="item.id === '2'">
+          <app-threats-filters></app-threats-filters>
+        </div>
+        <div class="grid-item-content" *ngIf="item.id === '3'">
+          <app-threats-table></app-threats-table>
         </div>
         <div
           class="grid-item-remove-handle"
@@ -146,20 +146,21 @@
   </div>
 </div>
 
-<template id="threats-diagram" >
-  <div>
-    <app-threats-filters></app-threats-filters>
+<template id="threats-search" >
+  <div class="grid-item-content">
+    <app-threats-search-parameters></app-threats-search-parameters>
   </div>
-  <!-- <table>
-    <tr>
-      <td>
-        <app-threats-filters></app-threats-filters>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <app-threats-table></app-threats-table>
-      </td>
-    </tr>
-  </table> -->
 </template>
+
+<template id="threats-diagram" >
+  <app-threats-diagrams></app-threats-diagrams>
+</template>
+
+<template id="threats-filters" >
+  <app-threats-filters></app-threats-filters>
+</template>
+
+<template id="threats-table" >
+  <app-threats-table></app-threats-table>
+</template>
+ 

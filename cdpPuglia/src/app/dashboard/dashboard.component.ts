@@ -42,16 +42,9 @@ export class DashboardComponent implements OnInit {
     { id: '0', x: 5, y: 0, w: 2, h: 3 },
     { id: '1', x: 2, y: 2, w: 1, h: 2 },
     { id: '2', x: 3, y: 7, w: 1, h: 2 },
-    { id: '3', x: 2, y: 0, w: 3, h: 2 },
-    { id: '4', x: 5, y: 3, w: 2, h: 3 },
-    { id: '5', x: 0, y: 4, w: 1, h: 3 },
-    { id: '6', x: 9, y: 0, w: 2, h: 4 },
-    { id: '7', x: 9, y: 4, w: 2, h: 2 },
-    { id: '8', x: 3, y: 2, w: 2, h: 5 },
-    { id: '9', x: 7, y: 0, w: 1, h: 3 },
-    { id: '10', x: 2, y: 4, w: 1, h: 4 },
-    { id: '11', x: 0, y: 0, w: 2, h: 4 }
+    { id: '3', x: 2, y: 0, w: 3, h: 2 }
   ];
+
   transitions: { name: string; value: string }[] = [
     {
       name: 'ease',
@@ -94,6 +87,7 @@ export class DashboardComponent implements OnInit {
   isResizing = false;
   resizeSubscription!: Subscription;
 
+  /* #region utilities */
   constructor(private ngZone: NgZone) {
     // this.ngZone.onUnstable.subscribe(() => console.log('UnStable'));
   }
@@ -182,6 +176,8 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  /* #endregion */
+
   generateLayout() {
     const layout: KtdGridLayout = [];
     for (let i = 0; i < this.cols; i++) {
@@ -199,7 +195,7 @@ export class DashboardComponent implements OnInit {
     this.layout = layout;
   }
 
-  onInsertWidgetChange(widgetTemplate: string) {
+  onInsertWidgetChange() {
 
     // let newWidgetContentId = this.addItemToLayout();
 
@@ -218,6 +214,26 @@ export class DashboardComponent implements OnInit {
     //   'afterbegin',
     //   element
     // );
+
+    //console.log(document.querySelector('.grid-item-content'))
+
+    this.addItemToLayout();
+
+    let host = document.querySelector('.grid-item') as HTMLDivElement;
+
+    let template = document.getElementById('threats-search')! as HTMLTemplateElement;
+
+    const importedNode = document.importNode(
+      template.children[0],
+      true
+    );
+
+    let element = importedNode.firstElementChild as Element;
+
+    host.insertAdjacentElement(
+      'afterbegin',
+      element
+    );
   }
 
   /** Adds a grid item to the layout */
@@ -239,24 +255,6 @@ export class DashboardComponent implements OnInit {
 
     // Important: Don't mutate the array, create new instance. This way notifies the Grid component that the layout has changed.
     this.layout = [newLayoutItem, ...this.layout];
-
-    console.log(document.querySelector('.grid-item-content'))
-
-    let host = document.querySelector('.grid-item-content') as HTMLDivElement;
-
-    let template = document.getElementById('threats-diagram')! as HTMLTemplateElement;
-
-    const importedNode = document.importNode(
-      template.children[0],
-      true
-    );
-
-    let element = importedNode.firstElementChild as Element;
-
-    host.insertAdjacentElement(
-      'afterbegin',
-      element
-    );
   }
 
   /**
