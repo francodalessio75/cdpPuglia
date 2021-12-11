@@ -74,7 +74,7 @@ export class SystemControlComponent implements OnInit, Translatable {
     this.pageDescription = languageData.sections.administration.systemControl.pageDescription;
     this.systemRebootTitle = languageData.sections.administration.systemControl.systemReboot.systemRebootTitle;
     this.configureNTPServerTitle = languageData.sections.administration.systemControl.ntpConfiguration.configureNTPServerTitle;
-    this.manualTimeSettingTitle = languageData.sections.administration.systemControl.manualTimeSetting.manualTimeSettingTitle;
+    this.manualTimeSettingTitle = languageData.sections.administration.systemControl.manualTimeSettings.manualTimeSettingTitle;
     this.headerService.setCurrentTitleDescription(this.pageTitle, this.pageDescription);
     this.systemRestart = this.languageData.sections.systemControl.systemRestart.systemRestart;
     this.currentStatusTitle = this.languageData.sections.systemControl.currentStatus.currentStatusTitle;
