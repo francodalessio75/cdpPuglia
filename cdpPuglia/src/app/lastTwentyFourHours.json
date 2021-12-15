@@ -405,7 +405,7 @@
 "severity":"critical",
 "ipSrc":"102.53.163",
 "ipDst":"70.230.92",
-"ts":"2021-11-08T20:53:60"
+"ts":"2021-11-08T20:53:59"
 },{
 	"label":"brute force ssh",
 "threatId":"3",

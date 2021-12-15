@@ -1112,7 +1112,7 @@
 "severity":"medium",
 "ipSrc":"188.30.110",
 "ipDst":"61.125.7",
-"ts":"2021-10-12T01:38:60"
+"ts":"2021-10-12T01:38:59"
 },{
 	"label":"Emotet",
 "threatId":"46",
@@ -3324,7 +3324,7 @@
 "severity":"low",
 "ipSrc":"47.103.224",
 "ipDst":"233.224.12",
-"ts":"2021-10-16T03:06:60"
+"ts":"2021-10-16T03:06:59"
 },{
 	"label":"SQL Injection",
 "threatId":"20",
@@ -3597,7 +3597,7 @@
 "severity":"critical",
 "ipSrc":"130.56.229",
 "ipDst":"77.59.73",
-"ts":"2021-10-16T11:37:60"
+"ts":"2021-10-16T11:37:59"
 },{
 	"label":"brute force ssh",
 "threatId":"58",
@@ -4416,7 +4416,7 @@
 "severity":"medium",
 "ipSrc":"196.163.157",
 "ipDst":"183.59.144",
-"ts":"2021-10-17T20:21:60"
+"ts":"2021-10-17T20:21:59"
 },{
 	"label":"Phishing",
 "threatId":"17",
@@ -5774,7 +5774,7 @@
 "severity":"medium",
 "ipSrc":"157.2.114",
 "ipDst":"146.247.155",
-"ts":"2021-10-20T01:05:60"
+"ts":"2021-10-20T01:05:59"
 },{
 	"label":"brute force ssh",
 "threatId":"13",
@@ -6054,7 +6054,7 @@
 "severity":"low",
 "ipSrc":"103.47.95",
 "ipDst":"43.7.240",
-"ts":"2021-10-20T16:02:60"
+"ts":"2021-10-20T16:02:59"
 },{
 	"label":"malware",
 "threatId":"55",
@@ -6810,14 +6810,14 @@
 "severity":"high",
 "ipSrc":"87.168.213",
 "ipDst":"251.40.254",
-"ts":"2021-10-22T00:42:60"
+"ts":"2021-10-22T00:42:59"
 },{
 	"label":"Phishing",
 "threatId":"60",
 "severity":"critical",
 "ipSrc":"60.213.141",
 "ipDst":"30.94.8",
-"ts":"2021-10-22T01:02:60"
+"ts":"2021-10-22T01:02:59"
 },{
 	"label":"Phishing",
 "threatId":"49",
@@ -7069,7 +7069,7 @@
 "severity":"high",
 "ipSrc":"187.181.240",
 "ipDst":"143.122.192",
-"ts":"2021-10-22T09:26:60"
+"ts":"2021-10-22T09:26:59"
 },{
 	"label":"Emotet",
 "threatId":"46",
@@ -7391,7 +7391,7 @@
 "severity":"low",
 "ipSrc":"87.198.38",
 "ipDst":"173.58.72",
-"ts":"2021-10-23T04:59:60"
+"ts":"2021-10-23T04:59:59"
 },{
 	"label":"brute force ssh",
 "threatId":"52",
@@ -7713,7 +7713,7 @@
 "severity":"low",
 "ipSrc":"134.224.193",
 "ipDst":"212.42.230",
-"ts":"2021-10-23T22:51:60"
+"ts":"2021-10-23T22:51:59"
 },{
 	"label":"SQL Injection",
 "threatId":"33",
@@ -8084,7 +8084,7 @@
 "severity":"low",
 "ipSrc":"255.132.229",
 "ipDst":"99.181.147",
-"ts":"2021-10-24T15:53:60"
+"ts":"2021-10-24T15:53:59"
 },{
 	"label":"Emotet",
 "threatId":"53",
@@ -8336,7 +8336,7 @@
 "severity":"low",
 "ipSrc":"10.67.111",
 "ipDst":"18.183.78",
-"ts":"2021-10-25T04:25:60"
+"ts":"2021-10-25T04:25:59"
 },{
 	"label":"Emotet",
 "threatId":"49",
@@ -8847,7 +8847,7 @@
 "severity":"critical",
 "ipSrc":"238.239.74",
 "ipDst":"96.172.8",
-"ts":"2021-10-26T01:10:60"
+"ts":"2021-10-26T01:10:59"
 },{
 	"label":"brute force ssh",
 "threatId":"56",
@@ -8994,7 +8994,7 @@
 "severity":"medium",
 "ipSrc":"202.86.17",
 "ipDst":"176.142.251",
-"ts":"2021-10-26T06:58:60"
+"ts":"2021-10-26T06:58:59"
 },{
 	"label":"SQL Injection",
 "threatId":"2",
@@ -9218,7 +9218,7 @@
 "severity":"high",
 "ipSrc":"110.76.201",
 "ipDst":"253.221.23",
-"ts":"2021-10-26T15:56:60"
+"ts":"2021-10-26T15:56:59"
 },{
 	"label":"SQL Injection",
 "threatId":"4",
@@ -9274,7 +9274,7 @@
 "severity":"medium",
 "ipSrc":"177.156.123",
 "ipDst":"51.216.46",
-"ts":"2021-10-26T18:13:60"
+"ts":"2021-10-26T18:13:59"
 },{
 	"label":"Phishing",
 "threatId":"36",
@@ -9736,7 +9736,7 @@
 "severity":"low",
 "ipSrc":"241.73.82",
 "ipDst":"177.29.232",
-"ts":"2021-10-27T17:32:60"
+"ts":"2021-10-27T17:32:59"
 },{
 	"label":"brute force ssh",
 "threatId":"9",
@@ -9967,7 +9967,7 @@
 "severity":"medium",
 "ipSrc":"189.95.2",
 "ipDst":"178.64.152",
-"ts":"2021-10-27T23:40:60"
+"ts":"2021-10-27T23:40:59"
 },{
 	"label":"Emotet",
 "threatId":"50",
@@ -11402,7 +11402,7 @@
 "severity":"critical",
 "ipSrc":"239.85.85",
 "ipDst":"133.212.65",
-"ts":"2021-10-30T16:38:60"
+"ts":"2021-10-30T16:38:59"
 },{
 	"label":"brute force ssh",
 "threatId":"38",
@@ -11437,7 +11437,7 @@
 "severity":"high",
 "ipSrc":"127.114.106",
 "ipDst":"12.80.230",
-"ts":"2021-10-30T18:03:60"
+"ts":"2021-10-30T18:03:59"
 },{
 	"label":"Emotet",
 "threatId":"19",
@@ -12872,7 +12872,7 @@
 "severity":"low",
 "ipSrc":"171.194.125",
 "ipDst":"213.221.212",
-"ts":"2021-11-02T11:05:60"
+"ts":"2021-11-02T11:05:59"
 },{
 	"label":"brute force ssh",
 "threatId":"6",
@@ -13656,7 +13656,7 @@
 "severity":"critical",
 "ipSrc":"196.229.143",
 "ipDst":"159.22.1",
-"ts":"2021-11-04T01:07:60"
+"ts":"2021-11-04T01:07:59"
 },{
 	"label":"SQL Injection",
 "threatId":"12",
@@ -13894,7 +13894,7 @@
 "severity":"high",
 "ipSrc":"16.132.49",
 "ipDst":"193.169.102",
-"ts":"2021-11-04T11:45:60"
+"ts":"2021-11-04T11:45:59"
 },{
 	"label":"brute force ssh",
 "threatId":"20",
@@ -13985,7 +13985,7 @@
 "severity":"low",
 "ipSrc":"90.239.206",
 "ipDst":"5.144.39",
-"ts":"2021-11-04T14:59:60"
+"ts":"2021-11-04T14:59:59"
 },{
 	"label":"malware",
 "threatId":"19",
@@ -14174,7 +14174,7 @@
 "severity":"low",
 "ipSrc":"190.31.218",
 "ipDst":"64.35.23",
-"ts":"2021-11-04T20:36:60"
+"ts":"2021-11-04T20:36:59"
 },{
 	"label":"brute force ssh",
 "threatId":"3",
@@ -14958,7 +14958,7 @@
 "severity":"medium",
 "ipSrc":"185.62.120",
 "ipDst":"242.72.111",
-"ts":"2021-11-06T02:43:60"
+"ts":"2021-11-06T02:43:59"
 },{
 	"label":"SQL Injection",
 "threatId":"40",
@@ -15224,7 +15224,7 @@
 "severity":"medium",
 "ipSrc":"38.40.119",
 "ipDst":"143.160.164",
-"ts":"2021-11-06T11:10:60"
+"ts":"2021-11-06T11:10:59"
 },{
 	"label":"Emotet",
 "threatId":"39",
@@ -15420,7 +15420,7 @@
 "severity":"critical",
 "ipSrc":"129.115.207",
 "ipDst":"46.83.67",
-"ts":"2021-11-06T20:41:60"
+"ts":"2021-11-06T20:41:59"
 },{
 	"label":"brute force ssh",
 "threatId":"36",
@@ -16183,7 +16183,7 @@
 "severity":"medium",
 "ipSrc":"166.256.218",
 "ipDst":"151.30.89",
-"ts":"2021-11-08T03:44:60"
+"ts":"2021-11-08T03:44:59"
 },{
 	"label":"brute force ssh",
 "threatId":"20",
@@ -16316,7 +16316,7 @@
 "severity":"low",
 "ipSrc":"124.130.105",
 "ipDst":"99.189.30",
-"ts":"2021-11-08T10:42:60"
+"ts":"2021-11-08T10:42:59"
 },{
 	"label":"brute force ssh",
 "threatId":"51",
@@ -16456,7 +16456,7 @@
 "severity":"medium",
 "ipSrc":"240.44.106",
 "ipDst":"187.231.233",
-"ts":"2021-11-08T18:23:60"
+"ts":"2021-11-08T18:23:59"
 },{
 	"label":"brute force ssh",
 "threatId":"36",
